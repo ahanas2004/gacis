@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Play, RotateCcw, AlertTriangle, Compass, CheckCircle2, ChevronRight, Gauge, ShieldAlert, Cpu } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Play, RotateCcw, AlertTriangle, Compass, CheckCircle2, ChevronRight, Gauge, ShieldAlert, Cpu, Globe2 } from 'lucide-react';
 import './RouteSimulator.css';
 
 const routesData = {
