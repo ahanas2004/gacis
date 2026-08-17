@@ -1,0 +1,107 @@
+.service-strip-section {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.service-strip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+}
+
+.service-strip-header h2 {
+  margin-top: 0.5rem;
+}
+
+.service-strip-all {
+  flex-shrink: 0;
+}
+
+.service-strip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background-color: var(--border-light);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.service-strip-tile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+}
+
+.service-strip-tile:hover {
+  background-color: var(--surface-dark);
+  color: white;
+}
+
+.sst-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  background-color: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gacis-red);
+  transition: background-color 0.3s ease;
+}
+
+.service-strip-tile:hover .sst-icon {
+  background-color: rgba(255,255,255,0.08);
+}
+
+.sst-text h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  transition: color 0.3s;
+}
+
+.sst-text p {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin: 0;
+  transition: color 0.3s;
+}
+
+.service-strip-tile:hover .sst-text p {
+  color: rgba(255,255,255,0.6);
+}
+
+.sst-arrow {
+  position: absolute;
+  right: var(--space-lg);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--border-light);
+  transition: color 0.3s, transform 0.3s;
+}
+
+.service-strip-tile:hover .sst-arrow {
+  color: var(--gacis-red);
+  transform: translateY(-50%) translateX(4px);
+}
+
+@media (max-width: 1200px) {
+  .service-strip-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .service-strip-grid { grid-template-columns: 1fr; }
+  .service-strip-header { flex-direction: column; align-items: flex-start; gap: var(--space-md); }
+  .service-strip-tile { padding: var(--space-md); }
+}

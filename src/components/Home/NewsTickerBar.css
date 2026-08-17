@@ -1,0 +1,107 @@
+.news-ticker-bar {
+  display: flex;
+  align-items: center;
+  background-color: var(--surface-dark);
+  color: white;
+  height: 42px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  position: relative;
+}
+
+.ticker-label {
+  flex-shrink: 0;
+  padding: 0 1.25rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gacis-red);
+  border-right: 1px solid rgba(255,255,255,0.12);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background: rgba(200,32,47,0.07);
+}
+
+.ticker-track-wrapper {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.ticker-track-wrapper::before,
+.ticker-track-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 40px;
+  z-index: 2;
+  pointer-events: none;
+}
+.ticker-track-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--surface-dark), transparent);
+}
+.ticker-track-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--surface-dark), transparent);
+}
+
+.ticker-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: tickerScroll 40s linear infinite;
+  width: max-content;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes tickerScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.82);
+  padding: 0 2rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.ticker-dot {
+  color: var(--gacis-red);
+  font-size: 0.5rem;
+  flex-shrink: 0;
+}
+
+.ticker-more {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  border-left: 1px solid rgba(255,255,255,0.12);
+  height: 100%;
+  white-space: nowrap;
+  transition: color 0.2s;
+  letter-spacing: 0.02em;
+}
+
+.ticker-more:hover {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .ticker-more { display: none; }
+}

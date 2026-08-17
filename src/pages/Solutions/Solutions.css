@@ -1,0 +1,87 @@
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background-color: var(--border-light);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.solution-card {
+  background: var(--bg-primary);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: background-color 0.3s ease;
+}
+
+.solution-card:hover { background-color: var(--bg-secondary); }
+
+.sc-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.sc-icon {
+  color: var(--gacis-red);
+}
+
+.sc-tag {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--bg-secondary);
+  padding: 0.25rem 0.625rem;
+  border-radius: 3px;
+}
+
+.solution-card h4 { font-size: 1rem; }
+.solution-card p  { font-size: 0.875rem; line-height: 1.6; margin: 0; }
+
+/* Industry Specialisation */
+.industry-specialisation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+.is-left h2 { margin: 0.75rem 0 var(--space-md); }
+.is-left p  { font-size: 1.0625rem; }
+
+.industry-tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.industry-tag {
+  padding: 0.625rem 1.25rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.25s ease;
+  cursor: default;
+}
+
+.industry-tag:hover {
+  background: var(--surface-dark);
+  color: white;
+  border-color: var(--surface-dark);
+}
+
+@media (max-width: 1400px) { .solutions-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 1100px) {
+  .solutions-grid { grid-template-columns: repeat(2, 1fr); }
+  .industry-specialisation { grid-template-columns: 1fr; gap: var(--space-2xl); }
+}
+@media (max-width: 768px) { .solutions-grid { grid-template-columns: 1fr; } }

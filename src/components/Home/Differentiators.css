@@ -1,0 +1,152 @@
+.diff-editorial {
+  background-color: var(--bg-primary); /* Use primary white to reduce boxiness */
+}
+
+.diff-asymmetric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+.card-full {
+  grid-column: 1 / -1;
+}
+
+.diff-ed-card {
+  position: relative;
+  border-radius: 8px; /* Slightly rounded, not pill */
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--surface-dark);
+}
+
+.card-half {
+  height: 480px;
+}
+
+.card-full {
+  height: 400px;
+}
+
+.diff-ed-card:hover {
+  transform: translateY(-8px);
+}
+
+.diff-img-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.diff-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.diff-ed-card:hover .diff-img-wrapper img {
+  transform: scale(1.04);
+}
+
+.diff-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.5) 60%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  transition: background 0.4s ease;
+}
+
+.diff-ed-card:hover .diff-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.6) 60%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+}
+
+.diff-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.diff-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-primary);
+}
+
+.diff-num {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gacis-red);
+}
+
+.diff-cat {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.diff-content h3 {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  color: white;
+  margin: 0;
+  padding-right: 40px; /* Space for arrow */
+}
+
+.diff-arrow {
+  position: absolute;
+  bottom: var(--space-xl);
+  right: var(--space-xl);
+  color: white;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s;
+}
+
+.diff-ed-card:hover .diff-arrow {
+  transform: translateX(8px);
+  color: var(--gacis-red);
+}
+
+@media (max-width: 992px) {
+  .diff-asymmetric-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .card-half, .card-full {
+    height: 360px;
+    grid-column: 1 / -1;
+  }
+  
+  .diff-content {
+    padding: var(--space-lg);
+  }
+  
+  .diff-arrow {
+    bottom: var(--space-lg);
+    right: var(--space-lg);
+  }
+}

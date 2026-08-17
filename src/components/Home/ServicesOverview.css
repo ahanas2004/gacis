@@ -1,0 +1,102 @@
+.services-editorial {
+  background-color: var(--bg-primary);
+}
+
+.services-ed-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: var(--space-3xl);
+  row-gap: var(--space-xl);
+}
+
+.service-ed-row {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-primary);
+  text-decoration: none;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-ed-row::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background-color: var(--gacis-red);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-ed-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.service-ed-num {
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color 0.3s;
+}
+
+.service-ed-cat {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.service-ed-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.service-ed-content h3 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  color: var(--text-primary);
+  margin: 0;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-ed-arrow {
+  color: var(--text-muted);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s;
+}
+
+/* Hover States */
+.service-ed-row:hover {
+  background-color: rgba(200, 32, 47, 0.02); /* Extremely subtle red tint */
+}
+
+.service-ed-row:hover::after {
+  width: 100%;
+}
+
+.service-ed-row:hover .service-ed-num {
+  color: var(--gacis-red);
+}
+
+.service-ed-row:hover h3 {
+  transform: translateX(10px);
+}
+
+.service-ed-row:hover .service-ed-arrow {
+  transform: translateX(5px);
+  color: var(--gacis-red);
+}
+
+@media (max-width: 992px) {
+  .services-ed-grid {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-2xl);
+  }
+}
