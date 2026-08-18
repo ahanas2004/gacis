@@ -1,152 +1,117 @@
-.diff-editorial {
-  background-color: var(--bg-primary); /* Use primary white to reduce boxiness */
+/* ═══════════════════════════════════════════════════════════════
+   DIFFERENTIATORS STYLING
+   ═══════════════════════════════════════════════════════════════ */
+
+.differentiators-section {
+  border-bottom: 1px solid var(--border-light);
 }
 
-.diff-asymmetric-grid {
+.diff-cards-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-lg);
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
 }
 
-.card-full {
-  grid-column: 1 / -1;
-}
-
-.diff-ed-card {
-  position: relative;
-  border-radius: 8px; /* Slightly rounded, not pill */
+.diff-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
   overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  background: var(--surface-dark);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-subtle);
+  transition: transform var(--motion-normal) var(--ease-spring),
+              box-shadow var(--motion-normal) var(--ease-spring);
 }
 
-.card-half {
-  height: 480px;
-}
-
-.card-full {
-  height: 400px;
-}
-
-.diff-ed-card:hover {
-  transform: translateY(-8px);
+.diff-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
 }
 
 .diff-img-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
+  height: 220px;
   width: 100%;
-  height: 100%;
   overflow: hidden;
 }
 
-.diff-img-wrapper img {
+.diff-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform var(--motion-slow) var(--ease-spring);
 }
 
-.diff-ed-card:hover .diff-img-wrapper img {
-  transform: scale(1.04);
+.diff-card:hover .diff-img {
+  transform: scale(1.05);
 }
 
-.diff-overlay {
+.diff-img-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.1) 0%,
-    rgba(0, 0, 0, 0.5) 60%,
-    rgba(0, 0, 0, 0.8) 100%
-  );
-  transition: background 0.4s ease;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(10, 12, 16, 0.75) 100%);
 }
 
-.diff-ed-card:hover .diff-overlay {
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.2) 0%,
-    rgba(0, 0, 0, 0.6) 60%,
-    rgba(0, 0, 0, 0.9) 100%
-  );
-}
-
-.diff-content {
+.diff-metric-badge {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 2rem;
-  color: white;
+  bottom: 1rem;
+  left: 1rem;
+  background: var(--surface-dark);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-dark);
+}
+
+.diff-card-content {
+  padding: clamp(1.25rem, 2vw, 1.75rem);
   display: flex;
   flex-direction: column;
-  z-index: 2;
+  flex-grow: 1;
 }
 
-.diff-meta {
+.diff-eyebrow-row {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-sm);
-  font-family: var(--font-primary);
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
-.diff-num {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--gacis-red);
+.diff-icon {
+  color: var(--color-brand-red);
 }
 
-.diff-cat {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+.diff-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--color-brand-red);
 }
 
-.diff-content h3 {
-  font-size: clamp(2rem, 3vw, 2.5rem);
-  color: white;
+.diff-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.diff-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
   margin: 0;
-  padding-right: 40px; /* Space for arrow */
 }
 
-.diff-arrow {
-  position: absolute;
-  bottom: var(--space-xl);
-  right: var(--space-xl);
-  color: white;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s;
-}
-
-.diff-ed-card:hover .diff-arrow {
-  transform: translateX(8px);
-  color: var(--gacis-red);
-}
-
-@media (max-width: 992px) {
-  .diff-asymmetric-grid {
+/* Responsive */
+@media (max-width: 1024px) {
+  .diff-cards-grid {
     grid-template-columns: 1fr;
   }
-  
-  .card-half, .card-full {
-    height: 360px;
-    grid-column: 1 / -1;
-  }
-  
-  .diff-content {
-    padding: var(--space-lg);
-  }
-  
-  .diff-arrow {
-    bottom: var(--space-lg);
-    right: var(--space-lg);
+
+  .diff-img-wrapper {
+    height: 240px;
   }
 }

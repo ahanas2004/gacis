@@ -1,42 +1,55 @@
 import { Link } from 'react-router-dom';
 import { Globe, Shield, TrendingUp, Users, Award, Layers } from 'lucide-react';
+import SEO from '../../components/Common/SEO';
+import SocialProof from '../../components/Home/SocialProof';
 import './About.css';
 
-const About = () => {
+export const About = () => {
   return (
     <div className="about-page">
+      <SEO 
+        title="About GACIS — Corporate History & Operational Heritage"
+        description="Built for the world's most complex trade corridors. Learn about GACIS global infrastructure, multimodal heritage, and operational leadership across the Gulf and Central Asia."
+        canonical="/about"
+      />
 
       <div className="page-header bg-maroon">
         <div className="container">
-          <span className="eyebrow" style={{ color: 'rgba(255,255,255,0.6)' }}>Our Company</span>
+          <span className="eyebrow eyebrow-light">CORPORATE HERITAGE</span>
           <h1>About GACIS</h1>
-          <p>Connecting businesses to global markets through precision logistics, deep regional expertise, and an unwavering commitment to quality.</p>
+          <p>Connecting global commerce through multimodal engineering, deep regional trade lane mastery, and operational precision.</p>
         </div>
       </div>
 
       {/* Mission & Vision */}
-      <section className="section-padding">
+      <section className="section-padding bg-primary">
         <div className="container">
           <div className="about-intro-grid">
-            <div className="about-text fade-up">
-              <span className="eyebrow">Who We Are</span>
-              <h2>Built for the world's most complex trade routes</h2>
+            <div className="about-text">
+              <span className="eyebrow">WHO WE ARE</span>
+              <h2>Built for the World's Most Strategic Trade Routes</h2>
               <p>
-                GACIS — Gulf and Commonwealth of Independent States — is a global freight forwarding and logistics company engineered to deliver seamless, reliable, and efficient transportation solutions across air, sea, land, and rail.
+                GACIS — Gulf and Commonwealth of Independent States — is an enterprise logistics and freight forwarding platform engineered to deliver seamless transportation solutions across air, deepsea, trans-Eurasian rail, and cross-border road networks.
               </p>
               <p>
-                We don't simply move cargo. We connect businesses, markets, and supply chains through intelligent, multimodal logistics. With deep expertise across the Gulf and CIS regions and an extensive international partner network, GACIS is positioned to handle the most complex cross-border logistics challenges with precision and speed.
+                We do not simply move freight. We architect resilient supply chains through mathematical corridor optimization and multimodal agility. With direct gateway infrastructure in Dubai, Chennai, Klang, Colombo, Almaty, and Frankfurt, GACIS eliminates border friction and delivers transparent telemetry to enterprise procurement teams.
               </p>
               <div className="about-actions">
-                <Link to="/contact" className="btn btn-primary">Partner With Us</Link>
-                <Link to="/services" className="btn btn-secondary">Our Services</Link>
+                <Link to="/quote" className="btn btn-primary">Calculate a Corridor</Link>
+                <Link to="/services" className="btn btn-secondary">Explore Capabilities</Link>
               </div>
             </div>
-            <div className="about-image-col fade-up delay-200">
-              <img src="/images/diff_network.jpg" alt="GACIS global operations" className="about-hero-img" />
+            <div className="about-image-col">
+              <img 
+                src="/images/diff_network.jpg" 
+                alt="GACIS global logistics center" 
+                className="about-hero-img" 
+                loading="lazy"
+                decoding="async"
+              />
               <div className="about-badge">
-                <div className="badge-num">2012</div>
-                <div className="badge-text">Founded</div>
+                <div className="badge-num tabular-nums">2012</div>
+                <div className="badge-text">Established Heritage</div>
               </div>
             </div>
           </div>
@@ -46,20 +59,20 @@ const About = () => {
       {/* Pillars */}
       <section className="section-padding bg-secondary">
         <div className="container">
-          <div className="section-heading fade-up">
-            <span className="eyebrow">Our Pillars</span>
-            <h2>Why businesses choose GACIS</h2>
+          <div className="section-heading">
+            <span className="eyebrow">OPERATIONAL PILLARS</span>
+            <h2>Why Enterprise Shippers Choose GACIS</h2>
           </div>
           <div className="about-pillars-grid">
             {[
-              { icon: <Globe size={28} />, title: 'Global Reach, Local Expertise', desc: 'Strategic presence in India, UAE, Sri Lanka, Malaysia, and Kazakhstan with worldwide partner networks spanning 150+ countries.' },
-              { icon: <Shield size={28} />, title: 'Reliability & Compliance', desc: 'Rigorous operational standards and deep knowledge of customs regulations in the Gulf, CIS, and South Asian trade lanes.' },
-              { icon: <TrendingUp size={28} />, title: 'Supply Chain Optimization', desc: 'Data-driven route and mode selection to balance cost, reliability, and transit speed for your business requirements.' },
-              { icon: <Users size={28} />, title: 'Dedicated Account Teams', desc: 'Each client is assigned a dedicated logistics coordinator — a single point of contact for all shipment queries and escalations.' },
-              { icon: <Award size={28} />, title: 'Certified Standards', desc: 'IATA-certified, ISO 9001:2015 accredited, and GDP-compliant, ensuring your cargo meets the highest quality and safety benchmarks.' },
-              { icon: <Layers size={28} />, title: 'End-to-End Visibility', desc: 'Real-time shipment tracking and proactive milestone alerts keep you informed at every stage — from pickup to final delivery.' },
+              { icon: <Globe size={28} />, title: 'Corridor Ownership', desc: 'Direct regional operating offices in Dubai, India, Sri Lanka, Malaysia, and Central Asia with worldwide partner connectivity.' },
+              { icon: <Shield size={28} />, title: 'Rigorous Compliance', desc: 'Licensed customs brokers ensuring total conformity with GCC Common Customs, TIR Carnet, and Eurasian Customs Union protocols.' },
+              { icon: <TrendingUp size={28} />, title: 'Multimodal Optimization', desc: 'Data-driven modal substitution balancing transit velocity against carbon emissions and holding costs.' },
+              { icon: <Users size={28} />, title: 'Dedicated Control Towers', desc: 'Enterprise accounts are supported by single-point-of-contact logistics coordinators and 24/7 central desk tracking.' },
+              { icon: <Award size={28} />, title: 'Certified Standards', desc: 'ISO 9001:2015 accredited, GDP pharma certified, and IATA registered cargo operations.' },
+              { icon: <Layers size={28} />, title: 'Telemetry Visibility', desc: 'Live corridor tracking, automated milestone timestamps, and verified Scope 3 carbon reporting.' },
             ].map((item, i) => (
-              <div className={`about-pillar fade-up delay-${(i % 3 + 1) * 100}`} key={i}>
+              <div className="about-pillar" key={i}>
                 <div className="about-pillar-icon">{item.icon}</div>
                 <h4>{item.title}</h4>
                 <p>{item.desc}</p>
@@ -69,32 +82,34 @@ const About = () => {
         </div>
       </section>
 
-      {/* Leadership Quote */}
+      {/* Certifications and Alliances */}
+      <SocialProof />
+
+      {/* Quote */}
       <section className="section-padding about-quote-section bg-maroon">
         <div className="container">
-          <blockquote className="about-quote fade-up">
-            <p>"Our mission is simple: remove every obstacle between your cargo and its destination. Speed, compliance, and care — those are the three things we promise every client, every time."</p>
-            <footer>— GACIS Leadership Team</footer>
+          <blockquote className="about-quote">
+            <p>"Our objective is straightforward: eliminate every layer of friction between your cargo and its final consignee. Speed, regulatory certainty, and precision — that is our operational commitment across every corridor."</p>
+            <footer>— GACIS Executive Leadership</footer>
           </blockquote>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="section-padding-sm">
+      <section className="section-padding-sm bg-primary">
         <div className="container">
-          <div className="about-cta-row fade-up">
+          <div className="about-cta-row">
             <div>
-              <h3>Ready to streamline your supply chain?</h3>
-              <p>Our logistics specialists are available to design the right solution for your business.</p>
+              <h3>Ready to optimize your global trade corridors?</h3>
+              <p>Our trade lane specialists are available to analyze your routing requirements.</p>
             </div>
             <div className="about-cta-actions">
               <Link to="/quote" className="btn btn-primary">Request a Quote</Link>
-              <Link to="/contact" className="btn btn-secondary">Contact Us</Link>
+              <Link to="/contact" className="btn btn-secondary">Contact Our Desk</Link>
             </div>
           </div>
         </div>
       </section>
-
     </div>
   );
 };

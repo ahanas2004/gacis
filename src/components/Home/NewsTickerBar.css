@@ -1,107 +1,122 @@
-.news-ticker-bar {
+/* ═══════════════════════════════════════════════════════════════
+   NEWS TICKER BAR STYLING
+   ═══════════════════════════════════════════════════════════════ */
+
+.ticker-editorial-bar {
+  background: var(--surface-dark-2);
+  border-bottom: 1px solid var(--border-dark);
+  color: #ffffff;
+  height: 44px;
   display: flex;
   align-items: center;
-  background-color: var(--surface-dark);
-  color: white;
-  height: 42px;
   overflow: hidden;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-  position: relative;
 }
 
-.ticker-label {
-  flex-shrink: 0;
-  padding: 0 1.25rem;
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gacis-red);
-  border-right: 1px solid rgba(255,255,255,0.12);
-  height: 100%;
+.ticker-container {
   display: flex;
   align-items: center;
-  background: rgba(200,32,47,0.07);
+  justify-content: space-between;
+  height: 100%;
 }
 
-.ticker-track-wrapper {
+.ticker-lead {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--surface-dark-2);
+  z-index: 2;
+  padding-right: 1.5rem;
+  flex-shrink: 0;
+}
+
+.ticker-pulse-beacon {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-brand-red);
+  box-shadow: 0 0 8px var(--color-brand-red);
+}
+
+.ticker-lead-text {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--color-brand-gold);
+}
+
+.ticker-scroll-window {
   flex: 1;
   overflow: hidden;
   position: relative;
-}
-
-.ticker-track-wrapper::before,
-.ticker-track-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 40px;
-  z-index: 2;
-  pointer-events: none;
-}
-.ticker-track-wrapper::before {
-  left: 0;
-  background: linear-gradient(to right, var(--surface-dark), transparent);
-}
-.ticker-track-wrapper::after {
-  right: 0;
-  background: linear-gradient(to left, var(--surface-dark), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
 }
 
 .ticker-track {
   display: flex;
   align-items: center;
   white-space: nowrap;
-  animation: tickerScroll 40s linear infinite;
-  width: max-content;
+  animation: tickerSlide 38s linear infinite;
 }
 
-.ticker-track:hover {
+.ticker-scroll-window.is-paused .ticker-track {
   animation-play-state: paused;
 }
 
-@keyframes tickerScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+@keyframes tickerSlide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .ticker-item {
   display: inline-flex;
   align-items: center;
   gap: 0.625rem;
+  padding-right: 2.5rem;
   font-size: 0.8125rem;
-  color: rgba(255,255,255,0.82);
-  padding: 0 2rem;
-  font-weight: 400;
-  letter-spacing: 0.01em;
 }
 
-.ticker-dot {
-  color: var(--gacis-red);
-  font-size: 0.5rem;
-  flex-shrink: 0;
+.ticker-tag {
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.ticker-more {
-  flex-shrink: 0;
+.ticker-text {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.ticker-bullet {
+  color: rgba(255, 255, 255, 0.25);
+  margin-left: 0.5rem;
+}
+
+.ticker-pause-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0 1.25rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: rgba(255,255,255,0.6);
-  border-left: 1px solid rgba(255,255,255,0.12);
-  height: 100%;
-  white-space: nowrap;
-  transition: color 0.2s;
-  letter-spacing: 0.02em;
+  justify-content: center;
+  z-index: 2;
+  margin-left: 1rem;
+  transition: all var(--motion-fast) ease;
 }
 
-.ticker-more:hover {
-  color: white;
+.ticker-pause-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
 }
 
 @media (max-width: 768px) {
-  .ticker-more { display: none; }
+  .ticker-lead-text {
+    display: none;
+  }
 }

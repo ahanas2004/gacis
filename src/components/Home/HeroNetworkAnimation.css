@@ -1,0 +1,229 @@
+/* ═══════════════════════════════════════════════════════════════
+   HERO NETWORK INTELLIGENCE VISUALIZATION STYLING
+   ═══════════════════════════════════════════════════════════════ */
+
+.hero-network-console {
+  background: rgba(14, 17, 23, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-dark-strong);
+  border-radius: var(--radius-card);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 520px;
+}
+
+/* Console Top Bar */
+.hnc-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.hnc-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.live-radar-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-brand-red);
+  box-shadow: 0 0 10px var(--color-brand-red);
+  animation: radarBlink 1.6s infinite ease-in-out;
+}
+
+@keyframes radarBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.75); }
+}
+
+.hnc-system-title {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hnc-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-success);
+  background: rgba(26, 138, 74, 0.15);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-pill);
+}
+
+.pulse-icon {
+  animation: pulseRotate 2s infinite linear;
+}
+
+@keyframes pulseRotate {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* Visualizer SVG Area */
+.hnc-visualizer-canvas {
+  position: relative;
+  background: radial-gradient(circle at 60% 50%, rgba(200, 32, 47, 0.08) 0%, transparent 70%),
+              rgba(10, 12, 16, 0.6);
+  padding: 1rem 0.5rem 0.5rem;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.hnc-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Corridor Drawing & Cargo Pulse */
+.corridor-flow-path {
+  stroke-dasharray: 450;
+  stroke-dashoffset: 450;
+  animation: drawCorridor 4.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes drawCorridor {
+  0% { stroke-dashoffset: 450; }
+  60%, 100% { stroke-dashoffset: 0; }
+}
+
+/* Moving Cargo Particle using Motion Path */
+.cargo-transit-particle {
+  offset-path: path('M 50,130 C 110,130 130,80 180,80 C 230,80 270,120 310,60 C 330,30 360,40 370,40');
+  animation: cargoTransit 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes cargoTransit {
+  0% { offset-distance: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+
+/* Node Elements */
+.node-ping {
+  animation: pingWave 2.4s infinite ease-out;
+}
+
+.node-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  fill: rgba(255, 255, 255, 0.85);
+}
+
+/* Data Telemetry Grid */
+.hnc-data-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border-dark);
+}
+
+.hnc-data-cell {
+  background: var(--surface-dark-card);
+  padding: 0.875rem 1.125rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.hdc-label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.25rem;
+}
+
+.hdc-val {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.hdc-val.primary-corridor {
+  font-size: 0.875rem;
+  color: #ffffff;
+}
+
+.hdc-sub {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 0.2rem;
+}
+
+.text-success {
+  color: #22c55e !important;
+}
+
+.text-gold {
+  color: var(--color-brand-gold) !important;
+}
+
+/* Live Stage Tracker Strip */
+.hnc-stage-strip {
+  padding: 0.75rem 1.125rem;
+  background: rgba(200, 32, 47, 0.08);
+  border-top: 1px solid var(--border-dark);
+  font-size: 0.75rem;
+}
+
+.hss-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.hss-step {
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--color-brand-red);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+}
+
+.hss-status {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.6875rem;
+}
+
+.hss-leg {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.8125rem;
+}
+
+.leg-arrow {
+  color: var(--color-brand-red);
+}
+
+/* ─── Mobile Responsiveness ─── */
+@media (max-width: 640px) {
+  .hnc-data-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,63 +1,77 @@
-import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ShieldCheck, Compass, Gauge, Zap, Globe2, ArrowRight } from 'lucide-react';
 import './Differentiators.css';
 
-const Differentiators = () => {
+const differentiatorsData = [
+  {
+    title: 'Corridor Specialization',
+    eyebrow: 'STRATEGIC GEOGRAPHY',
+    desc: 'Unmatched operational footprint across the Gulf, Central Asia (CIS), and South Asia trade belt with direct bonded border access.',
+    image: '/images/diff_network.jpg',
+    metric: '150+ Direct Corridors',
+    icon: Globe2
+  },
+  {
+    title: 'Multimodal Orchestration',
+    eyebrow: 'MODAL AGILITY',
+    desc: 'Seamless intermodal transitions between deepsea vessels, block trains, and cross-border road fleets that reduce transit times by up to 50%.',
+    image: '/images/diff_transform.jpg',
+    metric: '8.4d Dubai–Almaty',
+    icon: Compass
+  },
+  {
+    title: 'Regulatory & Trade Compliance',
+    eyebrow: 'ZERO-DELAY CLEARANCE',
+    desc: 'In-house licensed customs brokers and digital pre-clearance gateways eliminating port dwell times and tariff bottlenecks.',
+    image: '/images/diff_compliance.jpg',
+    metric: 'ISO 9001 & GDP Certified',
+    icon: ShieldCheck
+  }
+];
+
+export const Differentiators = () => {
   return (
-    <section className="section-padding diff-editorial">
+    <section className="differentiators-section section-padding bg-secondary">
       <div className="container">
         
-        <div className="section-heading fade-up">
-          <h2>GACIS Brand</h2>
-          <p>Commitment to quality, a global business network, and accelerating supply chain transformation.</p>
+        {/* Section Header */}
+        <div className="section-heading">
+          <span className="eyebrow">THE GACIS ADVANTAGE</span>
+          <h2>Built for the Corridors That Matter</h2>
+          <p>
+            Traditional forwarders treat Central Asia and the Gulf as secondary trade lanes. We engineered our entire operational infrastructure to dominate them.
+          </p>
         </div>
 
-        <div className="diff-asymmetric-grid">
-          
-          <div className="diff-ed-card card-half fade-up delay-100">
-            <div className="diff-img-wrapper">
-              <img src="/images/diff_compliance.jpg" alt="Compliance" />
-              <div className="diff-overlay"></div>
-            </div>
-            <div className="diff-content">
-              <div className="diff-meta">
-                <span className="diff-num">01</span>
-                <span className="diff-cat">Standards</span>
-              </div>
-              <h3>Compliance & Quality</h3>
-              <ArrowRight size={24} className="diff-arrow" />
-            </div>
-          </div>
+        {/* 3 Pillar Cards */}
+        <div className="diff-cards-grid">
+          {differentiatorsData.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div className="diff-card" key={idx}>
+                <div className="diff-img-wrapper">
+                  <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    className="diff-img"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="diff-img-overlay"></div>
+                  <span className="diff-metric-badge">{item.metric}</span>
+                </div>
 
-          <div className="diff-ed-card card-half fade-up delay-200">
-            <div className="diff-img-wrapper">
-              <img src="/images/diff_network.jpg" alt="Global Network" />
-              <div className="diff-overlay"></div>
-            </div>
-            <div className="diff-content">
-              <div className="diff-meta">
-                <span className="diff-num">02</span>
-                <span className="diff-cat">Connectivity</span>
+                <div className="diff-card-content">
+                  <div className="diff-eyebrow-row">
+                    <Icon size={16} className="diff-icon" />
+                    <span className="diff-eyebrow">{item.eyebrow}</span>
+                  </div>
+                  <h3 className="diff-title">{item.title}</h3>
+                  <p className="diff-desc">{item.desc}</p>
+                </div>
               </div>
-              <h3>Global Network</h3>
-              <ArrowRight size={24} className="diff-arrow" />
-            </div>
-          </div>
-
-          <div className="diff-ed-card card-full fade-up delay-300">
-            <div className="diff-img-wrapper">
-              <img src="/images/diff_transform.jpg" alt="Transformation" />
-              <div className="diff-overlay"></div>
-            </div>
-            <div className="diff-content">
-              <div className="diff-meta">
-                <span className="diff-num">03</span>
-                <span className="diff-cat">Innovation</span>
-              </div>
-              <h3>Accelerating Transformation</h3>
-              <ArrowRight size={24} className="diff-arrow" />
-            </div>
-          </div>
-
+            );
+          })}
         </div>
 
       </div>

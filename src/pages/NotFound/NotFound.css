@@ -1,0 +1,76 @@
+/* ═══════════════════════════════════════════════════════════════
+   404 NOT FOUND STYLING
+   ═══════════════════════════════════════════════════════════════ */
+
+.not-found-page {
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(3rem, 6vw, 6rem) 0;
+  color: #ffffff;
+}
+
+.not-found-container {
+  display: flex;
+  justify-content: center;
+}
+
+.not-found-card {
+  background: var(--surface-dark-card);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-card);
+  padding: clamp(2rem, 5vw, 4rem);
+  text-align: center;
+  max-width: 680px;
+  box-shadow: var(--shadow-dark);
+}
+
+.nf-radar-icon-wrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(200, 32, 47, 0.12);
+  color: var(--color-brand-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.nf-radar-svg {
+  animation: pulseRotate 3s infinite linear;
+}
+
+.nf-code-tag {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--color-brand-gold);
+  background: rgba(212, 168, 67, 0.12);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1rem;
+}
+
+.not-found-card h1 {
+  color: #ffffff;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+.not-found-card p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.nf-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}

@@ -1,65 +1,99 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Search } from 'lucide-react';
+import { ArrowRight, Radar, ShieldCheck, Leaf, Globe2 } from 'lucide-react';
 import './Footer.css';
 
-const Footer = () => {
+export const Footer = () => {
   return (
-    <footer className="footer-editorial">
+    <footer className="site-footer bg-dark">
       <div className="container">
         
-        <div className="footer-top">
-          <div className="footer-statement">
-            <div className="footer-logo-row">
-              <img src="/images/logo.png" alt="GACIS Logo" className="footer-logo-img" />
-              <h2>GACIS</h2>
+        {/* Footer Top Strip: Statement & Fast Action */}
+        <div className="footer-top-strip">
+          <div className="footer-brand-col">
+            <Link to="/" className="footer-brand-logo" aria-label="GACIS Home">
+              <img src="/images/logo.png" alt="GACIS Global Logistics" className="footer-logo-img" />
+            </Link>
+            <p className="footer-tagline">
+              Moving what matters. Across borders with absolute precision.
+            </p>
+            <div className="footer-badges">
+              <span className="footer-badge"><Globe2 size={13} /> 150+ Direct Gateways</span>
+              <span className="footer-badge"><ShieldCheck size={13} /> ISO 9001:2015</span>
+              <span className="footer-badge"><Leaf size={13} /> Scope 3 Monitored</span>
             </div>
-            <h1>Moving what matters.<br/>Across borders.</h1>
           </div>
-          <div className="footer-search-box">
-            <p>Looking for something specific?</p>
-            <div className="footer-search-input">
-              <input type="text" placeholder="Search..." />
-              <button><Search size={20} /></button>
+
+          <div className="footer-quick-action-box">
+            <div className="fqa-content">
+              <span className="fqa-eyebrow">Direct Desk Access</span>
+              <h4>Need an engineered freight calculation?</h4>
+              <p>Our multimodal trade lane specialists respond with route telemetry within 24 hours.</p>
             </div>
-          </div>
-        </div>
-        
-        <div className="footer-nav-grid">
-          <div className="footer-col">
-            <h4>Brand</h4>
-            <Link to="/about">Our Story</Link>
-            <Link to="/about">Compliance</Link>
-            <Link to="/sustainability">Sustainability</Link>
-          </div>
-          <div className="footer-col">
-            <h4>Services</h4>
-            <Link to="/services">Air Freight</Link>
-            <Link to="/services">Ocean Freight</Link>
-            <Link to="/services">Land Transport</Link>
-            <Link to="/solutions">Industry Solutions</Link>
-          </div>
-          <div className="footer-col">
-            <h4>Network</h4>
-            <Link to="/global-network">Global Locations</Link>
-            <Link to="/global-network">Gulf & CIS Hubs</Link>
-            <Link to="/contact">Contact Us</Link>
-          </div>
-          <div className="footer-col">
-            <h4>Action</h4>
-            <Link to="/quote" className="footer-action-link">Request a Quote <ArrowRight size={14} /></Link>
-            <Link to="/contact" className="footer-action-link">Talk to an Expert <ArrowRight size={14} /></Link>
+            <div className="fqa-buttons">
+              <Link to="/quote" className="btn btn-primary btn-sm">
+                Request Route Quote <ArrowRight size={14} />
+              </Link>
+              <Link to="/track" className="btn btn-dark btn-sm">
+                <Radar size={14} /> Track Cargo
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className="footer-bottom">
-          <div className="footer-legal">
-            <span>© 2026 GACIS Cargo Services</span>
-            <Link to="#">Privacy Policy</Link>
-            <Link to="#">Terms of Service</Link>
+        {/* Navigation Columns */}
+        <div className="footer-links-grid">
+          <div className="footer-col">
+            <h5>Multimodal Services</h5>
+            <Link to="/services/air-freight">Air Freight Intelligence</Link>
+            <Link to="/services/ocean-freight">Ocean Freight & Seaways</Link>
+            <Link to="/services/road-freight">Cross-Border Road Transport</Link>
+            <Link to="/services/rail-freight">Intermodal Rail Corridors</Link>
+            <Link to="/services/customs-compliance">Customs & Compliance</Link>
+            <Link to="/services/project-logistics">Project Cargo & Heavy Lift</Link>
           </div>
-          <div className="footer-social">
-            <Link to="#">LinkedIn</Link>
-            <Link to="#">Twitter</Link>
+
+          <div className="footer-col">
+            <h5>Industry Solutions</h5>
+            <Link to="/solutions">Automotive & Mobility</Link>
+            <Link to="/solutions">Pharmaceuticals & GDP Cold-Chain</Link>
+            <Link to="/solutions">Energy & Infrastructure Projects</Link>
+            <Link to="/solutions">Technology & High-Value Cargo</Link>
+            <Link to="/solutions">Retail & FMCG Omnichannel</Link>
+            <Link to="/solutions">Industrial Manufacturing</Link>
+          </div>
+
+          <div className="footer-col">
+            <h5>Global Network & Corridor</h5>
+            <Link to="/global-network">Dubai Global Headquarters</Link>
+            <Link to="/global-network">Chennai South Asia Gateway</Link>
+            <Link to="/global-network">Port Klang ASEAN Hub</Link>
+            <Link to="/global-network">Colombo Indian Ocean Gateway</Link>
+            <Link to="/global-network">Almaty Central Asia Hub</Link>
+            <Link to="/global-network">Frankfurt European Gateway</Link>
+          </div>
+
+          <div className="footer-col">
+            <h5>Corporate & Standards</h5>
+            <Link to="/about">About GACIS Story</Link>
+            <Link to="/sustainability">Sustainability & ESG Mandate</Link>
+            <Link to="/resources">Logistics Knowledge Hub</Link>
+            <Link to="/contact">Commercial Contacts</Link>
+            <Link to="/track">Shipment Milestones</Link>
+          </div>
+        </div>
+
+        {/* Footer Bottom Bar */}
+        <div className="footer-bottom-bar">
+          <div className="footer-legal-copy">
+            <span>© {new Date().getFullYear()} GACIS Cargo Services LLC. All global rights reserved.</span>
+            <span className="footer-legal-divider">•</span>
+            <span>Commercial Registration: Dubai, UAE — P.O. Box 624699</span>
+          </div>
+
+          <div className="footer-legal-links">
+            <Link to="/about">Compliance & Code of Ethics</Link>
+            <Link to="/sustainability">Environmental Policy</Link>
+            <Link to="/contact">Support</Link>
           </div>
         </div>
 

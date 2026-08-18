@@ -1,21 +1,32 @@
 import QuoteWizard from '../../components/QuoteWizard/QuoteWizard';
+import SEO from '../../components/Common/SEO';
+import ErrorBoundary from '../../components/Common/ErrorBoundary';
+import './Quote.css';
 
-const Quote = () => {
+export const Quote = () => {
   return (
     <div className="quote-page">
+      <SEO 
+        title="Request an Enterprise Freight Quote"
+        description="Calculate freight rates, lead times, and carbon telemetry for Air, Ocean, Rail, and Multimodal corridors across the Gulf, Central Asia, and Europe."
+        canonical="/quote"
+      />
+
       <div className="page-header bg-maroon">
         <div className="container">
-          <span className="eyebrow" style={{ color: 'rgba(255,255,255,0.55)' }}>Instant Estimate</span>
-          <h1>Request a Quote</h1>
+          <span className="eyebrow eyebrow-light">ENTERPRISE QUOTE CALCULATOR</span>
+          <h1>Request a Corridor Quote</h1>
           <p>
-            Provide your shipment origin, destination, cargo specifications, and schedule. Our logistics pricing desk will prepare a competitive, customized quotation within 24 hours.
+            Provide your origin, destination, cargo specifications, and timeline requirements. Our central pricing desk will calculate an optimized route schedule within 24 hours.
           </p>
         </div>
       </div>
       
       <section className="section-padding bg-secondary">
         <div className="container">
-          <QuoteWizard />
+          <ErrorBoundary componentName="Quote Calculation Wizard">
+            <QuoteWizard />
+          </ErrorBoundary>
         </div>
       </section>
     </div>

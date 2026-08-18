@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 48" fill="none">
+  <!-- Dynamic Corridor Hexagon Glyph -->
+  <g transform="translate(4, 4)">
+    <!-- Base Hexagon Track -->
+    <path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#68151d" stroke-width="2.5" stroke-linejoin="round" fill="none" opacity="0.3"/>
+    
+    <!-- Active Red Flow Line -->
+    <path d="M4 20L20 2L36 11L20 20L36 29L20 38" stroke="#c8202f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Central Transit Waypoint -->
+    <circle cx="20" cy="20" r="4.5" fill="#c8202f"/>
+    <circle cx="20" cy="20" r="2" fill="#ffffff"/>
+    
+    <!-- Cargo Particle Pulse -->
+    <circle cx="36" cy="11" r="2.5" fill="#d4a843"/>
+  </g>
+  
+  <!-- Precision Typography -->
+  <text x="52" y="27" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-weight="800" font-size="22" letter-spacing="-0.04em" fill="currentColor">
+    GACIS
+  </text>
+  <text x="52.5" y="38" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-weight="700" font-size="6.5" letter-spacing="0.22em" fill="#8b929a">
+    CARGO SERVICES
+  </text>
+</svg>

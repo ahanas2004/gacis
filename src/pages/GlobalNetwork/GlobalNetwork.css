@@ -1,296 +1,638 @@
-/* ─── Stats Strip ─── */
-.network-stats-strip {
-  background: var(--surface-dark);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+/* ═══════════════════════════════════════════════════════════════
+   GLOBAL NETWORK & TRADE GATEWAYS — COMMAND CENTER STYLING
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── 01. COMMAND CENTER HERO HEADER ─── */
+.network-hero-command {
+  background: linear-gradient(135deg, #42080e 0%, #68151d 40%, #1a0306 100%);
+  color: #ffffff;
+  padding-top: clamp(3.5rem, 5.5vw, 5rem);
+  padding-bottom: clamp(3rem, 4.5vw, 4.5rem);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.nss-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: rgba(255,255,255,0.08);
+.network-hero-command::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 80% 20%, rgba(212, 168, 67, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 10% 80%, rgba(200, 32, 47, 0.15) 0%, transparent 40%);
+  pointer-events: none;
 }
 
-.nss-item {
+.nhc-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.nhc-pulse-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(212, 168, 67, 0.12);
+  border: 1px solid rgba(212, 168, 67, 0.3);
+  color: var(--color-brand-gold);
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+}
+
+.radar-signal-svg {
+  animation: radarBlink 2s infinite ease-in-out;
+}
+
+.nhc-telemetry-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+}
+
+.nhc-title {
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  max-width: 840px;
+}
+
+.nhc-desc {
+  font-size: clamp(1rem, 1.35vw, 1.1875rem);
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.6;
+  max-width: 780px;
+  margin-bottom: 2.5rem;
+}
+
+/* Telemetry KPI Bar */
+.network-telemetry-bar {
+  display: flex;
+  align-items: center;
+  background: rgba(10, 12, 16, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-card);
+  padding: 1.25rem 2rem;
+  max-width: 960px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.ntb-stat {
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 1.75rem;
-  background: var(--surface-dark);
+  flex: 1;
+  min-width: 140px;
 }
 
-.nss-val {
-  font-size: 2.25rem;
+.ntb-val {
+  font-size: 1.75rem;
   font-weight: 800;
-  color: white;
-  letter-spacing: -0.04em;
+  color: #ffffff;
   line-height: 1;
-  margin-bottom: 0.35rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.3rem;
 }
 
-.nss-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
+.ntb-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
   letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.5);
-  font-weight: 600;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
 }
 
-/* ─── Main Network Layout ─── */
-.network-layout {
+.ntb-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ─── 02. CORRIDOR FILTER DECK ─── */
+.corridor-filter-deck {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.cfd-label {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+.cfd-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.cfd-btn {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-pill);
+  padding: 0.45rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all var(--motion-fast) ease;
+}
+
+.cfd-btn:hover {
+  border-color: var(--color-brand-red);
+  color: var(--text-primary);
+}
+
+.cfd-btn.is-active {
+  background: var(--surface-dark);
+  color: #ffffff;
+  border-color: var(--surface-dark);
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(10, 12, 16, 0.15);
+}
+
+/* ─── 03. INTERACTIVE CONSOLE GRID ─── */
+.network-console-grid {
   display: grid;
   grid-template-columns: 1.35fr 1fr;
-  gap: 2.5rem;
-  align-items: start;
+  gap: clamp(1.75rem, 3vw, 2.75rem);
+  align-items: flex-start;
 }
 
-/* ─── Map Panel ─── */
-.map-panel {
+/* Map Wrapper */
+.map-console-wrapper {
+  background: var(--surface-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-card);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  box-shadow: var(--shadow-dark);
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
 }
 
-.map-panel-header {
+.mcw-header {
   display: flex;
-  align-items: flex-end;
   justify-content: space-between;
+  align-items: flex-end;
 }
 
-.map-panel-header h3 {
-  font-size: 1.35rem;
-  margin-top: 0.25rem;
+.mcw-eyebrow {
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--color-brand-gold);
 }
 
-.map-legend-hint {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+.mcw-header h3 {
+  color: #ffffff;
+  font-size: 1.25rem;
+  margin-top: 0.2rem;
 }
 
-.vector-map-wrapper {
+.mcw-live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--color-success);
+}
+
+.live-radar-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-success);
+  box-shadow: 0 0 8px var(--color-success);
+  animation: radarBlink 1.6s infinite ease-in-out;
+}
+
+.map-svg-container {
   position: relative;
   width: 100%;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.25);
-  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.interactive-world-svg {
+.interactive-corridor-svg {
   width: 100%;
   height: auto;
   display: block;
 }
 
-/* SVG Animations */
-.trade-route-path {
-  stroke-dasharray: 6, 6;
-  animation: routeDash 30s linear infinite;
+.active-arc-flow {
+  animation: routePulseFlow 20s linear infinite;
 }
 
-@keyframes routeDash {
+@keyframes routePulseFlow {
   to {
-    stroke-dashoffset: -1000;
+    stroke-dashoffset: -400;
   }
 }
 
-.svg-pulse-ring {
+.node-pulse-halo {
   animation: svgPulse 2s ease-out infinite;
-  transform-origin: center;
 }
 
-@keyframes svgPulse {
-  0% {
-    r: 8;
-    opacity: 1;
-  }
-  100% {
-    r: 26;
-    opacity: 0;
-  }
+.hub-city-label {
+  pointer-events: none;
 }
 
-.map-node-group:hover circle:first-of-type {
-  opacity: 1;
-}
-
-.map-node-group:hover .map-city-text {
-  fill: #ffffff;
-  font-weight: 800;
-}
-
-/* ─── Location Selector Tabs ─── */
-.location-tabs {
-  display: flex;
-  flex-wrap: wrap;
+/* Hub Switcher Strip */
+.hub-switcher-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
 }
 
-.location-tab {
+.hss-btn {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 0.875rem;
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
-  background: var(--bg-primary);
+  background: var(--surface-dark-card);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+  color: rgba(255, 255, 255, 0.75);
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--text-secondary);
   cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: var(--font-primary);
+  font-family: inherit;
+  transition: all var(--motion-fast) ease;
 }
 
-.location-tab:hover {
-  border-color: var(--gacis-red);
-  color: var(--text-primary);
+.hss-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
 }
 
-.location-tab.active {
-  background: var(--gacis-maroon);
-  color: white;
-  border-color: var(--gacis-maroon);
+.hss-btn.is-selected {
+  background: rgba(200, 32, 47, 0.18);
+  border-color: var(--color-brand-red);
+  color: #ffffff;
+  font-weight: 700;
 }
 
-.loc-flag {
-  font-size: 1rem;
+.hss-flag {
+  font-size: 1.125rem;
   line-height: 1;
 }
 
-/* ─── Location Detail Panel ─── */
-.location-detail-panel {
+/* ─── 04. STRATEGIC GATEWAY DOSSIER CARD ─── */
+.gateway-dossier-card {
   background: var(--bg-primary);
   border: 1px solid var(--border-light);
-  border-radius: 12px;
-  padding: 2rem;
+  border-radius: var(--radius-card);
+  padding: clamp(1.5rem, 2.5vw, 2.25rem);
+  box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
 }
 
-.ldp-header {
+.gdc-header {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
 }
 
-.loc-flag-lg {
-  font-size: 2.5rem;
-  line-height: 1;
-  flex-shrink: 0;
-}
-
-.ldp-header h2 {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-.ldp-company-row {
+.gdc-flag-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: var(--text-primary);
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.ldp-info {
+.gdc-flag {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.gdc-tier-tag {
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-brand-red);
+  display: block;
+  margin-bottom: 0.15rem;
+}
+
+.gdc-header h2 {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.gdc-role-subtitle {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Telemetry Grid */
+.gdc-telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  background: var(--surface-dark);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+
+.gdc-tele-item {
   display: flex;
   flex-direction: column;
-  gap: 0.875rem;
-  padding: 1.25rem;
-  background: var(--bg-secondary);
-  border-radius: 8px;
-  border: 1px solid var(--border-light);
 }
 
-.ldp-info-row {
+.gti-lbl {
+  font-size: 0.5625rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.25rem;
+}
+
+.gti-val {
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+/* Operating Address Box */
+.gdc-address-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.gab-row {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
-}
-
-.ldp-icon {
-  color: var(--gacis-red);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.ldp-info-row p,
-.ldp-info-row a {
-  font-size: 0.875rem;
-  margin: 0;
-  line-height: 1.5;
+  gap: 0.625rem;
+  font-size: 0.8125rem;
   color: var(--text-secondary);
 }
 
-.ldp-info-row a:hover {
-  color: var(--gacis-red);
+.gab-icon {
+  color: var(--color-brand-red);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
 }
 
-.ldp-services {
+.gab-row a {
+  color: var(--text-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.gab-row a:hover {
+  color: var(--color-brand-red);
+}
+
+.gab-row p {
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* Capabilities Box */
+.gdc-capabilities-box {
   display: flex;
   flex-direction: column;
 }
 
-.ldp-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+.gcb-lbl {
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
 }
 
-.ldp-tag {
-  padding: 0.35rem 0.75rem;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-light);
-  border-radius: 4px;
-  font-size: 0.775rem;
+.gcb-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.gcb-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: var(--text-primary);
 }
 
-.ldp-actions {
+.gcb-check {
+  color: var(--color-brand-red);
+  flex-shrink: 0;
+}
+
+/* Action Buttons */
+.gdc-action-buttons {
   display: flex;
-  gap: 0.75rem;
+  flex-direction: column;
+  gap: 0.625rem;
   margin-top: 0.5rem;
 }
 
-/* ─── Partner Banner ─── */
-.network-partner-banner {
-  border-top: 1px solid rgba(255,255,255,0.08);
+.gdc-cta {
+  width: 100%;
+  justify-content: center;
 }
 
-.npb-inner {
+/* ─── 05. GATEWAY STATION CARDS GRID ─── */
+.gateway-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.gateway-station-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  box-shadow: var(--shadow-subtle);
+  transition: transform var(--motion-normal) var(--ease-spring),
+              border-color var(--motion-normal) ease,
+              box-shadow var(--motion-normal) ease;
+}
+
+.gateway-station-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-brand-red);
+  box-shadow: var(--shadow-hover);
+}
+
+.gateway-station-card.active-station {
+  border-color: var(--color-brand-red);
+  box-shadow: 0 0 0 2px rgba(200, 32, 47, 0.15);
+}
+
+.gsc-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.gsc-flag {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.gsc-tier {
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-brand-red);
+  background: rgba(200, 32, 47, 0.08);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-pill);
+}
+
+.gsc-city {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.15rem;
+}
+
+.gsc-country {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.gsc-role {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-bottom: 1.25rem;
+}
+
+.gsc-specs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.gsc-spec-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.gsc-spec-item span {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.gsc-spec-item strong {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-top: 0.15rem;
+}
+
+.gsc-inspect-btn {
+  margin-top: auto;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* ─── 06. GLOBAL ALLIANCE BANNER ─── */
+.global-alliance-inner {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
 }
 
-/* ─── Responsive ─── */
-@media (max-width: 1100px) {
-  .network-layout {
+.gai-globe-icon {
+  color: var(--color-brand-gold);
+  flex-shrink: 0;
+}
+
+/* ─── 07. RESPONSIVE BREAKPOINTS ─── */
+@media (max-width: 1200px) {
+  .network-console-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
   }
-  .nss-grid {
+  .gateway-cards-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .nss-grid {
+  .network-telemetry-bar {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .ntb-divider {
+    display: none;
+  }
+  .hub-switcher-strip {
     grid-template-columns: repeat(2, 1fr);
   }
-  .npb-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
+  .gateway-cards-grid {
+    grid-template-columns: 1fr;
   }
-  .ldp-actions {
-    flex-direction: column;
+  .gdc-telemetry-grid {
+    grid-template-columns: 1fr;
   }
 }

@@ -5,10 +5,10 @@ import './Layout.css';
 
 const Layout = () => {
   return (
-    <div className="layout-container">
+    <div className="layout-root">
       <Header />
       <div className="main-viewport">
-        <main className="main-content">
+        <main id="main-content" className="main-content">
           <Outlet />
         </main>
         <Footer />

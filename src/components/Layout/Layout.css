@@ -1,36 +1,35 @@
-.layout-container {
+.layout-root {
   display: flex;
   min-height: 100vh;
   width: 100%;
+  position: relative;
 }
 
 .main-viewport {
-  flex: 1;
-  /* Follows the sidebar width CSS variable which changes dynamically */
-  margin-left: var(--sidebar-width);
   display: flex;
   flex-direction: column;
+  flex: 1;
   min-height: 100vh;
-  /* Smooth transition when sidebar collapses/expands */
-  transition: margin-left 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  /* Prevent content from overflowing when collapsed */
+  margin-left: var(--sidebar-width, 248px);
+  transition: margin-left 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   min-width: 0;
   overflow-x: hidden;
+  padding-top: 0;
 }
 
 .main-content {
   flex-grow: 1;
-  background-color: var(--bg-primary);
+  width: 100%;
 }
 
-@media (max-width: 1024px) {
-  .layout-container {
+@media (max-width: 768px) {
+  .layout-root {
     flex-direction: column;
   }
 
   .main-viewport {
     margin-left: 0 !important;
-    margin-top: 60px;
+    padding-top: 64px;
     transition: none;
   }
 }

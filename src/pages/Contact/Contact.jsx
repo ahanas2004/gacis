@@ -1,142 +1,223 @@
-import { useState } from 'react';
-import { Mail, MapPin, Building2, ArrowRight, Send } from 'lucide-react';
+import { Mail, MapPin, Phone, Building2, Send, CheckCircle, Clock, ShieldCheck } from 'lucide-react';
+import { primaryHubs } from '../../data/locations';
+import useFormSubmit from '../../hooks/useFormSubmit';
+import SEO from '../../components/Common/SEO';
 import './Contact.css';
 
-const offices = [
-  {
-    id: 'uae',
-    country: 'UAE',
-    flag: '🇦🇪',
-    role: 'Global Headquarters',
-    address: '#04-028, Fahidi Heights, Office Tower (Al Musalla Tower), 4th Floor, Bur Dubai, UAE — P.O. Box: 624699',
-    email: 'info@gaciscargoservices.com',
-  },
-  {
-    id: 'india',
-    country: 'India — Chennai',
-    flag: '🇮🇳',
-    role: 'South Asia Hub',
-    address: 'Akshaya Plaza, 1st Floor, F11, No.55/56, Adithanar Salai, Egmore, Chennai-600002, Tamil Nadu, India',
-    email: 'pricing.in@gaciscargoservices.com',
-  },
-  {
-    id: 'srilanka',
-    country: 'Sri Lanka — Colombo',
-    flag: '🇱🇰',
-    role: 'Indian Ocean Gateway',
-    address: '1st Floor, No. 35/1/1/1, Dawson Street, Colombo-02, Sri Lanka',
-    email: 'info@gaciscargoservices.com',
-  },
-  {
-    id: 'malaysia',
-    country: 'Malaysia — Klang',
-    flag: '🇲🇾',
-    role: 'Southeast Asia Hub',
-    address: 'Suite 08-06C, Level 8, Centro No.8, Jalan Batu Tiga Lama, 41300 Klang, Selangor, Malaysia',
-    email: 'info@gaciscargoservices.com',
-  },
-];
+export const Contact = () => {
+  const {
+    formData,
+    updateField,
+    errors,
+    isSubmitting,
+    isSuccess,
+    submissionReference,
+    serverError,
+    submit,
+    reset
+  } = useFormSubmit({
+    defaultValues: {
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      corridor: 'Gulf ⇄ Central Asia (CIS)',
+      message: ''
+    }
+  });
 
-const Contact = () => {
-  const [sent, setSent] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSent(true);
+  const handleContactSubmit = async (e) => {
+    await submit(e, {
+      name: { required: true },
+      email: { required: true, email: true },
+      subject: { required: true },
+      message: { required: true, minLength: 10 }
+    });
   };
 
   return (
     <div className="contact-page">
+      <SEO 
+        title="Commercial Inquiries & Global Office Directory"
+        description="Connect directly with GACIS trade lane specialists across Dubai, Chennai, Port Klang, Colombo, Almaty, and Frankfurt."
+        canonical="/contact"
+      />
+
+      {/* Hero Header */}
       <div className="page-header bg-maroon">
         <div className="container">
-          <span className="eyebrow" style={{ color: 'rgba(255,255,255,0.55)' }}>Get in Touch</span>
-          <h1>Contact Us</h1>
-          <p>Our logistics specialists are ready to assist you — whether you need a quote, have a shipment query, or want to explore a partnership.</p>
+          <span className="eyebrow eyebrow-light">GLOBAL COMMERCIAL ACCESS</span>
+          <h1>Contact Our Logistics Desk</h1>
+          <p>
+            Our multimodal corridor specialists and licensed customs brokers are on standby across global time zones to assist with freight inquiries, rate requests, and emergency charter dispatches.
+          </p>
         </div>
       </div>
 
-      <section className="section-padding">
+      <section className="section-padding bg-primary">
         <div className="container">
-          <div className="contact-grid">
+          <div className="contact-main-grid">
 
-            {/* Form */}
-            <div className="contact-form-col">
-              <div className="contact-form-card">
+            {/* Left: Contact Form Card */}
+            <div className="contact-form-column">
+              <div className="contact-card">
                 <div className="cfc-header">
-                  <span className="eyebrow">Send a Message</span>
-                  <h2>We'll respond within 24 hours</h2>
+                  <span className="eyebrow">DIRECT MESSAGE</span>
+                  <h2>Commercial Inquiry Desk</h2>
+                  <p>Inquiries are assigned to dedicated regional trade lane managers within 2 hours.</p>
                 </div>
 
-                {sent ? (
-                  <div className="contact-success">
-                    <div className="success-icon">✓</div>
-                    <h3>Message Sent!</h3>
-                    <p>Thank you for reaching out. A GACIS specialist will contact you within one business day.</p>
+                {isSuccess ? (
+                  <div className="contact-success-state" role="status" aria-live="polite">
+                    <div className="success-icon-wrap">
+                      <CheckCircle size={36} />
+                    </div>
+                    <h3>Inquiry Transmitted</h3>
+                    <p className="success-ref">DISPATCH REFERENCE: <strong>{submissionReference}</strong></p>
+                    <p className="success-text">
+                      Thank you, {formData.name}. Your inquiry regarding <em>{formData.subject}</em> has been assigned to the commercial desk. A specialist will follow up with verified rate telemetry.
+                    </p>
+                    <button className="btn btn-secondary mt-4" onClick={reset}>
+                      Send Another Dispatch
+                    </button>
                   </div>
                 ) : (
-                  <form className="contact-form" onSubmit={handleSubmit}>
-                    <div className="cf-row">
-                      <div className="cf-group">
-                        <label>Full Name *</label>
-                        <input type="text" placeholder="John Smith" required
-                          value={form.name} onChange={e => setForm({...form, name: e.target.value})} />
+                  <form className="contact-form" onSubmit={handleContactSubmit} noValidate>
+                    {serverError && (
+                      <div className="form-alert-error" role="alert">
+                        {serverError}
                       </div>
-                      <div className="cf-group">
-                        <label>Email Address *</label>
-                        <input type="email" placeholder="john@company.com" required
-                          value={form.email} onChange={e => setForm({...form, email: e.target.value})} />
+                    )}
+
+                    <div className="cf-row-2">
+                      <div className="cf-field">
+                        <label htmlFor="contact-name">Full Name & Title *</label>
+                        <input 
+                          id="contact-name"
+                          type="text" 
+                          placeholder="e.g. Elena Rostova"
+                          value={formData.name}
+                          onChange={e => updateField('name', e.target.value)}
+                          aria-invalid={!!errors.name}
+                          required
+                        />
+                        {errors.name && <span className="field-error-msg">{errors.name}</span>}
+                      </div>
+
+                      <div className="cf-field">
+                        <label htmlFor="contact-email">Corporate Business Email *</label>
+                        <input 
+                          id="contact-email"
+                          type="email" 
+                          placeholder="elena@company.com"
+                          value={formData.email}
+                          onChange={e => updateField('email', e.target.value)}
+                          aria-invalid={!!errors.email}
+                          required
+                        />
+                        {errors.email && <span className="field-error-msg">{errors.email}</span>}
                       </div>
                     </div>
-                    <div className="cf-row">
-                      <div className="cf-group">
-                        <label>Phone Number</label>
-                        <input type="tel" placeholder="+971 XX XXX XXXX"
-                          value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} />
+
+                    <div className="cf-row-2">
+                      <div className="cf-field">
+                        <label htmlFor="contact-phone">Contact Phone / WhatsApp</label>
+                        <input 
+                          id="contact-phone"
+                          type="tel" 
+                          placeholder="+971 50 XXX XXXX"
+                          value={formData.phone}
+                          onChange={e => updateField('phone', e.target.value)}
+                        />
                       </div>
-                      <div className="cf-group">
-                        <label>Subject *</label>
-                        <input type="text" placeholder="e.g. Air freight to UK" required
-                          value={form.subject} onChange={e => setForm({...form, subject: e.target.value})} />
+
+                      <div className="cf-field">
+                        <label htmlFor="contact-corridor">Trade Corridor of Interest</label>
+                        <select 
+                          id="contact-corridor"
+                          value={formData.corridor}
+                          onChange={e => updateField('corridor', e.target.value)}
+                        >
+                          <option value="Gulf ⇄ Central Asia (CIS)">Gulf ⇄ Central Asia (CIS)</option>
+                          <option value="Southeast Asia ⇄ Europe">Southeast Asia ⇄ Europe</option>
+                          <option value="South Asia ⇄ Gulf">South Asia ⇄ Gulf</option>
+                          <option value="Trans-Caspian Rail Belt">Trans-Caspian Rail Belt</option>
+                          <option value="Global Air Charter Desk">Global Air Charter Desk</option>
+                        </select>
                       </div>
                     </div>
-                    <div className="cf-group">
-                      <label>Message *</label>
-                      <textarea rows="5" placeholder="Tell us about your shipment requirements or enquiry..." required
-                        value={form.message} onChange={e => setForm({...form, message: e.target.value})} />
+
+                    <div className="cf-field">
+                      <label htmlFor="contact-subject">Inquiry Subject *</label>
+                      <input 
+                        id="contact-subject"
+                        type="text" 
+                        placeholder="e.g. Weekly Reefer Container Allocation to Tashkent"
+                        value={formData.subject}
+                        onChange={e => updateField('subject', e.target.value)}
+                        aria-invalid={!!errors.subject}
+                        required
+                      />
+                      {errors.subject && <span className="field-error-msg">{errors.subject}</span>}
                     </div>
-                    <button type="submit" className="btn btn-primary contact-submit-btn">
-                      Send Message <Send size={15} className="arrow-icon" />
+
+                    <div className="cf-field">
+                      <label htmlFor="contact-message">Cargo Details & Shipment Requirements *</label>
+                      <textarea 
+                        id="contact-message"
+                        rows="4" 
+                        placeholder="Specify origin, destination, cargo classification, estimated volume, and schedule requirements..."
+                        value={formData.message}
+                        onChange={e => updateField('message', e.target.value)}
+                        aria-invalid={!!errors.message}
+                        required
+                      />
+                      {errors.message && <span className="field-error-msg">{errors.message}</span>}
+                    </div>
+
+                    <button 
+                      type="submit" 
+                      className="btn btn-primary contact-submit-btn"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? 'Transmitting Dispatch...' : 'Send Operational Message'} <Send size={15} />
                     </button>
                   </form>
                 )}
               </div>
             </div>
 
-            {/* Offices */}
-            <div className="contact-offices-col">
-              <span className="eyebrow">Our Offices</span>
-              <h2>Global presence, local expertise</h2>
-              <p style={{ marginBottom: '1.5rem' }}>Visit or contact any of our offices worldwide. Each office is staffed with local logistics specialists who understand regional trade lanes.</p>
+            {/* Right: Global Operational Hubs List */}
+            <div className="contact-hubs-column">
+              <div className="chc-header">
+                <span className="eyebrow">GLOBAL OFFICE NETWORK</span>
+                <h2>Direct Regional Desks</h2>
+                <p>Visit or contact our directly operated regional headquarters and logistics hubs.</p>
+              </div>
 
-              <div className="offices-list">
-                {offices.map(off => (
-                  <div className="office-item" key={off.id}>
-                    <div className="office-item-top">
-                      <span className="office-flag">{off.flag}</span>
+              <div className="hubs-scroll-list">
+                {primaryHubs.map((hub) => (
+                  <div className="hub-contact-card" key={hub.id}>
+                    <div className="hcc-top">
+                      <span className="hcc-flag">{hub.flag}</span>
                       <div>
-                        <span className="office-role">{off.role}</span>
-                        <h4>{off.country}</h4>
+                        <span className="hcc-role">{hub.role}</span>
+                        <h4>{hub.country} — {hub.city}</h4>
                       </div>
                     </div>
-                    <div className="office-contact-rows">
-                      <div className="ocr">
-                        <MapPin size={14} />
-                        <span>{off.address}</span>
+
+                    <div className="hcc-info-rows">
+                      <div className="hcc-row">
+                        <MapPin size={15} className="hcc-icon" />
+                        <span>{hub.address}</span>
                       </div>
-                      <div className="ocr">
-                        <Mail size={14} />
-                        <a href={`mailto:${off.email}`}>{off.email}</a>
+                      <div className="hcc-row">
+                        <Phone size={15} className="hcc-icon" />
+                        <a href={`tel:${hub.phone}`}>{hub.phone}</a>
+                      </div>
+                      <div className="hcc-row">
+                        <Mail size={15} className="hcc-icon" />
+                        <a href={`mailto:${hub.email}`}>{hub.email}</a>
                       </div>
                     </div>
                   </div>

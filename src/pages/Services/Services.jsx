@@ -1,120 +1,96 @@
 import { Link } from 'react-router-dom';
-import { Plane, Ship, Truck, Train, FileCheck, Boxes, ArrowRight, Check } from 'lucide-react';
+import { Plane, Ship, Truck, Train, ShieldCheck, Boxes, ArrowRight, Check } from 'lucide-react';
+import { services } from '../../data/services';
+import SEO from '../../components/Common/SEO';
 import './Services.css';
 
-const servicesList = [
-  {
-    id: 'air-freight',
-    image: '/images/air_freight_cargo.jpg',
-    icon: <Plane size={24} />,
-    title: 'Air Freight',
-    tagline: 'Speed without compromise',
-    description: 'Time-critical, door-to-door and airport-to-airport air cargo solutions for urgent shipments. We partner with leading airlines to secure capacity on major global trade lanes.',
-    features: ['Express & standard air services', 'Charter options for oversized cargo', 'Temperature-sensitive solutions', 'Real-time cargo tracking'],
-  },
-  {
-    id: 'sea-freight',
-    image: '/images/sea_freight_vessel.jpg',
-    icon: <Ship size={24} />,
-    title: 'Sea Freight',
-    tagline: 'Capacity at scale',
-    description: 'Full Container Load (FCL) and Less-than-Container Load (LCL) ocean freight solutions, optimised for cost-efficiency across major global shipping lanes.',
-    features: ['FCL & LCL consolidation', 'Port-to-port & door-to-door', 'Reefer & hazmat containers', 'Caspian & Black Sea specialists'],
-  },
-  {
-    id: 'land-freight',
-    image: '/images/diff_transform.jpg',
-    icon: <Truck size={24} />,
-    title: 'Land Freight',
-    tagline: 'Cross-border road expertise',
-    description: 'Domestic and international road transport covering FTL and LTL shipments across the Gulf, CIS, and South Asian corridors with full customs support.',
-    features: ['FTL & LTL options', 'Cross-border permits', 'GPS-tracked fleet', 'Gulf & CIS corridor expertise'],
-  },
-  {
-    id: 'rail-freight',
-    image: '/images/diff_network.jpg',
-    icon: <Train size={24} />,
-    title: 'Rail Freight',
-    tagline: 'The Silk Road advantage',
-    description: 'Cost-efficient overland rail freight linking Asia, Central Asia, CIS, and Europe with scheduled departures and predictable transit times.',
-    features: ['China–Europe rail corridors', 'CIS intermodal solutions', 'Container block trains', 'Customs bond & documentation'],
-  },
-  {
-    id: 'customs-clearance',
-    image: '/images/diff_compliance.jpg',
-    icon: <FileCheck size={24} />,
-    title: 'Customs Clearance',
-    tagline: 'Compliance, guaranteed',
-    description: 'Expert customs brokerage ensuring smooth, compliant cross-border operations across all major trade zones, with dedicated teams for each corridor.',
-    features: ['Import & export declarations', 'HS classification advisory', 'Duty & tax management', 'Trade compliance consulting'],
-  },
-  {
-    id: 'multimodal',
-    image: '/images/hero_bg.jpg',
-    icon: <Boxes size={24} />,
-    title: 'Multimodal Transport',
-    tagline: 'Integrated end-to-end logistics',
-    description: 'Combine air, sea, rail, and road freight into a single, shipment solution — optimised for cost, time, and complexity of your supply chain.',
-    features: ['Single bill of lading', 'Optimised modal selection', 'Risk-managed handoffs', 'Full track & trace visibility'],
-  },
-];
+const iconMap = { Plane, Ship, Truck, Train, ShieldCheck, Boxes };
 
-const Services = () => {
+export const Services = () => {
   return (
     <div className="services-page">
+      <SEO 
+        title="Multimodal Freight & Global Logistics Services"
+        description="Explore GACIS core capabilities across Air Cargo Charters, Deepsea Linehauls, Trans-Eurasian Rail, Cross-Border Road Fleets, and Customs Brokerage."
+        canonical="/services"
+      />
+
       <div className="page-header bg-maroon">
         <div className="container">
-          <span className="eyebrow" style={{ color: 'rgba(255,255,255,0.6)' }}>Core Capabilities</span>
-          <h1>Our Services</h1>
-          <p>Comprehensive freight forwarding and logistics solutions engineered for reliability, compliance, and speed across every mode and trade lane.</p>
+          <span className="eyebrow eyebrow-light">CORE FREIGHT CAPABILITIES</span>
+          <h1>Multimodal Logistics Intelligence</h1>
+          <p>
+            Precision linehaul architecture bridging the Gulf, Central Asia, South Asia, and Europe across air, deepsea, overland, and rail corridors.
+          </p>
         </div>
       </div>
 
-      <section className="section-padding">
+      <section className="section-padding bg-primary">
         <div className="container">
           <div className="services-full-grid">
-            {servicesList.map((service, i) => (
-              <div key={service.id} className={`service-full-card fade-up delay-${(i % 3 + 1) * 100}`}>
-                {service.image && (
-                  <div className="sfc-image-wrapper">
-                    <img src={service.image} alt={service.title} className="sfc-img" />
+            {services.map((service, i) => {
+              const Icon = iconMap[service.icon] || Boxes;
+              return (
+                <div key={service.id} className="service-full-card">
+                  {service.image && (
+                    <div className="sfc-image-wrapper">
+                      <img 
+                        src={service.image} 
+                        alt={service.title} 
+                        className="sfc-img" 
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <span className="sfc-mode-pill">{service.mode}</span>
+                    </div>
+                  )}
+                  
+                  <div className="sfc-body">
+                    <div className="sfc-icon-badge">
+                      <Icon size={20} />
+                      <span className="sfc-icon-title">{service.shortTitle}</span>
+                    </div>
+                    
+                    <h3 className="sfc-main-title">{service.title}</h3>
+                    <p className="sfc-desc">{service.overview}</p>
+                    
+                    <div className="sfc-features-block">
+                      <span className="sfb-lbl">KEY OPERATIONAL CAPABILITIES:</span>
+                      <ul className="sfc-features">
+                        {service.features.slice(0, 4).map((feat, j) => (
+                          <li key={j}><Check size={14} className="check-icon" /> <span>{feat}</span></li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="sfc-footer-action">
+                      <div className="sfc-stat">
+                        <span className="sfc-stat-lbl">Transit Benchmark</span>
+                        <span className="sfc-stat-val tabular-nums">{service.leadTime}</span>
+                      </div>
+                      <Link to={`/services/${service.id}`} className="btn btn-secondary sfc-link">
+                        Explore Capability <ArrowRight size={15} className="arrow-icon" />
+                      </Link>
+                    </div>
                   </div>
-                )}
-                
-                <div className="sfc-top">
-                  <div className="sfc-icon-badge">
-                    {service.icon}
-                    <span className="sfc-icon-title">{service.title}</span>
-                  </div>
-                  <span className="sfc-tagline">{service.tagline}</span>
                 </div>
-                
-                <p className="sfc-desc">{service.description}</p>
-                
-                <ul className="sfc-features">
-                  {service.features.map((feat, j) => (
-                    <li key={j}><Check size={14} /> {feat}</li>
-                  ))}
-                </ul>
-                
-                <Link to={`/services/${service.id}`} className="btn btn-secondary sfc-link">
-                  Explore {service.title} <ArrowRight size={15} className="arrow-icon" />
-                </Link>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="services-cta-strip bg-maroon section-padding-sm">
+      <section className="services-cta-strip bg-dark section-padding-sm">
         <div className="container">
           <div className="services-cta-inner">
             <div>
-              <h3 style={{ color: 'white' }}>Need a customised logistics solution?</h3>
-              <p style={{ color: 'rgba(255,255,255,0.75)', margin: 0 }}>Our team will analyse your supply chain and provide the optimal routing and pricing.</p>
+              <h3 style={{ color: 'white' }}>Need a customized multimodal supply chain solution?</h3>
+              <p style={{ color: 'rgba(255,255,255,0.75)', margin: 0 }}>
+                Our trade lane engineers will analyze your cargo volume, time criticality, and sustainability targets to engineer the optimal route.
+              </p>
             </div>
             <Link to="/quote" className="btn btn-primary btn-large">
-              Request a Quote <ArrowRight size={16} className="arrow-icon" />
+              Request Route Simulation <ArrowRight size={16} className="arrow-icon" />
             </Link>
           </div>
         </div>

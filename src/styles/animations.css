@@ -1,0 +1,169 @@
+/* ═══════════════════════════════════════════════════════════════
+   GACIS ENTERPRISE MOTION SYSTEM & KEYFRAME ANIMATIONS
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --motion-fast: 150ms;
+  --motion-normal: 300ms;
+  --motion-slow: 600ms;
+  --motion-cinematic: 900ms;
+
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ─── Scroll Reveal Classes (Driven by useScrollReveal) ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--motion-slow) var(--ease-spring),
+              transform var(--motion-slow) var(--ease-spring);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity var(--motion-slow) var(--ease-spring),
+              transform var(--motion-slow) var(--ease-spring);
+}
+
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity var(--motion-slow) var(--ease-spring),
+              transform var(--motion-slow) var(--ease-spring);
+}
+
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity var(--motion-slow) var(--ease-spring),
+              transform var(--motion-slow) var(--ease-spring);
+}
+
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Delays for staggered card children */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+.delay-600 { transition-delay: 600ms; }
+
+/* ─── Keyframe Animations ─── */
+
+/* Cargo Pulse Movement along routes */
+@keyframes cargoPulse {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+/* Route Line Dash Draw */
+@keyframes dashDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Node Ping Telemetry Wave */
+@keyframes pingWave {
+  0% {
+    r: 4px;
+    opacity: 0.9;
+    stroke-width: 2px;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    r: 18px;
+    opacity: 0;
+    stroke-width: 0.5px;
+  }
+}
+
+/* Radar Sweep */
+@keyframes radarSweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Subtle Shimmer for High-Value Indicators */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Soft ambient breathing */
+@keyframes ambientGlow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.04);
+  }
+}
+
+/* ─── Reduced Motion Overrides ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

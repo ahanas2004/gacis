@@ -9,6 +9,9 @@ import Services from './pages/Services/Services';
 import ServiceDetail from './pages/Services/ServiceDetail';
 import Solutions from './pages/Solutions/Solutions';
 import Resources from './pages/Resources/Resources';
+import Sustainability from './pages/Sustainability/Sustainability';
+import Track from './pages/Track/Track';
+import NotFound from './pages/NotFound/NotFound';
 import ScrollToTop from './components/Common/ScrollToTop';
 
 function App() {
@@ -16,20 +19,22 @@ function App() {
     <>
       <ScrollToTop />
       <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="services" element={<Services />} />
-        <Route path="services/:serviceId" element={<ServiceDetail />} />
-        <Route path="solutions" element={<Solutions />} />
-        <Route path="industries" element={<Solutions />} />
-        <Route path="resources" element={<Resources />} />
-        <Route path="sustainability" element={<Resources />} />
-        <Route path="quote" element={<Quote />} />
-        <Route path="global-network" element={<GlobalNetwork />} />
-      </Route>
-    </Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="services" element={<Services />} />
+          <Route path="services/:serviceId" element={<ServiceDetail />} />
+          <Route path="solutions" element={<Solutions />} />
+          <Route path="industries" element={<Solutions />} />
+          <Route path="resources" element={<Resources />} />
+          <Route path="sustainability" element={<Sustainability />} />
+          <Route path="quote" element={<Quote />} />
+          <Route path="global-network" element={<GlobalNetwork />} />
+          <Route path="track" element={<Track />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </>
   );
 }

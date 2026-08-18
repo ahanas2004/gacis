@@ -1,0 +1,137 @@
+/* ═══════════════════════════════════════════════════════════════
+   SOCIAL PROOF & CERTIFICATIONS STYLING
+   ═══════════════════════════════════════════════════════════════ */
+
+.social-proof-section {
+  border-bottom: 1px solid var(--border-light);
+}
+
+.sp-header {
+  margin-bottom: clamp(2rem, 3vw, 3rem);
+}
+
+.sp-header h3 {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.sp-cert-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-bottom: 2.5rem;
+}
+
+.sp-cert-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform var(--motion-fast) ease, border-color var(--motion-fast) ease;
+}
+
+.sp-cert-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-brand-red);
+}
+
+.sp-cert-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: rgba(200, 32, 47, 0.08);
+  color: var(--color-brand-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sp-cert-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.sp-cert-name {
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.sp-cert-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+/* Alliance Capacity Bar */
+.sp-alliances-bar {
+  background: var(--surface-dark);
+  color: #ffffff;
+  border-radius: var(--radius-card);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.sp-alliances-title {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--color-brand-gold);
+}
+
+.sp-alliances-items {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+}
+
+.sp-al-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.sp-al-code {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+}
+
+.sp-al-desc {
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .sp-cert-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .sp-cert-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sp-alliances-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sp-alliances-items {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}

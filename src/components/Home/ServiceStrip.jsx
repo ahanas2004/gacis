@@ -1,45 +1,71 @@
 import { Link } from 'react-router-dom';
-import { Plane, Ship, Truck, Train, FileCheck, Boxes, ArrowRight } from 'lucide-react';
+import { Plane, Ship, Truck, Train, ShieldCheck, Boxes, ArrowRight } from 'lucide-react';
+import { services } from '../../data/services';
 import './ServiceStrip.css';
 
-const services = [
-  { icon: <Plane size={28} />, label: 'Air Freight', path: '/services/air-freight', desc: 'Time-definite global air cargo' },
-  { icon: <Ship size={28} />, label: 'Sea Freight', path: '/services/sea-freight', desc: 'FCL & LCL ocean transport' },
-  { icon: <Truck size={28} />, label: 'Land Freight', path: '/services/land-freight', desc: 'FTL & LTL cross-border haulage' },
-  { icon: <Train size={28} />, label: 'Rail Freight', path: '/services/rail-freight', desc: 'Asia–CIS–Europe corridors' },
-  { icon: <FileCheck size={28} />, label: 'Customs Clearance', path: '/services/customs-clearance', desc: 'Expert trade compliance' },
-  { icon: <Boxes size={28} />, label: 'Multimodal', path: '/services/multimodal', desc: 'Integrated end-to-end solutions' },
-];
+const iconMap = { Plane, Ship, Truck, Train, ShieldCheck, Boxes };
 
-const ServiceStrip = () => {
+export const ServiceStrip = () => {
   return (
-    <section className="service-strip-section section-padding-sm">
+    <section className="service-strip-section section-padding bg-primary">
       <div className="container">
-        <div className="service-strip-header fade-up">
-          <div>
-            <span className="eyebrow">Core Capabilities</span>
-            <h2>How we move cargo</h2>
+        
+        {/* Section Header */}
+        <div className="section-heading">
+          <span className="eyebrow">CORE FREIGHT CAPABILITIES</span>
+          <h2>Multimodal Logistics Architecture</h2>
+          <p>
+            Engineered linehaul networks connecting deepsea ports, trans-Eurasian railheads, scheduled air cargo gateways, and overland bonded corridors.
+          </p>
+        </div>
+
+        {/* 6-Card Responsive Grid */}
+        <div className="service-cards-grid">
+          {services.map((svc) => {
+            const Icon = iconMap[svc.icon] || Boxes;
+            return (
+              <div className="service-feature-card" key={svc.id}>
+                <div className="sfc-top-row">
+                  <div className="sfc-icon-wrapper">
+                    <Icon size={22} />
+                  </div>
+                  <span className="sfc-mode-tag">{svc.mode}</span>
+                </div>
+
+                <h3 className="sfc-title">{svc.shortTitle}</h3>
+                <p className="sfc-tagline">{svc.tagline}</p>
+
+                <div className="sfc-meta-list">
+                  <div className="sfc-meta-item">
+                    <span className="smi-label">Transit Benchmark:</span>
+                    <span className="smi-val tabular-nums">{svc.leadTime}</span>
+                  </div>
+                  <div className="sfc-meta-item">
+                    <span className="smi-label">Network Reach:</span>
+                    <span className="smi-val">{svc.coverage}</span>
+                  </div>
+                </div>
+
+                <Link to={`/services/${svc.id}`} className="sfc-link-action">
+                  <span>Explore Capabilities</span>
+                  <ArrowRight size={15} className="arrow-icon" />
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Bottom Banner */}
+        <div className="service-strip-cta-banner">
+          <div className="ssc-text">
+            <h4>Need a specialized combination of Air, Sea, and Rail?</h4>
+            <p>Our trade lane engineers design bespoke hybrid corridors tailored to your inventory holding velocity.</p>
           </div>
-          <Link to="/services" className="btn btn-secondary service-strip-all">
-            All Services <ArrowRight size={16} className="arrow-icon" />
+          <Link to="/quote" className="btn btn-primary">
+            Request Multimodal Route <ArrowRight size={15} />
           </Link>
         </div>
-        <div className="service-strip-grid">
-          {services.map((svc, i) => (
-            <Link
-              key={i}
-              to={svc.path}
-              className={`service-strip-tile fade-up delay-${(i + 1) * 100}`}
-            >
-              <div className="sst-icon">{svc.icon}</div>
-              <div className="sst-text">
-                <h4>{svc.label}</h4>
-                <p>{svc.desc}</p>
-              </div>
-              <ArrowRight size={18} className="sst-arrow" />
-            </Link>
-          ))}
-        </div>
+
       </div>
     </section>
   );

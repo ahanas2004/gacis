@@ -1,0 +1,701 @@
+/* ═══════════════════════════════════════════════════════════════
+   GACIS GLOBAL OPERATIONS CONSOLE — SIDEBAR NAVIGATION
+   Aesthetic: Bloomberg Terminal × Enterprise Logistics Command Center
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --sidebar-width: 248px;
+  --sidebar-collapsed-width: 72px;
+  --sidebar-bg: #fafaf9;
+  --sidebar-border: rgba(0, 0, 0, 0.07);
+  --sidebar-text: #404553;
+  --sidebar-text-muted: #8c9099;
+  --sidebar-active-bg: rgba(200, 32, 47, 0.05);
+}
+
+/* ─── 00. MASTER SIDEBAR CONTAINER ─── */
+.gacis-operations-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  box-shadow: 2px 0 12px rgba(10, 12, 16, 0.02);
+  transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+/* ─── 01. SIDEBAR HEADER (FIXED) ─── */
+.sidebar-header {
+  position: relative;
+  padding: 1.25rem 1rem 0.875rem;
+  border-bottom: 1px solid var(--sidebar-border);
+  flex-shrink: 0;
+  background: var(--sidebar-bg);
+}
+
+.sidebar-collapse-btn {
+  position: absolute;
+  top: 1.15rem;
+  right: -11px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid var(--border-medium);
+  color: var(--sidebar-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: all 0.16s ease;
+}
+
+.sidebar-collapse-btn:hover {
+  background: var(--color-brand-red);
+  color: #ffffff;
+  border-color: var(--color-brand-red);
+  transform: scale(1.08);
+}
+
+.sidebar-brand-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-brand-anchor {
+  display: inline-block;
+  text-decoration: none;
+  transition: transform 0.16s ease;
+}
+
+.sidebar-brand-anchor:hover {
+  transform: scale(1.02);
+}
+
+.sidebar-brand-logo {
+  height: 52px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  display: block;
+}
+
+.sidebar-brand-sub {
+  font-size: 0.5625rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sidebar-text-muted);
+  margin-top: 0.5rem;
+  display: block;
+}
+
+/* ─── 02. NETWORK STATUS TELEMETRY ─── */
+.sidebar-status-container {
+  padding: 0.625rem 1rem;
+  border-bottom: 1px solid var(--sidebar-border);
+  background: var(--sidebar-bg);
+  flex-shrink: 0;
+}
+
+.sidebar-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(26, 138, 74, 0.05);
+  border: 1px solid rgba(26, 138, 74, 0.14);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.625rem;
+}
+
+.status-ping-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-success);
+  box-shadow: 0 0 6px rgba(26, 138, 74, 0.8);
+  flex-shrink: 0;
+  animation: radarBlink 1.8s infinite ease-in-out;
+}
+
+.status-text-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.status-title {
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--color-success);
+  line-height: 1.1;
+}
+
+.status-sub {
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--sidebar-text-muted);
+}
+
+/* ─── 03. SCROLLABLE NAVIGATION AREA ─── */
+.sidebar-scrollable-nav {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0.625rem 0.625rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Slim Custom Scrollbar */
+.sidebar-scrollable-nav::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar-scrollable-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar-scrollable-nav::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+}
+
+/* Section Group */
+.sidebar-nav-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-section-label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sidebar-text-muted);
+  padding: 0.35rem 0.625rem 0.25rem;
+  display: block;
+}
+
+.sidebar-section-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+/* Nav Item Link */
+.sidebar-nav-item-wrapper {
+  position: relative;
+}
+
+.sidebar-nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.45rem 0.625rem;
+  border-radius: var(--radius-sm);
+  color: var(--sidebar-text);
+  text-decoration: none;
+  font-size: 0.84375rem;
+  font-weight: 600;
+  min-height: 38px;
+  transition: background 0.16s ease, color 0.16s ease;
+}
+
+/* Active Rail Indicator (3px Red Line) */
+.active-rail-indicator {
+  position: absolute;
+  left: -0.625rem;
+  top: 15%;
+  bottom: 15%;
+  width: 3px;
+  background: var(--color-brand-red);
+  border-radius: 0 3px 3px 0;
+  transform: scaleY(0);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sidebar-nav-link.is-active .active-rail-indicator {
+  transform: scaleY(1);
+}
+
+.nav-item-icon-box {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--sidebar-text-muted);
+  position: relative;
+  transition: color 0.16s ease;
+}
+
+.nav-item-text-group {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.nav-item-micro-eyebrow {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-brand-red);
+  line-height: 1;
+  margin-bottom: 0.1rem;
+}
+
+.nav-item-primary-label {
+  font-size: 0.84375rem;
+  font-weight: 600;
+  color: inherit;
+  line-height: 1.2;
+}
+
+.nav-item-esg-badge {
+  margin-left: auto;
+  font-size: 0.5625rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  background: rgba(26, 138, 74, 0.1);
+  color: #166534;
+  padding: 0.1rem 0.35rem;
+  border-radius: var(--radius-pill);
+}
+
+/* Hover & Active States */
+.sidebar-nav-link:hover {
+  background: rgba(0, 0, 0, 0.035);
+  color: #1a1d24;
+}
+
+.sidebar-nav-link:hover .nav-item-icon-box {
+  color: var(--color-brand-red);
+}
+
+.sidebar-nav-link.is-active {
+  background: var(--sidebar-active-bg);
+  color: #0f131a;
+  font-weight: 700;
+}
+
+.sidebar-nav-link.is-active .nav-item-icon-box {
+  color: var(--color-brand-red);
+}
+
+/* Strategic Global Network Item Micro-interaction */
+.is-network-anchor:hover .nav-item-icon-box {
+  animation: pulseScale 0.6s ease-in-out;
+}
+
+/* Submenu for Services */
+.sidebar-nested-submenu {
+  display: flex;
+  flex-direction: column;
+  padding: 0.2rem 0 0.4rem 2rem;
+  gap: 0.25rem;
+  animation: megaSlideDown 0.18s var(--ease-spring);
+}
+
+.sidebar-sublink-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.25rem 0.5rem 0.25rem 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--sidebar-text-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.sidebar-sublink-item:hover {
+  color: var(--color-brand-red);
+}
+
+.sidebar-sublink-item.is-sub-active {
+  color: var(--color-brand-red);
+  font-weight: 700;
+}
+
+.sublink-mode-tag {
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 0.1rem 0.3rem;
+  border-radius: var(--radius-sm);
+  color: var(--sidebar-text-muted);
+}
+
+/* ─── 04. PINNED BOTTOM ACTION TRAY (FIXED) ─── */
+.sidebar-actions-tray {
+  padding: 0.875rem 0.875rem 1rem;
+  border-top: 1px solid var(--sidebar-border);
+  background: #f4f4f3;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Track Shipment Button */
+.sidebar-track-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+  font-size: 0.71875rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  min-height: 38px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: all 0.16s ease;
+}
+
+.sidebar-track-button:hover {
+  border-color: var(--color-brand-red);
+  color: var(--color-brand-red);
+  background: #ffffff;
+}
+
+.stb-icon-wrap {
+  color: var(--color-brand-red);
+  display: flex;
+  align-items: center;
+}
+
+.stb-hover-arrow {
+  margin-left: auto;
+  color: var(--sidebar-text-muted);
+  transition: transform 0.16s ease, color 0.16s ease;
+}
+
+.sidebar-track-button:hover .stb-hover-arrow {
+  color: var(--color-brand-red);
+  transform: translateX(3px);
+}
+
+/* Request Quote Primary CTA */
+.sidebar-quote-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #c8202f 0%, #a01522 100%);
+  color: #ffffff !important;
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.875rem;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  min-height: 44px;
+  box-shadow: 0 3px 10px rgba(200, 32, 47, 0.22);
+  transition: all 0.18s ease;
+}
+
+.sidebar-quote-button:hover {
+  background: linear-gradient(135deg, #d42232 0%, #b01825 100%);
+  box-shadow: 0 4px 14px rgba(200, 32, 47, 0.32);
+  transform: translateY(-1px);
+}
+
+.sqb-arrow {
+  transition: transform 0.18s ease;
+}
+
+.sidebar-quote-button:hover .sqb-arrow {
+  transform: translateX(4px);
+}
+
+/* Dubai HQ 24/7 Desk Indicator */
+.sidebar-desk-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.25rem 0;
+}
+
+.desk-pulse-node {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-success);
+  flex-shrink: 0;
+}
+
+.desk-text-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.desk-location {
+  font-size: 0.5625rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.desk-sub {
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--sidebar-text-muted);
+}
+
+/* ─── 05. COLLAPSED STATE (72PX) ─── */
+.gacis-operations-sidebar.is-collapsed {
+  width: var(--sidebar-collapsed-width);
+}
+
+.gacis-operations-sidebar.is-collapsed .sidebar-header {
+  padding: 1.25rem 0.35rem 0.875rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gacis-operations-sidebar.is-collapsed .sidebar-brand-logo {
+  height: 38px;
+  max-width: 52px;
+  margin: 0 auto;
+}
+
+.gacis-operations-sidebar.is-collapsed .sidebar-status-container {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.gacis-operations-sidebar.is-collapsed .sidebar-status-badge {
+  padding: 0.35rem;
+  justify-content: center;
+}
+
+.gacis-operations-sidebar.is-collapsed .sidebar-scrollable-nav {
+  padding: 0.5rem 0.35rem 1rem;
+}
+
+.gacis-operations-sidebar.is-collapsed .sidebar-nav-link {
+  justify-content: center;
+  padding: 0.5rem 0;
+}
+
+.gacis-operations-sidebar.is-collapsed .active-rail-indicator {
+  left: 0;
+}
+
+.gacis-operations-sidebar.is-collapsed .sidebar-actions-tray {
+  padding: 0.625rem 0.35rem 0.875rem;
+}
+
+.gacis-operations-sidebar.is-collapsed .sidebar-track-button,
+.gacis-operations-sidebar.is-collapsed .sidebar-quote-button {
+  justify-content: center;
+  padding: 0.5rem 0;
+}
+
+.gacis-operations-sidebar.is-collapsed .sidebar-desk-indicator {
+  justify-content: center;
+}
+
+/* Floating Tooltips in Collapsed Mode */
+.collapsed-nav-tooltip {
+  display: none;
+  position: absolute;
+  left: calc(var(--sidebar-collapsed-width) + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--surface-dark);
+  color: #ffffff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.625rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+  z-index: 100;
+}
+
+.gacis-operations-sidebar.is-collapsed .sidebar-nav-link:hover .collapsed-nav-tooltip,
+.gacis-operations-sidebar.is-collapsed .sidebar-track-button:hover .collapsed-nav-tooltip,
+.gacis-operations-sidebar.is-collapsed .sidebar-quote-button:hover .collapsed-nav-tooltip {
+  display: block;
+  animation: fadeIn 0.15s ease;
+}
+
+/* ─── 06. MOBILE HEADER & OFF-CANVAS DRAWER (< 768px) ─── */
+.mobile-command-header {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-light);
+  padding: 0 1.25rem;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 990;
+}
+
+.mch-logo-anchor {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.mch-logo-img {
+  height: 42px;
+  width: auto;
+  max-width: 110px;
+  object-fit: contain;
+  display: block;
+}
+
+.mch-brand-tag {
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--sidebar-text-muted);
+}
+
+.mch-menu-trigger {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.mch-menu-trigger:hover {
+  background: rgba(200, 32, 47, 0.08);
+  color: var(--color-brand-red);
+}
+
+/* Off-Canvas Console Drawer */
+.mobile-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(4px);
+  z-index: 998;
+  animation: fadeIn 0.25s ease;
+}
+
+.mobile-console-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(88vw, 340px);
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-console-drawer.is-open {
+  transform: translateX(0);
+}
+
+.mcd-header {
+  padding: 1.25rem 1.25rem 1rem;
+  border-bottom: 1px solid var(--sidebar-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.mcd-brand-link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.mcd-logo {
+  height: 52px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  display: block;
+}
+
+.mcd-sub {
+  font-size: 0.5625rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--sidebar-text-muted);
+  margin-top: 0.35rem;
+}
+
+.mcd-close-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.mcd-close-btn:hover {
+  background: rgba(200, 32, 47, 0.08);
+  color: var(--color-brand-red);
+}
+
+.mcd-nav-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.75rem 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mcd-actions-pinned {
+  flex-shrink: 0;
+}
+
+/* ─── 07. RESPONSIVE BREAKPOINTS ─── */
+@media (max-width: 768px) {
+  .mobile-command-header {
+    display: flex;
+  }
+
+  .gacis-operations-sidebar {
+    display: none !important;
+  }
+}

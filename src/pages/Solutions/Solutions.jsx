@@ -1,115 +1,104 @@
 import { Link } from 'react-router-dom';
-import { Package, Workflow, ArrowRightLeft, Target, Globe, Thermometer, Shield, Zap } from 'lucide-react';
+import { 
+  Car, HeartPulse, Zap, Cpu, ShoppingBag, Factory, 
+  ArrowRight, ShieldCheck, CheckCircle2, Award 
+} from 'lucide-react';
+import { industries } from '../../data/industries';
+import SEO from '../../components/Common/SEO';
 import './Solutions.css';
 
-const solutions = [
-  {
-    icon: <Workflow size={32} />,
-    title: 'End-to-End Logistics',
-    desc: 'Complete logistics coordination from origin to destination, ensuring seamless handoffs between transportation modes with a single accountable partner.',
-    tag: 'Full Service',
-  },
-  {
-    icon: <Target size={32} />,
-    title: 'Supply Chain Optimization',
-    desc: 'Data-driven analysis to optimise cost, routing, transit time, and transportation modes for your specific operational and budgetary requirements.',
-    tag: 'Consulting',
-  },
-  {
-    icon: <ArrowRightLeft size={32} />,
-    title: 'EXW / FCA Logistics',
-    desc: 'Comprehensive supplier pickup and first-mile transportation management at origin — giving you full control from the factory floor.',
-    tag: 'Origin Services',
-  },
-  {
-    icon: <Package size={32} />,
-    title: 'Project Cargo',
-    desc: 'Specialised handling, routing, and permits for oversized, heavy-lift, and complex industrial cargo requiring exceptional project management.',
-    tag: 'Heavy Lift',
-  },
-  {
-    icon: <Globe size={32} />,
-    title: 'Cross-Border Logistics',
-    desc: 'Deep expertise in Gulf and CIS trade compliance, import/export regulations, and inland customs procedures for reliable cross-border operations.',
-    tag: 'Regional Expertise',
-  },
-  {
-    icon: <Thermometer size={32} />,
-    title: 'Cold Chain & Pharma',
-    desc: 'GDP-compliant temperature-controlled logistics for pharmaceuticals, food, and chemical products requiring strict environmental management.',
-    tag: 'Temperature Control',
-  },
-  {
-    icon: <Shield size={32} />,
-    title: 'Dangerous Goods (DG)',
-    desc: 'IATA/IMDG-certified handling of hazardous materials with compliant packaging, declarations, and carrier approvals across all modes.',
-    tag: 'Hazmat',
-  },
-  {
-    icon: <Zap size={32} />,
-    title: 'Critical & Express',
-    desc: 'Dedicated hand-carry courier, charter aircraft, and priority shipment services for mission-critical cargo with zero tolerance for delay.',
-    tag: 'Express',
-  },
-];
+const iconMap = { Car, HeartPulse, Zap, Cpu, ShoppingBag, Factory };
 
-const industries = [
-  'Automotive & EV', 'Pharmaceuticals', 'Oil & Energy', 'Electronics & Semicon',
-  'Retail & FMCG', 'Industrial Manufacturing', 'Chemicals & Petrochemicals',
-  'Construction & Infrastructure', 'Aerospace & Defense', 'Agriculture & Food',
-];
-
-const Solutions = () => {
+export const Solutions = () => {
   return (
     <div className="solutions-page">
+      <SEO 
+        title="Industry Supply Chain Solutions"
+        description="Engineered logistics frameworks for Automotive, Pharmaceuticals, Energy, High-Tech Electronics, Retail, and Industrial Manufacturing."
+        canonical="/solutions"
+      />
+
+      {/* Hero Header */}
       <div className="page-header bg-maroon">
         <div className="container">
-          <span className="eyebrow" style={{ color: 'rgba(255,255,255,0.6)' }}>Tailored Logistics</span>
-          <h1>Solutions & Industries</h1>
-          <p>Purpose-built logistics frameworks for complex, high-value, and time-critical supply chains across every major industry sector.</p>
+          <span className="eyebrow eyebrow-light">VERTICAL INDUSTRY INTELLIGENCE</span>
+          <h1>Industry Solutions</h1>
+          <p>
+            Customized logistics architecture engineered to solve the sector-specific compliance, temperature, security, and velocity constraints of global enterprises.
+          </p>
         </div>
       </div>
 
-      <section className="section-padding">
+      {/* 6 Industry Vertical Cards */}
+      <section className="section-padding bg-primary">
         <div className="container">
-          <div className="section-heading fade-up">
-            <span className="eyebrow">Logistics Solutions</span>
-            <h2>Engineered for complexity</h2>
-            <p>Every business has a different supply chain. GACIS offers a portfolio of specialised logistics solutions designed to address the unique challenges of your operations.</p>
+          <div className="section-heading">
+            <span className="eyebrow">SECTOR SPECIALIZATIONS</span>
+            <h2>Engineered for High-Value Industry Demands</h2>
+            <p>
+              From Just-in-Time automotive parts to GDP-certified pharmaceutical cold chains, our dedicated sector desks deliver unbroken operational continuity.
+            </p>
           </div>
-          <div className="solutions-grid">
-            {solutions.map((sol, i) => (
-              <div className={`solution-card fade-up delay-${(i % 4 + 1) * 100}`} key={i}>
-                <div className="sc-top">
-                  <div className="sc-icon">{sol.icon}</div>
-                  <span className="sc-tag">{sol.tag}</span>
+
+          <div className="industries-matrix-grid">
+            {industries.map((ind) => {
+              const Icon = iconMap[ind.icon] || Factory;
+              return (
+                <div className="industry-solution-card" key={ind.id}>
+                  <div className="isc-header">
+                    <div className="isc-icon-wrap">
+                      <Icon size={22} />
+                    </div>
+                    <span className="isc-id-tag">{ind.id.toUpperCase()}</span>
+                  </div>
+
+                  <h3 className="isc-title">{ind.title}</h3>
+                  <p className="isc-tagline">{ind.tagline}</p>
+
+                  <div className="isc-challenge-box">
+                    <span className="isc-box-lbl">OPERATIONAL CHALLENGE:</span>
+                    <p>{ind.challenge}</p>
+                  </div>
+
+                  <div className="isc-solution-box">
+                    <span className="isc-box-lbl">GACIS SOLUTION:</span>
+                    <p>{ind.solution}</p>
+                  </div>
+
+                  <div className="isc-highlights-strip">
+                    {ind.highlights.map((h, i) => (
+                      <span className="isc-highlight-chip" key={i}>
+                        <CheckCircle2 size={12} /> {h}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="isc-footer">
+                    <Link to="/quote" className="btn btn-secondary btn-sm isc-cta">
+                      Request {ind.title} Solution <ArrowRight size={14} />
+                    </Link>
+                  </div>
                 </div>
-                <h4>{sol.title}</h4>
-                <p>{sol.desc}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
+
         </div>
       </section>
 
-      <section className="section-padding bg-secondary">
+      {/* Direct Advisory Banner */}
+      <section className="section-padding-sm bg-dark">
         <div className="container">
-          <div className="industry-specialisation fade-up">
-            <div className="is-left">
-              <span className="eyebrow">Industry Specialisations</span>
-              <h2>We speak your industry's language</h2>
-              <p>GACIS operates dedicated specialist teams for each industry vertical, ensuring you work with logistics professionals who understand your sector's unique compliance requirements, cargo characteristics, and supply chain rhythms.</p>
-              <Link to="/contact" className="btn btn-primary" style={{ marginTop: 'var(--space-lg)' }}>
-                Speak to a Specialist
-              </Link>
+          <div className="industry-cta-inner">
+            <div>
+              <h3 style={{ color: '#fff' }}>Require bespoke trade lane engineering?</h3>
+              <p style={{ color: 'rgba(255,255,255,0.75)' }}>
+                Our industry vertical leaders work directly with your procurement and supply chain directors to design custom Service Level Agreements (SLAs).
+              </p>
             </div>
-            <div className="is-right">
-              <div className="industry-tag-cloud">
-                {industries.map((ind, i) => (
-                  <span className="industry-tag" key={i}>{ind}</span>
-                ))}
-              </div>
-            </div>
+            <Link to="/contact" className="btn btn-primary btn-large">
+              Speak with Sector Lead <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>
