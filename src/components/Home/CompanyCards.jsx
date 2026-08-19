@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import FadeImage from '../Common/FadeImage';
 import './CompanyCards.css';
 
 const CompanyCards = () => {
@@ -19,7 +20,7 @@ const CompanyCards = () => {
               </div>
             </div>
             <div className="company-ed-image">
-              <img src="/images/diff_compliance.jpg" alt="About Us" />
+              <FadeImage src="/images/diff_compliance.jpg" alt="About Us" />
             </div>
           </Link>
 
@@ -33,7 +34,7 @@ const CompanyCards = () => {
               </div>
             </div>
             <div className="company-ed-image">
-              <img src="/images/diff_transform.jpg" alt="Sustainability" />
+              <FadeImage src="/images/diff_transform.jpg" alt="Sustainability" />
             </div>
           </Link>
 

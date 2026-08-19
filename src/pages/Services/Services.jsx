@@ -3,6 +3,7 @@ import { Plane, Ship, Truck, Train, ShieldCheck, Boxes, ArrowRight, Check } from
 import { services } from '../../data/services';
 import SEO from '../../components/Common/SEO';
 import PageHeader from '../../components/Common/PageHeader';
+import FadeImage from '../../components/Common/FadeImage';
 import './Services.css';
 
 const iconMap = { Plane, Ship, Truck, Train, ShieldCheck, Boxes };
@@ -23,22 +24,19 @@ export const Services = () => {
         statusTag="5 MULTIMODAL MODES ACTIVE"
       />
 
-
       <section className="section-padding bg-primary">
         <div className="container">
           <div className="services-full-grid">
             {services.map((service, i) => {
               const Icon = iconMap[service.icon] || Boxes;
               return (
-                <div key={service.id} className="service-full-card">
+                <div key={service.id} className={`service-full-card fade-up delay-${(i % 3) * 100 + 100}`}>
                   {service.image && (
                     <div className="sfc-image-wrapper">
-                      <img 
+                      <FadeImage 
                         src={service.image} 
                         alt={service.title} 
-                        className="sfc-img" 
-                        loading="lazy"
-                        decoding="async"
+                        className="sfc-img"
                       />
                       <span className="sfc-mode-pill">{service.mode}</span>
                     </div>
@@ -81,7 +79,7 @@ export const Services = () => {
 
       <section className="services-cta-strip bg-dark section-padding-sm">
         <div className="container">
-          <div className="services-cta-inner">
+          <div className="services-cta-inner fade-up">
             <div>
               <h3 style={{ color: 'white' }}>Need a customized multimodal supply chain solution?</h3>
               <p style={{ color: 'rgba(255,255,255,0.75)', margin: 0 }}>

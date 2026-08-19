@@ -230,7 +230,7 @@ export const GlobalNetwork = () => {
             {/* Right: Dynamic Dossier Panel (Sea Domain or Hub) */}
             {activeViewMode === 'seas' && activeSeaDomain ? (
               /* ─── MARITIME SEA DOMAIN DOSSIER CARD ─── */
-              <div className="gateway-dossier-card sea-dossier-card">
+              <div className="gateway-dossier-card sea-dossier-card" key={activeSeaDomain.id}>
                 <div className="gdc-header">
                   <div className="gdc-flag-wrap sea-flag-wrap">
                     <Waves size={28} className="sea-dossier-icon" />

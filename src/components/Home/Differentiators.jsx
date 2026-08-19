@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ShieldCheck, Compass, Gauge, Zap, Globe2, ArrowRight } from 'lucide-react';
+import FadeImage from '../Common/FadeImage';
 import './Differentiators.css';
 
 const differentiatorsData = [
@@ -35,7 +36,7 @@ export const Differentiators = () => {
       <div className="container">
         
         {/* Section Header */}
-        <div className="section-heading">
+        <div className="section-heading fade-up">
           <span className="eyebrow">THE GACIS ADVANTAGE</span>
           <h2>Built for the Corridors That Matter</h2>
           <p>
@@ -48,14 +49,12 @@ export const Differentiators = () => {
           {differentiatorsData.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div className="diff-card" key={idx}>
+              <div className={`diff-card fade-up delay-${(idx % 3) * 100 + 100}`} key={idx}>
                 <div className="diff-img-wrapper">
-                  <img 
+                  <FadeImage 
                     src={item.image} 
                     alt={item.title} 
                     className="diff-img"
-                    loading="lazy"
-                    decoding="async"
                   />
                   <div className="diff-img-overlay"></div>
                   <span className="diff-metric-badge">{item.metric}</span>

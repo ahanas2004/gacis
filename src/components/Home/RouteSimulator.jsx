@@ -154,7 +154,7 @@ export const RouteSimulator = () => {
           )}
 
           {/* Main Console Body Grid */}
-          <div className="rs-workspace-grid">
+          <div className="rs-workspace-grid" key={`${selectedRouteId}-${isCustomMode}`}>
             
             {/* Left Column: Corridor Specs & Carbon Intelligence */}
             <div className="rs-specs-col">

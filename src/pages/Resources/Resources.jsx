@@ -63,7 +63,6 @@ export const Resources = () => {
         statusTag="INDUSTRY PAPERS & GUIDES"
       />
 
-
       {/* Shipping Guides Grid */}
       <section className="section-padding bg-primary">
         <div className="container">

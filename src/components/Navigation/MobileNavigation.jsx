@@ -48,7 +48,10 @@ export const MobileNavigation = ({ isOpen, onClose, onToggle }) => {
           aria-expanded={isOpen}
           aria-controls="mobile-drawer-console"
         >
-          {isOpen ? <X size={20} /> : <Menu size={20} />}
+          <span className={`mch-icon-swap ${isOpen ? 'is-open' : ''}`}>
+            <Menu size={20} className="icon-menu" />
+            <X size={20} className="icon-close" />
+          </span>
         </button>
       </header>
 

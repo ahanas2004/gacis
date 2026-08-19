@@ -46,7 +46,6 @@ export const Sustainability = () => {
         statusTag="CERTIFIED GLEC & EN 16258 METHODOLOGY"
       />
 
-
       {/* Carbon Intelligence Metrics Section */}
       <section className="section-padding bg-primary">
         <div className="container">

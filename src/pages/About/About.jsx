@@ -3,6 +3,7 @@ import { Globe, Shield, TrendingUp, Users, Award, Layers } from 'lucide-react';
 import SEO from '../../components/Common/SEO';
 import PageHeader from '../../components/Common/PageHeader';
 import SocialProof from '../../components/Home/SocialProof';
+import FadeImage from '../../components/Common/FadeImage';
 import './About.css';
 
 export const About = () => {
@@ -20,7 +21,6 @@ export const About = () => {
         description="Connecting global commerce through multimodal engineering, deep regional trade lane mastery, and operational precision."
         statusTag="ESTABLISHED CORRIDOR OPERATOR"
       />
-
 
       {/* Mission & Vision */}
       <section className="section-padding bg-primary">
@@ -41,12 +41,10 @@ export const About = () => {
               </div>
             </div>
             <div className="about-image-col">
-              <img 
+              <FadeImage 
                 src="/images/diff_network.jpg" 
                 alt="GACIS global logistics center" 
-                className="about-hero-img" 
-                loading="lazy"
-                decoding="async"
+                className="about-hero-img"
               />
               <div className="about-badge">
                 <div className="badge-num tabular-nums">2012</div>

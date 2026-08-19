@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle2, PhoneCall, ShieldCheck, Clock, Layers, Leaf, 
 import { services } from '../../data/services';
 import SEO from '../../components/Common/SEO';
 import PageHeader from '../../components/Common/PageHeader';
+import FadeImage from '../../components/Common/FadeImage';
 import './Services.css';
 
 // Support legacy route aliases
@@ -37,7 +38,6 @@ export const ServiceDetail = () => {
         statusTag={`LEAD TIME: ${data.leadTime}`}
       />
 
-
       <section className="section-padding bg-primary">
         <div className="container">
           <div className="service-detail-grid">
@@ -46,12 +46,10 @@ export const ServiceDetail = () => {
             <div className="service-main-content">
               {data.image && (
                 <div className="service-detail-image-wrapper">
-                  <img 
+                  <FadeImage 
                     src={data.image} 
                     alt={data.title} 
-                    className="service-detail-image" 
-                    loading="lazy"
-                    decoding="async"
+                    className="service-detail-image"
                   />
                   <div className="sdi-overlay-badge">
                     <Globe2 size={15} /> <span>Coverage: {data.coverage}</span>

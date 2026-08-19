@@ -63,6 +63,20 @@
   transform: scale(1);
 }
 
+/* ─── Fade-Up (lightweight alias used across section components) ─── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity var(--motion-slow) var(--ease-spring),
+              transform var(--motion-slow) var(--ease-spring);
+  will-change: opacity, transform;
+}
+
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Delays for staggered card children */
 .delay-100 { transition-delay: 100ms; }
 .delay-200 { transition-delay: 200ms; }

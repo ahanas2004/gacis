@@ -53,7 +53,6 @@ export const Contact = () => {
         statusTag="DUBAI DESK LIVE · 24/7"
       />
 
-
       <section className="section-padding bg-primary">
         <div className="container">
           <div className="contact-main-grid">

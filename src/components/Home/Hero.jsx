@@ -29,7 +29,7 @@ export const Hero = () => {
         <div className="hero-grid">
           
           {/* Left Column: Core Positioning & CTAs */}
-          <div className="hero-content">
+          <div className="hero-content reveal-left">
             <div className="hero-eyebrow-row">
               <span className="hero-eyebrow">The Intelligence Layer</span>
               <span className="hero-corridor-tag">Gulf ⇄ CIS ⇄ Asia Trade</span>
@@ -75,7 +75,7 @@ export const Hero = () => {
           </div>
 
           {/* Right Column: Signature Network Intelligence Console */}
-          <div className="hero-visual-column">
+          <div className="hero-visual-column reveal-right delay-200">
             <HeroNetworkAnimation />
           </div>
 

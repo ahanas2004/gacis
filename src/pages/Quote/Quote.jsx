@@ -21,7 +21,6 @@ export const Quote = () => {
         description="Provide your origin, destination, cargo specifications, and timeline requirements. Our central pricing desk will calculate an optimized route schedule within 24 hours."
         statusTag="ALGORITHM-POWERED ROUTING"
       />
-
       
       <section className="section-padding bg-secondary">
         <div className="container">

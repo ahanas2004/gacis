@@ -27,7 +27,6 @@ export const Solutions = () => {
         statusTag="6 DEDICATED SECTOR DESKS"
       />
 
-
       {/* 6 Industry Vertical Cards */}
       <section className="section-padding bg-primary">
         <div className="container">
