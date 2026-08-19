@@ -1,5 +1,7 @@
+import { Calculator } from 'lucide-react';
 import QuoteWizard from '../../components/QuoteWizard/QuoteWizard';
 import SEO from '../../components/Common/SEO';
+import PageHeader from '../../components/Common/PageHeader';
 import ErrorBoundary from '../../components/Common/ErrorBoundary';
 import './Quote.css';
 
@@ -12,15 +14,14 @@ export const Quote = () => {
         canonical="/quote"
       />
 
-      <div className="page-header bg-maroon">
-        <div className="container">
-          <span className="eyebrow eyebrow-light">ENTERPRISE QUOTE CALCULATOR</span>
-          <h1>Request a Corridor Quote</h1>
-          <p>
-            Provide your origin, destination, cargo specifications, and timeline requirements. Our central pricing desk will calculate an optimized route schedule within 24 hours.
-          </p>
-        </div>
-      </div>
+      <PageHeader 
+        eyebrow="ENTERPRISE QUOTE CALCULATOR"
+        eyebrowIcon={Calculator}
+        title="Request a Corridor Quote"
+        description="Provide your origin, destination, cargo specifications, and timeline requirements. Our central pricing desk will calculate an optimized route schedule within 24 hours."
+        statusTag="ALGORITHM-POWERED ROUTING"
+      />
+
       
       <section className="section-padding bg-secondary">
         <div className="container">

@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import Home from './pages/Home/Home';
 import Quote from './pages/Quote/Quote';
@@ -10,7 +10,6 @@ import ServiceDetail from './pages/Services/ServiceDetail';
 import Solutions from './pages/Solutions/Solutions';
 import Resources from './pages/Resources/Resources';
 import Sustainability from './pages/Sustainability/Sustainability';
-import Track from './pages/Track/Track';
 import NotFound from './pages/NotFound/NotFound';
 import ScrollToTop from './components/Common/ScrollToTop';
 
@@ -31,12 +30,13 @@ function App() {
           <Route path="sustainability" element={<Sustainability />} />
           <Route path="quote" element={<Quote />} />
           <Route path="global-network" element={<GlobalNetwork />} />
-          <Route path="track" element={<Track />} />
+          <Route path="track" element={<Navigate to="/quote" replace />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </>
   );
 }
+
 
 export default App;

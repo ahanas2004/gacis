@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Plus, Minus, RotateCcw } from 'lucide-react';
-import { primaryHubs } from '../../data/locations';
+import { Plus, Minus, RotateCcw, Compass, Waves, Navigation, Anchor } from 'lucide-react';
+import { primaryHubs, maritimeSeaDomains } from '../../data/locations';
 import './RealGeographicMap.css';
 
 // Calculate curved great-circle arc points between two coordinates
@@ -13,15 +13,15 @@ const getCurvedArcPoints = (start, end, numPoints = 40) => {
   const endLat = end.lat;
   const endLng = end.lng;
 
-  // Calculate midpoint with curved offset
+  // Midpoint
   const midLat = (startLat + endLat) / 2;
   const midLng = (startLng + endLng) / 2;
   
-  // Calculate distance for curvature height
+  // Distance
   const dLat = endLat - startLat;
   const dLng = endLng - startLng;
   const dist = Math.sqrt(dLat * dLat + dLng * dLng);
-  const curvature = Math.min(dist * 0.18, 6.5);
+  const curvature = Math.min(dist * 0.16, 6.0);
 
   // Perpendicular curve vector
   const offsetLat = midLat + (dLng > 0 ? curvature : -curvature);
@@ -29,7 +29,6 @@ const getCurvedArcPoints = (start, end, numPoints = 40) => {
 
   for (let i = 0; i <= numPoints; i++) {
     const t = i / numPoints;
-    // Quadratic Bezier interpolation in lat/lng space
     const lat = (1 - t) * (1 - t) * startLat + 2 * (1 - t) * t * offsetLat + t * t * endLat;
     const lng = (1 - t) * (1 - t) * startLng + 2 * (1 - t) * t * offsetLng + t * t * endLng;
     points.push([lat, lng]);
@@ -37,88 +36,128 @@ const getCurvedArcPoints = (start, end, numPoints = 40) => {
   return points;
 };
 
-// Hub Connections Definition
+// Strategic Continental & Intermodal Hub Connections
 const hubRoutes = [
-  { from: 'uae-hq', to: 'europe-frankfurt', mode: 'AIR/RAIL', name: 'Dubai ⇄ Frankfurt' },
-  { from: 'uae-hq', to: 'cis-almaty', mode: 'RAIL/SEA', name: 'Dubai ⇄ Almaty Silk Corridor' },
-  { from: 'uae-hq', to: 'india-hub', mode: 'SEA/AIR', name: 'Dubai ⇄ Chennai' },
-  { from: 'uae-hq', to: 'srilanka-gateway', mode: 'OCEAN', name: 'Dubai ⇄ Colombo' },
-  { from: 'india-hub', to: 'malaysia-hub', mode: 'FEEDER', name: 'Chennai ⇄ Port Klang' },
-  { from: 'srilanka-gateway', to: 'malaysia-hub', mode: 'DEEPSEA', name: 'Colombo ⇄ Port Klang' }
+  { from: 'uae-hq', to: 'europe-frankfurt', mode: 'AIR/RAIL' },
+  { from: 'uae-hq', to: 'cis-almaty', mode: 'RAIL/AIR' },
+  { from: 'uae-hq', to: 'cis-aktau', mode: 'SEA/RAIL' },
+  { from: 'uae-hq', to: 'india-hub', mode: 'SEA/AIR' },
+  { from: 'uae-hq', to: 'srilanka-gateway', mode: 'OCEAN' },
+  { from: 'uae-hq', to: 'saudi-riyadh', mode: 'ROAD/AIR' },
+  { from: 'uae-hq', to: 'africa-djibouti', mode: 'SEA/AIR' },
+  { from: 'africa-djibouti', to: 'africa-mombasa', mode: 'FEEDER' },
+  { from: 'india-hub', to: 'malaysia-hub', mode: 'FEEDER' },
+  { from: 'srilanka-gateway', to: 'malaysia-hub', mode: 'DEEPSEA' },
+  { from: 'malaysia-hub', to: 'china-shanghai', mode: 'DEEPSEA' },
+  { from: 'china-shanghai', to: 'japan-tokyo', mode: 'FEEDER/AIR' },
+  { from: 'europe-frankfurt', to: 'europe-rotterdam', mode: 'RAIL/BARGE' },
+  { from: 'europe-rotterdam', to: 'europe-genoa', mode: 'RAIL' },
+  { from: 'europe-rotterdam', to: 'us-houston', mode: 'TRANS-ATLANTIC' }
 ];
 
-export const RealGeographicMap = ({ activeHub, onSelectHub }) => {
+export const RealGeographicMap = ({ 
+  activeHub, 
+  onSelectHub, 
+  activeSeaDomain, 
+  onSelectSeaDomain,
+  viewMode = 'all' // 'all' | 'hubs' | 'seas'
+}) => {
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
-  const markersRef = useRef({});
+  const hubMarkersRef = useRef({});
+  const seaMarkersRef = useRef({});
   const polylineLayersRef = useRef([]);
 
-  // Map Default Initial Viewport (Middle East / Eurasia context)
-  const initialCenter = [27.0, 58.0];
-  const initialZoom = window.innerWidth < 768 ? 2.5 : 3.2;
-
+  // Initialize Map
   useEffect(() => {
     if (!mapContainerRef.current) return;
 
-    // Network geographic boundary spanning Frankfurt to Klang / Almaty to Colombo
-    const networkBounds = [
-      [1.5, 4.0],   // SW: South of Klang/Colombo, West of Frankfurt
-      [52.5, 104.0] // NE: North of Frankfurt/Almaty, East of Klang
+    // Global cartographic viewport spanning Americas to Far East
+    const initialBounds = [
+      [-15.0, -100.0], // SW: Houston / South Americas / Indian Ocean
+      [65.0, 155.0]    // NE: North Sea / Japan / Bering
     ];
 
-    // Initialize Leaflet Map
     const map = L.map(mapContainerRef.current, {
-      center: [28.0, 54.0],
-      zoom: window.innerWidth < 768 ? 2.2 : 3.0,
-      minZoom: 2.0,
-      maxZoom: 7,
+      center: [25.0, 45.0],
+      zoom: window.innerWidth < 768 ? 2.0 : 2.8,
+      minZoom: 1.8,
+      maxZoom: 9,
       zoomControl: false,
       attributionControl: false,
       scrollWheelZoom: true,
-      maxBounds: [
-        [-30, -30],
-        [75, 145]
-      ]
+      worldCopyJump: true
     });
 
     mapInstanceRef.current = map;
 
-    // High-Resolution Dark Cartographic Tiles (CartoDB Dark Matter)
+    // High-Resolution Dark Tactical Map Tiles (CartoDB Dark Matter)
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
       subdomains: 'abcd',
       maxZoom: 19
     }).addTo(map);
 
-    // Initial frame to fit all 6 hubs perfectly with padding
-    map.fitBounds(networkBounds, {
-      padding: window.innerWidth < 768 ? [20, 20] : [36, 36],
-      maxZoom: 4
+    // Initial frame
+    map.fitBounds(initialBounds, {
+      padding: window.innerWidth < 768 ? [15, 15] : [30, 30],
+      maxZoom: 3.5
     });
 
-    // Create Hub Markers
+    // 1. Render Strategic Hub Markers
     primaryHubs.forEach((hub) => {
       const isDubai = hub.id === 'uae-hq';
       
       const customIcon = L.divIcon({
         className: 'gacis-geo-marker-wrapper',
         html: `
-          <div class="gacis-marker-node ${isDubai ? 'is-dubai-hq' : ''} ${activeHub.id === hub.id ? 'is-selected' : ''}">
+          <div class="gacis-marker-node ${isDubai ? 'is-dubai-hq' : ''} ${activeHub?.id === hub.id ? 'is-selected' : ''}">
             <div class="node-halo-pulse"></div>
             <div class="node-center-core"></div>
             <span class="node-city-title">${hub.city}</span>
           </div>
         `,
-        iconSize: [80, 40],
-        iconAnchor: [40, 20]
+        iconSize: [85, 42],
+        iconAnchor: [42, 21]
       });
 
-      const marker = L.marker([hub.geo.lat, hub.geo.lng], { icon: customIcon }).addTo(map);
+      const marker = L.marker([hub.geo.lat, hub.geo.lng], { 
+        icon: customIcon,
+        zIndexOffset: isDubai ? 1000 : 500
+      }).addTo(map);
 
       marker.on('click', () => {
-        onSelectHub(hub);
+        onSelectHub && onSelectHub(hub);
       });
 
-      markersRef.current[hub.id] = marker;
+      hubMarkersRef.current[hub.id] = marker;
+    });
+
+    // 2. Render 19 Maritime Sea Domain Beacons
+    maritimeSeaDomains.forEach((sea) => {
+      const seaIcon = L.divIcon({
+        className: 'gacis-sea-marker-wrapper',
+        html: `
+          <div class="gacis-sea-beacon ${activeSeaDomain?.id === sea.id ? 'is-sea-active' : ''}">
+            <div class="sea-wave-ring"></div>
+            <div class="sea-wave-pulse"></div>
+            <div class="sea-core-dot"></div>
+            <span class="sea-title-badge">⚓ ${sea.name}</span>
+          </div>
+        `,
+        iconSize: [110, 44],
+        iconAnchor: [55, 22]
+      });
+
+      const seaMarker = L.marker([sea.geo.lat, sea.geo.lng], { 
+        icon: seaIcon,
+        zIndexOffset: 300
+      }).addTo(map);
+
+      seaMarker.on('click', () => {
+        onSelectSeaDomain && onSelectSeaDomain(sea);
+      });
+
+      seaMarkersRef.current[sea.id] = seaMarker;
     });
 
     // Cleanup on unmount
@@ -128,39 +167,39 @@ export const RealGeographicMap = ({ activeHub, onSelectHub }) => {
     };
   }, []);
 
-  // Update Route Polylines when activeHub changes
+  // Update Route Polylines when activeHub or activeSeaDomain changes
   useEffect(() => {
     const map = mapInstanceRef.current;
     if (!map) return;
 
-    // Remove existing polylines
+    // Remove existing lines
     polylineLayersRef.current.forEach(layer => map.removeLayer(layer));
     polylineLayersRef.current = [];
 
-    // Draw Great-Arc Curved Corridors
+    // Draw Great-Arc Curved Hub Corridors
     hubRoutes.forEach((route) => {
       const startHub = primaryHubs.find(h => h.id === route.from);
       const endHub = primaryHubs.find(h => h.id === route.to);
 
       if (!startHub || !endHub) return;
 
-      const isConnected = activeHub.id === route.from || activeHub.id === route.to;
+      const isConnected = activeHub?.id === route.from || activeHub?.id === route.to;
       const arcPoints = getCurvedArcPoints(startHub.geo, endHub.geo);
 
-      // Base Glow Track Polyline
+      // Base Glow Polyline
       const glowPolyline = L.polyline(arcPoints, {
-        color: isConnected ? '#c8202f' : 'rgba(212, 168, 67, 0.35)',
-        weight: isConnected ? 4 : 2,
-        opacity: isConnected ? 0.9 : 0.35,
+        color: isConnected ? '#c8202f' : 'rgba(212, 168, 67, 0.32)',
+        weight: isConnected ? 4.5 : 2,
+        opacity: isConnected ? 0.95 : 0.3,
         className: isConnected ? 'geo-corridor-active' : 'geo-corridor-subtle',
         lineCap: 'round'
       }).addTo(map);
 
-      // Animated Flowing Dashed Polyline
+      // Animated Dashed Line
       const flowPolyline = L.polyline(arcPoints, {
         color: isConnected ? '#ffd700' : '#ffffff',
-        weight: isConnected ? 2.5 : 1.5,
-        opacity: isConnected ? 1 : 0.4,
+        weight: isConnected ? 2.5 : 1.2,
+        opacity: isConnected ? 1 : 0.35,
         dashArray: isConnected ? '8, 8' : '4, 8',
         className: isConnected ? 'geo-flow-animated' : 'geo-flow-subtle',
         lineCap: 'round'
@@ -169,12 +208,12 @@ export const RealGeographicMap = ({ activeHub, onSelectHub }) => {
       polylineLayersRef.current.push(glowPolyline, flowPolyline);
     });
 
-    // Update marker active styles
+    // Update Hub Markers Active State
     primaryHubs.forEach((hub) => {
-      const marker = markersRef.current[hub.id];
+      const marker = hubMarkersRef.current[hub.id];
       if (marker) {
         const isDubai = hub.id === 'uae-hq';
-        const isSelected = activeHub.id === hub.id;
+        const isSelected = activeHub?.id === hub.id;
         
         const updatedIcon = L.divIcon({
           className: 'gacis-geo-marker-wrapper',
@@ -185,37 +224,72 @@ export const RealGeographicMap = ({ activeHub, onSelectHub }) => {
               <span class="node-city-title">${hub.city}</span>
             </div>
           `,
-          iconSize: [80, 40],
-          iconAnchor: [40, 20]
+          iconSize: [85, 42],
+          iconAnchor: [42, 21]
         });
 
         marker.setIcon(updatedIcon);
       }
     });
 
-  }, [activeHub]);
+    // Update Sea Markers Active State
+    maritimeSeaDomains.forEach((sea) => {
+      const marker = seaMarkersRef.current[sea.id];
+      if (marker) {
+        const isSeaSelected = activeSeaDomain?.id === sea.id;
+        
+        const updatedSeaIcon = L.divIcon({
+          className: 'gacis-sea-marker-wrapper',
+          html: `
+            <div class="gacis-sea-beacon ${isSeaSelected ? 'is-sea-active' : ''}">
+              <div class="sea-wave-ring"></div>
+              <div class="sea-wave-pulse"></div>
+              <div class="sea-core-dot"></div>
+              <span class="sea-title-badge">⚓ ${sea.name}</span>
+            </div>
+          `,
+          iconSize: [110, 44],
+          iconAnchor: [55, 22]
+        });
 
-  // Smooth flyTo / pan when activeHub changes
+        marker.setIcon(updatedSeaIcon);
+      }
+    });
+
+  }, [activeHub, activeSeaDomain]);
+
+  // Smooth flyTo when activeHub changes
   useEffect(() => {
     const map = mapInstanceRef.current;
-    if (!map || !activeHub) return;
+    if (!map || !activeHub || activeSeaDomain) return;
 
-    map.flyTo([activeHub.geo.lat, activeHub.geo.lng], map.getZoom(), {
+    map.flyTo([activeHub.geo.lat, activeHub.geo.lng], 4.2, {
       duration: 1.1,
       easeLinearity: 0.25
     });
   }, [activeHub]);
 
+  // Smooth flyTo when activeSeaDomain changes
+  useEffect(() => {
+    const map = mapInstanceRef.current;
+    if (!map || !activeSeaDomain) return;
+
+    map.flyTo([activeSeaDomain.geo.lat, activeSeaDomain.geo.lng], activeSeaDomain.zoomLevel || 5.0, {
+      duration: 1.2,
+      easeLinearity: 0.25
+    });
+  }, [activeSeaDomain]);
+
   // Zoom controls
   const handleZoomIn = () => mapInstanceRef.current?.zoomIn();
   const handleZoomOut = () => mapInstanceRef.current?.zoomOut();
   const handleResetView = () => {
-    const networkBounds = [
-      [1.5, 4.0],
-      [52.5, 104.0]
+    const initialBounds = [
+      [-15.0, -100.0],
+      [65.0, 155.0]
     ];
-    mapInstanceRef.current?.fitBounds(networkBounds, {
-      padding: window.innerWidth < 768 ? [20, 20] : [36, 36],
+    mapInstanceRef.current?.fitBounds(initialBounds, {
+      padding: window.innerWidth < 768 ? [15, 15] : [30, 30],
       animate: true,
       duration: 1.0
     });
@@ -229,7 +303,7 @@ export const RealGeographicMap = ({ activeHub, onSelectHub }) => {
       {/* Map Control Room Telemetry Overlay */}
       <div className="geo-map-status-overlay">
         <span className="gso-dot"></span>
-        <span>REAL-WORLD CARTOGRAPHIC TOPOLOGY</span>
+        <span>GLOBAL TOPOLOGY & 19 MARITIME SEA DOMAINS</span>
       </div>
 
       {/* Custom GACIS Floating Map Controls */}
@@ -256,11 +330,27 @@ export const RealGeographicMap = ({ activeHub, onSelectHub }) => {
           type="button" 
           className="gmc-btn reset-btn" 
           onClick={handleResetView} 
-          aria-label="Reset View"
-          title="Reset View"
+          aria-label="Reset Global View"
+          title="Reset Global View"
         >
           <RotateCcw size={14} />
         </button>
+      </div>
+
+      {/* Floating Legend */}
+      <div className="geo-map-legend">
+        <div className="legend-item">
+          <span className="legend-dot red-dot"></span>
+          <span>Regional Hubs</span>
+        </div>
+        <div className="legend-item">
+          <span className="legend-dot cyan-dot"></span>
+          <span>19 Strategic Seas</span>
+        </div>
+        <div className="legend-item">
+          <span className="legend-line gold-line"></span>
+          <span>Active Sea/Rail Linehauls</span>
+        </div>
       </div>
     </div>
   );

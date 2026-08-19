@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Radar, ShieldCheck, Leaf, Globe2 } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Leaf, Globe2 } from 'lucide-react';
+
 import './Footer.css';
 
 export const Footer = () => {
@@ -33,10 +34,11 @@ export const Footer = () => {
               <Link to="/quote" className="btn btn-primary btn-sm">
                 Request Route Quote <ArrowRight size={14} />
               </Link>
-              <Link to="/track" className="btn btn-dark btn-sm">
-                <Radar size={14} /> Track Cargo
+              <Link to="/contact" className="btn btn-dark btn-sm">
+                <Globe2 size={14} /> Global Inquiries
               </Link>
             </div>
+
           </div>
         </div>
 
@@ -78,8 +80,10 @@ export const Footer = () => {
             <Link to="/sustainability">Sustainability & ESG Mandate</Link>
             <Link to="/resources">Logistics Knowledge Hub</Link>
             <Link to="/contact">Commercial Contacts</Link>
-            <Link to="/track">Shipment Milestones</Link>
+            <Link to="/quote">Corridor Rate Estimator</Link>
           </div>
+
+
         </div>
 
         {/* Footer Bottom Bar */}

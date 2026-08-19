@@ -1,7 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, PhoneCall, ShieldCheck, Clock, Layers, Leaf, Globe2, Compass } from 'lucide-react';
+import { ArrowRight, CheckCircle2, PhoneCall, ShieldCheck, Clock, Layers, Leaf, Globe2, Compass, Zap } from 'lucide-react';
 import { services } from '../../data/services';
 import SEO from '../../components/Common/SEO';
+import PageHeader from '../../components/Common/PageHeader';
 import './Services.css';
 
 // Support legacy route aliases
@@ -16,8 +17,10 @@ export const ServiceDetail = () => {
   const { serviceId } = useParams();
   const targetId = aliasMap[serviceId] || serviceId;
   const data = services.find(s => s.id === targetId) || services[0];
+  const article = /^[aeiou]/i.test(data.shortTitle) ? 'an' : 'a';
 
   return (
+
     <div className="service-detail-page">
       <SEO 
         title={`${data.title} — Multimodal Capabilities`}
@@ -26,16 +29,14 @@ export const ServiceDetail = () => {
       />
 
       {/* Hero Header */}
-      <div className="page-header bg-maroon">
-        <div className="container">
-          <div className="sd-header-badges">
-            <span className="sd-mode-tag">{data.mode} FREIGHT INTELLIGENCE</span>
-            <span className="sd-metric-tag"><Clock size={13} /> {data.leadTime}</span>
-          </div>
-          <h1>{data.title}</h1>
-          <p>{data.tagline}</p>
-        </div>
-      </div>
+      <PageHeader
+        backLink={{ to: '/services', label: 'Back to All Freight Services' }}
+        eyebrow={`${data.mode} FREIGHT INTELLIGENCE`}
+        title={data.title}
+        description={data.tagline}
+        statusTag={`LEAD TIME: ${data.leadTime}`}
+      />
+
 
       <section className="section-padding bg-primary">
         <div className="container">
@@ -103,19 +104,39 @@ export const ServiceDetail = () => {
                 </div>
               </div>
 
-              {/* CTA Box */}
-              <div className="service-cta-card bg-dark">
-                <div>
-                  <h3 style={{ color: '#fff' }}>Engineer a {data.shortTitle} Linehaul</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.75)' }}>
-                    Our commercial desk can provide spot container allocation, chartered capacity, and custom tariff optimization.
+              {/* Premium Direct Routing CTA Box */}
+              <div className="service-cta-card">
+                <div className="scc-glow-effect" aria-hidden="true" />
+                <div className="scc-grid-overlay" aria-hidden="true" />
+
+                <div className="scc-content">
+                  <div className="scc-badge-row">
+                    <span className="scc-badge">
+                      <Zap size={13} className="scc-badge-icon" />
+                      <span>CAPACITY & CORRIDOR ALLOCATION</span>
+                    </span>
+                    <span className="scc-status-live">
+                      <span className="scc-dot" /> 24/7 DESK ACTIVE
+                    </span>
+                  </div>
+
+                  <h3 className="scc-title">Engineer {article} {data.shortTitle} Linehaul</h3>
+                  <p className="scc-desc">
+                    Our commercial desk provides spot container allocation, dedicated chartered capacity, bonded transit clearance, and custom tariff optimization.
                   </p>
+
+                  <div className="scc-actions">
+                    <Link to="/quote" className="btn btn-primary scc-btn-main">
+                      Request {data.shortTitle} Quote <ArrowRight size={15} className="arrow-icon" />
+                    </Link>
+                    <Link to="/contact" className="btn btn-outline-white scc-btn-alt">
+                      <PhoneCall size={14} /> Speak with Sector Lead
+                    </Link>
+                  </div>
                 </div>
-                <Link to="/quote" className="btn btn-primary">
-                  Request {data.shortTitle} Quote <ArrowRight size={15} className="arrow-icon" />
-                </Link>
               </div>
             </div>
+
 
             {/* Sidebar Navigation */}
             <aside className="service-sidebar">

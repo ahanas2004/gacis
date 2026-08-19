@@ -1,7 +1,9 @@
 import { BookOpen, FileText, Newspaper, TrendingUp, Leaf, Globe2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../../components/Common/SEO';
+import PageHeader from '../../components/Common/PageHeader';
 import './Resources.css';
+
 
 const guides = [
   { 
@@ -52,15 +54,15 @@ export const Resources = () => {
         canonical="/resources"
       />
 
-      <div className="page-header bg-maroon">
-        <div className="container">
-          <span className="eyebrow eyebrow-light">KNOWLEDGE & INTELLIGENCE</span>
-          <h1>Resources & Insights</h1>
-          <p>
-            Practical freight intelligence, compliance checklists, trade lane analysis, and operational dispatches authored by GACIS supply chain engineers.
-          </p>
-        </div>
-      </div>
+      {/* Hero Header */}
+      <PageHeader
+        eyebrow="KNOWLEDGE & INTELLIGENCE"
+        eyebrowIcon={BookOpen}
+        title="Resources & Insights"
+        description="Practical freight intelligence, compliance checklists, trade lane analysis, and operational dispatches authored by GACIS supply chain engineers."
+        statusTag="INDUSTRY PAPERS & GUIDES"
+      />
+
 
       {/* Shipping Guides Grid */}
       <section className="section-padding bg-primary">

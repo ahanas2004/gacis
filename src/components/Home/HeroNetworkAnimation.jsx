@@ -14,8 +14,8 @@ export const HeroNetworkAnimation = () => {
   }, []);
 
   const stages = [
-    { from: 'Dubai Hub (DXB)', to: 'Bandar Abbas', mode: 'FEEDER SEA', status: 'In Transit', progress: '100%' },
-    { from: 'Bandar Abbas', to: 'Tashkent Railhead', mode: 'BLOCK RAIL', status: 'Active Corridor', progress: '75%' },
+    { from: 'Dubai Hub (DXB)', to: 'Aktau Caspian Hub', mode: 'MULTIMODAL AIR/SEA', status: 'In Transit', progress: '100%' },
+    { from: 'Aktau Caspian Hub', to: 'Tashkent Railhead', mode: 'BLOCK RAIL', status: 'Active Corridor', progress: '75%' },
     { from: 'Tashkent Railhead', to: 'Almaty Terminal', mode: 'ROAD EXPRESS', status: 'Pre-Cleared', progress: '35%' },
     { from: 'Almaty Logistics Park', to: 'Final Consignee', mode: 'DDP RELEASE', status: 'Scheduled', progress: '0%' }
   ];
@@ -81,12 +81,13 @@ export const HeroNetworkAnimation = () => {
             <text x="0" y="24" textAnchor="middle" className="node-label">DUBAI (DXB)</text>
           </g>
 
-          {/* Node 2: Bandar Abbas */}
-          <g transform="translate(180, 80)" className="map-node node-bandar">
+          {/* Node 2: Aktau Caspian */}
+          <g transform="translate(180, 80)" className="map-node node-aktau">
             <circle r="5" fill="#68151d" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" />
             <circle r="2" fill="#ffffff" />
-            <text x="0" y="-14" textAnchor="middle" className="node-label">BANDAR ABBAS</text>
+            <text x="0" y="-14" textAnchor="middle" className="node-label">AKTAU CASPIAN</text>
           </g>
+
 
           {/* Node 3: Tashkent */}
           <g transform="translate(310, 60)" className="map-node node-tashkent">

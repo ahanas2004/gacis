@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Leaf, Award, Compass, TrendingDown, ArrowRight, ShieldCheck, FileCheck, CheckCircle2, Globe2 } from 'lucide-react';
 import SEO from '../../components/Common/SEO';
+import PageHeader from '../../components/Common/PageHeader';
 import './Sustainability.css';
 
 const modalShifts = [
@@ -37,18 +38,14 @@ export const Sustainability = () => {
       />
 
       {/* Hero Header */}
-      <div className="page-header bg-maroon">
-        <div className="container">
-          <div className="sustain-hero-badge">
-            <Leaf size={16} />
-            <span>Scope 3 Carbon Intelligence</span>
-          </div>
-          <h1>Lower-carbon logistics by design.</h1>
-          <p>
-            Decarbonizing global supply chains is not an abstract corporate pledge. We achieve measurable emissions reduction through mathematical corridor optimization and modal substitution.
-          </p>
-        </div>
-      </div>
+      <PageHeader
+        eyebrow="SCOPE 3 CARBON INTELLIGENCE"
+        eyebrowIcon={Leaf}
+        title="Lower-carbon logistics by design."
+        description="Decarbonizing global supply chains is not an abstract corporate pledge. We achieve measurable emissions reduction through mathematical corridor optimization and modal substitution."
+        statusTag="CERTIFIED GLEC & EN 16258 METHODOLOGY"
+      />
+
 
       {/* Carbon Intelligence Metrics Section */}
       <section className="section-padding bg-primary">

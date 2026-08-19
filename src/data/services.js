@@ -49,7 +49,7 @@ export const services = [
       'Contracted allocation on major vessel alliances (2M, Ocean Alliance, THE Alliance)',
       'Dedicated buyer’s consolidation hubs in Jebel Ali and Port Klang',
       'Reefer container monitoring with automated temperature data logging',
-      'Seamless port-to-rail intermodal handover at Bandar Abbas, Poti, and Vladivostok',
+      'Seamless port-to-rail intermodal handover at Aktau, Poti, and Vladivostok',
       'Comprehensive marine cargo insurance and cargo security escorting'
     ],
     capabilities: [
@@ -124,7 +124,7 @@ export const services = [
       { name: 'Heavy Industrial Rail', detail: 'Hopper and flat-car leasing for minerals, steel, and machinery.' },
       { name: 'Temperature-Safe Rail', detail: 'Diesel-generator reefer containers designed for extreme Siberian/Central Asian climates.' }
     ],
-    corridors: ['Yiwu ⇄ Almaty', 'Tashkent ⇄ Baku ⇄ Istanbul', 'Chongqing ⇄ Duisburg', 'Bandar Abbas ⇄ Tashkent'],
+    corridors: ['Yiwu ⇄ Almaty', 'Tashkent ⇄ Baku ⇄ Istanbul', 'Chongqing ⇄ Duisburg', 'Aktau ⇄ Tashkent'],
     workflow: [
       { step: '01', title: 'Terminal Consolidation', desc: 'Container marshalling at designated inland dry port railheads.' },
       { step: '02', title: 'Block Train Assembly', desc: 'Wagon manifest verification and electronic transit customs filing.' },

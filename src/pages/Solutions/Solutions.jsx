@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { industries } from '../../data/industries';
 import SEO from '../../components/Common/SEO';
+import PageHeader from '../../components/Common/PageHeader';
 import './Solutions.css';
 
 const iconMap = { Car, HeartPulse, Zap, Cpu, ShoppingBag, Factory };
@@ -19,15 +20,13 @@ export const Solutions = () => {
       />
 
       {/* Hero Header */}
-      <div className="page-header bg-maroon">
-        <div className="container">
-          <span className="eyebrow eyebrow-light">VERTICAL INDUSTRY INTELLIGENCE</span>
-          <h1>Industry Solutions</h1>
-          <p>
-            Customized logistics architecture engineered to solve the sector-specific compliance, temperature, security, and velocity constraints of global enterprises.
-          </p>
-        </div>
-      </div>
+      <PageHeader 
+        eyebrow="VERTICAL INDUSTRY INTELLIGENCE"
+        title="Industry Solutions"
+        description="Customized logistics architecture engineered to solve the sector-specific compliance, temperature, security, and velocity constraints of global enterprises."
+        statusTag="6 DEDICATED SECTOR DESKS"
+      />
+
 
       {/* 6 Industry Vertical Cards */}
       <section className="section-padding bg-primary">

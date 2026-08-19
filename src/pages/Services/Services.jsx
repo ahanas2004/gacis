@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Plane, Ship, Truck, Train, ShieldCheck, Boxes, ArrowRight, Check } from 'lucide-react';
 import { services } from '../../data/services';
 import SEO from '../../components/Common/SEO';
+import PageHeader from '../../components/Common/PageHeader';
 import './Services.css';
 
 const iconMap = { Plane, Ship, Truck, Train, ShieldCheck, Boxes };
@@ -15,15 +16,13 @@ export const Services = () => {
         canonical="/services"
       />
 
-      <div className="page-header bg-maroon">
-        <div className="container">
-          <span className="eyebrow eyebrow-light">CORE FREIGHT CAPABILITIES</span>
-          <h1>Multimodal Logistics Intelligence</h1>
-          <p>
-            Precision linehaul architecture bridging the Gulf, Central Asia, South Asia, and Europe across air, deepsea, overland, and rail corridors.
-          </p>
-        </div>
-      </div>
+      <PageHeader
+        eyebrow="CORE FREIGHT CAPABILITIES"
+        title="Multimodal Logistics Intelligence"
+        description="Precision linehaul architecture bridging the Gulf, Central Asia, South Asia, and Europe across air, deepsea, overland, and rail corridors."
+        statusTag="5 MULTIMODAL MODES ACTIVE"
+      />
+
 
       <section className="section-padding bg-primary">
         <div className="container">

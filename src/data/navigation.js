@@ -82,18 +82,19 @@ export const navigationGroups = [
 ];
 
 export const utilityActions = {
-  track: {
-    label: 'TRACK SHIPMENT',
-    path: '/track',
-    icon: 'Radar'
-  },
   quote: {
     label: 'REQUEST A QUOTE',
     path: '/quote',
     icon: 'ArrowRight'
+  },
+  contact: {
+    label: 'CONTACT DESK',
+    path: '/contact',
+    icon: 'PhoneCall'
   },
   operationsStatus: {
     location: 'DUBAI OPERATIONS',
     statusText: 'LIVE · 24/7 DESK'
   }
 };
+

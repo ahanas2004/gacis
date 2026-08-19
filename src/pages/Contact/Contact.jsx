@@ -1,7 +1,8 @@
-import { Mail, MapPin, Phone, Building2, Send, CheckCircle, Clock, ShieldCheck } from 'lucide-react';
+import { Mail, MapPin, Phone, Building2, Send, CheckCircle, Clock, ShieldCheck, Headphones } from 'lucide-react';
 import { primaryHubs } from '../../data/locations';
 import useFormSubmit from '../../hooks/useFormSubmit';
 import SEO from '../../components/Common/SEO';
+import PageHeader from '../../components/Common/PageHeader';
 import './Contact.css';
 
 export const Contact = () => {
@@ -44,15 +45,14 @@ export const Contact = () => {
       />
 
       {/* Hero Header */}
-      <div className="page-header bg-maroon">
-        <div className="container">
-          <span className="eyebrow eyebrow-light">GLOBAL COMMERCIAL ACCESS</span>
-          <h1>Contact Our Logistics Desk</h1>
-          <p>
-            Our multimodal corridor specialists and licensed customs brokers are on standby across global time zones to assist with freight inquiries, rate requests, and emergency charter dispatches.
-          </p>
-        </div>
-      </div>
+      <PageHeader
+        eyebrow="GLOBAL COMMERCIAL ACCESS"
+        eyebrowIcon={Headphones}
+        title="Contact Our Logistics Desk"
+        description="Our multimodal corridor specialists and licensed customs brokers are on standby across global time zones to assist with freight inquiries, rate requests, and emergency charter dispatches."
+        statusTag="DUBAI DESK LIVE · 24/7"
+      />
+
 
       <section className="section-padding bg-primary">
         <div className="container">

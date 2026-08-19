@@ -6,7 +6,7 @@
 .real-geographic-map-root {
   position: relative;
   width: 100%;
-  height: 480px;
+  height: 520px;
   border-radius: var(--radius-md);
   overflow: hidden;
   background-color: #0b0e14;
@@ -43,8 +43,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 80px;
-  height: 40px;
+  width: 85px;
+  height: 42px;
   cursor: pointer;
   transform: translate(-50%, -50%);
 }
@@ -80,17 +80,17 @@
 .node-city-title {
   position: absolute;
   top: -18px;
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: #e2e8f0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.95), 0 0 2px #000;
   white-space: nowrap;
   pointer-events: none;
-  background: rgba(10, 12, 16, 0.7);
-  padding: 1px 5px;
-  border-radius: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(10, 12, 16, 0.78);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   transition: all 0.2s ease;
 }
 
@@ -115,8 +115,9 @@
 
 .gacis-marker-node.is-dubai-hq .node-city-title {
   color: #ffd700;
-  border-color: rgba(212, 168, 67, 0.4);
+  border-color: rgba(212, 168, 67, 0.5);
   font-weight: 800;
+  background: rgba(45, 8, 12, 0.9);
 }
 
 /* Selected Hub Highlight */
@@ -133,7 +134,7 @@
 
 .gacis-marker-node.is-selected .node-city-title {
   color: #ffffff;
-  background: rgba(200, 32, 47, 0.85);
+  background: rgba(200, 32, 47, 0.92);
   border-color: #c8202f;
   font-weight: 800;
 }
@@ -148,6 +149,126 @@
   color: #ffffff;
   background: rgba(10, 12, 16, 0.95);
   border-color: #c8202f;
+}
+
+/* ─── 19 MARITIME SEA DOMAIN BEACONS ─── */
+.gacis-sea-marker-wrapper {
+  background: transparent !important;
+  border: none !important;
+}
+
+.gacis-sea-beacon {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 44px;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.sea-core-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #38bdf8;
+  border: 1.5px solid #ffffff;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.9);
+  transition: all 0.2s ease;
+  z-index: 3;
+}
+
+.sea-wave-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(56, 189, 248, 0.7);
+  background: rgba(56, 189, 248, 0.15);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.sea-wave-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 32px;
+  margin-top: -16px;
+  margin-left: -16px;
+  border-radius: 50%;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  animation: seaPulseWaves 2.8s infinite ease-out;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sea-title-badge {
+  position: absolute;
+  top: 14px;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #7dd3fc;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
+  white-space: nowrap;
+  pointer-events: none;
+  background: rgba(7, 24, 38, 0.88);
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+}
+
+/* Sea Active Highlight */
+.gacis-sea-beacon.is-sea-active .sea-core-dot {
+  background: #38bdf8;
+  border-color: #ffffff;
+  transform: scale(1.4);
+  box-shadow: 0 0 16px #38bdf8;
+}
+
+.gacis-sea-beacon.is-sea-active .sea-title-badge {
+  color: #ffffff;
+  background: rgba(14, 116, 144, 0.95);
+  border-color: #38bdf8;
+  font-weight: 800;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+}
+
+.gacis-sea-beacon.is-sea-active .sea-wave-pulse {
+  animation: seaPulseWaves 1.6s infinite ease-out;
+  border-color: #38bdf8;
+}
+
+.gacis-sea-beacon:hover .sea-core-dot {
+  transform: scale(1.3);
+  border-color: #ffffff;
+}
+
+.gacis-sea-beacon:hover .sea-title-badge {
+  color: #ffffff;
+  background: rgba(14, 116, 144, 0.9);
+  border-color: #38bdf8;
+}
+
+@keyframes seaPulseWaves {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
 }
 
 @keyframes geoPulseRadar {
@@ -179,19 +300,19 @@
 /* ─── Map Telemetry Overlay ─── */
 .geo-map-status-overlay {
   position: absolute;
-  top: 14px;
-  left: 14px;
+  top: 12px;
+  left: 12px;
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
   font-size: 0.625rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(10, 12, 16, 0.82);
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(10, 12, 16, 0.88);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 0.35rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 0.3rem 0.7rem;
   border-radius: var(--radius-pill);
   z-index: 10;
   pointer-events: none;
@@ -201,10 +322,60 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--color-success);
-  box-shadow: 0 0 6px var(--color-success);
+  background: #38bdf8;
+  box-shadow: 0 0 6px #38bdf8;
   animation: radarBlink 1.6s infinite ease-in-out;
 }
+
+/* ─── Floating Legend (Bottom Left) ─── */
+.geo-map-legend {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(10, 12, 16, 0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.legend-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.legend-dot.red-dot {
+  background: #c8202f;
+  box-shadow: 0 0 4px #c8202f;
+}
+
+.legend-dot.cyan-dot {
+  background: #38bdf8;
+  box-shadow: 0 0 4px #38bdf8;
+}
+
+.legend-line.gold-line {
+  width: 12px;
+  height: 2px;
+  background: #d4a843;
+  border-radius: 1px;
+}
+
 
 /* ─── Custom Floating Map Controls ─── */
 .geo-map-controls {
@@ -218,8 +389,8 @@
 }
 
 .gmc-btn {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: var(--radius-sm);
   background: rgba(10, 12, 16, 0.85);
   backdrop-filter: blur(8px);
@@ -242,12 +413,15 @@
 /* Responsive */
 @media (max-width: 1024px) {
   .real-geographic-map-root {
-    height: 380px;
+    height: 420px;
+  }
+  .geo-map-legend {
+    display: none;
   }
 }
 
 @media (max-width: 768px) {
   .real-geographic-map-root {
-    height: 340px;
+    height: 360px;
   }
 }

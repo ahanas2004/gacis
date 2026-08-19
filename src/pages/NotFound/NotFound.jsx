@@ -21,7 +21,7 @@ export const NotFound = () => {
           <span className="nf-code-tag">ERROR 404 — UNRESOLVED WAYPOINT</span>
           <h1>Route Not Found in Active Corridors</h1>
           <p>
-            The destination, corridor, or tracking resource you are attempting to locate is not mapped in the current GACIS logistics network.
+            The destination, corridor, or freight resource you are attempting to locate is not mapped in the current GACIS logistics network.
           </p>
 
           <div className="nf-actions">
@@ -31,10 +31,11 @@ export const NotFound = () => {
             <Link to="/global-network" className="btn btn-outline-white">
               <Globe2 size={16} /> Explore Active Gateways
             </Link>
-            <Link to="/track" className="btn btn-dark">
-              Track Telemetry
+            <Link to="/quote" className="btn btn-dark">
+              <ArrowRight size={16} /> Request Rate Quote
             </Link>
           </div>
+
 
         </div>
       </div>

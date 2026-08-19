@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Globe, Shield, TrendingUp, Users, Award, Layers } from 'lucide-react';
 import SEO from '../../components/Common/SEO';
+import PageHeader from '../../components/Common/PageHeader';
 import SocialProof from '../../components/Home/SocialProof';
 import './About.css';
 
@@ -13,13 +14,13 @@ export const About = () => {
         canonical="/about"
       />
 
-      <div className="page-header bg-maroon">
-        <div className="container">
-          <span className="eyebrow eyebrow-light">CORPORATE HERITAGE</span>
-          <h1>About GACIS</h1>
-          <p>Connecting global commerce through multimodal engineering, deep regional trade lane mastery, and operational precision.</p>
-        </div>
-      </div>
+      <PageHeader 
+        eyebrow="CORPORATE HERITAGE & INFRASTRUCTURE"
+        title="About GACIS"
+        description="Connecting global commerce through multimodal engineering, deep regional trade lane mastery, and operational precision."
+        statusTag="ESTABLISHED CORRIDOR OPERATOR"
+      />
+
 
       {/* Mission & Vision */}
       <section className="section-padding bg-primary">

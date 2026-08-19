@@ -351,49 +351,8 @@
   gap: 0.5rem;
 }
 
-/* Track Shipment Button */
-.sidebar-track-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.09);
-  border-radius: var(--radius-sm);
-  padding: 0.5rem 0.75rem;
-  text-decoration: none;
-  font-size: 0.71875rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: var(--text-primary);
-  min-height: 38px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-  transition: all 0.16s ease;
-}
-
-.sidebar-track-button:hover {
-  border-color: var(--color-brand-red);
-  color: var(--color-brand-red);
-  background: #ffffff;
-}
-
-.stb-icon-wrap {
-  color: var(--color-brand-red);
-  display: flex;
-  align-items: center;
-}
-
-.stb-hover-arrow {
-  margin-left: auto;
-  color: var(--sidebar-text-muted);
-  transition: transform 0.16s ease, color 0.16s ease;
-}
-
-.sidebar-track-button:hover .stb-hover-arrow {
-  color: var(--color-brand-red);
-  transform: translateX(3px);
-}
-
 /* Request Quote Primary CTA */
+
 .sidebar-quote-button {
   display: flex;
   align-items: center;

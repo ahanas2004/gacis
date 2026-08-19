@@ -5,7 +5,9 @@ import {
   AlertCircle, ArrowRight, ShieldCheck, Plane, Ship, Train, Truck, Info, RefreshCw
 } from 'lucide-react';
 import SEO from '../../components/Common/SEO';
+import PageHeader from '../../components/Common/PageHeader';
 import './Track.css';
+
 
 const demoShipments = {
   'GAC-DXB-LHR': {
@@ -111,45 +113,44 @@ export const Track = () => {
       />
 
       {/* Hero Search Section */}
-      <div className="page-header bg-maroon">
-        <div className="container">
-          <span className="eyebrow eyebrow-light">TELEMETRY TRACKING SYSTEM</span>
-          <h1>Track Your Shipment</h1>
-          <p>
-            Enter your GACIS Booking Reference, Air Waybill (AWB), or Ocean Container ID for real-time status telemetry and milestone timestamps.
-          </p>
-
-          <form className="track-search-bar" onSubmit={handleTrackSubmit}>
-            <div className="tsb-input-wrap">
-              <Search size={20} className="tsb-icon" />
-              <input
-                type="text"
-                placeholder="Enter Reference Number (e.g. GAC-DXB-LHR)"
-                value={trackingInput}
-                onChange={e => setTrackingInput(e.target.value)}
-                required
-              />
-            </div>
-            <button type="submit" className="btn btn-primary">
-              Track Telemetry
-            </button>
-          </form>
-
-          {/* Quick Demo Reference Buttons */}
-          <div className="track-demo-pills">
-            <span className="tdp-label">Try Demo References:</span>
-            <button type="button" className="tdp-btn" onClick={() => setQuickDemo('GAC-DXB-LHR')}>
-              Air: GAC-DXB-LHR
-            </button>
-            <button type="button" className="tdp-btn" onClick={() => setQuickDemo('GAC-KLG-TAS')}>
-              Rail: GAC-KLG-TAS
-            </button>
-            <button type="button" className="tdp-btn" onClick={() => setQuickDemo('GAC-CMB-ALM')}>
-              Pharma: GAC-CMB-ALM
-            </button>
+      <PageHeader
+        eyebrow="TELEMETRY TRACKING SYSTEM"
+        eyebrowIcon={RefreshCw}
+        title="Track Your Shipment"
+        description="Enter your GACIS Booking Reference, Air Waybill (AWB), or Ocean Container ID for real-time status telemetry and milestone timestamps."
+        statusTag="LIVE SATELLITE & EDI FEED"
+      >
+        <form className="track-search-bar" onSubmit={handleTrackSubmit}>
+          <div className="tsb-input-wrap">
+            <Search size={20} className="tsb-icon" />
+            <input
+              type="text"
+              placeholder="Enter Reference Number (e.g. GAC-DXB-LHR)"
+              value={trackingInput}
+              onChange={e => setTrackingInput(e.target.value)}
+              required
+            />
           </div>
+          <button type="submit" className="btn btn-primary">
+            Track Telemetry
+          </button>
+        </form>
+
+        {/* Quick Demo Reference Buttons */}
+        <div className="track-demo-pills">
+          <span className="tdp-label">Try Demo References:</span>
+          <button type="button" className="tdp-btn" onClick={() => setQuickDemo('GAC-DXB-LHR')}>
+            Air: GAC-DXB-LHR
+          </button>
+          <button type="button" className="tdp-btn" onClick={() => setQuickDemo('GAC-KLG-TAS')}>
+            Rail: GAC-KLG-TAS
+          </button>
+          <button type="button" className="tdp-btn" onClick={() => setQuickDemo('GAC-CMB-ALM')}>
+            Pharma: GAC-CMB-ALM
+          </button>
         </div>
-      </div>
+      </PageHeader>
+
 
       {/* Demo Notification Notice */}
       <div className="demo-notice-bar">

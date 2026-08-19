@@ -16,16 +16,16 @@ export const presetRoutes = [
     avoidedCO2: 0.85,
     handlingPoints: '04',
     primaryMode: 'Multimodal (Sea-Rail-Road)',
-    strategy: 'Multimodal rail integration via Bandar Abbas & Tashkent reduces transit volatility while lowering estimated emissions by 31.8%. Recommended for high-value machinery, industrial supplies, and automotive components.',
+    strategy: 'Multimodal rail integration via Aktau Caspian Gateway & Tashkent reduces transit volatility while lowering estimated emissions by 31.8%. Recommended for high-value machinery, industrial supplies, and automotive components.',
     sequence: [
       { loc: 'Dubai (Jebel Ali Port)', mode: 'ORIGIN', details: 'Consolidation & Export Customs Clearance', delayRisk: 'Low' },
-      { loc: 'Bandar Abbas Terminal', mode: 'SEA', details: 'Fast Feeder Vessel Transit (1.8 Days)', delayRisk: 'Low' },
-      { loc: 'Tashkent Intermodal Railhead', mode: 'RAIL', details: 'Trans-Caspian Block Train Corridor (4.2 Days)', delayRisk: 'Medium' },
+      { loc: 'Aktau Caspian Port', mode: 'SEA/RAIL', details: 'Caspian Feeder & Rail Marshalling (2.2 Days)', delayRisk: 'Low' },
+      { loc: 'Tashkent Intermodal Railhead', mode: 'RAIL', details: 'Trans-Caspian Block Train Corridor (3.8 Days)', delayRisk: 'Medium' },
       { loc: 'Almaty Logistics Park', mode: 'ROAD', details: 'Final Mile Delivery & DDP Settlement (2.4 Days)', delayRisk: 'Low' }
     ],
     nodes: [
       { name: 'Dubai', x: 575, y: 245, code: 'DXB' },
-      { name: 'Bandar Abbas', x: 605, y: 228, code: 'BND' },
+      { name: 'Aktau', x: 615, y: 205, code: 'SCO' },
       { name: 'Tashkent', x: 648, y: 190, code: 'TAS' },
       { name: 'Almaty', x: 675, y: 172, code: 'ALA' }
     ],
@@ -193,16 +193,16 @@ export const presetRoutes = [
     avoidedCO2: 1.22,
     handlingPoints: '04',
     primaryMode: 'Intermodal Feeder & Rail',
-    strategy: 'Direct ocean feeder connection linking Sri Lankan manufacturing hubs with the Iranian and Uzbek rail network, bypassing air congestion.',
+    strategy: 'Direct ocean linehaul and multimodal connection linking Sri Lankan manufacturing hubs with the Caspian and Uzbek rail network via Dubai and Aktau, bypassing air congestion.',
     sequence: [
       { loc: 'Colombo Port Hub', mode: 'ORIGIN', details: 'FCL Sealing & Customs Documentation', delayRisk: 'Low' },
-      { loc: 'Bandar Abbas Port', mode: 'SEA', details: 'Trans-Arabian Sea Feeder (4.5 Days)', delayRisk: 'Low' },
-      { loc: 'Sarakhs Border Crossing', mode: 'RAIL', details: 'Bogie Changeover & Railway Manifesting (3.2 Days)', delayRisk: 'Medium' },
+      { loc: 'Dubai Jebel Ali Gateway', mode: 'SEA', details: 'Trans-Arabian Sea Feeder (4.2 Days)', delayRisk: 'Low' },
+      { loc: 'Aktau Caspian Port', mode: 'RAIL', details: 'Caspian Block Train & Railway Manifesting (3.5 Days)', delayRisk: 'Medium' },
       { loc: 'Tashkent Central Dry Port', mode: 'ROAD', details: 'Bonded Inland Yard Release (3.5 Days)', delayRisk: 'Low' }
     ],
     nodes: [
       { name: 'Colombo', x: 695, y: 320, code: 'CMB' },
-      { name: 'Bandar Abbas', x: 605, y: 228, code: 'BND' },
+      { name: 'Dubai', x: 575, y: 245, code: 'DXB' },
       { name: 'Tashkent', x: 648, y: 190, code: 'TAS' }
     ],
     alternatives: [

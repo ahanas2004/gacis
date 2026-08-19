@@ -1,32 +1,12 @@
 import { Link } from 'react-router-dom';
-import { Radar, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+
 import { utilityActions } from '../../data/navigation';
 
 export const SidebarActions = ({ isCollapsed, onNavigate }) => {
   return (
     <div className={`sidebar-actions-tray ${isCollapsed ? 'is-collapsed' : ''}`}>
-      
-      {/* Utility Action: Track Shipment */}
-      <Link
-        to={utilityActions.track.path}
-        className="sidebar-track-button"
-        onClick={onNavigate}
-        title={isCollapsed ? 'Track Shipment' : undefined}
-      >
-        <div className="stb-icon-wrap">
-          <Radar size={16} strokeWidth={1.75} className="track-radar-icon" />
-        </div>
-        {!isCollapsed ? (
-          <>
-            <span className="stb-text">{utilityActions.track.label}</span>
-            <ArrowRight size={13} className="stb-hover-arrow" />
-          </>
-        ) : (
-          <div className="collapsed-nav-tooltip" role="tooltip">
-            Track Shipment
-          </div>
-        )}
-      </Link>
+
 
       {/* Primary Conversion CTA: Request Quote */}
       <Link
