@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Plane, Ship, Truck, Train, ShieldCheck, Boxes, ArrowRight, Check } from 'lucide-react';
 import { services } from '../../data/services';
 import SEO from '../../components/Common/SEO';
+import FadeImage from '../../components/Common/FadeImage';
 import './Services.css';
 
 const iconMap = { Plane, Ship, Truck, Train, ShieldCheck, Boxes };
@@ -16,7 +17,7 @@ export const Services = () => {
       />
 
       <div className="page-header bg-maroon">
-        <div className="container">
+        <div className="container fade-up">
           <span className="eyebrow eyebrow-light">CORE FREIGHT CAPABILITIES</span>
           <h1>Multimodal Logistics Intelligence</h1>
           <p>
@@ -31,15 +32,13 @@ export const Services = () => {
             {services.map((service, i) => {
               const Icon = iconMap[service.icon] || Boxes;
               return (
-                <div key={service.id} className="service-full-card">
+                <div key={service.id} className={`service-full-card fade-up delay-${(i % 3) * 100 + 100}`}>
                   {service.image && (
                     <div className="sfc-image-wrapper">
-                      <img 
+                      <FadeImage 
                         src={service.image} 
                         alt={service.title} 
-                        className="sfc-img" 
-                        loading="lazy"
-                        decoding="async"
+                        className="sfc-img"
                       />
                       <span className="sfc-mode-pill">{service.mode}</span>
                     </div>
@@ -82,7 +81,7 @@ export const Services = () => {
 
       <section className="services-cta-strip bg-dark section-padding-sm">
         <div className="container">
-          <div className="services-cta-inner">
+          <div className="services-cta-inner fade-up">
             <div>
               <h3 style={{ color: 'white' }}>Need a customized multimodal supply chain solution?</h3>
               <p style={{ color: 'rgba(255,255,255,0.75)', margin: 0 }}>

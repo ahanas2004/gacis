@@ -38,7 +38,7 @@ export const Sustainability = () => {
 
       {/* Hero Header */}
       <div className="page-header bg-maroon">
-        <div className="container">
+        <div className="container fade-up">
           <div className="sustain-hero-badge">
             <Leaf size={16} />
             <span>Scope 3 Carbon Intelligence</span>

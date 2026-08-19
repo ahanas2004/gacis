@@ -11,7 +11,7 @@ export const ServiceStrip = () => {
       <div className="container">
         
         {/* Section Header */}
-        <div className="section-heading">
+        <div className="section-heading fade-up">
           <span className="eyebrow">CORE FREIGHT CAPABILITIES</span>
           <h2>Multimodal Logistics Architecture</h2>
           <p>
@@ -21,10 +21,10 @@ export const ServiceStrip = () => {
 
         {/* 6-Card Responsive Grid */}
         <div className="service-cards-grid">
-          {services.map((svc) => {
+          {services.map((svc, idx) => {
             const Icon = iconMap[svc.icon] || Boxes;
             return (
-              <div className="service-feature-card" key={svc.id}>
+              <div className={`service-feature-card fade-up delay-${Math.min((idx % 3) * 100 + 100, 300)}`} key={svc.id}>
                 <div className="sfc-top-row">
                   <div className="sfc-icon-wrapper">
                     <Icon size={22} />
@@ -56,7 +56,7 @@ export const ServiceStrip = () => {
         </div>
 
         {/* Bottom Banner */}
-        <div className="service-strip-cta-banner">
+        <div className="service-strip-cta-banner fade-up">
           <div className="ssc-text">
             <h4>Need a specialized combination of Air, Sea, and Rail?</h4>
             <p>Our trade lane engineers design bespoke hybrid corridors tailored to your inventory holding velocity.</p>

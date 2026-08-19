@@ -20,17 +20,17 @@ export const SocialProof = () => {
     <section className="social-proof-section section-padding-sm bg-primary">
       <div className="container">
         
-        <div className="sp-header text-center">
+        <div className="sp-header text-center fade-up">
           <span className="eyebrow">ENTERPRISE CREDENTIALS & STANDARDS</span>
           <h3>Engineered to Global Compliance Benchmarks</h3>
         </div>
 
         {/* Certifications Grid */}
         <div className="sp-cert-grid">
-          {certifications.map((cert) => {
+          {certifications.map((cert, idx) => {
             const Icon = cert.icon;
             return (
-              <div className="sp-cert-card" key={cert.name}>
+              <div className={`sp-cert-card fade-up delay-${(idx % 4) * 100 + 100}`} key={cert.name}>
                 <div className="sp-cert-icon">
                   <Icon size={22} />
                 </div>
@@ -44,7 +44,7 @@ export const SocialProof = () => {
         </div>
 
         {/* Carrier Alliances & Global Infrastructure Bar */}
-        <div className="sp-alliances-bar">
+        <div className="sp-alliances-bar fade-up">
           <span className="sp-alliances-title">CONTRACTED INFRASTRUCTURE CAPACITY:</span>
           <div className="sp-alliances-items">
             {alliances.map((al) => (

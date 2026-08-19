@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, PhoneCall, ShieldCheck, Clock, Layers, Leaf, Globe2, Compass } from 'lucide-react';
 import { services } from '../../data/services';
 import SEO from '../../components/Common/SEO';
+import FadeImage from '../../components/Common/FadeImage';
 import './Services.css';
 
 // Support legacy route aliases
@@ -27,7 +28,7 @@ export const ServiceDetail = () => {
 
       {/* Hero Header */}
       <div className="page-header bg-maroon">
-        <div className="container">
+        <div className="container fade-up">
           <div className="sd-header-badges">
             <span className="sd-mode-tag">{data.mode} FREIGHT INTELLIGENCE</span>
             <span className="sd-metric-tag"><Clock size={13} /> {data.leadTime}</span>
@@ -45,12 +46,10 @@ export const ServiceDetail = () => {
             <div className="service-main-content">
               {data.image && (
                 <div className="service-detail-image-wrapper">
-                  <img 
+                  <FadeImage 
                     src={data.image} 
                     alt={data.title} 
-                    className="service-detail-image" 
-                    loading="lazy"
-                    decoding="async"
+                    className="service-detail-image"
                   />
                   <div className="sdi-overlay-badge">
                     <Globe2 size={15} /> <span>Coverage: {data.coverage}</span>

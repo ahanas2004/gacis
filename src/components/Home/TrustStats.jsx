@@ -92,7 +92,7 @@ export const TrustStats = () => {
             const displayVal = hasAnimated ? counts[i] : (stat.decimals ? '0.0' : '0');
 
             return (
-              <div className="stat-card" key={stat.label}>
+              <div className={`stat-card fade-up delay-${(i % 4) * 100 + 100}`} key={stat.label}>
                 <div className="stat-icon-wrap">
                   <Icon size={20} />
                 </div>

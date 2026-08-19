@@ -53,7 +53,7 @@ export const Resources = () => {
       />
 
       <div className="page-header bg-maroon">
-        <div className="container">
+        <div className="container fade-up">
           <span className="eyebrow eyebrow-light">KNOWLEDGE & INTELLIGENCE</span>
           <h1>Resources & Insights</h1>
           <p>

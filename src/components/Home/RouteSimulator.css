@@ -166,6 +166,24 @@
   display: grid;
   grid-template-columns: 380px 1fr;
   min-height: 520px;
+  animation: rsWorkspaceFadeIn 0.4s var(--ease-spring);
+}
+
+@keyframes rsWorkspaceFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rs-workspace-grid {
+    animation: none;
+  }
 }
 
 /* Specs Column */
