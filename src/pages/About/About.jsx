@@ -14,7 +14,7 @@ export const About = () => {
       />
 
       <div className="page-header bg-maroon">
-        <div className="container">
+        <div className="container fade-up">
           <span className="eyebrow eyebrow-light">CORPORATE HERITAGE</span>
           <h1>About GACIS</h1>
           <p>Connecting global commerce through multimodal engineering, deep regional trade lane mastery, and operational precision.</p>

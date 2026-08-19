@@ -1,18 +1,30 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import BackToTop from '../Common/BackToTop';
+import { useGlobalReveal } from '../../hooks/useGlobalReveal';
 import './Layout.css';
 
 const Layout = () => {
+  const { pathname } = useLocation();
+
+  // Activates every .reveal / .fade-up element in the current page —
+  // one shared observer for the whole app, re-scanned per route.
+  useGlobalReveal();
+
   return (
     <div className="layout-root">
       <Header />
       <div className="main-viewport">
         <main id="main-content" className="main-content">
-          <Outlet />
+          {/* Keyed on pathname so the fade-in replays on every navigation */}
+          <div className="route-fade-wrap" key={pathname}>
+            <Outlet />
+          </div>
         </main>
         <Footer />
       </div>
+      <BackToTop />
     </div>
   );
 };

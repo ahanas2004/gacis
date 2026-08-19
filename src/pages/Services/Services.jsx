@@ -16,7 +16,7 @@ export const Services = () => {
       />
 
       <div className="page-header bg-maroon">
-        <div className="container">
+        <div className="container fade-up">
           <span className="eyebrow eyebrow-light">CORE FREIGHT CAPABILITIES</span>
           <h1>Multimodal Logistics Intelligence</h1>
           <p>
@@ -31,7 +31,7 @@ export const Services = () => {
             {services.map((service, i) => {
               const Icon = iconMap[service.icon] || Boxes;
               return (
-                <div key={service.id} className="service-full-card">
+                <div key={service.id} className={`service-full-card fade-up delay-${(i % 3) * 100 + 100}`}>
                   {service.image && (
                     <div className="sfc-image-wrapper">
                       <img 
@@ -82,7 +82,7 @@ export const Services = () => {
 
       <section className="services-cta-strip bg-dark section-padding-sm">
         <div className="container">
-          <div className="services-cta-inner">
+          <div className="services-cta-inner fade-up">
             <div>
               <h3 style={{ color: 'white' }}>Need a customized multimodal supply chain solution?</h3>
               <p style={{ color: 'rgba(255,255,255,0.75)', margin: 0 }}>

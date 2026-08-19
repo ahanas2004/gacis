@@ -13,7 +13,7 @@ export const Quote = () => {
       />
 
       <div className="page-header bg-maroon">
-        <div className="container">
+        <div className="container fade-up">
           <span className="eyebrow eyebrow-light">ENTERPRISE QUOTE CALCULATOR</span>
           <h1>Request a Corridor Quote</h1>
           <p>

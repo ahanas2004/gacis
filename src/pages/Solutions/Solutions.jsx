@@ -20,7 +20,7 @@ export const Solutions = () => {
 
       {/* Hero Header */}
       <div className="page-header bg-maroon">
-        <div className="container">
+        <div className="container fade-up">
           <span className="eyebrow eyebrow-light">VERTICAL INDUSTRY INTELLIGENCE</span>
           <h1>Industry Solutions</h1>
           <p>

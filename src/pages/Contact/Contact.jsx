@@ -45,7 +45,7 @@ export const Contact = () => {
 
       {/* Hero Header */}
       <div className="page-header bg-maroon">
-        <div className="container">
+        <div className="container fade-up">
           <span className="eyebrow eyebrow-light">GLOBAL COMMERCIAL ACCESS</span>
           <h1>Contact Our Logistics Desk</h1>
           <p>

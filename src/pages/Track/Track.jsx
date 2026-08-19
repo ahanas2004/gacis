@@ -112,7 +112,7 @@ export const Track = () => {
 
       {/* Hero Search Section */}
       <div className="page-header bg-maroon">
-        <div className="container">
+        <div className="container fade-up">
           <span className="eyebrow eyebrow-light">TELEMETRY TRACKING SYSTEM</span>
           <h1>Track Your Shipment</h1>
           <p>
