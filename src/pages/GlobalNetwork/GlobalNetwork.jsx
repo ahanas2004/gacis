@@ -109,7 +109,7 @@ export const GlobalNetwork = () => {
             </div>
 
             {/* Right: Selected Gateway Dossier Panel */}
-            <div className="gateway-dossier-card">
+            <div className="gateway-dossier-card fade-up" key={activeHub.id}>
               <div className="gdc-header">
                 <div className="gdc-flag-wrap">
                   <span className="gdc-flag">{activeHub.flag}</span>

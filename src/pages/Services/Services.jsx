@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Plane, Ship, Truck, Train, ShieldCheck, Boxes, ArrowRight, Check } from 'lucide-react';
 import { services } from '../../data/services';
 import SEO from '../../components/Common/SEO';
+import FadeImage from '../../components/Common/FadeImage';
 import './Services.css';
 
 const iconMap = { Plane, Ship, Truck, Train, ShieldCheck, Boxes };
@@ -34,12 +35,10 @@ export const Services = () => {
                 <div key={service.id} className={`service-full-card fade-up delay-${(i % 3) * 100 + 100}`}>
                   {service.image && (
                     <div className="sfc-image-wrapper">
-                      <img 
+                      <FadeImage 
                         src={service.image} 
                         alt={service.title} 
-                        className="sfc-img" 
-                        loading="lazy"
-                        decoding="async"
+                        className="sfc-img"
                       />
                       <span className="sfc-mode-pill">{service.mode}</span>
                     </div>

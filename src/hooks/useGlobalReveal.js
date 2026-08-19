@@ -11,10 +11,13 @@ const REVEAL_SELECTOR = '.reveal, .reveal-left, .reveal-right, .reveal-scale, .f
  * without requiring each component to manage its own ref/observer.
  *
  * Cheap by design:
- *  - One observer instance for the whole app (not one per card).
+ *  - One IntersectionObserver instance for the whole app (not one per card).
  *  - Elements are unobserved the moment they've revealed once.
- *  - Re-scans only on route change (new page content), via a microtask
- *    delay so it runs after React has painted the new DOM.
+ *  - Initial scan runs on mount and on every route change.
+ *  - A lightweight MutationObserver also watches for reveal elements that
+ *    mount later from in-page state changes (wizard steps, tab switches,
+ *    conditionally-rendered drawers, etc.) — these don't trigger a route
+ *    change, so without this they'd stay stuck at opacity: 0 forever.
  *  - No-ops entirely under prefers-reduced-motion — content is shown instantly.
  */
 export function useGlobalReveal() {
@@ -23,35 +26,55 @@ export function useGlobalReveal() {
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const nodes = document.querySelectorAll(REVEAL_SELECTOR);
-
     if (prefersReduced) {
-      nodes.forEach((el) => el.classList.add('is-visible'));
+      document.querySelectorAll(REVEAL_SELECTOR).forEach((el) => el.classList.add('is-visible'));
       return;
     }
 
-    if (!nodes.length) return;
-
-    const observer = new IntersectionObserver(
+    const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
+            io.unobserve(entry.target);
           }
         });
       },
       { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
     );
 
-    nodes.forEach((el) => {
-      // Skip anything already revealed (e.g. re-scan after in-page nav)
-      if (!el.classList.contains('is-visible')) {
-        observer.observe(el);
+    const observeNew = (root = document) => {
+      root.querySelectorAll(REVEAL_SELECTOR).forEach((el) => {
+        if (!el.classList.contains('is-visible') && !el.dataset.revealObserved) {
+          el.dataset.revealObserved = 'true';
+          io.observe(el);
+        }
+      });
+    };
+
+    // Initial pass for the freshly-rendered route
+    observeNew();
+
+    // Catch reveal elements added later by in-page state changes
+    // (wizard steps, tabs, drawers) that don't trigger a route change.
+    // Scoped to #main-content only — the header/sidebar chrome never
+    // uses these classes, so there's no need to watch the whole document.
+    const scopeRoot = document.getElementById('main-content') || document.body;
+    const mo = new MutationObserver((mutations) => {
+      for (const m of mutations) {
+        m.addedNodes.forEach((node) => {
+          if (node.nodeType !== 1) return;
+          if (node.matches?.(REVEAL_SELECTOR)) observeNew(node.parentNode || scopeRoot);
+          if (node.querySelector?.(REVEAL_SELECTOR)) observeNew(node);
+        });
       }
     });
+    mo.observe(scopeRoot, { childList: true, subtree: true });
 
-    return () => observer.disconnect();
+    return () => {
+      io.disconnect();
+      mo.disconnect();
+    };
   }, [pathname]);
 }
 

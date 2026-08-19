@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Globe, Shield, TrendingUp, Users, Award, Layers } from 'lucide-react';
 import SEO from '../../components/Common/SEO';
 import SocialProof from '../../components/Home/SocialProof';
+import FadeImage from '../../components/Common/FadeImage';
 import './About.css';
 
 export const About = () => {
@@ -40,12 +41,10 @@ export const About = () => {
               </div>
             </div>
             <div className="about-image-col">
-              <img 
+              <FadeImage 
                 src="/images/diff_network.jpg" 
                 alt="GACIS global logistics center" 
-                className="about-hero-img" 
-                loading="lazy"
-                decoding="async"
+                className="about-hero-img"
               />
               <div className="about-badge">
                 <div className="badge-num tabular-nums">2012</div>

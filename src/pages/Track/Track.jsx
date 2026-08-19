@@ -164,7 +164,7 @@ export const Track = () => {
       {/* Tracking Results Area */}
       <div className="container section-padding-sm">
         {isSearched && !activeShipment && (
-          <div className="track-not-found-card">
+          <div className="track-not-found-card fade-up" key={trackingInput}>
             <AlertCircle size={36} className="tnf-icon" />
             <h3>Demo Record Not Found</h3>
             <p>
@@ -185,10 +185,10 @@ export const Track = () => {
         )}
 
         {activeShipment && (
-          <div className="track-results-layout">
+          <div className="track-results-layout" key={activeShipment.ref}>
             
             {/* Left Column: Shipment Overview Card */}
-            <div className="track-overview-col">
+            <div className="track-overview-col reveal-left">
               <div className="track-status-card">
                 <div className="tsc-header">
                   <div>
@@ -238,12 +238,12 @@ export const Track = () => {
             </div>
 
             {/* Right Column: Milestone Chronology Timeline */}
-            <div className="track-timeline-col">
+            <div className="track-timeline-col reveal-right delay-100">
               <div className="track-timeline-card">
                 <h4 className="ttc-title">Shipment Milestone History</h4>
                 <div className="shipment-timeline">
                   {activeShipment.milestones.map((m, idx) => (
-                    <div className={`milestone-item ${m.status}`} key={idx}>
+                    <div className={`milestone-item ${m.status} fade-up delay-${Math.min((idx + 1) * 100, 500)}`} key={idx}>
                       <div className="milestone-node">
                         {m.status === 'completed' && <CheckCircle size={14} />}
                         {m.status === 'active' && <Clock size={14} className="active-clock" />}
