@@ -80,12 +80,27 @@
   transform: scale(1.02);
 }
 
+.sidebar-brand-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
 .sidebar-brand-logo {
-  height: 52px;
+  height: 48px;
   width: auto;
-  max-width: 140px;
+  max-width: 130px;
   object-fit: contain;
   display: block;
+}
+
+.sidebar-brand-name {
+  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  line-height: 1;
+  font-family: var(--font-primary);
 }
 
 .sidebar-brand-sub {
@@ -352,7 +367,6 @@
 }
 
 /* Request Quote Primary CTA */
-
 .sidebar-quote-button {
   display: flex;
   align-items: center;
@@ -526,12 +540,26 @@
   text-decoration: none;
 }
 
+.mch-brand-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .mch-logo-img {
-  height: 42px;
+  height: 38px;
   width: auto;
-  max-width: 110px;
+  max-width: 100px;
   object-fit: contain;
   display: block;
+}
+
+.mch-brand-name {
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  color: var(--text-primary);
+  line-height: 1;
 }
 
 .mch-brand-tag {
@@ -646,12 +674,26 @@
   text-decoration: none;
 }
 
+.mcd-brand-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
 .mcd-logo {
-  height: 52px;
+  height: 44px;
   width: auto;
-  max-width: 140px;
+  max-width: 120px;
   object-fit: contain;
   display: block;
+}
+
+.mcd-brand-name {
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  line-height: 1;
 }
 
 .mcd-sub {

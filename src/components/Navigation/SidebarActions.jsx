@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-
 import { utilityActions } from '../../data/navigation';
 
 export const SidebarActions = ({ isCollapsed, onNavigate }) => {
   return (
     <div className={`sidebar-actions-tray ${isCollapsed ? 'is-collapsed' : ''}`}>
-
 
       {/* Primary Conversion CTA: Request Quote */}
       <Link

@@ -13,77 +13,53 @@
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-/* ─── Scroll Reveal Classes (Driven by useScrollReveal) ─── */
-.reveal {
+/* ─── Scroll Reveal Entrance System ─── */
+.reveal,
+.fade-up {
   opacity: 0;
   transform: translateY(28px);
-  transition: opacity var(--motion-slow) var(--ease-spring),
-              transform var(--motion-slow) var(--ease-spring);
+  transition: opacity 0.6s var(--ease-spring), transform 0.6s var(--ease-spring);
   will-change: opacity, transform;
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .reveal-left {
   opacity: 0;
   transform: translateX(-32px);
-  transition: opacity var(--motion-slow) var(--ease-spring),
-              transform var(--motion-slow) var(--ease-spring);
-}
-
-.reveal-left.is-visible {
-  opacity: 1;
-  transform: translateX(0);
+  transition: opacity 0.6s var(--ease-spring), transform 0.6s var(--ease-spring);
+  will-change: opacity, transform;
 }
 
 .reveal-right {
   opacity: 0;
   transform: translateX(32px);
-  transition: opacity var(--motion-slow) var(--ease-spring),
-              transform var(--motion-slow) var(--ease-spring);
-}
-
-.reveal-right.is-visible {
-  opacity: 1;
-  transform: translateX(0);
+  transition: opacity 0.6s var(--ease-spring), transform 0.6s var(--ease-spring);
+  will-change: opacity, transform;
 }
 
 .reveal-scale {
   opacity: 0;
-  transform: scale(0.94);
-  transition: opacity var(--motion-slow) var(--ease-spring),
-              transform var(--motion-slow) var(--ease-spring);
-}
-
-.reveal-scale.is-visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* ─── Fade-Up (lightweight alias used across section components) ─── */
-.fade-up {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity var(--motion-slow) var(--ease-spring),
-              transform var(--motion-slow) var(--ease-spring);
+  transform: scale(0.92);
+  transition: opacity 0.6s var(--ease-spring), transform 0.6s var(--ease-spring);
   will-change: opacity, transform;
 }
 
+/* Active Viewport Revealed State */
+.reveal.is-visible,
+.reveal-left.is-visible,
+.reveal-right.is-visible,
+.reveal-scale.is-visible,
 .fade-up.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: translate(0, 0) scale(1) !important;
 }
 
 /* Delays for staggered card children */
-.delay-100 { transition-delay: 100ms; }
-.delay-200 { transition-delay: 200ms; }
-.delay-300 { transition-delay: 300ms; }
-.delay-400 { transition-delay: 400ms; }
-.delay-500 { transition-delay: 500ms; }
-.delay-600 { transition-delay: 600ms; }
+.delay-100 { transition-delay: 80ms; }
+.delay-200 { transition-delay: 160ms; }
+.delay-300 { transition-delay: 240ms; }
+.delay-400 { transition-delay: 320ms; }
+.delay-500 { transition-delay: 400ms; }
+.delay-600 { transition-delay: 480ms; }
 
 /* ─── Keyframe Animations ─── */
 
@@ -161,6 +137,18 @@
   }
 }
 
+/* Mega slide down drawer */
+@keyframes megaSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ─── Reduced Motion Overrides ─── */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -175,7 +163,8 @@
   .reveal,
   .reveal-left,
   .reveal-right,
-  .reveal-scale {
+  .reveal-scale,
+  .fade-up {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;

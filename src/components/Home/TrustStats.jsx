@@ -38,7 +38,7 @@ const statsData = [
 
 export const TrustStats = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
-  const [counts, setCounts] = useState(statsData.map(() => 0));
+  const [counts, setCounts] = useState(statsData.map(s => s.target));
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -46,7 +46,6 @@ export const TrustStats = () => {
     if (!el) return;
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setCounts(statsData.map(s => s.target));
       setHasAnimated(true);
       return;
     }
@@ -55,13 +54,12 @@ export const TrustStats = () => {
       if (entry.isIntersecting && !hasAnimated) {
         setHasAnimated(true);
 
-        const duration = 1800; // ms
+        const duration = 1500; // ms
         const startTime = performance.now();
 
         const updateCounters = (currentTime) => {
           const elapsed = currentTime - startTime;
           const progress = Math.min(elapsed / duration, 1);
-          // Ease-out cubic
           const easeProgress = 1 - Math.pow(1 - progress, 3);
 
           setCounts(statsData.map(s => {
@@ -77,7 +75,7 @@ export const TrustStats = () => {
         requestAnimationFrame(updateCounters);
         observer.unobserve(el);
       }
-    }, { threshold: 0.2 });
+    }, { threshold: 0.05, rootMargin: '100px 0px' });
 
     observer.observe(el);
     return () => observer.disconnect();

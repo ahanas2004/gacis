@@ -1,44 +1,60 @@
 /* ═══════════════════════════════════════════════════════════════
    HERO NETWORK INTELLIGENCE VISUALIZATION STYLING
+   Fixed Structural Dimensions & Zero Layout Variation
    ═══════════════════════════════════════════════════════════════ */
 
 .hero-network-console {
-  background: rgba(14, 17, 23, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(14, 17, 23, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--border-dark-strong);
   border-radius: var(--radius-card);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 520px;
+  max-width: 580px;
+  /* Exact Fixed Height: 546px (52px + 200px + 156px + 138px) */
+  height: 546px;
+  min-height: 546px;
+  max-height: 546px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  contain: layout style;
 }
 
-/* Console Top Bar */
+/* Console Top Bar (Fixed 52px) */
 .hnc-top-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.875rem 1.25rem;
-  background: rgba(255, 255, 255, 0.03);
+  padding: 0 1.35rem;
+  height: 52px;
+  min-height: 52px;
+  max-height: 52px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.04);
   border-bottom: 1px solid var(--border-dark);
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .hnc-title-row {
   display: flex;
   align-items: center;
-  gap: 0.625rem;
+  gap: 0.75rem;
+  overflow: hidden;
 }
 
 .live-radar-dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: var(--color-brand-red);
-  box-shadow: 0 0 10px var(--color-brand-red);
-  animation: radarBlink 1.6s infinite ease-in-out;
+  box-shadow: 0 0 12px var(--color-brand-red);
+  animation: radarBlink 1.5s infinite ease-in-out;
+  flex-shrink: 0;
 }
 
 @keyframes radarBlink {
@@ -47,23 +63,29 @@
 }
 
 .hnc-system-title {
-  font-size: 0.6875rem;
+  font-size: 0.78125rem;
   font-weight: 800;
   letter-spacing: 0.14em;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hnc-status-badge {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.625rem;
+  gap: 0.45rem;
+  font-size: 0.71875rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--color-success);
-  background: rgba(26, 138, 74, 0.15);
-  padding: 0.2rem 0.5rem;
+  background: rgba(26, 138, 74, 0.18);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  padding: 0.25rem 0.65rem;
   border-radius: var(--radius-pill);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .pulse-icon {
@@ -75,100 +97,178 @@
   50% { transform: scale(1.2); }
 }
 
-/* Visualizer SVG Area */
+/* Visualizer SVG Canvas (Fixed 200px) */
 .hnc-visualizer-canvas {
   position: relative;
-  background: radial-gradient(circle at 60% 50%, rgba(200, 32, 47, 0.08) 0%, transparent 70%),
-              rgba(10, 12, 16, 0.6);
-  padding: 1rem 0.5rem 0.5rem;
+  background: radial-gradient(circle at 60% 50%, rgba(200, 32, 47, 0.14) 0%, transparent 70%),
+              rgba(10, 12, 16, 0.75);
+  padding: 0.5rem 0.75rem 0.25rem;
+  height: 200px;
+  min-height: 200px;
+  max-height: 200px;
+  flex-shrink: 0;
   border-bottom: 1px solid var(--border-dark);
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hnc-svg {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
 }
 
-/* Corridor Drawing & Cargo Pulse */
+/* Corridor Flow Path Line */
 .corridor-flow-path {
   stroke-dasharray: 450;
-  stroke-dashoffset: 450;
-  animation: drawCorridor 4.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  stroke-dashoffset: 0;
+  animation: pulsePath 3s ease-in-out infinite alternate;
 }
 
-@keyframes drawCorridor {
-  0% { stroke-dashoffset: 450; }
-  60%, 100% { stroke-dashoffset: 0; }
+@keyframes pulsePath {
+  0% { stroke-opacity: 0.75; stroke-width: 3.6; }
+  100% { stroke-opacity: 1; stroke-width: 4.4; }
 }
 
-/* Moving Cargo Particle using Motion Path */
-.cargo-transit-particle {
-  offset-path: path('M 50,130 C 110,130 130,80 180,80 C 230,80 270,120 310,60 C 330,30 360,40 370,40');
-  animation: cargoTransit 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+/* Smooth Traveling Beacon Particle */
+.traveling-beacon-particle {
+  transition: transform 0.65s cubic-bezier(0.34, 1.25, 0.64, 1);
+  pointer-events: none;
 }
 
-@keyframes cargoTransit {
-  0% { offset-distance: 0%; opacity: 0; }
-  10% { opacity: 1; }
-  85% { opacity: 1; }
-  100% { offset-distance: 100%; opacity: 0; }
+/* Node Ping Animation */
+.active-port-ping {
+  animation: pingPulse 1.5s infinite ease-out;
 }
 
-/* Node Elements */
-.node-ping {
-  animation: pingWave 2.4s infinite ease-out;
+@keyframes pingPulse {
+  0% { r: 8px; stroke-opacity: 1; }
+  100% { r: 22px; stroke-opacity: 0; }
+}
+
+/* Node Styling */
+.map-node {
+  transition: all 0.35s ease;
 }
 
 .node-label {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  fill: rgba(255, 255, 255, 0.85);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  fill: rgba(255, 255, 255, 0.82);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.98), 0 0 4px rgba(0, 0, 0, 0.8);
+  transition: all 0.35s ease;
 }
 
-/* Data Telemetry Grid */
+.is-active-port .node-label {
+  font-size: 11px;
+  font-weight: 900;
+  fill: #ffffff;
+  filter: drop-shadow(0 0 6px rgba(212, 168, 67, 0.95));
+}
+
+.is-completed-port .node-label {
+  fill: rgba(255, 255, 255, 0.9);
+}
+
+.is-pending-port .node-label {
+  fill: rgba(255, 255, 255, 0.5);
+}
+
+/* Data Telemetry Grid (Fixed 156px: 2 rows of 78px) */
 .hnc-data-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1px;
   background: var(--border-dark);
+  height: 156px;
+  min-height: 156px;
+  max-height: 156px;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .hnc-data-cell {
   background: var(--surface-dark-card);
-  padding: 0.875rem 1.125rem;
+  padding: 0.75rem 1.25rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  height: 78px;
+  min-height: 78px;
+  max-height: 78px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .hdc-label {
-  font-size: 0.625rem;
-  font-weight: 700;
+  font-size: 0.65625rem;
+  font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 0.25rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hdc-val {
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: 800;
   color: #ffffff;
   line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.hdc-val.primary-corridor {
-  font-size: 0.875rem;
-  color: #ffffff;
+.hdc-port-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  overflow: hidden;
+}
+
+.port-type-tag {
+  font-size: 0.59375rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--color-brand-gold);
+  background: rgba(212, 168, 67, 0.18);
+  border: 1px solid rgba(212, 168, 67, 0.4);
+  padding: 0.1rem 0.45rem;
+  border-radius: 3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.hss-mode-prefix {
+  font-size: 0.65625rem;
+  font-weight: 800;
+  color: var(--color-brand-gold);
+  opacity: 0.9;
+  white-space: nowrap;
+}
+
+.hdc-val.font-mono-val {
+  font-size: 0.96875rem;
+  color: var(--color-brand-gold);
 }
 
 .hdc-sub {
-  font-size: 0.6875rem;
+  font-size: 0.71875rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.5);
   margin-top: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .text-success {
@@ -179,51 +279,198 @@
   color: var(--color-brand-gold) !important;
 }
 
-/* Live Stage Tracker Strip */
+/* Live Stage Tracker Strip (Fixed 138px) */
 .hnc-stage-strip {
-  padding: 0.75rem 1.125rem;
-  background: rgba(200, 32, 47, 0.08);
+  padding: 0.75rem 1.25rem;
+  background: rgba(200, 32, 47, 0.09);
   border-top: 1px solid var(--border-dark);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 138px;
+  min-height: 138px;
+  max-height: 138px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .hss-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.25rem;
+  height: 20px;
+  min-height: 20px;
+  max-height: 20px;
+  flex-shrink: 0;
+  overflow: hidden;
 }
 
 .hss-step {
   font-weight: 800;
   letter-spacing: 0.08em;
   color: var(--color-brand-red);
-  font-size: 0.65rem;
+  font-size: 0.71875rem;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hss-status {
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 0.6875rem;
+  font-weight: 700;
+  color: #22c55e;
+  font-size: 0.71875rem;
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  padding: 0.12rem 0.55rem;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.hss-leg {
+/* 4-Step Port Stepper (2x2 Grid Layout) */
+.hss-leg-stepper-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.4rem 0.65rem;
+  align-items: center;
+  height: 68px;
+  min-height: 68px;
+  max-height: 68px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.hss-port-card-2x2 {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 0.8125rem;
+  justify-content: space-between;
+  padding: 0.35rem 0.65rem;
+  height: 31px;
+  min-height: 31px;
+  max-height: 31px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.25s ease;
+  overflow: hidden;
 }
 
-.leg-arrow {
-  color: var(--color-brand-red);
+.hpc-left {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.hpc-right {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  overflow: hidden;
+}
+
+.hss-step-code {
+  font-size: 0.78125rem;
+  font-weight: 900;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.hss-step-name {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hss-port-card-2x2.is-past {
+  background: rgba(34, 197, 94, 0.08);
+  border-color: rgba(34, 197, 94, 0.28);
+}
+
+.hss-port-card-2x2.is-past .hss-step-dot {
+  background: #22c55e;
+  box-shadow: 0 0 6px #22c55e;
+}
+
+.hss-port-card-2x2.is-current {
+  background: rgba(200, 32, 47, 0.25);
+  border-color: var(--color-brand-red);
+  box-shadow: 0 0 12px rgba(200, 32, 47, 0.45);
+}
+
+.hss-port-card-2x2.is-current .hss-step-dot {
+  background: var(--color-brand-gold);
+  box-shadow: 0 0 8px var(--color-brand-gold);
+  transform: scale(1.3);
+}
+
+.hss-port-card-2x2.is-current .hss-step-code {
+  color: var(--color-brand-gold);
+}
+
+.hss-step-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+/* Route Selector Indicator Pills */
+.hss-route-pills {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 16px;
+  min-height: 16px;
+  max-height: 16px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.hss-pill {
+  width: 10px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.22);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.hss-pill.is-active {
+  width: 28px;
+  background: var(--color-brand-red);
+  box-shadow: 0 0 8px rgba(200, 32, 47, 0.6);
 }
 
 /* ─── Mobile Responsiveness ─── */
 @media (max-width: 640px) {
-  .hnc-data-grid {
-    grid-template-columns: 1fr;
+  .hero-network-console {
+    max-width: 100%;
+  }
+
+  .hdc-val {
+    font-size: 0.9375rem;
+  }
+
+  .hdc-val.font-mono-val {
+    font-size: 0.875rem;
+  }
+
+  .hss-step-name {
+    display: none;
   }
 }

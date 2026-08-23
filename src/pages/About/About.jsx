@@ -33,7 +33,7 @@ export const About = () => {
                 GACIS — Gulf and Commonwealth of Independent States — is an enterprise logistics and freight forwarding platform engineered to deliver seamless transportation solutions across air, deepsea, trans-Eurasian rail, and cross-border road networks.
               </p>
               <p>
-                We do not simply move freight. We architect resilient supply chains through mathematical corridor optimization and multimodal agility. With direct gateway infrastructure in Dubai, Chennai, Klang, Colombo, Almaty, and Frankfurt, GACIS eliminates border friction and delivers transparent telemetry to enterprise procurement teams.
+                We do not simply move freight. We build resilient supply chains through multimodal agility and route optimization. With direct operating desks in Chennai (India), Dubai (UAE), and Central Asia (CIS), GACIS eliminates border friction and delivers transparent tracking and visibility to enterprise procurement teams.
               </p>
               <div className="about-actions">
                 <Link to="/quote" className="btn btn-primary">Calculate a Corridor</Link>
@@ -64,12 +64,12 @@ export const About = () => {
           </div>
           <div className="about-pillars-grid">
             {[
-              { icon: <Globe size={28} />, title: 'Corridor Ownership', desc: 'Direct regional operating offices in Dubai, India, Sri Lanka, Malaysia, and Central Asia with worldwide partner connectivity.' },
+              { icon: <Globe size={28} />, title: 'Corridor Mastery', desc: 'Direct operating desks in Chennai (India), Dubai (Gulf), and Central Asia (CIS) with global carrier alliance connectivity.' },
               { icon: <Shield size={28} />, title: 'Rigorous Compliance', desc: 'Licensed customs brokers ensuring total conformity with GCC Common Customs, TIR Carnet, and Eurasian Customs Union protocols.' },
               { icon: <TrendingUp size={28} />, title: 'Multimodal Optimization', desc: 'Data-driven modal substitution balancing transit velocity against carbon emissions and holding costs.' },
               { icon: <Users size={28} />, title: 'Dedicated Control Towers', desc: 'Enterprise accounts are supported by single-point-of-contact logistics coordinators and 24/7 central desk tracking.' },
               { icon: <Award size={28} />, title: 'Certified Standards', desc: 'ISO 9001:2015 accredited, GDP pharma certified, and IATA registered cargo operations.' },
-              { icon: <Layers size={28} />, title: 'Telemetry Visibility', desc: 'Live corridor tracking, automated milestone timestamps, and verified Scope 3 carbon reporting.' },
+              { icon: <Layers size={28} />, title: 'End-to-End Visibility', desc: 'Live corridor tracking, automated milestone timestamps, and verified Scope 3 carbon reporting.' },
             ].map((item, i) => (
               <div className="about-pillar" key={i}>
                 <div className="about-pillar-icon">{item.icon}</div>

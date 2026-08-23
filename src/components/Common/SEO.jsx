@@ -37,10 +37,11 @@ export const SEO = ({
       },
       address: {
         '@type': 'PostalAddress',
-        streetAddress: '#04-028, Fahidi Heights, Office Tower (Al Musalla Tower), 4th Floor, Bur Dubai',
-        addressLocality: 'Dubai',
-        addressCountry: 'AE',
-        postalCode: '624699'
+        streetAddress: 'Akshaya Plaza',
+        addressLocality: 'Chennai',
+        addressRegion: 'Tamil Nadu',
+        postalCode: '600002',
+        addressCountry: 'IN'
       }
     };
 

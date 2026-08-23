@@ -1,81 +1,177 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  Car, HeartPulse, Zap, Cpu, ShoppingBag, Factory, 
-  ArrowRight, ShieldCheck, CheckCircle2, Award 
+  Car, HeartPulse, Zap, Cpu, ShoppingBag, Factory, ShieldCheck,
+  ArrowRight, CheckCircle2, Award, Compass, Truck, Ship, Plane, Train, Boxes, Lock, Layers
 } from 'lucide-react';
 import { industries } from '../../data/industries';
 import SEO from '../../components/Common/SEO';
 import PageHeader from '../../components/Common/PageHeader';
 import './Solutions.css';
 
-const iconMap = { Car, HeartPulse, Zap, Cpu, ShoppingBag, Factory };
+const iconMap = { Car, HeartPulse, Zap, Cpu, ShoppingBag, Factory, ShieldCheck };
 
 export const Solutions = () => {
+  const [activeFilter, setActiveFilter] = useState('ALL');
+
+  const filteredIndustries = activeFilter === 'ALL' 
+    ? industries 
+    : industries.filter(ind => ind.connectedServices.some(s => s.mode === activeFilter || activeFilter === ind.id));
+
   return (
     <div className="solutions-page">
       <SEO 
-        title="Industry Supply Chain Solutions"
-        description="Engineered logistics frameworks for Automotive, Pharmaceuticals, Energy, High-Tech Electronics, Retail, and Industrial Manufacturing."
+        title="Industry Freight & Supply Chain Solutions — GACIS Intelligence"
+        description="Engineered shipping and logistics solutions for Automotive, Pharmaceuticals, Energy, High-Tech Electronics, Retail, Industrial Manufacturing, and Hazmat/Chemicals."
         canonical="/solutions"
       />
 
       {/* Hero Header */}
       <PageHeader 
-        eyebrow="VERTICAL INDUSTRY INTELLIGENCE"
-        title="Industry Solutions"
-        description="Customized logistics architecture engineered to solve the sector-specific compliance, temperature, security, and velocity constraints of global enterprises."
-        statusTag="6 DEDICATED SECTOR DESKS"
+        eyebrow="VERTICAL INDUSTRY FREIGHT INTEGRATION"
+        title="Industry Shipping & Supply Chain Solutions"
+        description="Customized multimodal shipping architecture engineered to overcome sector-specific compliance, temperature, security, and velocity constraints for global enterprises."
+        statusTag="7 DEDICATED SECTOR DESKS ACTIVE"
       />
 
-      {/* 6 Industry Vertical Cards */}
+      {/* Main Section */}
       <section className="section-padding bg-primary">
         <div className="container">
+          
           <div className="section-heading">
-            <span className="eyebrow">SECTOR SPECIALIZATIONS</span>
-            <h2>Engineered for High-Value Industry Demands</h2>
+            <span className="eyebrow text-gold">SECTOR-SPECIFIC FREIGHT ARCHITECTURE</span>
+            <h2>Connected Shipping Solutions for Global Enterprises</h2>
             <p>
-              From Just-in-Time automotive parts to GDP-certified pharmaceutical cold chains, our dedicated sector desks deliver unbroken operational continuity.
+              Each industry vertical is directly integrated into GACIS ocean strings, air charters, block train networks, customs portals, and specialized freight equipment.
             </p>
           </div>
 
+          {/* Interactive Mode & Sector Filter Bar */}
+          <div className="solutions-filter-bar">
+            <span className="sfb-title">Filter by Logistics Mode:</span>
+            <div className="sfb-pills">
+              {[
+                { id: 'ALL', label: 'All Industries (7)' },
+                { id: 'AIR', label: 'Air Freight' },
+                { id: 'SEA', label: 'Ocean Freight' },
+                { id: 'RAIL', label: 'Rail & Intermodal' },
+                { id: 'ROAD', label: 'Road Transport' },
+                { id: 'PROJECT', label: 'Project Cargo' },
+                { id: 'HAZMAT', label: 'Hazmat & DG' }
+              ].map(tab => (
+                <button
+                  key={tab.id}
+                  type="button"
+                  className={`sfb-btn ${activeFilter === tab.id ? 'active' : ''}`}
+                  onClick={() => setActiveFilter(tab.id)}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Industries Matrix Grid */}
           <div className="industries-matrix-grid">
-            {industries.map((ind) => {
+            {filteredIndustries.map((ind) => {
               const Icon = iconMap[ind.icon] || Factory;
+
               return (
-                <div className="industry-solution-card" key={ind.id}>
+                <div className="industry-solution-card fade-up" key={ind.id}>
+                  
+                  {/* Header Row */}
                   <div className="isc-header">
                     <div className="isc-icon-wrap">
-                      <Icon size={22} />
+                      <Icon size={24} />
+                      <span className="isc-id-tag">{ind.id.toUpperCase()} DESK</span>
                     </div>
-                    <span className="isc-id-tag">{ind.id.toUpperCase()}</span>
+                    <span className="isc-sla-badge" title="Logistics SLA">{ind.logisticsSLA}</span>
                   </div>
 
                   <h3 className="isc-title">{ind.title}</h3>
                   <p className="isc-tagline">{ind.tagline}</p>
 
-                  <div className="isc-challenge-box">
-                    <span className="isc-box-lbl">OPERATIONAL CHALLENGE:</span>
-                    <p>{ind.challenge}</p>
+                  {/* Connected Services Links */}
+                  <div className="isc-connected-services-block">
+                    <span className="isc-block-lbl">CONNECTED SHIPPING & FREIGHT SERVICES:</span>
+                    <div className="isc-service-links-row">
+                      {ind.connectedServices.map((srv) => (
+                        <Link key={srv.id} to={`/services/${srv.id}`} className="isc-service-chip">
+                          <span className="isc-mode-prefix">[{srv.mode}]</span> {srv.name}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
 
-                  <div className="isc-solution-box">
-                    <span className="isc-box-lbl">GACIS SOLUTION:</span>
-                    <p>{ind.solution}</p>
+                  {/* Primary Trade Corridors */}
+                  <div className="isc-corridors-block">
+                    <span className="isc-block-lbl">PRIMARY INTEGRATED TRADE CORRIDORS:</span>
+                    <div className="isc-corridors-list">
+                      {ind.connectedCorridors.map((c, cIdx) => (
+                        <span className="isc-corridor-tag" key={cIdx}>
+                          <Compass size={12} className="corridor-icon" /> {c}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
+                  {/* Challenge & Solution Grid */}
+                  <div className="isc-cs-grid">
+                    <div className="isc-challenge-box">
+                      <span className="isc-box-lbl text-red">LOGISTICS CHALLENGE:</span>
+                      <p>{ind.challenge}</p>
+                    </div>
+
+                    <div className="isc-solution-box">
+                      <span className="isc-box-lbl text-gold">GACIS SHIPPING SOLUTION:</span>
+                      <p>{ind.solution}</p>
+                    </div>
+                  </div>
+
+                  {/* Shipping Equipment & Customs Integration */}
+                  <div className="isc-specs-bar">
+                    <div className="isc-spec-col">
+                      <span className="isc-spec-lbl">FREIGHT EQUIPMENT:</span>
+                      <div className="isc-equip-list">
+                        {ind.shippingEquipment.map((eq, eqIdx) => (
+                          <span className="isc-equip-chip" key={eqIdx}>{eq}</span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="isc-spec-col">
+                      <span className="isc-spec-lbl">CUSTOMS & COMPLIANCE:</span>
+                      <span className="isc-customs-val">{ind.customsIntegration}</span>
+                    </div>
+                  </div>
+
+                  {/* Key Operational Highlights */}
                   <div className="isc-highlights-strip">
                     {ind.highlights.map((h, i) => (
                       <span className="isc-highlight-chip" key={i}>
-                        <CheckCircle2 size={12} /> {h}
+                        <CheckCircle2 size={13} className="check-icon-gold" /> {h}
                       </span>
                     ))}
                   </div>
 
+                  {/* Card Footer with Direct Lead-Gen Quote Button */}
                   <div className="isc-footer">
-                    <Link to="/quote" className="btn btn-secondary btn-sm isc-cta">
-                      Request {ind.title} Solution <ArrowRight size={14} />
-                    </Link>
+                    <div className="isc-stat-pill">
+                      <span className="isp-lbl">Verified Metric</span>
+                      <span className="isp-val tabular-nums">{ind.metrics.onTime || ind.metrics.tempIntegrity || ind.metrics.maxPayload || ind.metrics.securityRating || ind.metrics.complianceScore}</span>
+                    </div>
+
+                    <div className="isc-actions">
+                      <Link 
+                        to={`/quote?cargoType=${encodeURIComponent(ind.title)}`}
+                        state={{ cargoType: ind.title }}
+                        className="btn btn-primary btn-sm isc-btn-book"
+                      >
+                        Book {ind.title.split(' ')[0]} Linehaul <ArrowRight size={14} className="arrow-icon" />
+                      </Link>
+                    </div>
                   </div>
+
                 </div>
               );
             })}
@@ -87,15 +183,15 @@ export const Solutions = () => {
       {/* Direct Advisory Banner */}
       <section className="section-padding-sm bg-dark">
         <div className="container">
-          <div className="industry-cta-inner">
+          <div className="industry-cta-inner fade-up">
             <div>
-              <h3 style={{ color: '#fff' }}>Require bespoke trade lane engineering?</h3>
-              <p style={{ color: 'rgba(255,255,255,0.75)' }}>
-                Our industry vertical leaders work directly with your procurement and supply chain directors to design custom Service Level Agreements (SLAs).
+              <h3 style={{ color: '#fff' }}>Require bespoke shipping & trade lane engineering?</h3>
+              <p style={{ color: 'rgba(255,255,255,0.78)', margin: 0 }}>
+                Our sector specialization desks work directly with enterprise supply chain directors to engineer custom Service Level Agreements (SLAs), dedicated charter lines, and bonded customs clearance.
               </p>
             </div>
             <Link to="/contact" className="btn btn-primary btn-large">
-              Speak with Sector Lead <ArrowRight size={16} />
+              Speak with Sector Lead <ArrowRight size={16} className="arrow-icon" />
             </Link>
           </div>
         </div>

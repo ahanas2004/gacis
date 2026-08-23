@@ -32,17 +32,17 @@ export const Sustainability = () => {
   return (
     <div className="sustainability-page">
       <SEO 
-        title="Sustainability & Carbon Intelligence"
-        description="Lower-carbon logistics by design. GACIS enables enterprise Scope 3 carbon reduction through multimodal rail substitution, sea-air optimization, and certified emissions telemetry."
+        title="Sustainability & Carbon Reporting"
+        description="Lower-carbon logistics by design. GACIS enables enterprise Scope 3 carbon reduction through multimodal rail substitution, sea-air optimization, and certified emissions reporting."
         canonical="/sustainability"
       />
 
       {/* Hero Header */}
       <PageHeader
-        eyebrow="SCOPE 3 CARBON INTELLIGENCE"
+        eyebrow="SCOPE 3 CARBON REDUCTION"
         eyebrowIcon={Leaf}
         title="Lower-carbon logistics by design."
-        description="Decarbonizing global supply chains is not an abstract corporate pledge. We achieve measurable emissions reduction through mathematical corridor optimization and modal substitution."
+        description="Decarbonizing global supply chains is not an abstract corporate pledge. We achieve measurable emissions reduction through route optimization and modal substitution."
         statusTag="CERTIFIED GLEC & EN 16258 METHODOLOGY"
       />
 
@@ -144,7 +144,7 @@ export const Sustainability = () => {
             <span className="eyebrow">GOVERNANCE & STANDARDS</span>
             <h2>Emissions Accounting Methodology</h2>
             <p>
-              Our carbon telemetry adheres to internationally recognized carbon calculation frameworks, enabling direct integration into your annual ESG reporting.
+              Our carbon accounting adheres to internationally recognized carbon calculation frameworks, enabling direct integration into your annual ESG reporting.
             </p>
           </div>
 

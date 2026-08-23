@@ -1,5 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, PhoneCall, ShieldCheck, Clock, Layers, Leaf, Globe2, Compass, Zap } from 'lucide-react';
+import { 
+  ArrowRight, CheckCircle2, PhoneCall, ShieldCheck, Clock, Layers, Leaf, 
+  Globe2, Compass, Zap, Award, Activity, FileText, Check, Cpu, Server, Lock 
+} from 'lucide-react';
 import { services } from '../../data/services';
 import SEO from '../../components/Common/SEO';
 import PageHeader from '../../components/Common/PageHeader';
@@ -21,10 +24,9 @@ export const ServiceDetail = () => {
   const article = /^[aeiou]/i.test(data.shortTitle) ? 'an' : 'a';
 
   return (
-
     <div className="service-detail-page">
       <SEO 
-        title={`${data.title} — Multimodal Capabilities`}
+        title={`${data.title} — Proven Multimodal Capabilities & Execution`}
         description={data.tagline}
         canonical={`/services/${data.id}`}
       />
@@ -42,7 +44,7 @@ export const ServiceDetail = () => {
         <div className="container">
           <div className="service-detail-grid">
             
-            {/* Main Column */}
+            {/* Main Content Column */}
             <div className="service-main-content">
               {data.image && (
                 <div className="service-detail-image-wrapper">
@@ -56,7 +58,25 @@ export const ServiceDetail = () => {
                   </div>
                 </div>
               )}
+
+              {/* Proven Metrics Bar */}
+              {data.provenMetrics && (
+                <div className="sd-proven-metrics-block">
+                  <span className="eyebrow text-gold">PROVEN OPERATIONAL KPIS</span>
+                  <h3 className="sd-metrics-title">Real-Time Performance Metrics</h3>
+                  <div className="sd-metrics-grid">
+                    {data.provenMetrics.map((m, idx) => (
+                      <div className="sd-metric-card" key={idx}>
+                        <span className="sd-m-val tabular-nums">{m.value}</span>
+                        <span className="sd-m-lbl">{m.label}</span>
+                        <span className="sd-m-sub">{m.sub}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
               
+              {/* Overview & Architecture */}
               <div className="sd-section-block">
                 <span className="eyebrow">OPERATIONAL ARCHITECTURE</span>
                 <h2>Linehaul Execution & Value Proposition</h2>
@@ -75,6 +95,73 @@ export const ServiceDetail = () => {
                   </div>
                 ))}
               </div>
+
+              {/* How GACIS Does It (Execution Pillars) */}
+              {data.howGacisDoesIt && (
+                <div className="sd-how-gacis-block">
+                  <div className="sd-hg-header">
+                    <span className="eyebrow text-red">EXECUTION METHODOLOGY</span>
+                    <h3>{data.howGacisDoesIt.headline}</h3>
+                    <p className="sd-hg-summary">{data.howGacisDoesIt.summary}</p>
+                  </div>
+                  <div className="sd-hg-pillars-grid">
+                    {data.howGacisDoesIt.pillars.map((pillar, pIdx) => (
+                      <div className="sd-hg-pillar-card" key={pIdx}>
+                        <div className="sd-hg-pillar-num">0{pIdx + 1}</div>
+                        <h4>{pillar.title}</h4>
+                        <p>{pillar.detail}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Proven Case Study Showcase */}
+              {data.provenCaseStudy && (
+                <div className="sd-case-study-box">
+                  <div className="sd-cs-badge-row">
+                    <span className="sd-cs-badge"><Award size={14} /> PROVEN CASE STUDY</span>
+                    <span className="sd-cs-sector">{data.provenCaseStudy.clientSector}</span>
+                  </div>
+                  <h3 className="sd-cs-title">{data.provenCaseStudy.title}</h3>
+                  
+                  <div className="sd-cs-grid">
+                    <div className="sd-cs-col">
+                      <span className="sd-cs-col-lbl text-red">THE CHALLENGE</span>
+                      <p>{data.provenCaseStudy.challenge}</p>
+                    </div>
+                    <div className="sd-cs-col">
+                      <span className="sd-cs-col-lbl text-gold">GACIS SOLUTION</span>
+                      <p>{data.provenCaseStudy.solution}</p>
+                    </div>
+                  </div>
+
+                  <div className="sd-cs-results-block">
+                    <span className="sd-cs-col-lbl text-success">MEASURABLE ROI & RESULTS</span>
+                    <ul className="sd-cs-results-list">
+                      {data.provenCaseStudy.results.map((res, rIdx) => (
+                        <li key={rIdx}><Check size={16} className="check-icon-green" /> <span>{res}</span></li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+
+              {/* Technical Specs & Compliance Grid */}
+              {data.technicalSpecs && (
+                <div className="sd-tech-specs-block">
+                  <span className="eyebrow">EQUIPMENT & COMPLIANCE SPECS</span>
+                  <h3>Technical Specifications & Operating Limits</h3>
+                  <div className="sd-specs-table">
+                    {data.technicalSpecs.map((spec, sIdx) => (
+                      <div className="sd-spec-row" key={sIdx}>
+                        <span className="sd-spec-label">{spec.label}</span>
+                        <span className="sd-spec-value">{spec.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* End-to-End Operational Workflow */}
               <div className="service-workflow-block">
@@ -102,7 +189,7 @@ export const ServiceDetail = () => {
                 </div>
               </div>
 
-              {/* Premium Direct Routing CTA Box */}
+              {/* Premium Direct Routing CTA / Lead Generation Box */}
               <div className="service-cta-card">
                 <div className="scc-glow-effect" aria-hidden="true" />
                 <div className="scc-grid-overlay" aria-hidden="true" />
@@ -111,21 +198,25 @@ export const ServiceDetail = () => {
                   <div className="scc-badge-row">
                     <span className="scc-badge">
                       <Zap size={13} className="scc-badge-icon" />
-                      <span>CAPACITY & CORRIDOR ALLOCATION</span>
+                      <span>DIRECT LEAD GENERATOR & ALLOCATION DESK</span>
                     </span>
                     <span className="scc-status-live">
                       <span className="scc-dot" /> 24/7 DESK ACTIVE
                     </span>
                   </div>
 
-                  <h3 className="scc-title">Engineer {article} {data.shortTitle} Linehaul</h3>
+                  <h3 className="scc-title">Simulate & Book {article} {data.shortTitle} Linehaul</h3>
                   <p className="scc-desc">
-                    Our commercial desk provides spot container allocation, dedicated chartered capacity, bonded transit clearance, and custom tariff optimization.
+                    Get an instant rate quote, lead-time estimate, and guaranteed capacity allocation for {data.shortTitle}. Our trade engineers pre-fill your corridor specifications automatically.
                   </p>
 
                   <div className="scc-actions">
-                    <Link to="/quote" className="btn btn-primary scc-btn-main">
-                      Request {data.shortTitle} Quote <ArrowRight size={15} className="arrow-icon" />
+                    <Link 
+                      to={`/quote?service=${encodeURIComponent(data.shortTitle)}&mode=${encodeURIComponent(data.mode)}`} 
+                      state={{ mode: data.mode, cargoType: data.shortTitle }}
+                      className="btn btn-primary scc-btn-main"
+                    >
+                      Book {data.shortTitle} Corridor <ArrowRight size={15} className="arrow-icon" />
                     </Link>
                     <Link to="/contact" className="btn btn-outline-white scc-btn-alt">
                       <PhoneCall size={14} /> Speak with Sector Lead
@@ -139,7 +230,7 @@ export const ServiceDetail = () => {
             {/* Sidebar Navigation */}
             <aside className="service-sidebar">
               <div className="sidebar-widget">
-                <h4>All Core Capabilities</h4>
+                <h4>All Core Capabilities (12 Services)</h4>
                 <div className="sidebar-links-list">
                   {services.map((srv) => (
                     <Link 

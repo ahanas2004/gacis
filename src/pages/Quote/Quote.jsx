@@ -10,7 +10,7 @@ export const Quote = () => {
     <div className="quote-page">
       <SEO 
         title="Request an Enterprise Freight Quote"
-        description="Calculate freight rates, lead times, and carbon telemetry for Air, Ocean, Rail, and Multimodal corridors across the Gulf, Central Asia, and Europe."
+        description="Calculate freight rates, lead times, and carbon savings for Air, Ocean, Rail, and Multimodal corridors across the Gulf, Central Asia, and Europe."
         canonical="/quote"
       />
 
@@ -19,7 +19,7 @@ export const Quote = () => {
         eyebrowIcon={Calculator}
         title="Request a Corridor Quote"
         description="Provide your origin, destination, cargo specifications, and timeline requirements. Our central pricing desk will calculate an optimized route schedule within 24 hours."
-        statusTag="ALGORITHM-POWERED ROUTING"
+        statusTag="MULTIMODAL ROUTE ESTIMATION"
       />
       
       <section className="section-padding bg-secondary">

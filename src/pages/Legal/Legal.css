@@ -1,0 +1,88 @@
+/* ═══════════════════════════════════════════════════════════════
+   GACIS GOLD PACKAGE — LEGAL PAGES (PRIVACY & TERMS) STYLING
+   ═══════════════════════════════════════════════════════════════ */
+
+.legal-content-card {
+  max-width: 880px;
+  margin: 0 auto;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+.legal-section h3 {
+  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.85rem;
+}
+
+.legal-section p {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  margin-bottom: 0.85rem;
+}
+
+.legal-section ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.75rem;
+}
+
+.legal-section li {
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.legal-section li::before {
+  content: "•";
+  position: absolute;
+  left: 0.4rem;
+  color: var(--color-brand-red);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.legal-section li strong {
+  color: var(--text-primary);
+}
+
+.legal-contact-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  margin-top: 1rem;
+}
+
+.legal-contact-box strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.legal-contact-box p {
+  margin: 0.2rem 0;
+  font-size: 0.875rem;
+}
+
+.legal-contact-box a {
+  color: var(--color-brand-red);
+  text-decoration: none;
+  font-weight: 600;
+}

@@ -5,26 +5,19 @@ const REVEAL_SELECTOR = '.reveal, .reveal-left, .reveal-right, .reveal-scale, .f
 
 /**
  * Global Scroll Reveal Activator
- *
- * Wires up every element already carrying a `.reveal*` / `.fade-up` class
- * (see src/styles/animations.css) to a single shared IntersectionObserver,
- * without requiring each component to manage its own ref/observer.
- *
- * Cheap by design:
- *  - One IntersectionObserver instance for the whole app (not one per card).
- *  - Elements are unobserved the moment they've revealed once.
- *  - Initial scan runs on mount and on every route change.
- *  - A lightweight MutationObserver also watches for reveal elements that
- *    mount later from in-page state changes (wizard steps, tab switches,
- *    conditionally-rendered drawers, etc.) — these don't trigger a route
- *    change, so without this they'd stay stuck at opacity: 0 forever.
- *  - No-ops entirely under prefers-reduced-motion — content is shown instantly.
+ * Wires up all elements carrying `.reveal*` / `.fade-up` classes to a shared
+ * IntersectionObserver for smooth viewport-triggered scroll entrance animations across all pages.
  */
 export function useGlobalReveal() {
   const { pathname } = useLocation();
 
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Reset dataset markers on route change so freshly rendered route components re-evaluate
+    document.querySelectorAll(REVEAL_SELECTOR).forEach((el) => {
+      delete el.dataset.revealObserved;
+    });
 
     if (prefersReduced) {
       document.querySelectorAll(REVEAL_SELECTOR).forEach((el) => el.classList.add('is-visible'));
@@ -40,38 +33,46 @@ export function useGlobalReveal() {
           }
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+      { threshold: 0.01, rootMargin: '150px 0px 150px 0px' }
     );
 
-    const observeNew = (root = document) => {
-      root.querySelectorAll(REVEAL_SELECTOR).forEach((el) => {
-        if (!el.classList.contains('is-visible') && !el.dataset.revealObserved) {
-          el.dataset.revealObserved = 'true';
-          io.observe(el);
-        }
-      });
+    const observeElement = (el) => {
+      if (!el || el.classList.contains('is-visible')) return;
+      if (!el.dataset.revealObserved) {
+        el.dataset.revealObserved = 'true';
+        io.observe(el);
+      }
     };
 
-    // Initial pass for the freshly-rendered route
-    observeNew();
+    const scanContainer = (root = document) => {
+      if (!root) return;
+      if (root.matches?.(REVEAL_SELECTOR)) observeElement(root);
+      const elements = root.querySelectorAll ? root.querySelectorAll(REVEAL_SELECTOR) : [];
+      elements.forEach(observeElement);
+    };
 
-    // Catch reveal elements added later by in-page state changes
-    // (wizard steps, tabs, drawers) that don't trigger a route change.
-    // Scoped to #main-content only — the header/sidebar chrome never
-    // uses these classes, so there's no need to watch the whole document.
+    // Initial pass for freshly rendered page
+    scanContainer();
+
+    // Secondary pass after layout render frame to catch image-loaded / async items
+    const timerId = setTimeout(() => {
+      scanContainer();
+    }, 200);
+
+    // Watch for dynamically added DOM elements (wizard steps, tab switching, lazy cards)
     const scopeRoot = document.getElementById('main-content') || document.body;
     const mo = new MutationObserver((mutations) => {
       for (const m of mutations) {
         m.addedNodes.forEach((node) => {
           if (node.nodeType !== 1) return;
-          if (node.matches?.(REVEAL_SELECTOR)) observeNew(node.parentNode || scopeRoot);
-          if (node.querySelector?.(REVEAL_SELECTOR)) observeNew(node);
+          scanContainer(node);
         });
       }
     });
     mo.observe(scopeRoot, { childList: true, subtree: true });
 
     return () => {
+      clearTimeout(timerId);
       io.disconnect();
       mo.disconnect();
     };
@@ -79,3 +80,4 @@ export function useGlobalReveal() {
 }
 
 export default useGlobalReveal;
+

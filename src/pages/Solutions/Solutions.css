@@ -1,7 +1,61 @@
 /* ═══════════════════════════════════════════════════════════════
-   SOLUTIONS & INDUSTRY PAGE STYLING
+   SOLUTIONS & INDUSTRY PAGE STYLING — CONNECTED SHIPPING & LOGISTICS
    ═══════════════════════════════════════════════════════════════ */
 
+/* Mode & Sector Filter Bar */
+.solutions-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  padding: 0.875rem 1.25rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.sfb-title {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.sfb-pills {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.sfb-btn {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  padding: 0.4rem 0.875rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--motion-fast) ease;
+}
+
+.sfb-btn:hover {
+  border-color: var(--color-brand-red);
+  color: var(--color-brand-red);
+}
+
+.sfb-btn.active {
+  background: var(--color-brand-red);
+  border-color: var(--color-brand-red);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(200, 32, 47, 0.25);
+}
+
+/* Industries Matrix Grid */
 .industries-matrix-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -31,18 +85,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.25rem;
+  gap: 0.75rem;
+  margin-bottom: 1.15rem;
+  flex-wrap: wrap;
 }
 
 .isc-icon-wrap {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-sm);
-  background: rgba(200, 32, 47, 0.08);
-  color: var(--color-brand-red);
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.6rem;
+  background: rgba(200, 32, 47, 0.08);
+  color: var(--color-brand-red);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill);
   transition: background var(--motion-fast) ease, color var(--motion-fast) ease;
 }
 
@@ -53,12 +108,19 @@
 
 .isc-id-tag {
   font-size: 0.6875rem;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 0.1em;
-  color: var(--text-muted);
-  background: var(--bg-secondary);
-  padding: 0.2rem 0.5rem;
-  border-radius: var(--radius-sm);
+}
+
+.isc-sla-badge {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--color-brand-gold);
+  background: rgba(212, 168, 67, 0.12);
+  border: 1px solid rgba(212, 168, 67, 0.3);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
 }
 
 .isc-title {
@@ -72,7 +134,95 @@
   font-size: 0.875rem;
   color: var(--text-secondary);
   line-height: 1.5;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Connected Freight Services Block */
+.isc-connected-services-block {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.isc-block-lbl {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.isc-service-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.isc-service-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-brand-red);
+  background: var(--bg-primary);
+  border: 1px solid rgba(200, 32, 47, 0.2);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all var(--motion-fast) ease;
+}
+
+.isc-service-chip:hover {
+  background: var(--color-brand-red);
+  color: #ffffff;
+  border-color: var(--color-brand-red);
+}
+
+.isc-mode-prefix {
+  font-size: 0.625rem;
+  font-weight: 900;
+  opacity: 0.85;
+}
+
+/* Primary Trade Corridors Block */
+.isc-corridors-block {
+  margin-bottom: 1.25rem;
+}
+
+.isc-corridors-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.isc-corridor-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-pill);
+}
+
+.corridor-icon {
+  color: var(--color-brand-gold);
+}
+
+/* Challenge & Solution Grid */
+.isc-cs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.875rem;
+  margin-bottom: 1.15rem;
 }
 
 .isc-challenge-box {
@@ -80,7 +230,6 @@
   border: 1px solid rgba(220, 38, 38, 0.15);
   border-radius: var(--radius-sm);
   padding: 0.875rem 1rem;
-  margin-bottom: 0.875rem;
 }
 
 .isc-solution-box {
@@ -88,19 +237,18 @@
   border: 1px solid rgba(26, 138, 74, 0.15);
   border-radius: var(--radius-sm);
   padding: 0.875rem 1rem;
-  margin-bottom: 1.25rem;
 }
 
 .isc-box-lbl {
   display: block;
   font-size: 0.625rem;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 0.1em;
   margin-bottom: 0.25rem;
 }
 
-.isc-challenge-box .isc-box-lbl { color: var(--color-error); }
-.isc-solution-box .isc-box-lbl { color: var(--color-success); }
+.text-red { color: #dc2626 !important; }
+.text-gold { color: #b45309 !important; }
 
 .isc-challenge-box p,
 .isc-solution-box p {
@@ -110,6 +258,54 @@
   margin: 0;
 }
 
+/* Specs Bar (Equipment & Customs) */
+.isc-specs-bar {
+  background: var(--surface-dark-card);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1.125rem;
+  color: var(--text-on-dark);
+  margin-bottom: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.isc-spec-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.isc-spec-lbl {
+  font-size: 0.625rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--color-brand-gold);
+}
+
+.isc-equip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.isc-equip-chip {
+  font-size: 0.71875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+.isc-customs-val {
+  font-size: 0.78125rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Key Operational Highlights */
 .isc-highlights-strip {
   display: flex;
   flex-wrap: wrap;
@@ -129,15 +325,41 @@
   border-radius: var(--radius-pill);
 }
 
-.isc-footer {
-  margin-top: auto;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border-light);
+.check-icon-gold {
+  color: var(--color-brand-gold);
 }
 
-.isc-cta {
-  width: 100%;
+/* Card Footer */
+.isc-footer {
+  margin-top: auto;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.isc-stat-pill {
+  display: flex;
+  flex-direction: column;
+}
+
+.isp-lbl {
+  font-size: 0.625rem;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.isp-val {
+  font-size: 1.0625rem;
+  font-weight: 900;
+  color: var(--color-brand-red);
+}
+
+.isc-btn-book {
+  font-weight: 700;
 }
 
 /* Industry CTA Strip */
@@ -164,5 +386,25 @@
 @media (max-width: 1024px) {
   .industries-matrix-grid {
     grid-template-columns: 1fr;
+  }
+
+  .isc-cs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .solutions-filter-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .isc-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .isc-actions, .isc-actions .btn {
+    width: 100%;
   }
 }

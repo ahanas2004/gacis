@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   ROUTE SIMULATOR V2 STYLING & CONSOLE LAYOUT
+   ROUTE SIMULATOR V3 — DYNAMIC CALCULATION ENGINE STYLES
    ═══════════════════════════════════════════════════════════════ */
 
 .route-simulator-section {
@@ -159,6 +159,13 @@
   border-color: var(--border-dark);
   font-size: 0.875rem;
   padding: 0.65rem 0.875rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rs-custom-field select:focus {
+  border-color: var(--color-brand-gold);
+  box-shadow: 0 0 0 2px rgba(212, 168, 67, 0.15);
+  outline: none;
 }
 
 /* Main Workspace Grid */
@@ -167,6 +174,12 @@
   grid-template-columns: 380px 1fr;
   min-height: 520px;
   animation: rsWorkspaceFadeIn 0.4s var(--ease-spring);
+  transition: opacity 0.3s ease;
+  position: relative;
+}
+
+.rs-workspace-grid.is-calculating {
+  opacity: 0.7;
 }
 
 @keyframes rsWorkspaceFadeIn {
@@ -184,6 +197,43 @@
   .rs-workspace-grid {
     animation: none;
   }
+}
+
+/* ─── Calculating Overlay ─── */
+.rs-calculating-overlay {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(212, 168, 67, 0.12);
+  border: 1px solid rgba(212, 168, 67, 0.3);
+  padding: 0.4rem 0.875rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-brand-gold);
+  z-index: 10;
+  animation: rsPulseIn 0.3s ease;
+}
+
+@keyframes rsPulseIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.rs-calc-spinner {
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(212, 168, 67, 0.3);
+  border-top-color: var(--color-brand-gold);
+  border-radius: 50%;
+  animation: rsSpinCalc 0.7s linear infinite;
+}
+
+@keyframes rsSpinCalc {
+  to { transform: rotate(360deg); }
 }
 
 /* Specs Column */
@@ -224,6 +274,19 @@
   background: rgba(255, 255, 255, 0.08);
   padding: 0.2rem 0.5rem;
   border-radius: var(--radius-sm);
+}
+
+.rs-distance-tag {
+  display: inline-block;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: 0.5rem;
+  padding: 0.15rem 0.4rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-sm);
+  font-variant-numeric: tabular-nums;
 }
 
 /* Metrics Stack */
@@ -347,7 +410,10 @@
 }
 
 .kpi-label {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
   font-size: 0.5625rem;
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -367,6 +433,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  position: relative;
 }
 
 .rs-panel-label {
@@ -394,6 +461,16 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.sequence-step:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.sequence-step.is-origin {
+  border-left: 3px solid var(--color-brand-red);
 }
 
 .step-badge {
@@ -420,6 +497,34 @@
   color: rgba(255, 255, 255, 0.55);
   line-height: 1.4;
   margin-top: 0.2rem;
+}
+
+/* Delay Risk Badges */
+.step-risk {
+  display: inline-block;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.1rem 0.35rem;
+  border-radius: var(--radius-sm);
+  margin-top: 0.4rem;
+  width: fit-content;
+}
+
+.step-risk.risk-low {
+  background: rgba(26, 138, 74, 0.15);
+  color: #4ade80;
+}
+
+.step-risk.risk-medium {
+  background: rgba(217, 119, 6, 0.15);
+  color: #fbbf24;
+}
+
+.step-risk.risk-high {
+  background: rgba(220, 38, 38, 0.15);
+  color: #f87171;
 }
 
 /* Strategy Directive Card */
@@ -470,7 +575,21 @@
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  text-decoration: none !important;
+  color: inherit;
   transition: transform var(--motion-fast) ease, border-color var(--motion-fast) ease;
+}
+
+.alt-card,
+.alt-card *,
+.alt-card:hover,
+.alt-card:focus,
+.alt-card:active {
+  text-decoration: none !important;
+}
+
+.alt-card:hover {
+  transform: translateY(-2px);
 }
 
 .alt-card.is-recommended {
@@ -602,5 +721,14 @@
 
   .rcf-actions .btn {
     width: 100%;
+  }
+
+  .rs-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rs-calculating-overlay {
+    top: 0.5rem;
+    right: 0.5rem;
   }
 }

@@ -48,8 +48,8 @@ export const GlobalNetwork = () => {
   return (
     <div className="global-network-page">
       <SEO 
-        title="Global Network & 19 Maritime Sea Domains — Strategic Freight Topology"
-        description="Explore GACIS global trade lanes spanning the Middle East, Far East, European Union, Africa, and Central Asia across 19 strategic maritime sea domains."
+        title="Global Network & Trade Corridors — Strategic Freight Operations"
+        description="Explore GACIS trade lanes spanning India, the Gulf, and Central Asia (CIS) with multimodal block trains, sea-air routing, and regional desks."
         canonical="/global-network"
       />
 
@@ -59,38 +59,38 @@ export const GlobalNetwork = () => {
           <div className="nhc-badge-row">
             <span className="nhc-pulse-badge">
               <Radio size={14} className="radar-signal-svg" />
-              <span>STRATEGIC MARITIME & INTERMODAL TOPOLOGY</span>
+              <span>GACIS OPERATIONAL NETWORK</span>
             </span>
             <span className="nhc-telemetry-tag">
-              <Waves size={13} /> 19 ACTIVE SEA DOMAINS & CHOKEPOINTS
+              <Waves size={13} /> INDIA · GULF · CENTRAL ASIA (CIS)
             </span>
           </div>
 
-          <h1 className="nhc-title">Global Network & Strategic Sea Domains</h1>
+          <h1 className="nhc-title">Regional Operating Desks & Trade Corridors</h1>
           <p className="nhc-desc">
-            End-to-end multimodal coverage connecting the Middle East, Far East, European Union, Africa, Central Asia, and the Americas across 19 strategic sea domains, synchronized deepsea strings, and inland block trains.
+            Direct operations bridging Chennai Corporate Headquarters, Dubai Commercial Desk, and Central Asia / Trans-Caspian intermodal routes with synchronized customs clearance and scheduled linehauls.
           </p>
 
           {/* Quick Telemetry KPI Bar */}
           <div className="network-telemetry-bar">
             <div className="ntb-stat">
-              <span className="ntb-val text-cyan tabular-nums">19</span>
-              <span className="ntb-label">Strategic Sea Domains</span>
+              <span className="ntb-val text-cyan tabular-nums">14</span>
+              <span className="ntb-label">Direct Operating Desks & Hubs</span>
             </div>
             <div className="ntb-divider" />
             <div className="ntb-stat">
-              <span className="ntb-val text-gold tabular-nums">14</span>
-              <span className="ntb-label">Tier-1 Continental Desks</span>
+              <span className="ntb-val text-gold tabular-nums">19</span>
+              <span className="ntb-label">Strategic Maritime Domains</span>
             </div>
             <div className="ntb-divider" />
             <div className="ntb-stat">
-              <span className="ntb-val tabular-nums">150+</span>
-              <span className="ntb-label">Global Allied Gateways</span>
+              <span className="ntb-val tabular-nums">100%</span>
+              <span className="ntb-label">Legitimate Operations</span>
             </div>
             <div className="ntb-divider" />
             <div className="ntb-stat">
               <span className="ntb-val tabular-nums">24/7</span>
-              <span className="ntb-label">Dubai HQ Control Tower</span>
+              <span className="ntb-label">Commercial Coordination</span>
             </div>
           </div>
         </div>
@@ -158,13 +158,13 @@ export const GlobalNetwork = () => {
               <div className="mcw-header">
                 <div>
                   <span className="mcw-eyebrow">
-                    {activeViewMode === 'seas' ? 'MARITIME CORRIDOR TELEMETRY' : 'CONTINENTAL HUB TOPOLOGY'}
+                    {activeViewMode === 'seas' ? 'MARITIME SHIPPING CORRIDORS' : 'CONTINENTAL LOGISTICS HUBS'}
                   </span>
                   <h3>Real-World Cartographic Logistics View</h3>
                 </div>
                 <div className="mcw-live-indicator">
                   <span className="live-radar-dot"></span>
-                  <span>ACTIVE AIS TELEMETRY</span>
+                  <span>LIVE AIS SHIP TRACKING</span>
                 </div>
               </div>
 
@@ -478,7 +478,7 @@ export const GlobalNetwork = () => {
                 </div>
 
                 <button type="button" className="btn btn-secondary btn-sm gsc-inspect-btn">
-                  Inspect Hub Telemetry <ChevronRight size={14} />
+                  Inspect Hub Details <ChevronRight size={14} />
                 </button>
               </div>
             ))}

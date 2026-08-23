@@ -37,6 +37,7 @@
     rgba(10, 12, 16, 0.76) 45%,
     rgba(10, 12, 16, 0.35) 100%
   );
+  z-index: 1;
 }
 
 .hero-container {
@@ -54,6 +55,7 @@
 
 /* Left Content Column */
 .hero-content {
+  position: relative;
   max-width: 680px;
 }
 

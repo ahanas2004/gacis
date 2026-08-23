@@ -1,0 +1,212 @@
+/* ═══════════════════════════════════════════════════════════════
+   GACIS GOLD PACKAGE — TESTIMONIALS SLIDER STYLING
+   ═══════════════════════════════════════════════════════════════ */
+
+.testimonials-section {
+  position: relative;
+  background-color: var(--bg-secondary);
+}
+
+.testimonial-card-wrapper {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.testimonial-featured-card {
+  background: #ffffff;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-card);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  animation: testFadeIn 0.4s var(--ease-spring) both;
+}
+
+@keyframes testFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tfc-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.tfc-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.tfc-rating-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-left: 0.5rem;
+}
+
+.tfc-corridor-badge {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-brand-red);
+  background: rgba(200, 32, 47, 0.08);
+  border: 1px solid rgba(200, 32, 47, 0.18);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+}
+
+.tfc-quote {
+  position: relative;
+  margin: 0 0 2.25rem;
+}
+
+.tfc-quote-icon {
+  color: rgba(200, 32, 47, 0.15);
+  margin-bottom: 0.75rem;
+}
+
+.tfc-quote p {
+  font-size: clamp(1.15rem, 1.6vw, 1.45rem);
+  line-height: 1.6;
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.tfc-author-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.tfc-author-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.tfc-author-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.tfc-author-title {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.35rem;
+}
+
+.tfc-location {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.tfc-metric-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(26, 138, 74, 0.08);
+  border: 1px solid rgba(26, 138, 74, 0.2);
+  color: var(--color-success);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-md);
+}
+
+.tmp-val {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.tmp-lbl {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+
+/* Controls */
+.testimonial-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  padding: 0 0.5rem;
+}
+
+.tfc-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tfc-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tfc-dot.is-active {
+  width: 28px;
+  border-radius: var(--radius-pill);
+  background: var(--color-brand-red);
+}
+
+.tfc-nav-btns {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.tfc-arrow-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.tfc-arrow-btn:hover {
+  background: var(--color-brand-red);
+  color: #ffffff;
+  border-color: var(--color-brand-red);
+}
+
+.tfc-counter {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}

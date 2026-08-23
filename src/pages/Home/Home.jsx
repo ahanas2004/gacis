@@ -7,6 +7,7 @@ import ProcessSection from '../../components/Home/ProcessSection';
 import RouteSimulator from '../../components/Home/RouteSimulator';
 import IndustrySection from '../../components/Home/IndustrySection';
 import SocialProof from '../../components/Home/SocialProof';
+import Testimonials from '../../components/Home/Testimonials';
 import CompanyCards from '../../components/Home/CompanyCards';
 import CtaBanner from '../../components/Home/CtaBanner';
 import ErrorBoundary from '../../components/Common/ErrorBoundary';
@@ -32,6 +33,7 @@ const Home = () => {
       </ErrorBoundary>
       <IndustrySection />
       <SocialProof />
+      <Testimonials />
       <CompanyCards />
       <CtaBanner />
     </div>

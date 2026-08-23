@@ -252,3 +252,24 @@
     display: none;
   }
 }
+
+/* Prefilled Banner */
+.wizard-prefilled-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(200, 32, 47, 0.06);
+  border: 1px solid rgba(200, 32, 47, 0.2);
+  border-left: 3px solid var(--color-brand-red);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.wpb-sparkle {
+  color: var(--color-brand-gold);
+  flex-shrink: 0;
+}

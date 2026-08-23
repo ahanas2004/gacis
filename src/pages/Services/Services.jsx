@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Plane, Ship, Truck, Train, ShieldCheck, Boxes, ArrowRight, Check } from 'lucide-react';
+import { Plane, Ship, Truck, Train, ShieldCheck, Boxes, ArrowRight, Check, Zap, Award, Activity } from 'lucide-react';
 import { services } from '../../data/services';
 import SEO from '../../components/Common/SEO';
 import PageHeader from '../../components/Common/PageHeader';
@@ -12,16 +12,16 @@ export const Services = () => {
   return (
     <div className="services-page">
       <SEO 
-        title="Multimodal Freight & Global Logistics Services"
-        description="Explore GACIS core capabilities across Air Cargo Charters, Deepsea Linehauls, Trans-Eurasian Rail, Cross-Border Road Fleets, and Customs Brokerage."
+        title="12 Multimodal Freight & Global Logistics Services — GACIS Intelligence"
+        description="Explore 12 core GACIS capabilities across Air Cargo Charters, Deepsea Linehauls, Trans-Eurasian Rail, Cross-Border Road Fleets, Hazmat/DG Chemical Chains, and Customs Brokerage."
         canonical="/services"
       />
 
       <PageHeader
-        eyebrow="CORE FREIGHT CAPABILITIES"
-        title="Multimodal Logistics Intelligence"
-        description="Precision linehaul architecture bridging the Gulf, Central Asia, South Asia, and Europe across air, deepsea, overland, and rail corridors."
-        statusTag="5 MULTIMODAL MODES ACTIVE"
+        eyebrow="GLOBAL LOGISTICS EXECUTION ENGINE"
+        title="12 Core Multimodal Services"
+        description="Proven linehaul architecture with real-time operational KPIs, direct carrier allocations, and unbroken compliance bridging the Gulf, Central Asia, South Asia, and Europe."
+        statusTag="12 FREIGHT CAPABILITIES ACTIVE"
       />
 
       <section className="section-padding bg-primary">
@@ -29,6 +29,8 @@ export const Services = () => {
           <div className="services-full-grid">
             {services.map((service, i) => {
               const Icon = iconMap[service.icon] || Boxes;
+              const topMetric = service.provenMetrics ? service.provenMetrics[0] : null;
+
               return (
                 <div key={service.id} className={`service-full-card fade-up delay-${(i % 3) * 100 + 100}`}>
                   {service.image && (
@@ -43,16 +45,24 @@ export const Services = () => {
                   )}
                   
                   <div className="sfc-body">
-                    <div className="sfc-icon-badge">
-                      <Icon size={20} />
-                      <span className="sfc-icon-title">{service.shortTitle}</span>
+                    <div className="sfc-header-row">
+                      <div className="sfc-icon-badge">
+                        <Icon size={20} />
+                        <span className="sfc-icon-title">{service.shortTitle}</span>
+                      </div>
+                      {topMetric && (
+                        <div className="sfc-top-metric-chip" title={topMetric.sub}>
+                          <span className="stmc-val">{topMetric.value}</span>
+                          <span className="stmc-lbl">{topMetric.label}</span>
+                        </div>
+                      )}
                     </div>
                     
                     <h3 className="sfc-main-title">{service.title}</h3>
                     <p className="sfc-desc">{service.overview}</p>
                     
                     <div className="sfc-features-block">
-                      <span className="sfb-lbl">KEY OPERATIONAL CAPABILITIES:</span>
+                      <span className="sfb-lbl">PROVEN CAPABILITIES & FEATURES:</span>
                       <ul className="sfc-features">
                         {service.features.slice(0, 4).map((feat, j) => (
                           <li key={j}><Check size={14} className="check-icon" /> <span>{feat}</span></li>
@@ -62,12 +72,21 @@ export const Services = () => {
 
                     <div className="sfc-footer-action">
                       <div className="sfc-stat">
-                        <span className="sfc-stat-lbl">Transit Benchmark</span>
+                        <span className="sfc-stat-lbl">Lead Time SLA</span>
                         <span className="sfc-stat-val tabular-nums">{service.leadTime}</span>
                       </div>
-                      <Link to={`/services/${service.id}`} className="btn btn-secondary sfc-link">
-                        Explore Capability <ArrowRight size={15} className="arrow-icon" />
-                      </Link>
+                      <div className="sfc-btn-group">
+                        <Link to={`/services/${service.id}`} className="btn btn-secondary sfc-link">
+                          Explore <ArrowRight size={15} className="arrow-icon" />
+                        </Link>
+                        <Link 
+                          to={`/quote?service=${encodeURIComponent(service.shortTitle)}&mode=${encodeURIComponent(service.mode)}`} 
+                          state={{ mode: service.mode, cargoType: service.shortTitle }}
+                          className="btn btn-primary sfc-btn-book"
+                        >
+                          Book Service
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -83,7 +102,7 @@ export const Services = () => {
             <div>
               <h3 style={{ color: 'white' }}>Need a customized multimodal supply chain solution?</h3>
               <p style={{ color: 'rgba(255,255,255,0.75)', margin: 0 }}>
-                Our trade lane engineers will analyze your cargo volume, time criticality, and sustainability targets to engineer the optimal route.
+                Our trade lane engineers analyze your cargo volume, time criticality, and sustainability targets to engineer the optimal route.
               </p>
             </div>
             <Link to="/quote" className="btn btn-primary btn-large">

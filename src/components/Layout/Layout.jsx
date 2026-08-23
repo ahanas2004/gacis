@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import BackToTop from '../Common/BackToTop';
+import WhatsAppFloat from '../Common/WhatsAppFloat';
 import { useGlobalReveal } from '../../hooks/useGlobalReveal';
 import './Layout.css';
 
@@ -25,6 +26,7 @@ const Layout = () => {
         <Footer />
       </div>
       <BackToTop />
+      <WhatsAppFloat />
     </div>
   );
 };

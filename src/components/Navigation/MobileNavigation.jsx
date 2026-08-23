@@ -36,7 +36,10 @@ export const MobileNavigation = ({ isOpen, onClose, onToggle }) => {
       {/* Mobile Top Header Bar (< 768px) */}
       <header className="mobile-command-header">
         <Link to="/" className="mch-logo-anchor" onClick={onClose} aria-label="GACIS Home">
-          <img src="/images/logo.png" alt="GACIS Global Logistics" className="mch-logo-img" />
+          <div className="mch-brand-logo-wrap">
+            <img src="/images/logo.png" alt="GACIS" className="mch-logo-img" />
+            <span className="mch-brand-name">GACIS</span>
+          </div>
           <span className="mch-brand-tag">GULF · CIS · ASIA</span>
         </Link>
 
@@ -75,7 +78,10 @@ export const MobileNavigation = ({ isOpen, onClose, onToggle }) => {
         {/* Drawer Header */}
         <div className="mcd-header">
           <Link to="/" className="mcd-brand-link" onClick={onClose} aria-label="GACIS Home">
-            <img src="/images/logo.png" alt="GACIS" className="mcd-logo" />
+            <div className="mcd-brand-logo-wrap">
+              <img src="/images/logo.png" alt="GACIS" className="mcd-logo" />
+              <span className="mcd-brand-name">GACIS</span>
+            </div>
             <span className="mcd-sub">GLOBAL LOGISTICS NETWORK</span>
           </Link>
           <button

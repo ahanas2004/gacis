@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { 
   CheckCircle, ChevronRight, ArrowLeft, Send, ShieldCheck, 
   Plane, Ship, Truck, Train, Boxes, AlertCircle, FileText, Compass, Sparkles, RefreshCw
@@ -7,12 +7,44 @@ import {
 import useFormSubmit from '../../hooks/useFormSubmit';
 import './QuoteWizard.css';
 
+const mapServiceMode = (modeStr) => {
+  if (!modeStr) return 'Multimodal';
+  const upper = modeStr.toUpperCase();
+  if (upper.includes('AIR')) return 'Air Freight';
+  if (upper.includes('SEA') || upper.includes('OCEAN')) return 'Ocean Freight';
+  if (upper.includes('RAIL')) return 'Rail Freight';
+  if (upper.includes('ROAD')) return 'Road Freight';
+  if (upper.includes('PROJECT')) return 'Project Logistics';
+  return 'Multimodal';
+};
+
+const mapCargoType = (cargoStr) => {
+  if (!cargoStr) return 'General Cargo';
+  if (cargoStr.includes('Pharma')) return 'Pharmaceuticals';
+  if (cargoStr.includes('Auto')) return 'Automotive Parts';
+  if (cargoStr.includes('High-Tech') || cargoStr.includes('Electronics')) return 'High-Tech Electronics';
+  if (cargoStr.includes('Dangerous') || cargoStr.includes('DGR')) return 'Dangerous Goods (DGR)';
+  if (cargoStr.includes('Machinery') || cargoStr.includes('Industrial') || cargoStr.includes('Project')) return 'General Cargo';
+  return 'General Cargo';
+};
+
+const mapPriority = (priorityStr) => {
+  if (!priorityStr) return 'Standard';
+  if (priorityStr.includes('Urgent')) return 'Urgent';
+  if (priorityStr.includes('Express')) return 'Express';
+  return 'Standard';
+};
+
 export const QuoteWizard = () => {
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
+  const [isPreFilled, setIsPreFilled] = useState(false);
 
   const {
     formData,
+    setFormData,
     updateField,
     errors,
     isSubmitting,
@@ -38,6 +70,36 @@ export const QuoteWizard = () => {
       phone: ''
     }
   });
+
+  // Prefill form from Route Simulator location.state or URL search parameters
+  useEffect(() => {
+    const stateOrigin = location.state?.origin;
+    const searchOrigin = searchParams.get('origin');
+    const originVal = stateOrigin || searchOrigin;
+
+    const destVal = location.state?.destination || searchParams.get('destination');
+    const modeVal = location.state?.mode || searchParams.get('mode');
+    const cargoVal = location.state?.cargoType || searchParams.get('cargoType');
+    const priorityVal = location.state?.priority || searchParams.get('priority');
+    const transitTime = location.state?.transitTime || searchParams.get('transitTime');
+    const optCO2 = location.state?.optCO2 || searchParams.get('optCO2');
+
+    if (originVal || destVal || modeVal || cargoVal) {
+      setFormData(prev => ({
+        ...prev,
+        origin: originVal || prev.origin,
+        destination: destVal || prev.destination,
+        service: modeVal ? mapServiceMode(modeVal) : prev.service,
+        cargoType: cargoVal ? mapCargoType(cargoVal) : prev.cargoType,
+        priority: priorityVal ? mapPriority(priorityVal) : prev.priority,
+        weight: prev.weight || '14000',
+        volume: (transitTime || optCO2) 
+          ? `1 TEU (${[transitTime ? `${transitTime} Days Est.` : null, optCO2 ? `${optCO2} tCO2e` : null].filter(Boolean).join(', ')})`
+          : prev.volume
+      }));
+      setIsPreFilled(true);
+    }
+  }, [location.state, searchParams, setFormData]);
 
   const nextStep = () => {
     // Validate current step before advancing
@@ -112,6 +174,15 @@ export const QuoteWizard = () => {
             <span className="step-eyebrow">STEP 1 OF 5</span>
             <h3>Select Mode & Primary Trade Corridor</h3>
             <p className="step-desc">Choose your transportation mode preference and routing endpoints.</p>
+
+            {isPreFilled && (
+              <div className="wizard-prefilled-banner">
+                <Sparkles size={16} className="wpb-sparkle" />
+                <span>
+                  Corridor pre-filled from Multimodal Route Planner: <strong>{formData.origin} ⇄ {formData.destination}</strong> ({formData.service} • {formData.priority} Priority)
+                </span>
+              </div>
+            )}
 
             <div className="service-selector-grid">
               {[
@@ -265,7 +336,7 @@ export const QuoteWizard = () => {
           <div className="step-panel fade-up">
             <span className="step-eyebrow">STEP 4 OF 5</span>
             <h3>Commercial Shipper Information</h3>
-            <p className="step-desc">Where should our global trade desk deliver the formal quote telemetry?</p>
+            <p className="step-desc">Where should our global trade desk deliver the formal quotation?</p>
 
             <div className="form-grid-2">
               <div className="form-group">
@@ -363,7 +434,7 @@ export const QuoteWizard = () => {
               REFERENCE ID: <strong className="tabular-nums">{submissionReference || 'GAC-Q-78921'}</strong>
             </p>
             <p className="confirm-desc">
-              Thank you, {formData.name}. Our commercial trade desk in Dubai and regional gateway specialists are compiling your engineered rate schedule and lead-time telemetry.
+              Thank you, {formData.name}. Our commercial trade desk in Dubai and regional gateway specialists are compiling your customized rate schedule and transit lead-time estimates.
             </p>
 
             <div className="confirm-actions">

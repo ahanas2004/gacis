@@ -40,12 +40,12 @@ const demoShipments = {
     pieces: '2x 40ft High Cube Containers / 42,000 kg',
     customs: 'TIR Sealed Trans-Caspian Transit',
     carrier: 'Trans-Eurasian Block Shuttle #412',
-    currentLocation: 'Bandar Abbas Rail Marshalling Yard',
+    currentLocation: 'Aktau Caspian Sea Port Terminal',
     milestones: [
       { status: 'pending', title: 'Final Inland Yard Clearance', time: 'Estimated Nov 02, 2026 • Tashkent Dry Port' },
-      { status: 'pending', title: 'Sarakhs Bogie Gauge Exchange', time: 'Estimated Oct 28, 2026 • Turkmenistan Border' },
-      { status: 'active', title: 'Rail Block Assembly & Customs Sealing', time: 'Oct 22, 2026 • 11:00 | Bandar Abbas Terminal' },
-      { status: 'completed', title: 'Feeder Ocean Vessel Berthing', time: 'Oct 21, 2026 • 22:40 | Bandar Abbas Berth 4' },
+      { status: 'pending', title: 'Beyneu Bogie Gauge Exchange', time: 'Estimated Oct 28, 2026 • Kazakhstan Railhead' },
+      { status: 'active', title: 'Rail Block Assembly & Customs Sealing', time: 'Oct 22, 2026 • 11:00 | Aktau Port Terminal' },
+      { status: 'completed', title: 'Feeder Ocean Vessel Berthing', time: 'Oct 21, 2026 • 22:40 | Aktau Port Berth 2' },
       { status: 'completed', title: 'Port Klang Container Loading (VGM Verified)', time: 'Oct 14, 2026 • 16:00 | Port Klang' }
     ]
   },
@@ -107,18 +107,18 @@ export const Track = () => {
   return (
     <div className="track-page">
       <SEO 
-        title="Shipment Milestone & Telemetry Tracking"
-        description="Track your global air waybills, ocean bills of lading, and intermodal freight reference numbers with GACIS real-time corridor intelligence."
+        title="Shipment Milestone & Status Tracking"
+        description="Track your global air waybills, ocean bills of lading, and intermodal freight reference numbers with GACIS real-time route visibility."
         canonical="/track"
       />
 
       {/* Hero Search Section */}
       <PageHeader
-        eyebrow="TELEMETRY TRACKING SYSTEM"
+        eyebrow="SHIPMENT TRACKING SYSTEM"
         eyebrowIcon={RefreshCw}
         title="Track Your Shipment"
-        description="Enter your GACIS Booking Reference, Air Waybill (AWB), or Ocean Container ID for real-time status telemetry and milestone timestamps."
-        statusTag="LIVE SATELLITE & EDI FEED"
+        description="Enter your GACIS Booking Reference, Air Waybill (AWB), or Ocean Container ID for real-time status updates and milestone timestamps."
+        statusTag="LIVE SATELLITE & EDI TRACKING"
       >
         <form className="track-search-bar" onSubmit={handleTrackSubmit}>
           <div className="tsb-input-wrap">
@@ -132,7 +132,7 @@ export const Track = () => {
             />
           </div>
           <button type="submit" className="btn btn-primary">
-            Track Telemetry
+            Track Shipment
           </button>
         </form>
 
@@ -157,7 +157,7 @@ export const Track = () => {
         <div className="container dnb-inner">
           <Info size={16} className="dnb-icon" />
           <span>
-            <strong>DEMO TRACKING ENVIRONMENT:</strong> This interactive console showcases the GACIS operational telemetry interface. Live enterprise integration with your carrier systems occurs upon account activation.
+            <strong>DEMO TRACKING ENVIRONMENT:</strong> This interactive tool showcases the GACIS operational tracking interface. Live enterprise integration with your carrier systems occurs upon account activation.
           </span>
         </div>
       </div>

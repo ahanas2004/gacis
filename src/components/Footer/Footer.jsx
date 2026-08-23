@@ -12,7 +12,10 @@ export const Footer = () => {
         <div className="footer-top-strip">
           <div className="footer-brand-col">
             <Link to="/" className="footer-brand-logo" aria-label="GACIS Home">
-              <img src="/images/logo.png" alt="GACIS Global Logistics" className="footer-logo-img" />
+              <div className="footer-brand-logo-wrap">
+                <img src="/images/logo.png" alt="GACIS Global Logistics" className="footer-logo-img" />
+                <span className="footer-brand-name">GACIS</span>
+              </div>
             </Link>
             <p className="footer-tagline">
               Moving what matters. Across borders with absolute precision.
@@ -28,7 +31,7 @@ export const Footer = () => {
             <div className="fqa-content">
               <span className="fqa-eyebrow">Direct Desk Access</span>
               <h4>Need an engineered freight calculation?</h4>
-              <p>Our multimodal trade lane specialists respond with route telemetry within 24 hours.</p>
+              <p>Our multimodal trade lane specialists respond with customized routing and rates within 24 hours.</p>
             </div>
             <div className="fqa-buttons">
               <Link to="/quote" className="btn btn-primary btn-sm">
@@ -89,13 +92,14 @@ export const Footer = () => {
         {/* Footer Bottom Bar */}
         <div className="footer-bottom-bar">
           <div className="footer-legal-copy">
-            <span>© {new Date().getFullYear()} GACIS Cargo Services LLC. All global rights reserved.</span>
+            <span>© {new Date().getFullYear()} GACIS Cargo Services Pvt. Ltd. All rights reserved.</span>
             <span className="footer-legal-divider">•</span>
-            <span>Commercial Registration: Dubai, UAE — P.O. Box 624699</span>
+            <span>Chennai, Tamil Nadu, India · Dubai, UAE</span>
           </div>
 
           <div className="footer-legal-links">
-            <Link to="/about">Compliance & Code of Ethics</Link>
+            <Link to="/privacy-policy">Privacy Policy</Link>
+            <Link to="/terms-of-service">Terms of Service</Link>
             <Link to="/sustainability">Environmental Policy</Link>
             <Link to="/contact">Support</Link>
           </div>

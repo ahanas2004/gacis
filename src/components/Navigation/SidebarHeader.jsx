@@ -17,11 +17,14 @@ export const SidebarHeader = ({ isCollapsed, onToggleCollapse, onNavigate }) => 
 
       <div className="sidebar-brand-block">
         <Link to="/" className="sidebar-brand-anchor" onClick={onNavigate} aria-label="GACIS Global Operations Console">
-          <img 
-            src="/images/logo.png" 
-            alt="GACIS Global Logistics" 
-            className="sidebar-brand-logo" 
-          />
+          <div className="sidebar-brand-logo-wrap">
+            <img 
+              src="/images/logo.png" 
+              alt="GACIS Global Logistics" 
+              className="sidebar-brand-logo" 
+            />
+            {!isCollapsed && <span className="sidebar-brand-name">GACIS</span>}
+          </div>
         </Link>
         {!isCollapsed && (
           <span className="sidebar-brand-sub">GLOBAL LOGISTICS NETWORK</span>

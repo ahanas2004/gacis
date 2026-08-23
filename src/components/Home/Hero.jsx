@@ -14,7 +14,7 @@ export const Hero = () => {
 
   return (
     <section className="hero-editorial">
-      {/* Background Image Container */}
+      {/* Background Image & Tuned Gradient Backdrop */}
       <div className="hero-backdrop-wrapper">
         <img 
           src="/images/hero_bg.jpg" 
@@ -31,7 +31,7 @@ export const Hero = () => {
           {/* Left Column: Core Positioning & CTAs */}
           <div className="hero-content reveal-left">
             <div className="hero-eyebrow-row">
-              <span className="hero-eyebrow">The Intelligence Layer</span>
+              <span className="hero-eyebrow">Strategic Freight Corridors</span>
               <span className="hero-corridor-tag">Gulf ⇄ CIS ⇄ Asia Trade</span>
             </div>
 
@@ -41,7 +41,7 @@ export const Hero = () => {
             </h1>
 
             <p className="hero-subtext">
-              Powering high-value supply chains across the Gulf, Central Asia, and South Asian corridors with multimodal block trains, sea-air routing, and live corridor telemetry.
+              Powering high-value supply chains across the Gulf, Central Asia, and South Asian corridors with multimodal block trains, sea-air routing, and live corridor tracking.
             </p>
 
             <div className="hero-actions">

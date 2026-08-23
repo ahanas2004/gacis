@@ -23,19 +23,35 @@
 .footer-brand-logo {
   display: inline-block;
   margin-bottom: 1.5rem;
+  text-decoration: none;
   transition: transform 0.16s ease;
 }
 
 .footer-brand-logo:hover {
-  transform: scale(1.03);
+  transform: scale(1.02);
+}
+
+.footer-brand-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .footer-logo-img {
-  height: 60px;
+  height: 52px;
   width: auto;
-  max-width: 160px;
+  max-width: 140px;
   object-fit: contain;
   display: block;
+}
+
+.footer-brand-name {
+  font-size: 1.65rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  line-height: 1;
+  font-family: var(--font-primary);
 }
 
 .footer-tagline {

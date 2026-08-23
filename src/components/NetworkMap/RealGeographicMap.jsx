@@ -36,23 +36,11 @@ const getCurvedArcPoints = (start, end, numPoints = 40) => {
   return points;
 };
 
-// Strategic Continental & Intermodal Hub Connections
+// Strategic Intermodal Hub Connections
 const hubRoutes = [
-  { from: 'uae-hq', to: 'europe-frankfurt', mode: 'AIR/RAIL' },
-  { from: 'uae-hq', to: 'cis-almaty', mode: 'RAIL/AIR' },
-  { from: 'uae-hq', to: 'cis-aktau', mode: 'SEA/RAIL' },
-  { from: 'uae-hq', to: 'india-hub', mode: 'SEA/AIR' },
-  { from: 'uae-hq', to: 'srilanka-gateway', mode: 'OCEAN' },
-  { from: 'uae-hq', to: 'saudi-riyadh', mode: 'ROAD/AIR' },
-  { from: 'uae-hq', to: 'africa-djibouti', mode: 'SEA/AIR' },
-  { from: 'africa-djibouti', to: 'africa-mombasa', mode: 'FEEDER' },
-  { from: 'india-hub', to: 'malaysia-hub', mode: 'FEEDER' },
-  { from: 'srilanka-gateway', to: 'malaysia-hub', mode: 'DEEPSEA' },
-  { from: 'malaysia-hub', to: 'china-shanghai', mode: 'DEEPSEA' },
-  { from: 'china-shanghai', to: 'japan-tokyo', mode: 'FEEDER/AIR' },
-  { from: 'europe-frankfurt', to: 'europe-rotterdam', mode: 'RAIL/BARGE' },
-  { from: 'europe-rotterdam', to: 'europe-genoa', mode: 'RAIL' },
-  { from: 'europe-rotterdam', to: 'us-houston', mode: 'TRANS-ATLANTIC' }
+  { from: 'india-hq', to: 'uae-desk', mode: 'SEA/AIR' },
+  { from: 'uae-desk', to: 'cis-almaty', mode: 'SEA/RAIL' },
+  { from: 'india-hq', to: 'cis-almaty', mode: 'MULTIMODAL' }
 ];
 
 export const RealGeographicMap = ({ 
@@ -105,7 +93,7 @@ export const RealGeographicMap = ({
 
     // 1. Render Strategic Hub Markers
     primaryHubs.forEach((hub) => {
-      const isDubai = hub.id === 'uae-hq';
+      const isDubai = hub.id === 'uae-desk';
       
       const customIcon = L.divIcon({
         className: 'gacis-geo-marker-wrapper',
@@ -212,7 +200,7 @@ export const RealGeographicMap = ({
     primaryHubs.forEach((hub) => {
       const marker = hubMarkersRef.current[hub.id];
       if (marker) {
-        const isDubai = hub.id === 'uae-hq';
+        const isDubai = hub.id === 'uae-desk';
         const isSelected = activeHub?.id === hub.id;
         
         const updatedIcon = L.divIcon({
