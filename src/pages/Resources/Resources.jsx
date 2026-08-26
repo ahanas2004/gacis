@@ -28,6 +28,7 @@ export const Resources = () => {
     const matchesSearch = searchQuery === '' || 
       art.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
       art.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      art.publisher.toLowerCase().includes(searchQuery.toLowerCase()) ||
       art.category.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
@@ -47,7 +48,7 @@ export const Resources = () => {
         eyebrow="KNOWLEDGE & TRADE INTELLIGENCE HUB"
         eyebrowIcon={BookOpen}
         title="Rare Logistics Corridors & Secret Trade Intelligence"
-        description="Exclusive field reports, classified route breakdowns, extreme environment protocols, and high-security freight intelligence authored by senior GACIS supply chain engineers."
+        description="Exclusive field reports, classified route breakdowns, extreme environment protocols, and high-security freight intelligence sourced from leading industry journals and GACIS supply chain engineers."
         statusTag="VERIFIED FREIGHT INTELLIGENCE & RESEARCH"
       >
         <div className="res-header-actions">
@@ -91,9 +92,9 @@ export const Resources = () => {
         <div className="container">
           <div className="section-heading text-center centered-heading">
             <span className="eyebrow text-gold">RARE LOGISTICS KNOWLEDGE HUB</span>
-            <h2>Classified Routes, Extreme Corridors & Proven Field Guides</h2>
+            <h2>Classified Routes, Extreme Corridors & Direct Article Sources</h2>
             <p className="res-lead-text">
-              Discover industry secrets, rare trade lanes, high-security escort protocols, and specialized cold-chain engineering that most freight forwarders never disclose.
+              Click any article card below to jump directly to the verified industry source publication (FreightWaves, Railway Gazette, JOC, Air Cargo News, Heavy Lift PFI).
             </p>
           </div>
 
@@ -102,7 +103,7 @@ export const Resources = () => {
             <Search size={18} className="rsb-icon" />
             <input 
               type="text" 
-              placeholder="Search rare routes, security protocols, cryo pharma, or heavy lift engineering..."
+              placeholder="Search rare routes, security protocols, FreightWaves, Railway Gazette, or cryo pharma..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="rsb-input"
@@ -129,18 +130,24 @@ export const Resources = () => {
           </div>
 
           {/* ═══════════════════════════════════════════════════════════════
-              ARTICLE GRID — HIGH VISIBILITY CARDS WITH DIRECT LINKS
+              ARTICLE GRID — DIRECT EXTERNAL LINK CARDS
               ═══════════════════════════════════════════════════════════════ */}
           <div className="res-articles-grid">
             {filteredArticles.map((art) => (
-              <div className="res-art-card" key={art.id}>
+              <a 
+                key={art.id}
+                href={art.externalUrl}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="res-art-card direct-external-card"
+              >
                 <div className="rac-top">
                   <span className="rac-tag">{art.categoryTag}</span>
-                  <span className="rac-score">{art.rarityScore}</span>
+                  <span className="rac-pub-chip">{art.publisherTag}</span>
                 </div>
 
                 <h3 className="rac-title">
-                  <Link to={`/resources/${art.slug}`}>{art.title}</Link>
+                  {art.title} <ExternalLink size={15} className="rac-ext-icon" />
                 </h3>
                 
                 <p className="rac-excerpt">{art.excerpt}</p>
@@ -154,32 +161,17 @@ export const Resources = () => {
                   ))}
                 </div>
 
-                <div className="rac-links-row">
-                  {art.externalRef && (
-                    <a 
-                      href={art.externalRef} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="rac-ext-link"
-                      title={`Authority Source: ${art.externalSource}`}
-                    >
-                      <span>Source: {art.externalSource.split(' ')[0]}</span>
-                      <ExternalLink size={12} />
-                    </a>
-                  )}
-                  
-                  <Link to={`/resources/${art.slug}`} className="rac-direct-link">
-                    DIRECT ARTICLE LINK <ArrowRight size={14} />
-                  </Link>
-                </div>
-
                 <div className="rac-footer">
                   <div className="rac-meta">
-                    <span className="rac-author">{art.author}</span>
+                    <span className="rac-publisher">{art.publisher}</span>
                     <span className="rac-time">• {art.readTime}</span>
                   </div>
+
+                  <span className="rac-direct-btn">
+                    READ FULL ARTICLE <ExternalLink size={14} />
+                  </span>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
 
@@ -187,7 +179,7 @@ export const Resources = () => {
             <div className="res-empty-box text-center">
               <ShieldAlert size={36} className="text-gold margin-inline-auto" />
               <h3>No articles found matching "{searchQuery}"</h3>
-              <p>Try searching for terms like "Caspian", "TAPA", "Cryo", "Rail", or "Arctic".</p>
+              <p>Try searching for terms like "Caspian", "FreightWaves", "TAPA", "Cryo", "Rail", or "Arctic".</p>
               <button type="button" onClick={() => { setSearchQuery(''); setActiveCategory('ALL'); }} className="btn btn-secondary btn-sm">
                 Reset All Filters
               </button>
