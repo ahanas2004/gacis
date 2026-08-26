@@ -1,11 +1,22 @@
 /* ═══════════════════════════════════════════════════════════════
    GACIS SUSTAINABILITY PAGE STYLING
-   Consistently styled to match GACIS Global Command Center System
+   Compact, Modern, Premium & Efficient Vertical Spacing
    ═══════════════════════════════════════════════════════════════ */
 
 .sustainability-page {
   background-color: var(--bg-primary);
   color: var(--text-primary);
+}
+
+/* Reduced Section Padding for a Compact Page Layout */
+.sustainability-page .section-padding {
+  padding-top: clamp(2rem, 3.5vw, 3.25rem) !important;
+  padding-bottom: clamp(2rem, 3.5vw, 3.25rem) !important;
+}
+
+.sustainability-page .section-padding-sm {
+  padding-top: clamp(1.25rem, 2vw, 2rem) !important;
+  padding-bottom: clamp(1.25rem, 2vw, 2rem) !important;
 }
 
 .text-green { color: var(--color-success) !important; }
@@ -16,54 +27,59 @@
   margin-inline: auto;
 }
 
+.sustainability-page .section-heading {
+  margin-bottom: 1.5rem !important;
+}
+
 .sust-lead-text {
-  font-size: clamp(1rem, 1.25vw, 1.15rem);
+  font-size: clamp(0.95rem, 1.15vw, 1.05rem);
   color: var(--text-secondary);
   max-width: 780px;
   margin-inline: auto;
-  line-height: 1.65;
+  line-height: 1.55;
+  margin-bottom: 0;
 }
 
 /* ─── Header Action Buttons (inside PageHeader) ─── */
 .sust-header-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-top: 1.75rem;
+  gap: 0.85rem;
+  margin-top: 1.25rem;
   flex-wrap: wrap;
 }
 
 /* ─── Quick Stats Strip ─── */
 .sust-stats-strip {
   border-bottom: 1px solid var(--border-light);
-  padding-block: 1.75rem;
+  padding-block: 1rem;
 }
 
 .sss-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .sss-card {
   background: #ffffff;
   border: 1px solid var(--border-medium);
-  border-radius: var(--radius-card);
-  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.15rem;
   box-shadow: var(--shadow-subtle);
   display: flex;
   flex-direction: column;
 }
 
 .sss-num {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 900;
   color: var(--text-primary);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.15rem;
 }
 
 .sss-lbl {
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 700;
   color: var(--text-muted);
   text-transform: uppercase;
@@ -75,26 +91,26 @@
   background: #ffffff;
   border: 1px solid var(--border-medium);
   border-left: 4px solid var(--color-brand-gold);
-  border-radius: var(--radius-card);
-  padding: 1.5rem 2rem;
-  margin-top: 2rem;
-  margin-bottom: 2.5rem;
+  border-radius: var(--radius-md);
+  padding: 1.15rem 1.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.75rem;
   box-shadow: var(--shadow-subtle);
   max-width: 900px;
   margin-inline: auto;
 }
 
 .spc-badge {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: #b45309;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
 }
 
 .sust-plain-card p {
-  font-size: 1.05rem;
-  line-height: 1.65;
+  font-size: 0.95rem;
+  line-height: 1.55;
   color: var(--text-primary);
   margin: 0;
 }
@@ -102,14 +118,14 @@
 .sust-modes-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-md);
+  gap: 1rem;
 }
 
 .sust-mode-card {
   background: #ffffff;
   border: 1px solid var(--border-light);
-  border-radius: var(--radius-card);
-  padding: 1.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.15rem;
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-subtle);
@@ -117,20 +133,20 @@
 }
 
 .sust-mode-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-hover);
 }
 
 .smc-header {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.85rem;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
 }
 
 .smc-icon {
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
@@ -144,18 +160,18 @@
 .smc-icon.rail { background: rgba(26, 138, 74, 0.1); color: #1a8a4a; }
 
 .sust-mode-card h3 {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 800;
   margin: 0;
 }
 
 .smc-badge {
-  font-size: 0.6875rem;
+  font-size: 0.65rem;
   font-weight: 800;
-  padding: 0.25rem 0.6rem;
+  padding: 0.2rem 0.5rem;
   border-radius: var(--radius-pill);
   width: fit-content;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.6rem;
 }
 
 .tag-high { background: rgba(220, 38, 38, 0.1); color: #dc2626; border: 1px solid rgba(220, 38, 38, 0.2); }
@@ -163,9 +179,9 @@
 .tag-low { background: rgba(26, 138, 74, 0.1); color: #166534; border: 1px solid rgba(26, 138, 74, 0.2); }
 
 .smc-desc {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--text-secondary);
-  line-height: 1.55;
+  line-height: 1.45;
   margin: 0;
 }
 
@@ -173,30 +189,30 @@
 .sust-pillars-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-md);
-  margin-top: 2.5rem;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
 .sust-pillar-box {
   background: var(--bg-secondary);
   border: 1px solid var(--border-light);
-  border-radius: var(--radius-card);
-  padding: 1.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  padding: 1.35rem 1.15rem;
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
 .spb-num {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 900;
   color: var(--color-brand-red);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .spb-icon {
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: #ffffff;
   border: 1px solid var(--border-medium);
@@ -204,31 +220,31 @@
   align-items: center;
   justify-content: center;
   color: var(--color-brand-navy);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .sust-pillar-box h3 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 800;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
 }
 
 .sust-pillar-box p {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--text-secondary);
-  line-height: 1.55;
+  line-height: 1.45;
   margin: 0;
 }
 
 .sust-balance-callout {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1rem;
   background: rgba(212, 168, 67, 0.12);
   border: 1px solid rgba(212, 168, 67, 0.35);
-  border-radius: var(--radius-card);
-  padding: 1.5rem 2rem;
-  margin-top: 2.5rem;
+  border-radius: var(--radius-md);
+  padding: 1.15rem 1.5rem;
+  margin-top: 1.75rem;
   max-width: 900px;
   margin-inline: auto;
 }
@@ -238,25 +254,25 @@
 }
 
 .sbc-text h4 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 800;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
 }
 
 .sbc-text p {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   color: var(--text-primary);
   margin: 0;
-  line-height: 1.55;
+  line-height: 1.45;
 }
 
 /* ─── Section 3: Live Route & Carbon Comparator ─── */
 .sust-corridor-selector {
   display: flex;
   justify-content: center;
-  gap: 0.75rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.5rem;
   flex-wrap: wrap;
 }
 
@@ -264,9 +280,9 @@
   background: #ffffff;
   border: 1px solid var(--border-medium);
   color: var(--text-primary);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
-  padding: 0.65rem 1.25rem;
+  padding: 0.5rem 1rem;
   border-radius: var(--radius-pill);
   cursor: pointer;
   transition: all var(--motion-fast) ease;
@@ -287,18 +303,18 @@
   background: #ffffff;
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-card);
-  padding: clamp(1.75rem, 3vw, 2.75rem);
+  padding: clamp(1.25rem, 2.5vw, 2rem);
   box-shadow: var(--shadow-card);
   display: grid;
-  grid-template-columns: 1fr 140px 1fr;
+  grid-template-columns: 1fr 130px 1fr;
   align-items: center;
-  gap: 1.5rem;
-  max-width: 960px;
+  gap: 1.25rem;
+  max-width: 920px;
   margin-inline: auto;
 }
 
 .scc-card {
-  padding: 1.5rem;
+  padding: 1.15rem;
   border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
@@ -315,34 +331,34 @@
 }
 
 .scc-badge {
-  font-size: 0.6875rem;
+  font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.08em;
-  padding: 0.25rem 0.65rem;
+  padding: 0.2rem 0.55rem;
   border-radius: var(--radius-pill);
   width: fit-content;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
 }
 
 .badge-red { background: rgba(220, 38, 38, 0.12); color: #dc2626; }
 .badge-green { background: rgba(26, 138, 74, 0.12); color: #166534; }
 
 .scc-card h3 {
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.15rem;
 }
 
 .scc-sub {
-  font-size: 0.8125rem;
+  font-size: 0.78125rem;
   color: var(--text-muted);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .scc-stat {
   display: flex;
   flex-direction: column;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.65rem;
 }
 
 .scc-stat:last-child {
@@ -350,7 +366,7 @@
 }
 
 .scc-label {
-  font-size: 0.6875rem;
+  font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.05em;
   color: var(--text-muted);
@@ -358,12 +374,12 @@
 }
 
 .scc-value {
-  font-size: 1.75rem;
+  font-size: 1.45rem;
   font-weight: 900;
 }
 
 .scc-value small {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   color: var(--text-muted);
 }
@@ -372,12 +388,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.35rem;
 }
 
 .svb-circle {
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: var(--color-brand-navy);
   color: #ffffff;
@@ -387,11 +403,11 @@
 }
 
 .svb-save-tag {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 800;
   color: #166534;
   background: rgba(26, 138, 74, 0.15);
-  padding: 0.25rem 0.6rem;
+  padding: 0.2rem 0.55rem;
   border-radius: var(--radius-pill);
   white-space: nowrap;
 }
@@ -399,31 +415,31 @@
 .sust-impact-banner {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.85rem;
   background: rgba(26, 138, 74, 0.08);
   border: 1px solid rgba(26, 138, 74, 0.25);
   border-radius: var(--radius-md);
-  padding: 1.15rem 1.5rem;
-  max-width: 960px;
+  padding: 0.85rem 1.25rem;
+  max-width: 920px;
   margin-inline: auto;
-  margin-top: 1.5rem;
-  font-size: 0.9375rem;
+  margin-top: 1.15rem;
+  font-size: 0.875rem;
   color: var(--text-primary);
 }
 
 .sust-disclaimer {
-  font-size: 0.78125rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
-  margin-top: 1rem;
+  margin-top: 0.75rem;
 }
 
 /* ─── Section 4: Modal Shift Tab Cards ─── */
 .sust-tab-bar {
   display: flex;
   justify-content: center;
-  gap: 0.75rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.5rem;
   flex-wrap: wrap;
 }
 
@@ -431,9 +447,9 @@
   background: var(--bg-secondary);
   border: 1px solid var(--border-medium);
   color: var(--text-primary);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 800;
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.25rem;
   border-radius: var(--radius-pill);
   cursor: pointer;
   transition: all var(--motion-fast) ease;
@@ -447,16 +463,16 @@
   background: var(--color-brand-red);
   color: #ffffff;
   border-color: var(--color-brand-red);
-  box-shadow: 0 4px 14px rgba(200, 32, 47, 0.25);
+  box-shadow: 0 4px 12px rgba(200, 32, 47, 0.2);
 }
 
 .sust-shift-box {
   background: #ffffff;
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-card);
-  padding: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(1.25rem, 2.5vw, 2rem);
   box-shadow: var(--shadow-card);
-  max-width: 900px;
+  max-width: 880px;
   margin-inline: auto;
 }
 
@@ -465,72 +481,72 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.15rem;
   flex-wrap: wrap;
   border-bottom: 1px solid var(--border-light);
-  padding-bottom: 1.25rem;
+  padding-bottom: 1rem;
 }
 
 .ssb-header h3 {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.15rem;
 }
 
 .ssb-route-text {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   color: var(--text-muted);
 }
 
 .ssb-badge-save {
-  font-size: 0.78125rem;
+  font-size: 0.75rem;
   font-weight: 800;
   color: #166534;
   background: rgba(26, 138, 74, 0.12);
   border: 1px solid rgba(26, 138, 74, 0.28);
-  padding: 0.35rem 0.85rem;
+  padding: 0.3rem 0.75rem;
   border-radius: var(--radius-pill);
 }
 
 .ssb-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-  margin-bottom: 1.5rem;
+  gap: 1rem;
+  margin-bottom: 1.15rem;
 }
 
 .ssb-item {
   background: var(--bg-secondary);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
-  padding: 1.15rem;
+  padding: 1rem;
 }
 
 .ssb-lbl {
   display: block;
-  font-size: 0.6875rem;
+  font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: var(--text-muted);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 
 .ssb-val-row {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
 }
 
 .ssb-old {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-muted);
   text-decoration: line-through;
 }
 
 .ssb-new {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 900;
   color: var(--text-primary);
 }
@@ -538,29 +554,29 @@
 .ssb-explanation {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .ssb-exp-block {
   background: rgba(212, 168, 67, 0.08);
   border: 1px solid rgba(212, 168, 67, 0.25);
   border-radius: var(--radius-md);
-  padding: 1rem 1.25rem;
+  padding: 0.85rem 1rem;
 }
 
 .ssb-exp-block strong {
   display: block;
-  font-size: 0.8125rem;
+  font-size: 0.78125rem;
   font-weight: 800;
   color: var(--text-primary);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
 }
 
 .ssb-exp-block p {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--text-secondary);
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
 /* ─── Section 5: Process Row & Accordion ─── */
@@ -568,9 +584,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
   flex-wrap: wrap;
 }
 
@@ -578,10 +594,10 @@
   background: #ffffff;
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-card);
-  padding: 1.5rem 1.25rem;
+  padding: 1.25rem 1rem;
   text-align: center;
   flex: 1;
-  min-width: 180px;
+  min-width: 170px;
   box-shadow: var(--shadow-subtle);
 }
 
@@ -591,32 +607,32 @@
 }
 
 .spr-num {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: var(--color-brand-navy);
   color: #ffffff;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-inline: auto;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.65rem;
 }
 
 .spr-step h4 {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.05em;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
 }
 
 .spr-step p {
-  font-size: 0.8125rem;
+  font-size: 0.78125rem;
   color: var(--text-secondary);
   margin: 0;
-  line-height: 1.45;
+  line-height: 1.4;
 }
 
 .spr-arrow {
@@ -637,8 +653,8 @@
   background: #ffffff;
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-md);
-  padding: 1rem 1.5rem;
-  font-size: 0.9375rem;
+  padding: 0.85rem 1.25rem;
+  font-size: 0.875rem;
   font-weight: 700;
   color: var(--text-primary);
   cursor: pointer;
@@ -655,30 +671,30 @@
   border-top: none;
   border-bottom-left-radius: var(--radius-md);
   border-bottom-right-radius: var(--radius-md);
-  padding: 1.5rem;
+  padding: 1.25rem;
   margin-top: -4px;
 }
 
 .sma-body h4 {
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 800;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
 }
 
 .sma-body ul {
-  margin-left: 1.25rem;
-  margin-block: 0.75rem;
-  font-size: 0.875rem;
+  margin-left: 1.15rem;
+  margin-block: 0.6rem;
+  font-size: 0.8125rem;
 }
 
 .sma-body li {
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
 }
 
 .sma-note {
-  font-size: 0.8125rem;
+  font-size: 0.78125rem;
   color: var(--text-muted);
-  margin-top: 0.75rem;
+  margin-top: 0.6rem;
   margin-bottom: 0;
 }
 
@@ -687,26 +703,26 @@
   background: rgba(37, 99, 235, 0.05);
   border: 1px solid rgba(37, 99, 235, 0.2);
   border-radius: var(--radius-card);
-  padding: 1.5rem 2rem;
+  padding: 1.15rem 1.5rem;
   display: flex;
   align-items: flex-start;
-  gap: 1.25rem;
+  gap: 1rem;
   max-width: 860px;
   margin-inline: auto;
 }
 
 .sust-co2e-banner h3 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 800;
   color: #1e3a8a;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
 }
 
 .sust-co2e-banner p {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   color: #1e293b;
   margin: 0;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 /* ─── Section 7: Scorecard ─── */
@@ -714,11 +730,11 @@
   background: #ffffff;
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-card);
-  padding: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(1.25rem, 2.5vw, 2rem);
   box-shadow: var(--shadow-card);
   max-width: 880px;
   margin-inline: auto;
-  margin-top: 2.5rem;
+  margin-top: 1.75rem;
 }
 
 .ssc-header {
@@ -727,43 +743,43 @@
   justify-content: space-between;
   gap: 1rem;
   border-bottom: 1px solid var(--border-light);
-  padding-bottom: 1.15rem;
-  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
   flex-wrap: wrap;
 }
 
 .ssc-lane {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 800;
   color: var(--text-muted);
 }
 
 .ssc-rating-chip.rating-low {
-  font-size: 0.78125rem;
+  font-size: 0.75rem;
   font-weight: 800;
   color: #166534;
   background: rgba(26, 138, 74, 0.12);
   border: 1px solid rgba(26, 138, 74, 0.28);
-  padding: 0.35rem 0.85rem;
+  padding: 0.3rem 0.75rem;
   border-radius: var(--radius-pill);
 }
 
 .ssc-summary-msg {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .ssc-metrics-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 0.85rem;
   background: var(--bg-secondary);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
-  padding: 1.15rem;
-  margin-bottom: 1.25rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
 
 .smr-box {
@@ -772,14 +788,14 @@
 }
 
 .smr-lbl {
-  font-size: 0.6875rem;
+  font-size: 0.65rem;
   font-weight: 800;
   color: var(--text-muted);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.15rem;
 }
 
 .smr-val {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   font-weight: 800;
   color: var(--text-primary);
 }
@@ -789,10 +805,10 @@
   border: none;
   color: var(--color-brand-red);
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   cursor: pointer;
   padding: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .ssc-details-toggle:hover {
@@ -800,20 +816,20 @@
 }
 
 .ssc-details-table-wrap {
-  margin-top: 1rem;
+  margin-top: 0.75rem;
   border-top: 1px solid var(--border-light);
-  padding-top: 1rem;
+  padding-top: 0.75rem;
 }
 
 .ssc-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
 }
 
 .ssc-table th,
 .ssc-table td {
-  padding: 0.75rem;
+  padding: 0.65rem;
   text-align: left;
   border-bottom: 1px solid var(--border-light);
 }
@@ -831,81 +847,81 @@
 .sust-trust-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
-  margin-top: 2.5rem;
-  margin-bottom: 2rem;
+  gap: 1rem;
+  margin-top: 1.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .stc-box {
   background: #ffffff;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-card);
-  padding: 1.75rem 1.5rem;
+  padding: 1.35rem 1.15rem;
   box-shadow: var(--shadow-subtle);
 }
 
 .stc-tag {
-  font-size: 0.6875rem;
+  font-size: 0.65rem;
   font-weight: 900;
   letter-spacing: 0.08em;
-  padding: 0.25rem 0.65rem;
+  padding: 0.2rem 0.55rem;
   border-radius: var(--radius-pill);
   display: inline-block;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.65rem;
 }
 
 .stc-box h3 {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 800;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
 }
 
 .stc-box p {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--text-secondary);
   margin: 0;
-  line-height: 1.55;
+  line-height: 1.45;
 }
 
 .sust-alignment-note {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   background: rgba(212, 168, 67, 0.1);
   border: 1px solid rgba(212, 168, 67, 0.3);
   border-radius: var(--radius-pill);
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.25rem;
   width: fit-content;
   margin-inline: auto;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
 /* ─── Section 9: Final CTA ─── */
 .sust-final-box {
-  max-width: 780px;
+  max-width: 760px;
   margin-inline: auto;
 }
 
 .sust-final-box h2 {
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: 800;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .sust-final-lead {
-  font-size: 1.1rem;
-  line-height: 1.65;
+  font-size: 1rem;
+  line-height: 1.55;
   color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .sust-final-btns {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.85rem;
   flex-wrap: wrap;
 }
 
