@@ -1002,6 +1002,7 @@
 .sust-final-box h2 {
   font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: 800;
+  color: #ffffff !important;
   margin-bottom: 0.75rem;
 }
 
