@@ -9,6 +9,7 @@ import Services from './pages/Services/Services';
 import ServiceDetail from './pages/Services/ServiceDetail';
 import Solutions from './pages/Solutions/Solutions';
 import Resources from './pages/Resources/Resources';
+import ArticleDetail from './pages/Resources/ArticleDetail';
 import Sustainability from './pages/Sustainability/Sustainability';
 import PrivacyPolicy from './pages/Legal/PrivacyPolicy';
 import TermsOfService from './pages/Legal/TermsOfService';
@@ -29,6 +30,7 @@ function App() {
           <Route path="solutions" element={<Solutions />} />
           <Route path="industries" element={<Solutions />} />
           <Route path="resources" element={<Resources />} />
+          <Route path="resources/:articleId" element={<ArticleDetail />} />
           <Route path="sustainability" element={<Sustainability />} />
           <Route path="quote" element={<Quote />} />
           <Route path="global-network" element={<GlobalNetwork />} />
@@ -41,6 +43,5 @@ function App() {
     </>
   );
 }
-
 
 export default App;
