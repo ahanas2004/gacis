@@ -4,7 +4,7 @@ import {
   Leaf, Plane, Ship, Truck, Train, ArrowRight, ArrowDown, ShieldCheck, 
   CheckCircle2, Globe2, HelpCircle, ChevronDown, ChevronUp, Clock, 
   DollarSign, BarChart3, Compass, Check, AlertCircle, RefreshCw, Send,
-  Zap, Layers, Cpu, Award, Trees, Box, FileCheck
+  Zap, Layers, Cpu, Award, Trees, Box, FileCheck, Filter, ShieldAlert
 } from 'lucide-react';
 import SEO from '../../components/Common/SEO';
 import PageHeader from '../../components/Common/PageHeader';
@@ -12,18 +12,26 @@ import { calculateFullRoute } from '../../data/routeCalculationEngine';
 import './Sustainability.css';
 
 export const Sustainability = () => {
-  // ─── Section 3 Interactive Route Comparator State ───────────────────────
+  // ─── Section 3 Interactive Route & Cargo Comparator State ─────────────
   const [selectedCorridor, setSelectedCorridor] = useState('dubai-almaty');
-  
+  const [selectedCargo, setSelectedCargo] = useState('Industrial Machinery');
+
   const corridorConfigs = {
-    'dubai-almaty': { origin: 'dubai', dest: 'almaty', label: 'Dubai (UAE) ⇄ Almaty (Kazakhstan)', defaultCargo: 'Industrial Machinery' },
-    'chennai-frankfurt': { origin: 'chennai', dest: 'frankfurt', label: 'Chennai (India) ⇄ Frankfurt (Germany)', defaultCargo: 'Automotive CKD' },
-    'klang-hamburg': { origin: 'klang', dest: 'hamburg', label: 'Port Klang (Malaysia) ⇄ Hamburg (Germany)', defaultCargo: 'High-Tech Electronics' }
+    'dubai-almaty': { origin: 'dubai', dest: 'almaty', label: 'Dubai (UAE) ⇄ Almaty (Kazakhstan)' },
+    'chennai-frankfurt': { origin: 'chennai', dest: 'frankfurt', label: 'Chennai (India) ⇄ Frankfurt (Germany)' },
+    'klang-hamburg': { origin: 'klang', dest: 'hamburg', label: 'Port Klang (Malaysia) ⇄ Hamburg (Germany)' }
   };
 
+  const cargoOptions = [
+    { id: 'Industrial Machinery', label: 'Industrial Machinery' },
+    { id: 'Automotive CKD', label: 'Automotive CKD Parts' },
+    { id: 'High-Tech Electronics', label: 'High-Tech Electronics' },
+    { id: 'Pharmaceuticals', label: 'Pharma / Cold-Chain' }
+  ];
+
   const activeConfig = corridorConfigs[selectedCorridor];
-  const routeAir = calculateFullRoute({ originId: activeConfig.origin, destId: activeConfig.dest, cargoType: activeConfig.defaultCargo, priority: 'Urgent', mode: 'AIR' });
-  const routeRail = calculateFullRoute({ originId: activeConfig.origin, destId: activeConfig.dest, cargoType: activeConfig.defaultCargo, priority: 'Standard', mode: 'RAIL' });
+  const routeAir = calculateFullRoute({ originId: activeConfig.origin, destId: activeConfig.dest, cargoType: selectedCargo, priority: 'Urgent', mode: 'AIR' });
+  const routeRail = calculateFullRoute({ originId: activeConfig.origin, destId: activeConfig.dest, cargoType: selectedCargo, priority: 'Standard', mode: 'RAIL' });
 
   const airCO2 = routeAir ? (routeAir.convCO2 * 3.2).toFixed(2) : '24.50';
   const railCO2 = routeRail ? routeRail.optCO2.toFixed(2) : '3.10';
@@ -76,8 +84,36 @@ export const Sustainability = () => {
   // ─── Section 5 Expandable Methodology State ──────────────────────────────
   const [showMethodologyDetails, setShowMethodologyDetails] = useState(false);
 
-  // ─── Section 7 Scorecard Toggle State ─────────────────────────────────────
+  // ─── Section 7 Scorecard Active View State ────────────────────────────────
+  const [activeScorecardRating, setActiveScorecardRating] = useState('low');
   const [showScorecardDetails, setShowScorecardDetails] = useState(false);
+
+  const scorecardData = {
+    low: {
+      badge: '🌱 LOWER CARBON RATING',
+      badgeClass: 'rating-low',
+      mode: 'Intermodal Rail (GACIS Multimodal)',
+      transit: '8.4 Days',
+      emissions: '3.10 tCO₂e',
+      msg: '"Lower estimated carbon impact (-87%) compared with alternative pure air freight route."'
+    },
+    mod: {
+      badge: '🟡 MODERATE CARBON RATING',
+      badgeClass: 'rating-mod',
+      mode: 'Long-Haul Road Haulage',
+      transit: '7.0 Days',
+      emissions: '8.40 tCO₂e',
+      msg: '"Moderate estimated carbon impact. Suitable for regional cross-border truck transfers."'
+    },
+    high: {
+      badge: '🔴 HIGHER CARBON RATING',
+      badgeClass: 'rating-high',
+      mode: 'Pure Airfreight Express',
+      transit: '2.5 Days',
+      emissions: '24.50 tCO₂e',
+      msg: '"Higher estimated carbon impact due to high-altitude jet fuel burn. Best reserved for urgent charter cargo."'
+    }
+  };
 
   return (
     <div className="sustainability-page">
@@ -250,23 +286,40 @@ export const Sustainability = () => {
       <section className="section-padding bg-secondary fade-up">
         <div className="container">
           <div className="section-heading text-center centered-heading">
-            <span className="eyebrow text-gold">INTERACTIVE MODEL</span>
+            <span className="eyebrow text-gold">INTERACTIVE CALCULATOR MODEL</span>
             <h2>See How a Different Route Makes a Difference</h2>
-            <p>Select a trade lane below to compare the estimated carbon footprint and transit time of conventional air freight vs. GACIS multimodal rail:</p>
+            <p>Select a trade lane and cargo type below to dynamically calculate estimated emissions and transit time:</p>
           </div>
 
           {/* Corridor Selection Pills */}
-          <div className="sust-corridor-selector">
-            {Object.entries(corridorConfigs).map(([key, config]) => (
-              <button
-                key={key}
-                type="button"
-                className={`scs-btn ${selectedCorridor === key ? 'active' : ''}`}
-                onClick={() => setSelectedCorridor(key)}
-              >
-                {config.label}
-              </button>
-            ))}
+          <div className="sust-selector-wrapper">
+            <div className="sust-corridor-selector">
+              {Object.entries(corridorConfigs).map(([key, config]) => (
+                <button
+                  key={key}
+                  type="button"
+                  className={`scs-btn ${selectedCorridor === key ? 'active' : ''}`}
+                  onClick={() => setSelectedCorridor(key)}
+                >
+                  {config.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Cargo Type Filters */}
+            <div className="sust-cargo-selector">
+              <span className="scs-cargo-lbl"><Filter size={13} /> Cargo Category:</span>
+              {cargoOptions.map((c) => (
+                <button
+                  key={c.id}
+                  type="button"
+                  className={`scs-cargo-chip ${selectedCargo === c.id ? 'active' : ''}`}
+                  onClick={() => setSelectedCargo(c.id)}
+                >
+                  {c.label}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Before & After Comparison Cards */}
@@ -274,7 +327,7 @@ export const Sustainability = () => {
             <div className="scc-card current-route">
               <span className="scc-badge badge-red">CONVENTIONAL ROUTE</span>
               <h3>Pure Airfreight Express</h3>
-              <p className="scc-sub">High-altitude jet engine fuel burn</p>
+              <p className="scc-sub">High-altitude jet engine fuel burn ({selectedCargo})</p>
               
               <div className="scc-stat">
                 <span className="scc-label">Estimated Carbon Footprint</span>
@@ -295,7 +348,7 @@ export const Sustainability = () => {
             <div className="scc-card optimized-route">
               <span className="scc-badge badge-green">GACIS OPTIMIZED APPROACH</span>
               <h3>Multimodal Intermodal Rail</h3>
-              <p className="scc-sub">Sea + Electric Block Train Corridor</p>
+              <p className="scc-sub">Sea + Electric Block Train Corridor ({selectedCargo})</p>
               
               <div className="scc-stat">
                 <span className="scc-label">Estimated Carbon Footprint</span>
@@ -313,7 +366,7 @@ export const Sustainability = () => {
           <div className="sust-impact-banner">
             <Trees size={24} className="text-green flex-shrink-0" />
             <div>
-              <strong>Environmental Impact Result:</strong> Choosing the GACIS optimized rail approach saves approximately <strong>{co2Saved} tons of CO₂e</strong> on this shipment—equivalent to the annual carbon absorbed by <strong>~{treesEquivalent} mature trees!</strong>
+              <strong>Environmental Impact Result:</strong> Choosing the GACIS optimized rail approach for <strong>{selectedCargo}</strong> saves approximately <strong>{co2Saved} tons of CO₂e</strong> on this shipment—equivalent to the annual carbon absorbed by <strong>~{treesEquivalent} mature trees!</strong>
             </div>
           </div>
 
@@ -506,28 +559,57 @@ export const Sustainability = () => {
           </div>
 
           <div className="sust-scorecard-card">
+            {/* Rating Selector Tabs */}
+            <div className="ssc-rating-tabs">
+              <button 
+                type="button" 
+                className={`srt-btn ${activeScorecardRating === 'low' ? 'active' : ''}`}
+                onClick={() => setActiveScorecardRating('low')}
+              >
+                🌱 Low Impact (Rail)
+              </button>
+              <button 
+                type="button" 
+                className={`srt-btn ${activeScorecardRating === 'mod' ? 'active' : ''}`}
+                onClick={() => setActiveScorecardRating('mod')}
+              >
+                🟡 Moderate (Road)
+              </button>
+              <button 
+                type="button" 
+                className={`srt-btn ${activeScorecardRating === 'high' ? 'active' : ''}`}
+                onClick={() => setActiveScorecardRating('high')}
+              >
+                🔴 High Impact (Air)
+              </button>
+            </div>
+
             <div className="ssc-header">
-              <span className="ssc-lane">SHIPMENT: Dubai ⇄ Almaty (10 Tons Industrial Equipment)</span>
-              <span className="ssc-rating-chip rating-low">🌱 LOWER CARBON RATING</span>
+              <span className="ssc-lane">SHIPMENT PROFILE: Dubai ⇄ Almaty (10 Tons Equipment)</span>
+              <span className={`ssc-rating-chip ${scorecardData[activeScorecardRating].badgeClass}`}>
+                {scorecardData[activeScorecardRating].badge}
+              </span>
             </div>
 
             <div className="ssc-body">
               <p className="ssc-summary-msg">
-                "Lower estimated carbon impact compared with the alternative pure air freight route."
+                {scorecardData[activeScorecardRating].msg}
               </p>
 
               <div className="ssc-metrics-row">
                 <div className="smr-box">
                   <span className="smr-lbl">Transport Mode</span>
-                  <span className="smr-val">Intermodal Rail</span>
+                  <span className="smr-val">{scorecardData[activeScorecardRating].mode}</span>
                 </div>
                 <div className="smr-box">
                   <span className="smr-lbl">Transit Time</span>
-                  <span className="smr-val">8.4 Days</span>
+                  <span className="smr-val">{scorecardData[activeScorecardRating].transit}</span>
                 </div>
                 <div className="smr-box">
                   <span className="smr-lbl">Estimated Emissions</span>
-                  <span className="smr-val text-green">3.10 tCO₂e</span>
+                  <span className={`smr-val ${activeScorecardRating === 'low' ? 'text-green' : activeScorecardRating === 'high' ? 'text-red' : 'text-gold'}`}>
+                    {scorecardData[activeScorecardRating].emissions}
+                  </span>
                 </div>
               </div>
 
@@ -536,7 +618,7 @@ export const Sustainability = () => {
                 className="ssc-details-toggle"
                 onClick={() => setShowScorecardDetails(!showScorecardDetails)}
               >
-                {showScorecardDetails ? 'Hide full details ▲' : 'See full details ▼'}
+                {showScorecardDetails ? 'Hide full comparison table ▲' : 'See full comparison table ▼'}
               </button>
 
               {showScorecardDetails && (
@@ -551,23 +633,23 @@ export const Sustainability = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      <tr className={activeScorecardRating === 'high' ? 'selected-row' : ''}>
                         <td>Pure Air Freight</td>
                         <td>24.50 tCO₂e</td>
                         <td>2.5 Days</td>
                         <td><span className="tag-high">🔴 Higher</span></td>
                       </tr>
-                      <tr className="selected-row">
+                      <tr className={activeScorecardRating === 'low' ? 'selected-row' : ''}>
                         <td><strong>GACIS Intermodal Rail (Selected)</strong></td>
                         <td><strong>3.10 tCO₂e</strong></td>
                         <td><strong>8.4 Days</strong></td>
                         <td><span className="tag-low">🌱 Lower</span></td>
                       </tr>
-                      <tr>
-                        <td>All-Water Ocean + Feeder</td>
-                        <td>2.40 tCO₂e</td>
-                        <td>32.0 Days</td>
-                        <td><span className="tag-low">🌱 Lower</span></td>
+                      <tr className={activeScorecardRating === 'mod' ? 'selected-row' : ''}>
+                        <td>Long-Haul Road Haulage</td>
+                        <td>8.40 tCO₂e</td>
+                        <td>7.0 Days</td>
+                        <td><span className="tag-mid">🟡 Moderate</span></td>
                       </tr>
                     </tbody>
                   </table>
