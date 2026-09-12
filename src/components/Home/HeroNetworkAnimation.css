@@ -1,33 +1,33 @@
 /* ═══════════════════════════════════════════════════════════════
    HERO NETWORK INTELLIGENCE VISUALIZATION STYLING
-   High-Legibility, Zero-Truncation Multimodal Route Monitor
+   Interactive Wave Graph & Multimodal Regional Hub Monitor
    ═══════════════════════════════════════════════════════════════ */
 
 .hero-network-console {
-  background: rgba(14, 17, 23, 0.95);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(14, 17, 23, 0.96);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
   border: 1px solid var(--border-dark-strong);
   border-radius: var(--radius-card);
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65);
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 580px;
-  min-height: 560px;
+  max-width: 610px;
+  min-height: 590px;
   box-sizing: border-box;
   flex-shrink: 0;
   overflow: hidden;
 }
 
-/* ── Console Header Bar (48px) ── */
+/* ── Console Header Bar (46px) ── */
 .hnc-top-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 1.25rem;
-  height: 48px;
-  min-height: 48px;
+  height: 46px;
+  min-height: 46px;
   background: rgba(255, 255, 255, 0.04);
   border-bottom: 1px solid var(--border-dark);
   box-sizing: border-box;
@@ -116,13 +116,13 @@
   50% { transform: scale(1.15); }
 }
 
-/* ── Visualizer SVG Canvas (175px) ── */
+/* ── Visualizer SVG Canvas (165px) ── */
 .hnc-visualizer-canvas {
-  height: 175px;
-  min-height: 175px;
+  height: 165px;
+  min-height: 165px;
   position: relative;
-  background: radial-gradient(circle at 50% 50%, rgba(200, 32, 47, 0.1) 0%, rgba(10, 12, 16, 0.95) 75%);
-  padding: 0.5rem 1rem 0;
+  background: radial-gradient(circle at 50% 50%, rgba(200, 32, 47, 0.12) 0%, rgba(10, 12, 16, 0.95) 75%);
+  padding: 0.4rem 1rem 0;
   box-sizing: border-box;
 }
 
@@ -134,7 +134,7 @@
 
 .corridor-flow-path {
   stroke-dasharray: 8 4;
-  animation: flowDash 20s linear infinite;
+  animation: flowDash 40s linear infinite;
 }
 
 @keyframes flowDash {
@@ -158,16 +158,16 @@
 
 .node-label {
   font-family: var(--font-sans, system-ui, sans-serif);
-  font-size: 8.5px;
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   fill: rgba(255, 255, 255, 0.7);
   transition: all 0.3s ease;
   pointer-events: none;
 }
 
 .is-active-port .node-label {
-  font-size: 9.5px;
+  font-size: 10.5px;
   font-weight: 800;
   fill: #ffffff;
   filter: drop-shadow(0 0 6px rgba(212, 168, 67, 0.95));
@@ -181,82 +181,69 @@
   fill: rgba(255, 255, 255, 0.45);
 }
 
-/* ── Clear, High-Legibility Telemetry Panel (2-Card Responsive Layout) ── */
-.hnc-telemetry-panel {
-  display: grid;
-  grid-template-columns: 1fr 1.25fr;
-  gap: 1px;
-  background: var(--border-dark);
-  border-top: 1px solid var(--border-dark);
-  box-sizing: border-box;
-}
-
-/* Hub Card (Left) */
-.hnc-hub-card {
+/* ── Active Hub Comprehensive Multimodal Breakdown (Full Legibility, Zero Truncation) ── */
+.hnc-active-hub-display {
   background: var(--surface-dark-card);
-  padding: 0.85rem 1rem;
+  border-top: 1px solid var(--border-dark);
+  padding: 1rem 1.25rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  gap: 0.35rem;
+  gap: 0.85rem;
   box-sizing: border-box;
+  flex: 1;
+  animation: smoothFadeIn 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.hub-card-header {
+@keyframes smoothFadeIn {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.ah-header-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.4rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-.hub-step-label {
-  font-size: 0.625rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.hub-badge {
-  font-size: 0.59375rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  color: var(--color-brand-gold);
-  background: rgba(212, 168, 67, 0.18);
-  border: 1px solid rgba(212, 168, 67, 0.38);
-  padding: 0.12rem 0.45rem;
-  border-radius: 3px;
-  white-space: nowrap;
-}
-
-.hub-name-row {
-  margin-top: 0.1rem;
-}
-
-.hub-title {
-  font-size: 0.9375rem;
-  font-weight: 800;
-  color: var(--color-brand-gold);
-  line-height: 1.25;
-  display: block;
-}
-
-.hub-role-text {
-  font-size: 0.71875rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.35;
-}
-
-.hub-status-row {
+.ah-title-wrap {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  margin-top: auto;
-  padding-top: 0.3rem;
+  gap: 0.6rem;
 }
 
-.status-live-dot {
+.ah-badge {
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: rgba(200, 32, 47, 0.25);
+  border: 1px solid var(--color-brand-red);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-pill);
+}
+
+.ah-region-title {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--color-brand-gold);
+}
+
+.ah-status-pill {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.live-status-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -265,110 +252,70 @@
   flex-shrink: 0;
 }
 
-.hub-status-text {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  color: #22c55e;
-  line-height: 1.2;
-}
-
-/* Route & Indian Gateways Card (Right) */
-.hnc-route-card {
-  background: var(--surface-dark-card);
-  padding: 0.85rem 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 0.5rem;
-  box-sizing: border-box;
-}
-
-.route-card-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-
-.route-type-badge {
-  font-size: 0.59375rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  padding: 0.12rem 0.45rem;
-  border-radius: var(--radius-pill);
-  text-transform: uppercase;
-  color: #ff6b78;
-  background: rgba(229, 36, 52, 0.2);
-  border: 1px solid rgba(229, 36, 52, 0.4);
-  flex-shrink: 0;
-  margin-top: 0.1rem;
-}
-
-.route-corridor-title {
-  font-size: 0.78125rem;
-  font-weight: 800;
-  color: #ffffff;
-  line-height: 1.35;
-}
-
-.indian-ports-section {
+/* Multimodal Mode Blocks (Sea, Train, Flight) */
+.ah-multimodal-block {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-  margin-top: 0.1rem;
 }
 
-.indian-ports-label {
+.ah-mode-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
   font-size: 0.625rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.55);
 }
 
-.indian-ports-pills {
+.text-cyan { color: #38bdf8 !important; }
+.text-amber { color: #fbbf24 !important; }
+.text-purple { color: #c084fc !important; }
+.text-gold { color: var(--color-brand-gold) !important; }
+
+.ah-pills-row {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
 }
 
-.indian-port-pill {
+.ah-pill {
   font-size: 0.6875rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.9);
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  padding: 0.2rem 0.5rem;
+  padding: 0.22rem 0.55rem;
   border-radius: 4px;
-  white-space: nowrap;
-  line-height: 1.2;
+  line-height: 1.25;
+  transition: all 0.2s ease;
 }
 
-.indian-port-pill.pill-sea {
-  border-color: rgba(56, 189, 248, 0.35);
+.ah-pill.pill-sea {
   background: rgba(56, 189, 248, 0.1);
-  color: #7dd3fc;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #bae6fd;
 }
 
-.indian-port-pill.pill-rail {
-  border-color: rgba(251, 191, 36, 0.35);
+.ah-pill.pill-rail {
   background: rgba(251, 191, 36, 0.1);
-  color: #fde047;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  color: #fef08a;
 }
 
-.indian-port-pill.pill-air {
-  border-color: rgba(168, 85, 247, 0.35);
-  background: rgba(168, 85, 247, 0.1);
-  color: #d8b4fe;
+.ah-pill.pill-air {
+  background: rgba(192, 132, 252, 0.1);
+  border: 1px solid rgba(192, 132, 252, 0.3);
+  color: #f3e8ff;
 }
 
-/* ── Live Stage Stepper & Controls Strip ── */
+/* ── Live Stage Corridor Footer Strip ── */
 .hnc-stage-strip {
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 1.25rem;
   background: rgba(200, 32, 47, 0.08);
   border-top: 1px solid var(--border-dark);
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.5rem;
   box-sizing: border-box;
 }
 
@@ -381,102 +328,22 @@
 
 .hss-step {
   font-weight: 800;
-  letter-spacing: 0.06em;
-  color: var(--color-brand-red);
-  font-size: 0.6875rem;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  font-size: 0.75rem;
 }
 
-.hss-mode-badge {
+.hss-sub-badge {
   font-size: 0.625rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.65);
   background: rgba(255, 255, 255, 0.08);
   padding: 0.15rem 0.45rem;
   border-radius: 3px;
   white-space: nowrap;
 }
 
-/* 4-Step Port Cards Row */
-.hss-port-cards-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.4rem;
-}
-
-.hss-port-card-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  padding: 0.4rem 0.5rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-dark);
-  border-radius: 4px;
-  transition: all 0.3s ease;
-}
-
-.hpc-top {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.hss-step-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-}
-
-.hss-step-code {
-  font-size: 0.65625rem;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.8);
-  font-family: var(--font-mono, monospace);
-}
-
-.hss-step-name {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.6);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.hss-port-card-item.is-past {
-  background: rgba(34, 197, 94, 0.08);
-  border-color: rgba(34, 197, 94, 0.28);
-}
-
-.hss-port-card-item.is-past .hss-step-dot {
-  background: #22c55e;
-  box-shadow: 0 0 6px #22c55e;
-}
-
-.hss-port-card-item.is-current {
-  background: rgba(200, 32, 47, 0.25);
-  border-color: var(--color-brand-red);
-  box-shadow: 0 0 12px rgba(200, 32, 47, 0.45);
-}
-
-.hss-port-card-item.is-current .hss-step-dot {
-  background: var(--color-brand-gold);
-  box-shadow: 0 0 8px var(--color-brand-gold);
-  transform: scale(1.3);
-}
-
-.hss-port-card-item.is-current .hss-step-code {
-  color: var(--color-brand-gold);
-}
-
-.hss-port-card-item.is-current .hss-step-name {
-  color: #ffffff;
-}
-
-/* Corridor Selector Indicator Pills */
+/* Route Selector Indicator Pills */
 .hss-route-pills {
   display: flex;
   align-items: center;
@@ -485,7 +352,7 @@
 }
 
 .hss-pill {
-  width: 10px;
+  width: 12px;
   height: 5px;
   border-radius: 3px;
   background: rgba(255, 255, 255, 0.22);
@@ -496,7 +363,7 @@
 }
 
 .hss-pill.is-active {
-  width: 26px;
+  width: 28px;
   background: var(--color-brand-red);
   box-shadow: 0 0 8px rgba(200, 32, 47, 0.6);
 }
@@ -518,11 +385,13 @@
     min-height: auto;
   }
 
-  .hnc-telemetry-panel {
-    grid-template-columns: 1fr;
+  .ah-header-row {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .hss-port-cards-row {
-    grid-template-columns: repeat(2, 1fr);
+  .hss-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
