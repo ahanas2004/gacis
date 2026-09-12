@@ -21,6 +21,7 @@ function App() {
     <>
       <ScrollToTop />
       <Routes>
+        {/* Layout wrapper for all main pages */}
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
@@ -37,8 +38,9 @@ function App() {
           <Route path="privacy-policy" element={<PrivacyPolicy />} />
           <Route path="terms-of-service" element={<TermsOfService />} />
           <Route path="track" element={<Navigate to="/quote" replace />} />
-          <Route path="*" element={<NotFound />} />
         </Route>
+        {/* Fallback for any undefined routes */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

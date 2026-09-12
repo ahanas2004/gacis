@@ -1,3 +1,68 @@
+/* ═══════════════════════════════════════════════════════════════
+   GACIS QUOTE PAGE STYLING
+   Enterprise Freight Quote Calculator Interface
+   Enhanced UI/UX with Responsive Design & Accessibility
+   ═══════════════════════════════════════════════════════════════ */
+
 .quote-page {
   width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  position: relative;
+}
+
+/* Add subtle pattern overlay */
+.quote-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(200, 32, 47, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(212, 168, 67, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.quote-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Responsive Design ─── */
+
+/* Tablet: 640px and up */
+@media (min-width: 640px) {
+  .quote-page {
+    padding: 2rem 0;
+  }
+}
+
+/* Desktop: 1024px and up */
+@media (min-width: 1024px) {
+  .quote-page {
+    padding: 3rem 0;
+  }
+}
+
+/* ─── Prefers Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .quote-page::before {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ─── Print Styles ─── */
+@media print {
+  .quote-page {
+    background: #ffffff;
+    padding: 1rem;
+  }
+  
+  .quote-page::before {
+    display: none;
+  }
 }

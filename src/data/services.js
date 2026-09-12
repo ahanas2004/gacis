@@ -1,4 +1,4 @@
-// Centralized Services Data Definition — 12 Core Multimodal Services with Real-time Proven Metrics & Execution Engine
+// Centralized Services Data Definition — 10 Core Multimodal Services
 export const services = [
   {
     id: 'air-freight',
@@ -167,9 +167,9 @@ export const services = [
     ]
   },
   {
-    id: 'lcl-freight',
+    id: 'lcl-consolidation',
     title: 'LCL — Less than Container Load Consolidation',
-    shortTitle: 'LCL Groupage',
+    shortTitle: 'LCL Consolidation',
     tagline: 'Cost-effective shared container cargo with scheduled weekly departures.',
     mode: 'SEA',
     icon: 'Boxes',
@@ -213,7 +213,7 @@ export const services = [
       title: 'Consolidated LCL Supply Chain Saved $145,000 for European Industrial Electronics Importers',
       clientSector: 'Industrial Automation & Robotics Distributor',
       challenge: 'Multiple regional suppliers across Malaysia and India needed frequent small-lot shipments without paying full container costs.',
-      solution: 'GACIS implemented a buyer’s consolidation program, collecting LCL lots into weekly dedicated GACIS groupage containers via Port Klang and Dubai.',
+      solution: 'GACIS implemented a buyer\'s consolidation program, collecting LCL lots into weekly dedicated GACIS groupage containers via Port Klang and Dubai.',
       results: [
         'Cost Reduction: 42% savings compared to booking individual small-freight forwarders',
         'Customs Efficiency: Consolidated 18 vendor invoices under a single customs declaration',
@@ -236,7 +236,7 @@ export const services = [
       'Door-to-door pickup from suppliers with single bill of lading'
     ],
     capabilities: [
-      { name: 'Buyer’s Consolidation', detail: 'Combine shipments from multiple regional vendors into a single dedicated container.' },
+      { name: 'Buyer\'s Consolidation', detail: 'Combine shipments from multiple regional vendors into a single dedicated container.' },
       { name: 'Bonded CFS Operations', detail: 'Secure sorting, customs clearance, and palletizing in climate-controlled depots.' },
       { name: 'Barcode & QR Item Tracking', detail: 'Package-level scanning from origin warehouse intake to final consignee delivery.' },
       { name: 'Hazardous & DGR LCL', detail: 'Segregated consolidation for compatible certified chemical and industrial goods.' }
@@ -260,7 +260,7 @@ export const services = [
     coverage: 'Industrial Supplier Parks Across Asia & Europe',
     co2Profile: 'Consolidated Route Optimization',
     image: '/images/diff_network.jpg',
-    overview: 'Specialized origin logistics for international buyers purchasing under Incoterms 2020 EXW (Ex Works) or FCA (Free Carrier). GACIS takes custody directly at the seller’s warehouse.',
+    overview: 'Specialized origin logistics for international buyers purchasing under Incoterms 2020 EXW (Ex Works) or FCA (Free Carrier). GACIS takes custody directly at the seller\'s warehouse.',
     
     provenMetrics: [
       { value: '99.6%', label: 'First-Mile On-Time Pickup', sub: 'Synchronized supplier dispatch' },
@@ -275,7 +275,7 @@ export const services = [
       pillars: [
         {
           title: 'Local Supplier Coordination Desks',
-          detail: 'Our local origin agents speak the vendor’s language, inspect cargo readiness, verify packing lists, and coordinate factory loading schedules.'
+          detail: 'Our local origin agents speak the vendor\'s language, inspect cargo readiness, verify packing lists, and coordinate factory loading schedules.'
         },
         {
           title: 'Export Customs & Tax Exemption Management',
@@ -287,7 +287,7 @@ export const services = [
         },
         {
           title: 'Pre-Shipment Quality & Weight Audits',
-          detail: 'Cargo is weighed, photo-documented, and inspected for physical damage before leaving the supplier’s dock.'
+          detail: 'Cargo is weighed, photo-documented, and inspected for physical damage before leaving the supplier\'s dock.'
         }
       ]
     },
@@ -333,11 +333,11 @@ export const services = [
     ]
   },
   {
-    id: 'reefer-cargo',
-    title: 'Reefer Cargo & Temperature-Controlled Cold Chain',
-    shortTitle: 'Reefer Cargo',
+    id: 'reefer-cold-chain',
+    title: 'Reefer Cold Chain',
+    shortTitle: 'Reefer Cold Chain',
     tagline: 'Active GDP-compliant temperature logging for pharmaceuticals, perishables, and chemicals.',
-    mode: 'MULTIMODAL',
+    mode: 'COLD',
     icon: 'ShieldCheck',
     leadTime: 'Expedited & Monitored',
     coverage: 'Global Cold Chain Gateways',
@@ -418,7 +418,7 @@ export const services = [
   {
     id: 'cis-haulage',
     title: 'CIS Countries Haulage & Trans-Caspian Belt',
-    shortTitle: 'CIS Countries Haulage',
+    shortTitle: 'CIS Haulage Belt',
     tagline: 'Specialized block trains, Caspian ferries, and overland fleets across Central Asia.',
     mode: 'RAIL',
     icon: 'Train',
@@ -582,89 +582,6 @@ export const services = [
     ]
   },
   {
-    id: 'ocean-freight',
-    title: 'Ocean Freight & Multimodal Seaways',
-    shortTitle: 'Ocean Freight',
-    tagline: 'Global maritime container networks connecting major international ports with rail hinterlands.',
-    mode: 'SEA',
-    icon: 'Ship',
-    leadTime: '14–28 Days',
-    coverage: '400+ Port Pairs',
-    co2Profile: 'Lowest Carbon Footprint per Ton-KM',
-    image: '/images/sea_freight_vessel.jpg',
-    overview: 'Resilient ocean logistics network leveraging primary alliances for Full Container Load (FCL), Less than Container Load (LCL) consolidation, and breakbulk across trans-Indian and Arabian trade routes.',
-    
-    provenMetrics: [
-      { value: '98.7%', label: 'On-Time Port Arrival SLA', sub: 'Monitored across top ocean strings' },
-      { value: '620,000+', label: 'Metric Tons Moved Annually', sub: 'Bulk & containerized freight' },
-      { value: '-35%', label: 'Scope 3 Carbon Reduction', sub: 'Biofuel vessel routing options' },
-      { value: '$1.9M', label: 'Client Savings on Storage', sub: 'Direct rail intermodal connections' }
-    ],
-
-    howGacisDoesIt: {
-      headline: 'How GACIS Drives Maritime Logistics Resilience',
-      summary: 'We combine long-term carrier contracts across major alliances with proactive AI weather routing and on-dock intermodal rail links.',
-      pillars: [
-        {
-          title: 'Direct Ocean Alliance Tier-1 Pricing',
-          detail: 'Direct volume tier access across 2M, Ocean Alliance, and THE Alliance ensures competitive ocean freight rates and guaranteed slot space.'
-        },
-        {
-          title: 'Proactive AI Route & Congestion Avoidance',
-          detail: 'Real-time port tracking redirects vessels or transshipment hubs when port strikes, weather delays, or canal choke points occur.'
-        },
-        {
-          title: 'Dedicated Buyer Consolidation Hubs',
-          detail: 'Jebel Ali and Port Klang CFS facilities merge multi-vendor goods into single container flows, reducing landed freight costs.'
-        },
-        {
-          title: 'Carbon-Neutral Biofuel Sailings',
-          detail: 'Verified Scope 3 carbon reduction via certified marine biofuel vessel allocations for ESG-focused global corporations.'
-        }
-      ]
-    },
-
-    provenCaseStudy: {
-      title: 'Global Supply Chain Transformation: 600 TEU Chemical & Retail Linehaul Re-Engineered',
-      clientSector: 'Multinational Retail & Industrial Chemical Distributor',
-      challenge: 'Severe congestion at European ports caused 2-week delays and unpredictable demurrage charges.',
-      solution: 'GACIS re-routed cargo via Mediterranean feeder hubs onto dedicated rail shuttles into Central Europe.',
-      results: [
-        'Transit Reduction: Reduced door delivery time by 6 days',
-        'Financial Impact: Saved $240,000 in port storage and demurrage penalties',
-        'Sustainability: Achieved 28% carbon reduction via rail intermodal linehaul'
-      ]
-    },
-
-    technicalSpecs: [
-      { label: 'Equipment Inventory', value: '20GP, 40GP, 40HC, 45HC, Open Top, Flat Rack, Reefer, ISO Tank' },
-      { label: 'Global Ocean Strings', value: 'Trans-Indian, Middle East Gulf, Far East-Europe, Trans-Caspian' },
-      { label: 'Marine Insurance', value: 'All-Risk Institute Cargo Clauses (A) with instant digital certificate issuance' },
-      { label: 'ESG Reporting', value: 'GLEC v3.0 certified Scope 3 CO₂ emissions calculation' }
-    ],
-
-    features: [
-      'Contracted allocation on major vessel alliances (2M, Ocean Alliance, THE Alliance)',
-      'Dedicated buyer’s consolidation hubs in Jebel Ali and Port Klang',
-      'Reefer container monitoring with automated temperature data logging',
-      'Seamless port-to-rail intermodal handover at Aktau, Poti, and Vladivostok',
-      'Comprehensive marine cargo insurance and cargo security escorting'
-    ],
-    capabilities: [
-      { name: 'FCL Direct Routing', detail: 'Dedicated 20ft, 40ft, High Cube, and Open Top equipment on primary strings.' },
-      { name: 'LCL Cargo Consolidation', detail: 'Weekly scheduled groupage services with guaranteed sailings.' },
-      { name: 'Project & Breakbulk', detail: 'Specialized heavy-lift cranes and flat racks for out-of-gauge (OOG) machinery.' },
-      { name: 'Green Seaways', detail: 'Biofuel vessel routing and slow-steaming carbon optimization.' }
-    ],
-    corridors: ['Jebel Ali ⇄ Rotterdam', 'Port Klang ⇄ Colombo', 'Chennai ⇄ Singapore', 'Mundra ⇄ Jebel Ali'],
-    workflow: [
-      { step: '01', title: 'Container Positioning', desc: 'Equipment dispatch to factory floor with dry seal certification.' },
-      { step: '02', title: 'Port Gate-In & Loading', desc: 'Automated weight verification (VGM) and vessel stowage execution.' },
-      { step: '03', title: 'Deepsea Ocean Linehaul', desc: 'Satellite AIS tracking with automated port congestion rerouting.' },
-      { step: '04', title: 'Intermodal Port Discharge', desc: 'Direct transition to container rail wagons or bonded trucking.' }
-    ]
-  },
-  {
     id: 'road-freight',
     title: 'Cross-Border Road & Overland Transport',
     shortTitle: 'Road Transport',
@@ -673,7 +590,7 @@ export const services = [
     icon: 'Truck',
     leadTime: '2–7 Days',
     coverage: 'Complete GCC & Trans-Caspian',
-    co2Profile: 'Euro 6 Compliant Fleet Fleet Routing',
+    co2Profile: 'Euro 6 Compliant Fleet Routing',
     image: '/images/diff_network.jpg',
     overview: 'Modern GPS-monitored fleet operations engineered for regional cross-border agility, border crossing pre-clearance, and last-mile industrial delivery across Saudi Arabia, UAE, Oman, and Central Asia.',
     
@@ -748,15 +665,15 @@ export const services = [
     ]
   },
   {
-    id: 'rail-freight',
+    id: 'rail-corridors',
     title: 'Intermodal Rail Corridors',
-    shortTitle: 'Rail Freight',
+    shortTitle: 'Rail Corridors',
     tagline: 'Trans-Eurasian block trains bridging China, Central Asia, the Caspian, and Europe.',
     mode: 'RAIL',
     icon: 'Train',
     leadTime: '10–18 Days',
     coverage: 'Trans-Caspian & Eurasian Belt',
-    co2Profile: 'Up to 75% Lower CO₂ vs Road/Air',
+    co2Profile: 'Up to 75% Lower CO2 vs Road/Air',
     image: '/images/diff_transform.jpg',
     overview: 'High-capacity intermodal rail block trains offering the ideal equilibrium between ocean transit times and air freight costs across the historic silk corridors.',
     
@@ -773,7 +690,7 @@ export const services = [
       pillars: [
         {
           title: 'Dedicated Fixed-Schedule Block Trains',
-          detail: 'Weekly scheduled container shuttles operating between Yiwu, Xi’an, Chongqing, Almaty, Tashkent, and European rail hubs.'
+          detail: 'Weekly scheduled container shuttles operating between Yiwu, Xi\'an, Chongqing, Almaty, Tashkent, and European rail hubs.'
         },
         {
           title: 'Precision Gauge Exchange Management',
@@ -794,10 +711,10 @@ export const services = [
       title: 'Eurasian Rail Corridor Shifted 240 TEU Solar Panels from China to Tashkent, Saving 22 Days',
       clientSector: 'Renewable Energy Infrastructure Developer',
       challenge: 'A major solar park construction project in Uzbekistan faced severe delay penalties if photovoltaic modules did not arrive within 16 days.',
-      solution: 'GACIS booked a dedicated 50-wagon block train from Xi’an direct to Tashkent railhead via the Khorgos dry port.',
+      solution: 'GACIS booked a dedicated 50-wagon block train from Xi\'an direct to Tashkent railhead via the Khorgos dry port.',
       results: [
         'Total Transit Time: 12.8 Days door-to-site',
-        'Carbon Reduction: Saved 410 Metric Tons of CO₂e compared to road trucking alternative',
+        'Carbon Reduction: Saved 410 Metric Tons of CO2e compared to road trucking alternative',
         'Project Deadline: Solar installation completed 5 days ahead of contract milestone'
       ]
     },
@@ -911,89 +828,6 @@ export const services = [
       { step: '02', title: 'Stowage & Securing Plan', desc: 'Calculation of center of gravity, tie-down forces, and lifting rigs.' },
       { step: '03', title: 'Execution & Escort', desc: 'Police escorts, civil utility coordination, and monitored transport.' },
       { step: '04', title: 'Foundation Placement', desc: 'Precision hydraulic jacking and skidding onto final plinths.' }
-    ]
-  },
-  {
-    id: 'hazmat-dg-logistics',
-    title: 'Dangerous Goods & Hazardous Cargo Supply Chains',
-    shortTitle: 'Hazmat & Chemical DG',
-    tagline: 'Certified Class 1–9 hazmat, battery, and dangerous goods transport with 100% IATA DGR & IMDG compliance.',
-    mode: 'HAZMAT',
-    icon: 'ShieldCheck',
-    leadTime: 'Expedited & Pre-Approved',
-    coverage: 'Global Hazmat Bonded Corridors',
-    co2Profile: 'UN-Certified Leak-Proof Containment',
-    image: '/images/diff_compliance.jpg',
-    overview: 'Specialized dangerous goods Division engineered for Class 1 to 9 hazardous materials, lithium-ion battery energy systems, industrial chemicals, and agro-compounds. Fully certified under IATA DGR, IMO IMDG Code, and ADR road protocols.',
-    
-    provenMetrics: [
-      { value: '100%', label: 'IATA & IMDG Compliance Rate', sub: 'Zero port rejections or fines' },
-      { value: 'Class 1–9', label: 'Hazmat Scope Certified', sub: 'Including lithium batteries & gas' },
-      { value: '2 Hours', label: 'MSDS & UN Packaging Audit', sub: 'Automated safety validation' },
-      { value: '0.000%', label: 'Spill or Leakage Record', sub: 'UN-approved packaging containment' }
-    ],
-
-    howGacisDoesIt: {
-      headline: 'How GACIS Executes Zero-Incident Hazmat & Battery Logistics',
-      summary: 'We deploy in-house certified Dangerous Goods Specialists (IATA/IMDG/ADR) who audit MSDS safety datasheets, issue UN-certified packaging, pre-clear hazardous manifests, and escort thermal battery shipments.',
-      pillars: [
-        {
-          title: 'Automated MSDS & UN Code Auditing',
-          detail: 'Our digital compliance engine verifies Material Safety Data Sheets (MSDS), UN numbers, packing groups, and chemical compatibility before carrier booking.'
-        },
-        {
-          title: 'UN-Certified Packaging & Overpack Staging',
-          detail: 'In-house dangerous goods staging hubs supply UN-tested drums, boxes, absorbent liners, hazard labels, and steel overpacks.'
-        },
-        {
-          title: 'Lithium Battery Thermal & State-of-Charge Monitoring',
-          detail: 'Lithium-ion EV batteries and energy storage systems (ESS) are monitored for State-of-Charge (SOC < 30%), thermal runaway risks, and crash insulation.'
-        },
-        {
-          title: 'Direct Hazmat Port & Airline Allocations',
-          detail: 'Dedicated hazardous cargo space agreements on ocean lines and freighter aircraft certified for IMDG Class 3, 6.1, 8, and 9 goods.'
-        }
-      ]
-    },
-
-    provenCaseStudy: {
-      title: 'Trans-Eurasian Movement of 120 Metric Tons of Lithium EV Battery Modules with Zero Safety Deviations',
-      clientSector: 'Global Automotive & Energy Storage OEM',
-      challenge: 'Transporting high-capacity lithium-ion battery packs from Asia to Central Asia under strict international maritime and rail hazard regulations.',
-      solution: 'GACIS executed a certified hazmat multimodal corridor: UN 3480 compliant packing, thermal telemetry sensors, and pre-cleared IMDG vessel & rail manifests.',
-      results: [
-        'Safety Execution: 100% zero thermal or electrical anomaly during 18 days of transit',
-        'Customs Compliance: Approved by 4 national hazardous materials port authorities on first submission',
-        'Landed Efficiency: Saved 14 days compared to standard third-party hazmat broker delays'
-      ]
-    },
-
-    technicalSpecs: [
-      { label: 'Hazmat Classes', value: 'Class 1 (Explosives), Class 2 (Gases), Class 3 (Flammable Liquids), Class 4 (Solids), Class 5 (Oxidizers), Class 6 (Toxics), Class 7 (Radioactive), Class 8 (Corrosives), Class 9 (Lithium / Misc)' },
-      { label: 'Global Regulations', value: 'IATA DGR (Air), IMO IMDG Code (Sea), ADR (Road), RID (Rail), UN Model Regulations' },
-      { label: 'Safety Infrastructure', value: 'UN-Certified Packaging, Temperature Sensors, Spill Containment Kits, Emergency Response 24/7' },
-      { label: 'Certifications', value: 'Certified Dangerous Goods Safety Adviser (DGSA), CEIV Chemical, AEO Certified' }
-    ],
-
-    features: [
-      'Certified Class 1 through Class 9 dangerous goods handling across air, sea, road, and rail',
-      'Lithium battery logistics (UN 3480 / UN 3481) with State-of-Charge (SOC) validation',
-      'UN-certified outer packaging, absorbent lining, hazard labeling, and overpack certification',
-      'Material Safety Data Sheet (MSDS) optical verification and Dangerous Goods Declaration (DGD) issuance',
-      'Dedicated hazardous cargo isolation storage in GACIS bonded chemical warehouses'
-    ],
-    capabilities: [
-      { name: 'Lithium EV & ESS Battery Logistics', detail: 'Full lifecycle battery transport, including prototype, recall, and end-of-life recycling.' },
-      { name: 'Fine Chemical & Agro-Tech', detail: 'Temperature-controlled reefer isolation for heat-sensitive reactive compounds.' },
-      { name: 'Freighter Air DGR Express', detail: 'IATA-certified freighter aircraft space for urgent Class 3, 8, and 9 industrial materials.' },
-      { name: 'Hazmat Border Clearance', detail: 'Direct pre-clearance with port hazmat inspectors eliminating terminal dwell times.' }
-    ],
-    corridors: ['Shanghai ⇄ Dubai Bonded Chemical Hub', 'Frankfurt ⇄ Almaty Hazmat Corridor', 'Chennai ⇄ Rotterdam Chemical Seaway'],
-    workflow: [
-      { step: '01', title: 'MSDS & UN Verification', desc: 'Digital verification of chemical CAS numbers, UN codes, and packing groups.' },
-      { step: '02', title: 'UN Packaging & DGD Issuance', desc: 'Certified hazardous packaging, hazard labeling, and DGD document signing.' },
-      { step: '03', title: 'Segregated Linehaul Transit', desc: 'Monitored transit in IMO/IATA approved vessel holds and telematics trucks.' },
-      { step: '04', title: 'Bonded Hazmat Terminal Handoff', desc: 'Direct handoff to authorized chemical storage facilities with environmental release.' }
     ]
   }
 ];

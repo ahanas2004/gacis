@@ -1,383 +1,574 @@
 /* ═══════════════════════════════════════════════════════════════
-   REAL GEOGRAPHIC MAP STYLING — LEAFLET INTEGRATION
-   Dark Cartography (CartoDB Dark Matter) + GACIS Telemetry Overlays
+   REAL GEOGRAPHIC MAP STYLING — REFINED TACTICAL CARTOGRAPHY
+   Clean, High-Precision Visuals · No Clutter · Crisp Telemetry
+   Enhanced UI/UX with Responsive Design & Accessibility
    ═══════════════════════════════════════════════════════════════ */
 
 .real-geographic-map-root {
   position: relative;
   width: 100%;
-  height: 520px;
-  border-radius: var(--radius-md);
+  height: clamp(320px, 50vh, 560px);
+  border-radius: 0 0 var(--radius-lg, 16px) var(--radius-lg, 16px);
   overflow: hidden;
-  background-color: #0b0e14;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  background-color: #080a0f;
+  border: 0;
+  box-shadow: none;
 }
 
 .leaflet-map-element {
   width: 100%;
   height: 100%;
-  background: #090b0e;
+  background: #06080b;
   z-index: 1;
 }
 
-/* ─── Custom Dark Map Tiles Inversion & Tuning ─── */
+/* ─── Dark Map Tiles Filter Tuning ─── */
 .leaflet-container {
-  font-family: var(--font-primary) !important;
-  background: #090b0e !important;
+  font-family: var(--font-primary, system-ui, -apple-system, sans-serif) !important;
+  background: #06080b !important;
 }
 
 .leaflet-tile-pane {
-  filter: brightness(0.88) contrast(1.18) saturate(0.85);
+  filter: brightness(0.82) contrast(1.2) saturate(0.8);
 }
 
-/* ─── GACIS Geographic Marker Nodes ─── */
-.gacis-geo-marker-wrapper {
+/* ─── Marker Container Reset ─── */
+.gacis-map-pin-container {
   background: transparent !important;
   border: none !important;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.gacis-marker-node {
+.gacis-map-pin-container.pin-mode-dimmed {
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.gacis-map-pin-container.pin-mode-hidden {
+  display: none !important;
+}
+
+/* ─── 01. CLEAN HUB PINS ─── */
+.clean-hub-pin {
   position: relative;
+  width: 20px;
+  height: 20px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 85px;
-  height: 42px;
   cursor: pointer;
-  transform: translate(-50%, -50%);
 }
 
-.node-center-core {
+/* Center core dot */
+.pin-dot-core {
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background: #ffffff;
   border: 2px solid #c8202f;
-  box-shadow: 0 0 8px rgba(200, 32, 47, 0.9);
-  transition: all 0.2s ease;
+  box-shadow: 0 0 8px rgba(200, 32, 47, 0.8);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
   z-index: 3;
 }
 
-.node-halo-pulse {
+/* Subtle ring */
+.pin-radar-ring {
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
   width: 22px;
   height: 22px;
-  margin-top: -11px;
-  margin-left: -11px;
   border-radius: 50%;
-  background: rgba(200, 32, 47, 0.25);
-  border: 1px solid rgba(200, 32, 47, 0.6);
+  border: 1px solid rgba(200, 32, 47, 0.35);
+  background: rgba(200, 32, 47, 0.08);
   pointer-events: none;
   z-index: 2;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
-/* City Label */
-.node-city-title {
+/* Clean City Label Pill */
+.pin-label-pill {
   position: absolute;
-  top: -18px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #e2e8f0;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.95), 0 0 2px #000;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(8, 12, 18, 0.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 2px 7px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   white-space: nowrap;
   pointer-events: none;
-  background: rgba(10, 12, 16, 0.78);
-  padding: 2px 6px;
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  z-index: 4;
   transition: all 0.2s ease;
+  animation: tooltipFadeIn 0.3s ease-out;
 }
 
-/* Dubai HQ Primary Station Prominence */
-.gacis-marker-node.is-dubai-hq .node-center-core {
-  width: 13px;
-  height: 13px;
-  background: #c8202f;
-  border: 2.5px solid #d4a843;
-  box-shadow: 0 0 14px rgba(200, 32, 47, 1);
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
-.gacis-marker-node.is-dubai-hq .node-halo-pulse {
-  width: 28px;
-  height: 28px;
-  margin-top: -14px;
-  margin-left: -14px;
-  background: rgba(200, 32, 47, 0.35);
-  border: 1.5px solid #c8202f;
-  animation: geoPulseRadar 2.2s infinite ease-out;
+.plp-flag {
+  font-size: 0.85rem;
+  line-height: 1;
 }
 
-.gacis-marker-node.is-dubai-hq .node-city-title {
-  color: #ffd700;
-  border-color: rgba(212, 168, 67, 0.5);
+.plp-city {
+  font-size: 0.72rem;
   font-weight: 800;
-  background: rgba(45, 8, 12, 0.9);
+  letter-spacing: 0.03em;
+  color: #f1f5f9;
 }
 
-/* Selected Hub Highlight */
-.gacis-marker-node.is-selected .node-center-core {
+/* ─── State: Selected Origin Pin ─── */
+.clean-hub-pin.is-origin-pin .pin-dot-core {
+  width: 14px;
+  height: 14px;
   background: #c8202f;
-  border-color: #ffffff;
-  transform: scale(1.3);
-  box-shadow: 0 0 16px #c8202f;
+  border: 2.5px solid #ffd700;
+  box-shadow: 0 0 16px rgba(200, 32, 47, 1), 0 0 6px #ffd700;
+  transform: scale(1.15);
 }
 
-.gacis-marker-node.is-selected .node-halo-pulse {
-  animation: geoPulseRadar 1.6s infinite ease-out;
+.clean-hub-pin.is-origin-pin .pin-radar-ring {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid #ffd700;
+  background: rgba(200, 32, 47, 0.25);
+  animation: cleanRadarPing 2s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.gacis-marker-node.is-selected .node-city-title {
-  color: #ffffff;
-  background: rgba(200, 32, 47, 0.92);
-  border-color: #c8202f;
-  font-weight: 800;
-}
-
-/* Hover Interaction */
-.gacis-marker-node:hover .node-center-core {
-  transform: scale(1.35);
+.clean-hub-pin.is-origin-pin .pin-label-pill {
+  background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
   border-color: #ffd700;
+  box-shadow: 0 4px 16px rgba(200, 32, 47, 0.6), 0 0 8px rgba(255, 215, 0, 0.4);
 }
 
-.gacis-marker-node:hover .node-city-title {
+.clean-hub-pin.is-origin-pin .plp-city {
   color: #ffffff;
-  background: rgba(10, 12, 16, 0.95);
-  border-color: #c8202f;
+  font-weight: 900;
 }
 
-/* ─── 19 MARITIME SEA DOMAIN BEACONS ─── */
-.gacis-sea-marker-wrapper {
-  background: transparent !important;
-  border: none !important;
+/* Origin Status Badge */
+.origin-status-badge {
+  position: absolute;
+  bottom: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: #ffd700;
+  background: #1c080b;
+  border: 1px solid #ffd700;
+  padding: 1px 5px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  z-index: 5;
 }
 
-.gacis-sea-beacon {
+/* ─── State: Connected Destination Pin ─── */
+.clean-hub-pin.is-destination-pin .pin-dot-core {
+  width: 11px;
+  height: 11px;
+  background: #0284c7;
+  border: 2px solid #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.9);
+}
+
+.clean-hub-pin.is-destination-pin .pin-radar-ring {
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(56, 189, 248, 0.6);
+  background: rgba(56, 189, 248, 0.12);
+}
+
+.clean-hub-pin.is-destination-pin .pin-label-pill {
+  background: rgba(8, 24, 38, 0.95);
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+.clean-hub-pin.is-destination-pin .plp-city {
+  color: #e0f2fe;
+}
+
+/* ─── Dubai HQ Special Anchor ─── */
+.clean-hub-pin.is-dubai-hq:not(.is-origin-pin) .pin-dot-core {
+  border-color: #ffd700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+.clean-hub-pin.is-dubai-hq:not(.is-origin-pin) .pin-radar-ring {
+  border-color: rgba(255, 215, 0, 0.4);
+}
+
+/* ─── Pin Hover State ─── */
+.clean-hub-pin:hover .pin-dot-core {
+  transform: scale(1.3);
+  border-color: #ffd700;
+  box-shadow: 0 0 14px #ffd700;
+}
+
+.clean-hub-pin:hover .pin-radar-ring {
+  border-color: rgba(255, 215, 0, 0.5);
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+.clean-hub-pin:hover .pin-label-pill {
+  border-color: #38bdf8;
+  background: rgba(10, 15, 24, 0.98);
+  transform: translateX(-50%) translateY(-2px);
+  z-index: 100;
+}
+
+/* Focus State for Accessibility */
+.clean-hub-pin:focus-visible .pin-dot-core {
+  outline: 2px solid #ffd700;
+  outline-offset: 3px;
+  box-shadow: 0 0 14px #ffd700;
+}
+
+/* ─── 02. CLEAN MARITIME SEA BEACONS ─── */
+.clean-sea-beacon {
   position: relative;
+  width: 20px;
+  height: 20px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 110px;
-  height: 44px;
   cursor: pointer;
-  transform: translate(-50%, -50%);
 }
 
-.sea-core-dot {
-  width: 8px;
-  height: 8px;
+.sea-beacon-dot {
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: #38bdf8;
-  border: 1.5px solid #ffffff;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.9);
-  transition: all 0.2s ease;
+  background: rgba(8, 30, 48, 0.9);
+  border: 1.5px solid #38bdf8;
+  color: #38bdf8;
+  font-size: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+  transition: all 0.25s ease;
   z-index: 3;
 }
 
-.sea-wave-ring {
+.sea-radar-ring {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 20px;
-  height: 20px;
-  margin-top: -10px;
-  margin-left: -10px;
+  transform: translate(-50%, -50%);
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  border: 1.5px solid rgba(56, 189, 248, 0.7);
-  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  background: rgba(56, 189, 248, 0.08);
   pointer-events: none;
   z-index: 2;
+  transition: all 0.25s ease;
 }
 
-.sea-wave-pulse {
+.sea-label-pill {
   position: absolute;
-  top: 50%;
+  top: 22px;
   left: 50%;
-  width: 32px;
-  height: 32px;
-  margin-top: -16px;
-  margin-left: -16px;
-  border-radius: 50%;
-  border: 1px solid rgba(56, 189, 248, 0.4);
-  animation: seaPulseWaves 2.8s infinite ease-out;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.sea-title-badge {
-  position: absolute;
-  top: 14px;
-  font-size: 9.5px;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  color: #7dd3fc;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
+  transform: translateX(-50%);
+  background: rgba(6, 18, 28, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  padding: 2px 7px;
+  border-radius: 5px;
   white-space: nowrap;
   pointer-events: none;
-  background: rgba(7, 24, 38, 0.88);
-  padding: 1px 6px;
-  border-radius: 4px;
-  border: 1px solid rgba(56, 189, 248, 0.35);
-  backdrop-filter: blur(4px);
+  z-index: 4;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   transition: all 0.2s ease;
+  animation: tooltipFadeIn 0.3s ease-out;
 }
 
-/* Sea Active Highlight */
-.gacis-sea-beacon.is-sea-active .sea-core-dot {
-  background: #38bdf8;
-  border-color: #ffffff;
-  transform: scale(1.4);
-  box-shadow: 0 0 16px #38bdf8;
-}
-
-.gacis-sea-beacon.is-sea-active .sea-title-badge {
-  color: #ffffff;
-  background: rgba(14, 116, 144, 0.95);
-  border-color: #38bdf8;
+.slp-name {
+  font-size: 0.68rem;
   font-weight: 800;
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+  color: #7dd3fc;
+  letter-spacing: 0.03em;
 }
 
-.gacis-sea-beacon.is-sea-active .sea-wave-pulse {
-  animation: seaPulseWaves 1.6s infinite ease-out;
-  border-color: #38bdf8;
-}
-
-.gacis-sea-beacon:hover .sea-core-dot {
-  transform: scale(1.3);
+/* Sea Active */
+.clean-sea-beacon.is-active-sea .sea-beacon-dot {
+  background: #0284c7;
   border-color: #ffffff;
-}
-
-.gacis-sea-beacon:hover .sea-title-badge {
   color: #ffffff;
-  background: rgba(14, 116, 144, 0.9);
+  transform: scale(1.25);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 1);
+}
+
+.clean-sea-beacon.is-active-sea .sea-radar-ring {
+  width: 34px;
+  height: 34px;
   border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.25);
+  animation: cleanRadarPing 2s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-@keyframes seaPulseWaves {
+.clean-sea-beacon.is-active-sea .sea-label-pill {
+  background: linear-gradient(135deg, #0369a1 0%, #0c4a6e 100%);
+  border-color: #38bdf8;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.6);
+}
+
+.clean-sea-beacon.is-active-sea .slp-name {
+  color: #ffffff;
+  font-weight: 900;
+}
+
+/* Sea Hover */
+.clean-sea-beacon:hover .sea-beacon-dot {
+  transform: scale(1.2);
+  border-color: #ffffff;
+  box-shadow: 0 0 12px #38bdf8;
+}
+
+.clean-sea-beacon:hover .sea-radar-ring {
+  transform: translate(-50%, -50%) scale(1.15);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.clean-sea-beacon:hover .sea-label-pill {
+  border-color: #7dd3fc;
+  background: rgba(8, 28, 44, 0.98);
+  transform: translateX(-50%) translateY(-2px);
+}
+
+/* Focus State for Accessibility */
+.clean-sea-beacon:focus-visible .sea-beacon-dot {
+  outline: 2px solid #38bdf8;
+  outline-offset: 3px;
+}
+
+/* ─── Radar Pulse Animation ─── */
+@keyframes cleanRadarPing {
   0% {
-    transform: scale(0.5);
+    transform: translate(-50%, -50%) scale(0.6);
     opacity: 0.9;
   }
   100% {
-    transform: scale(2.2);
+    transform: translate(-50%, -50%) scale(1.8);
     opacity: 0;
   }
 }
 
-@keyframes geoPulseRadar {
-  0% {
-    transform: scale(0.6);
-    opacity: 0.9;
-  }
-  100% {
-    transform: scale(1.6);
-    opacity: 0;
-  }
+/* ─── 03. TRADE CORRIDOR POLYLINES ─── */
+.clean-corridor-line {
+  transition: stroke-width 0.2s ease, stroke-opacity 0.2s ease;
+  cursor: pointer;
 }
 
-/* ─── Polyline Corridor Flow Animation ─── */
-.geo-flow-animated {
-  animation: leafletRouteDash 12s linear infinite;
+.clean-corridor-line:hover {
+  stroke-width: 4px;
+  stroke-opacity: 0.9;
 }
 
-@keyframes leafletRouteDash {
+.clean-corridor-line.is-highlighted-lane {
+  filter: drop-shadow(0 0 6px #ffd700);
+}
+
+.clean-corridor-flow {
+  animation: corridorFlowDash 12s linear infinite;
+  cursor: pointer;
+}
+
+.clean-corridor-flow:hover {
+  stroke-width: 3.5px;
+}
+
+@keyframes corridorFlowDash {
   to {
     stroke-dashoffset: -300;
   }
 }
 
-.geo-corridor-active {
-  filter: drop-shadow(0 0 4px rgba(200, 32, 47, 0.8));
+/* ─── Clean Leaflet Tooltips ─── */
+.clean-tooltip-container {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
 }
 
-/* ─── Map Telemetry Overlay ─── */
+.clean-tooltip-container::before {
+  display: none !important;
+}
+
+.clean-route-tooltip {
+  background: rgba(8, 11, 16, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-width: 260px;
+  animation: tooltipFadeIn 0.25s ease-out;
+}
+
+.crt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.3rem;
+}
+
+.crt-route {
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.crt-flag {
+  font-size: 1rem;
+}
+
+.crt-mode-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #ffd700;
+}
+
+.crt-cargo {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.35;
+}
+
+.crt-cargo strong {
+  color: #38bdf8;
+}
+
+/* ─── 04. FLOATING TELEMETRY & CONTROLS ─── */
 .geo-map-status-overlay {
   position: absolute;
-  top: 12px;
-  left: 12px;
+  top: 14px;
+  left: 14px;
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  font-size: 0.625rem;
+  gap: 0.55rem;
+  font-size: 0.7rem;
   font-weight: 800;
-  letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.9);
-  background: rgba(10, 12, 16, 0.88);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  padding: 0.3rem 0.7rem;
-  border-radius: var(--radius-pill);
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(8, 12, 18, 0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill, 9999px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
   z-index: 10;
   pointer-events: none;
+  transition: all 0.25s ease;
 }
 
 .gso-dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #38bdf8;
-  box-shadow: 0 0 6px #38bdf8;
-  animation: radarBlink 1.6s infinite ease-in-out;
+  box-shadow: 0 0 8px #38bdf8;
+  animation: radarPulseBlink 1.5s infinite ease-in-out;
 }
 
-/* ─── Floating Legend (Bottom Left) ─── */
+@keyframes radarPulseBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* Floating Legend */
 .geo-map-legend {
   position: absolute;
-  bottom: 12px;
-  left: 12px;
+  bottom: 14px;
+  left: 14px;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  background: rgba(10, 12, 16, 0.88);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  padding: 0.35rem 0.75rem;
-  border-radius: var(--radius-pill);
+  gap: 0.9rem;
+  background: rgba(8, 12, 18, 0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-pill, 9999px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
   z-index: 10;
   pointer-events: none;
+  transition: all 0.25s ease;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
-  font-size: 0.625rem;
-  font-weight: 700;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+  font-weight: 800;
   color: rgba(255, 255, 255, 0.85);
+  transition: color 0.2s ease;
+}
+
+.legend-item:hover {
+  color: #ffffff;
 }
 
 .legend-dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
 }
 
-.legend-dot.red-dot {
+.legend-dot.origin-dot {
   background: #c8202f;
-  box-shadow: 0 0 4px #c8202f;
+  border: 1px solid #ffd700;
+  box-shadow: 0 0 6px #c8202f;
 }
 
-.legend-dot.cyan-dot {
+.legend-dot.dest-dot {
+  background: #0284c7;
+  border: 1px solid #38bdf8;
+  box-shadow: 0 0 6px #38bdf8;
+}
+
+.legend-dot.sea-active-dot {
   background: #38bdf8;
-  box-shadow: 0 0 4px #38bdf8;
+  box-shadow: 0 0 6px #38bdf8;
 }
 
-.legend-line.gold-line {
-  width: 12px;
+.legend-dot.sea-beacon-dot-legend {
+  font-size: 0.75rem;
+  color: #38bdf8;
+}
+
+.legend-line.corridor-line {
+  width: 14px;
   height: 2px;
-  background: #d4a843;
+  background: linear-gradient(90deg, #c8202f, #ffd700);
   border-radius: 1px;
 }
 
-
-/* ─── Custom Floating Map Controls ─── */
+/* Floating Controls */
 .geo-map-controls {
   position: absolute;
   bottom: 14px;
@@ -391,37 +582,249 @@
 .gmc-btn {
   width: 34px;
   height: 34px;
-  border-radius: var(--radius-sm);
-  background: rgba(10, 12, 16, 0.85);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  background: rgba(8, 12, 18, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all var(--motion-fast) ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 .gmc-btn:hover {
-  background: var(--color-brand-red);
-  border-color: var(--color-brand-red);
-  transform: translateY(-1px);
+  background: #c8202f;
+  border-color: #c8202f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(200, 32, 47, 0.4);
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
+.gmc-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.gmc-btn:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
+}
+
+.gmc-btn.reset-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: #ffffff;
+}
+
+/* ─── RESPONSIVE BREAKPOINTS ─── */
+
+/* Tablet: 640px and up */
+@media (min-width: 640px) {
   .real-geographic-map-root {
-    height: 420px;
+    height: clamp(380px, 55vh, 560px);
   }
+  
+  .geo-map-status-overlay {
+    top: 18px;
+    left: 18px;
+  }
+  
+  .geo-map-legend {
+    bottom: 18px;
+    left: 18px;
+  }
+  
+  .geo-map-controls {
+    bottom: 18px;
+    right: 18px;
+  }
+  
+  .gmc-btn {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* Tablet Landscape: 768px and up */
+@media (min-width: 768px) {
+  .real-geographic-map-root {
+    height: clamp(420px, 60vh, 560px);
+  }
+  
+  .geo-map-status-overlay {
+    top: 20px;
+    left: 20px;
+    font-size: 0.72rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .geo-map-legend {
+    bottom: 20px;
+    left: 20px;
+    gap: 1.1rem;
+    padding: 0.5rem 1.1rem;
+  }
+  
+  .legend-item {
+    font-size: 0.72rem;
+  }
+  
+  .geo-map-controls {
+    bottom: 20px;
+    right: 20px;
+    gap: 0.45rem;
+  }
+  
+  .gmc-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Desktop: 1024px and up */
+@media (min-width: 1024px) {
+  .real-geographic-map-root {
+    height: clamp(480px, 65vh, 600px);
+  }
+  
+  .gmc-btn:hover {
+    transform: translateY(-3px);
+  }
+}
+
+/* Large Desktop: 1280px and up */
+@media (min-width: 1280px) {
+  .real-geographic-map-root {
+    height: clamp(520px, 70vh, 640px);
+  }
+}
+
+/* ─── Mobile Optimizations ─── */
+@media (max-width: 640px) {
+  .real-geographic-map-root {
+    border-radius: 0 0 var(--radius-md, 12px) var(--radius-md, 12px);
+  }
+  
+  /* Hide legend on small screens to save space */
   .geo-map-legend {
     display: none;
   }
+  
+  /* Compact status overlay */
+  .geo-map-status-overlay {
+    font-size: 0.62rem;
+    padding: 0.35rem 0.7rem;
+    top: 10px;
+    left: 10px;
+  }
+  
+  .gso-dot {
+    width: 6px;
+    height: 6px;
+  }
+  
+  /* Smaller controls on mobile */
+  .geo-map-controls {
+    bottom: 10px;
+    right: 10px;
+    gap: 0.25rem;
+  }
+  
+  .gmc-btn {
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* Reduce label size on mobile */
+  .pin-label-pill,
+  .sea-label-pill {
+    font-size: 0.6rem;
+    padding: 2px 5px;
+  }
+  
+  .plp-city,
+  .slp-name {
+    font-size: 0.62rem;
+  }
+  
+  .plp-flag {
+    font-size: 0.75rem;
+  }
+  
+  /* Hide non-essential animations on mobile for performance */
+  .clean-corridor-flow {
+    animation-duration: 18s;
+  }
+  
+  @keyframes corridorFlowDash {
+    to {
+      stroke-dashoffset: -200;
+    }
+  }
 }
 
-@media (max-width: 768px) {
+/* Very small screens */
+@media (max-width: 400px) {
   .real-geographic-map-root {
-    height: 360px;
+    height: clamp(280px, 45vh, 360px);
+  }
+  
+  .geo-map-status-overlay {
+    font-size: 0.58rem;
+    padding: 0.3rem 0.6rem;
+    top: 8px;
+    left: 8px;
+  }
+  
+  .geo-map-controls {
+    bottom: 8px;
+    right: 8px;
+  }
+  
+  .gmc-btn {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* ─── Prefers Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .clean-corridor-flow,
+  .clean-hub-pin.is-origin-pin .pin-radar-ring,
+  .clean-sea-beacon.is-active-sea .sea-radar-ring,
+  .gso-dot {
+    animation: none;
+  }
+  
+  .pin-dot-core,
+  .pin-radar-ring,
+  .pin-label-pill,
+  .sea-beacon-dot,
+  .sea-radar-ring,
+  .sea-label-pill,
+  .geo-map-status-overlay,
+  .geo-map-legend,
+  .gmc-btn {
+    transition: none;
+  }
+}
+
+/* ─── High Contrast Mode ─── */
+@media (prefers-contrast: high) {
+  .geo-map-status-overlay,
+  .geo-map-legend,
+  .gmc-btn {
+    border-width: 2px;
+    border-color: #ffffff;
+  }
+  
+  .clean-route-tooltip {
+    border-width: 2px;
+  }
+  
+  .pin-label-pill,
+  .sea-label-pill {
+    border-width: 2px;
   }
 }

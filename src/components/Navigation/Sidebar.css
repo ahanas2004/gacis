@@ -765,3 +765,87 @@
     display: none !important;
   }
 }
+
+/* ─── 08. ACCESSIBILITY & MOTION PREFERENCES ─── */
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .gacis-operations-sidebar,
+  .sidebar-header,
+  .sidebar-collapse-btn,
+  .nav-item-link,
+  .nav-item-link .niw-icon,
+  .nav-item-link .niw-label,
+  .sidebar-section-header,
+  .section-chevron,
+  .submenu-item,
+  .mobile-console-drawer,
+  .mobile-console-drawer *,
+  .mobile-nav-overlay {
+    transition: none;
+    animation: none;
+  }
+  
+  .gacis-operations-sidebar {
+    transform: none !important;
+  }
+  
+  .sidebar-collapse-btn {
+    transform: none !important;
+  }
+  
+  .nav-item-link:hover {
+    transform: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .gacis-operations-sidebar {
+    border-right-width: 2px;
+  }
+  
+  .nav-item-link {
+    border-left-width: 3px;
+  }
+  
+  .nav-item-link.is-active {
+    border-left-width: 4px;
+  }
+  
+  .sidebar-section-header {
+    border-bottom-width: 2px;
+  }
+  
+  .sidebar-header {
+    border-bottom-width: 2px;
+  }
+}
+
+/* Focus Visible States for Keyboard Navigation */
+.nav-item-link:focus-visible,
+.submenu-item:focus-visible,
+.sidebar-collapse-btn:focus-visible,
+.sidebar-actions-btn:focus-visible,
+.mobile-nav-overlay:focus-visible {
+  outline: 2px solid var(--color-brand-red);
+  outline-offset: -2px;
+}
+
+/* Skip Link for Accessibility */
+.sidebar-skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-brand-red);
+  color: #ffffff;
+  padding: 8px 16px;
+  z-index: 9999;
+  font-weight: 700;
+  text-decoration: none;
+  transition: top 0.3s;
+}
+
+.sidebar-skip-link:focus {
+  top: 0;
+}

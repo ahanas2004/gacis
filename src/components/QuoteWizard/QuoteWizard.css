@@ -1,5 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
    QUOTE WIZARD STYLING
+   Enhanced UI/UX with Responsive Design & Accessibility
    ═══════════════════════════════════════════════════════════════ */
 
 .quote-wizard-card {
@@ -10,6 +11,20 @@
   padding: clamp(1.5rem, 3.5vw, 3rem);
   max-width: 920px;
   margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle accent border on top */
+.quote-wizard-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-brand-red), var(--color-brand-gold), var(--color-brand-red));
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
 }
 
 /* Progress Step Nodes */
@@ -22,6 +37,18 @@
   border-bottom: 1px solid var(--border-light);
 }
 
+/* Progress line connecting steps */
+.wizard-progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 32px;
+  right: 32px;
+  height: 2px;
+  background: var(--border-light);
+  z-index: 1;
+}
+
 .progress-step-node {
   display: flex;
   flex-direction: column;
@@ -30,6 +57,7 @@
   position: relative;
   z-index: 2;
   flex: 1;
+  cursor: default;
 }
 
 .psn-circle {
@@ -45,6 +73,7 @@
   align-items: center;
   justify-content: center;
   transition: all var(--motion-fast) ease;
+  position: relative;
 }
 
 .progress-step-node.is-active .psn-circle {
@@ -52,12 +81,23 @@
   border-color: var(--color-brand-red);
   color: #ffffff;
   box-shadow: 0 0 0 4px rgba(200, 32, 47, 0.15);
+  transform: scale(1.1);
 }
 
 .progress-step-node.is-complete .psn-circle {
   background: var(--color-success);
   border-color: var(--color-success);
   color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+}
+
+.progress-step-node.is-complete .psn-circle::after {
+  content: '✓';
+  font-size: 0.875rem;
+}
+
+.progress-step-node.is-complete .psn-circle span {
+  display: none;
 }
 
 .psn-label {
@@ -65,10 +105,16 @@
   font-weight: 700;
   color: var(--text-muted);
   text-align: center;
+  transition: color var(--motion-fast) ease;
 }
 
 .progress-step-node.is-active .psn-label {
   color: var(--text-primary);
+  font-weight: 800;
+}
+
+.progress-step-node.is-complete .psn-label {
+  color: var(--color-success);
 }
 
 /* Step Content Panels */
@@ -81,16 +127,33 @@
   margin-bottom: 0.35rem;
 }
 
+.step-panel {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .step-panel h3 {
   font-size: clamp(1.35rem, 2vw, 1.75rem);
   font-weight: 800;
   margin-bottom: 0.35rem;
+  color: var(--text-primary);
 }
 
 .step-desc {
   color: var(--text-secondary);
   font-size: 0.9375rem;
   margin-bottom: 1.75rem;
+  line-height: 1.6;
 }
 
 /* Service Mode Selector Grid */
@@ -113,11 +176,31 @@
   cursor: pointer;
   font-family: inherit;
   transition: all var(--motion-fast) ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.mode-select-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(200, 32, 47, 0.05) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity var(--motion-fast) ease;
 }
 
 .mode-select-btn:hover {
   background: var(--bg-subtle);
   border-color: var(--border-medium);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.mode-select-btn:hover::before {
+  opacity: 1;
 }
 
 .mode-select-btn.is-selected {
@@ -125,16 +208,30 @@
   border-color: var(--color-brand-red);
   color: var(--color-brand-red);
   box-shadow: 0 0 0 2px rgba(200, 32, 47, 0.2);
+  transform: translateY(-2px);
+}
+
+.mode-select-btn.is-selected::before {
+  opacity: 1;
+}
+
+.mode-select-btn:focus-visible {
+  outline: 2px solid var(--color-brand-red);
+  outline-offset: 2px;
 }
 
 .msb-name {
   font-size: 0.875rem;
   font-weight: 700;
+  position: relative;
+  z-index: 1;
 }
 
 .msb-tag {
   font-size: 0.6875rem;
   color: var(--text-muted);
+  position: relative;
+  z-index: 1;
 }
 
 /* Form Grids */
@@ -153,6 +250,18 @@
 .form-group {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  transition: color var(--motion-fast) ease;
+}
+
+.form-group:focus-within label {
+  color: var(--color-brand-red);
 }
 
 /* Review Summary Card */
@@ -161,6 +270,18 @@
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
   padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.review-summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--color-brand-red), var(--color-brand-gold));
 }
 
 .rsc-grid {
@@ -176,6 +297,7 @@
   color: var(--text-muted);
   display: block;
   margin-bottom: 0.2rem;
+  text-transform: uppercase;
 }
 
 .rsc-val {
@@ -187,6 +309,7 @@
 /* Confirmation Receipt */
 .confirmation-panel {
   padding-block: 2rem;
+  text-align: center;
 }
 
 .confirm-icon-wrap {
@@ -199,6 +322,18 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto 1.5rem;
+  animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .confirm-ref-tag {
@@ -210,6 +345,8 @@
   font-size: 0.875rem;
   font-weight: 700;
   margin-block: 1rem 1.25rem;
+  letter-spacing: 0.05em;
+  animation: fadeInUp 0.4s ease-out 0.2s both;
 }
 
 .confirm-desc {
@@ -217,6 +354,8 @@
   margin: 0 auto 2rem;
   font-size: 0.9375rem;
   line-height: 1.6;
+  color: var(--text-secondary);
+  animation: fadeInUp 0.4s ease-out 0.3s both;
 }
 
 .confirm-actions {
@@ -224,6 +363,7 @@
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
+  animation: fadeInUp 0.4s ease-out 0.4s both;
 }
 
 /* Footer Controls */
@@ -234,6 +374,8 @@
   margin-top: clamp(2rem, 3.5vw, 3rem);
   padding-top: 1.5rem;
   border-top: 1px solid var(--border-light);
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 /* Responsive */
@@ -251,6 +393,30 @@
   .wizard-progress-bar {
     display: none;
   }
+  
+  .wizard-footer-controls {
+    flex-direction: column-reverse;
+    gap: 0.75rem;
+  }
+  
+  .wizard-footer-controls > * {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-selector-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .quote-wizard-card {
+    padding: 1.25rem;
+  }
+  
+  .rsc-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Prefilled Banner */
@@ -267,9 +433,60 @@
   font-size: 0.875rem;
   color: var(--text-primary);
   line-height: 1.4;
+  animation: slideInLeft 0.3s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .wpb-sparkle {
   color: var(--color-brand-gold);
   flex-shrink: 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ─── Prefers Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .step-panel,
+  .confirm-icon-wrap,
+  .confirm-ref-tag,
+  .confirm-desc,
+  .confirm-actions,
+  .wizard-prefilled-banner,
+  .wpb-sparkle,
+  .mode-select-btn,
+  .psn-circle {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ─── High Contrast Mode ─── */
+@media (prefers-contrast: high) {
+  .quote-wizard-card {
+    border-width: 2px;
+  }
+  
+  .mode-select-btn,
+  .review-summary-card,
+  .wizard-prefilled-banner {
+    border-width: 2px;
+  }
+  
+  .psn-circle {
+    border-width: 3px;
+  }
 }

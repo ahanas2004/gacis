@@ -11,17 +11,17 @@ const iconMap = { Plane, Ship, Truck, Train, ShieldCheck, Boxes };
 export const Services = () => {
   return (
     <div className="services-page">
-      <SEO 
-        title="12 Multimodal Freight & Global Logistics Services — GACIS Intelligence"
-        description="Explore 12 core GACIS capabilities across Air Cargo Charters, Deepsea Linehauls, Trans-Eurasian Rail, Cross-Border Road Fleets, Hazmat/DG Chemical Chains, and Customs Brokerage."
+      <SEO
+        title="10 Multimodal Freight & Global Logistics Services — GACIS Intelligence"
+        description="Explore 10 core GACIS capabilities across Air Freight, FCL & LCL Ocean, EXW/FCA Shipments, Reefer Cold Chain, CIS Haulage, Customs Clearance, Road Transport, Rail Corridors, and Project Logistics."
         canonical="/services"
       />
 
       <PageHeader
         eyebrow="GLOBAL LOGISTICS EXECUTION ENGINE"
-        title="12 Core Multimodal Services"
+        title="10 Core Multimodal Services"
         description="Proven linehaul architecture with real-time operational KPIs, direct carrier allocations, and unbroken compliance bridging the Gulf, Central Asia, South Asia, and Europe."
-        statusTag="12 FREIGHT CAPABILITIES ACTIVE"
+        statusTag="10 FREIGHT CAPABILITIES ACTIVE"
       />
 
       <section className="section-padding bg-primary">
@@ -35,15 +35,15 @@ export const Services = () => {
                 <div key={service.id} className={`service-full-card fade-up delay-${(i % 3) * 100 + 100}`}>
                   {service.image && (
                     <div className="sfc-image-wrapper">
-                      <FadeImage 
-                        src={service.image} 
-                        alt={service.title} 
+                      <FadeImage
+                        src={service.image}
+                        alt={service.title}
                         className="sfc-img"
                       />
                       <span className="sfc-mode-pill">{service.mode}</span>
                     </div>
                   )}
-                  
+
                   <div className="sfc-body">
                     <div className="sfc-header-row">
                       <div className="sfc-icon-badge">
@@ -57,10 +57,10 @@ export const Services = () => {
                         </div>
                       )}
                     </div>
-                    
+
                     <h3 className="sfc-main-title">{service.title}</h3>
                     <p className="sfc-desc">{service.overview}</p>
-                    
+
                     <div className="sfc-features-block">
                       <span className="sfb-lbl">PROVEN CAPABILITIES & FEATURES:</span>
                       <ul className="sfc-features">
@@ -79,8 +79,8 @@ export const Services = () => {
                         <Link to={`/services/${service.id}`} className="btn btn-secondary sfc-link">
                           Explore <ArrowRight size={15} className="arrow-icon" />
                         </Link>
-                        <Link 
-                          to={`/quote?service=${encodeURIComponent(service.shortTitle)}&mode=${encodeURIComponent(service.mode)}`} 
+                        <Link
+                          to={`/quote?service=${encodeURIComponent(service.shortTitle)}&mode=${encodeURIComponent(service.mode)}`}
                           state={{ mode: service.mode, cargoType: service.shortTitle }}
                           className="btn btn-primary sfc-btn-book"
                         >
