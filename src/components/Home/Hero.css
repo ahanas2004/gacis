@@ -68,22 +68,49 @@
 }
 
 .hero-eyebrow {
-  font-size: 0.75rem;
+  font-size: 1.15rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: var(--color-brand-red);
+  color: #ff4d5a;
+  line-height: 1.2;
+  display: inline-block;
+  text-shadow: 
+    0 0 10px rgba(255, 77, 90, 0.75),
+    0 0 22px rgba(229, 36, 52, 0.55),
+    0 0 36px rgba(229, 36, 52, 0.35);
+  animation: heroEyebrowGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes heroEyebrowGlow {
+  0% {
+    text-shadow: 
+      0 0 8px rgba(255, 77, 90, 0.6),
+      0 0 16px rgba(229, 36, 52, 0.4),
+      0 0 28px rgba(229, 36, 52, 0.2);
+    filter: drop-shadow(0 0 4px rgba(255, 77, 90, 0.3));
+  }
+  100% {
+    text-shadow: 
+      0 0 14px rgba(255, 77, 90, 0.95),
+      0 0 28px rgba(229, 36, 52, 0.75),
+      0 0 45px rgba(229, 36, 52, 0.45);
+    filter: drop-shadow(0 0 8px rgba(255, 77, 90, 0.6));
+  }
 }
 
 .hero-corridor-tag {
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.85);
   background: rgba(255, 255, 255, 0.08);
-  padding: 0.2rem 0.6rem;
+  padding: 0.25rem 0.65rem;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
 }
 
 .hero-headline {

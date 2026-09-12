@@ -32,7 +32,7 @@ export const Hero = () => {
           <div className="hero-content reveal-left">
             <div className="hero-eyebrow-row">
               <span className="hero-eyebrow">Strategic Freight Corridors</span>
-              <span className="hero-corridor-tag">Gulf ⇄ CIS ⇄ Asia Trade</span>
+              <span className="hero-corridor-tag">Asia ⇄ Africa ⇄ Europe ⇄ North America ⇄ South America</span>
             </div>
 
             <h1 className="hero-headline">

@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
    HERO NETWORK INTELLIGENCE VISUALIZATION STYLING
-   Fixed Structural Dimensions & Zero Layout Variation
+   High-Legibility, Zero-Truncation Multimodal Route Monitor
    ═══════════════════════════════════════════════════════════════ */
 
 .hero-network-console {
@@ -10,49 +10,41 @@
   border: 1px solid var(--border-dark-strong);
   border-radius: var(--radius-card);
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 580px;
-  /* Exact Fixed Height: 546px (52px + 200px + 156px + 138px) */
-  height: 546px;
-  min-height: 546px;
-  max-height: 546px;
+  min-height: 560px;
   box-sizing: border-box;
   flex-shrink: 0;
-  contain: layout style;
+  overflow: hidden;
 }
 
-/* Console Top Bar (Fixed 52px) */
+/* ── Console Header Bar (48px) ── */
 .hnc-top-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1.35rem;
-  height: 52px;
-  min-height: 52px;
-  max-height: 52px;
-  flex-shrink: 0;
+  padding: 0 1.25rem;
+  height: 48px;
+  min-height: 48px;
   background: rgba(255, 255, 255, 0.04);
   border-bottom: 1px solid var(--border-dark);
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 .hnc-title-row {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  overflow: hidden;
+  gap: 0.65rem;
 }
 
 .live-radar-dot {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: var(--color-brand-red);
-  box-shadow: 0 0 12px var(--color-brand-red);
+  box-shadow: 0 0 10px var(--color-brand-red);
   animation: radarBlink 1.5s infinite ease-in-out;
   flex-shrink: 0;
 }
@@ -63,29 +55,56 @@
 }
 
 .hnc-system-title {
-  font-size: 0.78125rem;
+  font-size: 0.75rem;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   color: rgba(255, 255, 255, 0.95);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+}
+
+.hnc-top-right-group {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.trade-top-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 0.18rem 0.55rem;
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+}
+
+.tag-export {
+  color: #ff6b78;
+  background: rgba(229, 36, 52, 0.22);
+  border: 1px solid rgba(229, 36, 52, 0.45);
+}
+
+.tag-import {
+  color: #4ade80;
+  background: rgba(34, 197, 94, 0.22);
+  border: 1px solid rgba(34, 197, 94, 0.45);
 }
 
 .hnc-status-badge {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
-  font-size: 0.71875rem;
+  gap: 0.4rem;
+  font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: var(--color-success);
   background: rgba(26, 138, 74, 0.18);
   border: 1px solid rgba(34, 197, 94, 0.25);
-  padding: 0.25rem 0.65rem;
+  padding: 0.2rem 0.55rem;
   border-radius: var(--radius-pill);
   white-space: nowrap;
-  flex-shrink: 0;
 }
 
 .pulse-icon {
@@ -94,79 +113,62 @@
 
 @keyframes pulseRotate {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
+  50% { transform: scale(1.15); }
 }
 
-/* Visualizer SVG Canvas (Fixed 200px) */
+/* ── Visualizer SVG Canvas (175px) ── */
 .hnc-visualizer-canvas {
+  height: 175px;
+  min-height: 175px;
   position: relative;
-  background: radial-gradient(circle at 60% 50%, rgba(200, 32, 47, 0.14) 0%, transparent 70%),
-              rgba(10, 12, 16, 0.75);
-  padding: 0.5rem 0.75rem 0.25rem;
-  height: 200px;
-  min-height: 200px;
-  max-height: 200px;
-  flex-shrink: 0;
-  border-bottom: 1px solid var(--border-dark);
+  background: radial-gradient(circle at 50% 50%, rgba(200, 32, 47, 0.1) 0%, rgba(10, 12, 16, 0.95) 75%);
+  padding: 0.5rem 1rem 0;
   box-sizing: border-box;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .hnc-svg {
   width: 100%;
   height: 100%;
-  display: block;
+  overflow: visible;
 }
 
-/* Corridor Flow Path Line */
 .corridor-flow-path {
-  stroke-dasharray: 450;
-  stroke-dashoffset: 0;
-  animation: pulsePath 3s ease-in-out infinite alternate;
+  stroke-dasharray: 8 4;
+  animation: flowDash 20s linear infinite;
 }
 
-@keyframes pulsePath {
-  0% { stroke-opacity: 0.75; stroke-width: 3.6; }
-  100% { stroke-opacity: 1; stroke-width: 4.4; }
+@keyframes flowDash {
+  to { stroke-dashoffset: -1000; }
 }
 
-/* Smooth Traveling Beacon Particle */
-.traveling-beacon-particle {
-  transition: transform 0.65s cubic-bezier(0.34, 1.25, 0.64, 1);
-  pointer-events: none;
+/* SVG Map Nodes */
+.map-node circle {
+  transition: all 0.3s ease;
 }
 
-/* Node Ping Animation */
 .active-port-ping {
-  animation: pingPulse 1.5s infinite ease-out;
+  animation: pingAnimation 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+  transform-origin: center;
 }
 
-@keyframes pingPulse {
-  0% { r: 8px; stroke-opacity: 1; }
-  100% { r: 22px; stroke-opacity: 0; }
-}
-
-/* Node Styling */
-.map-node {
-  transition: all 0.35s ease;
+@keyframes pingAnimation {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
 }
 
 .node-label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 10px;
-  font-weight: 800;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 8.5px;
+  font-weight: 700;
   letter-spacing: 0.04em;
-  fill: rgba(255, 255, 255, 0.82);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.98), 0 0 4px rgba(0, 0, 0, 0.8);
-  transition: all 0.35s ease;
+  fill: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+  pointer-events: none;
 }
 
 .is-active-port .node-label {
-  font-size: 11px;
-  font-weight: 900;
+  font-size: 9.5px;
+  font-weight: 800;
   fill: #ffffff;
   filter: drop-shadow(0 0 6px rgba(212, 168, 67, 0.95));
 }
@@ -176,246 +178,247 @@
 }
 
 .is-pending-port .node-label {
-  fill: rgba(255, 255, 255, 0.5);
+  fill: rgba(255, 255, 255, 0.45);
 }
 
-/* Data Telemetry Grid (Fixed 156px: 2 rows of 78px) */
-.hnc-data-grid {
+/* ── Clear, High-Legibility Telemetry Panel (2-Card Responsive Layout) ── */
+.hnc-telemetry-panel {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1.25fr;
   gap: 1px;
   background: var(--border-dark);
-  height: 156px;
-  min-height: 156px;
-  max-height: 156px;
-  flex-shrink: 0;
+  border-top: 1px solid var(--border-dark);
   box-sizing: border-box;
 }
 
-.hnc-data-cell {
+/* Hub Card (Left) */
+.hnc-hub-card {
   background: var(--surface-dark-card);
-  padding: 0.75rem 1.25rem;
+  padding: 0.85rem 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 78px;
-  min-height: 78px;
-  max-height: 78px;
-  flex-shrink: 0;
+  justify-content: flex-start;
+  gap: 0.35rem;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
-.hdc-label {
-  font-size: 0.65625rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
-  margin-bottom: 0.2rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.hdc-val {
-  font-size: 1.0625rem;
-  font-weight: 800;
-  color: #ffffff;
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.hdc-port-title-wrap {
+.hub-card-header {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
-  overflow: hidden;
+  justify-content: space-between;
+  gap: 0.4rem;
 }
 
-.port-type-tag {
+.hub-step-label {
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.hub-badge {
+  font-size: 0.59375rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--color-brand-gold);
+  background: rgba(212, 168, 67, 0.18);
+  border: 1px solid rgba(212, 168, 67, 0.38);
+  padding: 0.12rem 0.45rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.hub-name-row {
+  margin-top: 0.1rem;
+}
+
+.hub-title {
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: var(--color-brand-gold);
+  line-height: 1.25;
+  display: block;
+}
+
+.hub-role-text {
+  font-size: 0.71875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.35;
+}
+
+.hub-status-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 0.3rem;
+}
+
+.status-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 6px #22c55e;
+  flex-shrink: 0;
+}
+
+.hub-status-text {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: #22c55e;
+  line-height: 1.2;
+}
+
+/* Route & Indian Gateways Card (Right) */
+.hnc-route-card {
+  background: var(--surface-dark-card);
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  box-sizing: border-box;
+}
+
+.route-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.route-type-badge {
   font-size: 0.59375rem;
   font-weight: 800;
   letter-spacing: 0.08em;
-  color: var(--color-brand-gold);
-  background: rgba(212, 168, 67, 0.18);
-  border: 1px solid rgba(212, 168, 67, 0.4);
-  padding: 0.1rem 0.45rem;
-  border-radius: 3px;
-  white-space: nowrap;
+  padding: 0.12rem 0.45rem;
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+  color: #ff6b78;
+  background: rgba(229, 36, 52, 0.2);
+  border: 1px solid rgba(229, 36, 52, 0.4);
   flex-shrink: 0;
+  margin-top: 0.1rem;
 }
 
-.hss-mode-prefix {
-  font-size: 0.65625rem;
+.route-corridor-title {
+  font-size: 0.78125rem;
   font-weight: 800;
-  color: var(--color-brand-gold);
-  opacity: 0.9;
-  white-space: nowrap;
+  color: #ffffff;
+  line-height: 1.35;
 }
 
-.hdc-val.font-mono-val {
-  font-size: 0.96875rem;
-  color: var(--color-brand-gold);
-}
-
-.hdc-sub {
-  font-size: 0.71875rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.5);
-  margin-top: 0.2rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.text-success {
-  color: #22c55e !important;
-}
-
-.text-gold {
-  color: var(--color-brand-gold) !important;
-}
-
-/* Live Stage Tracker Strip (Fixed 138px) */
-.hnc-stage-strip {
-  padding: 0.75rem 1.25rem;
-  background: rgba(200, 32, 47, 0.09);
-  border-top: 1px solid var(--border-dark);
-  font-size: 0.8125rem;
+.indian-ports-section {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 138px;
-  min-height: 138px;
-  max-height: 138px;
-  flex-shrink: 0;
+  gap: 0.35rem;
+  margin-top: 0.1rem;
+}
+
+.indian-ports-label {
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.indian-ports-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.indian-port-pill {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.indian-port-pill.pill-sea {
+  border-color: rgba(56, 189, 248, 0.35);
+  background: rgba(56, 189, 248, 0.1);
+  color: #7dd3fc;
+}
+
+.indian-port-pill.pill-rail {
+  border-color: rgba(251, 191, 36, 0.35);
+  background: rgba(251, 191, 36, 0.1);
+  color: #fde047;
+}
+
+.indian-port-pill.pill-air {
+  border-color: rgba(168, 85, 247, 0.35);
+  background: rgba(168, 85, 247, 0.1);
+  color: #d8b4fe;
+}
+
+/* ── Live Stage Stepper & Controls Strip ── */
+.hnc-stage-strip {
+  padding: 0.75rem 1rem;
+  background: rgba(200, 32, 47, 0.08);
+  border-top: 1px solid var(--border-dark);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 .hss-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 20px;
-  min-height: 20px;
-  max-height: 20px;
-  flex-shrink: 0;
-  overflow: hidden;
+  gap: 0.5rem;
 }
 
 .hss-step {
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: var(--color-brand-red);
-  font-size: 0.71875rem;
+  font-size: 0.6875rem;
   text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-.hss-status {
+.hss-mode-badge {
+  font-size: 0.625rem;
   font-weight: 700;
-  color: #22c55e;
-  font-size: 0.71875rem;
-  background: rgba(34, 197, 94, 0.15);
-  border: 1px solid rgba(34, 197, 94, 0.25);
-  padding: 0.12rem 0.55rem;
-  border-radius: var(--radius-pill);
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
   white-space: nowrap;
-  flex-shrink: 0;
 }
 
-/* 4-Step Port Stepper (2x2 Grid Layout) */
-.hss-leg-stepper-2x2 {
+/* 4-Step Port Cards Row */
+.hss-port-cards-row {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.4rem 0.65rem;
-  align-items: center;
-  height: 68px;
-  min-height: 68px;
-  max-height: 68px;
-  flex-shrink: 0;
-  overflow: hidden;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
 }
 
-.hss-port-card-2x2 {
+.hss-port-card-item {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.35rem 0.65rem;
-  height: 31px;
-  min-height: 31px;
-  max-height: 31px;
-  box-sizing: border-box;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.25s ease;
-  overflow: hidden;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.4rem 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-dark);
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
-.hpc-left {
+.hpc-top {
   display: flex;
   align-items: center;
   gap: 0.35rem;
-  flex-shrink: 0;
-}
-
-.hpc-right {
-  display: flex;
-  align-items: baseline;
-  gap: 0.4rem;
-  overflow: hidden;
-}
-
-.hss-step-code {
-  font-size: 0.78125rem;
-  font-weight: 900;
-  color: #ffffff;
-  flex-shrink: 0;
-}
-
-.hss-step-name {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.hss-port-card-2x2.is-past {
-  background: rgba(34, 197, 94, 0.08);
-  border-color: rgba(34, 197, 94, 0.28);
-}
-
-.hss-port-card-2x2.is-past .hss-step-dot {
-  background: #22c55e;
-  box-shadow: 0 0 6px #22c55e;
-}
-
-.hss-port-card-2x2.is-current {
-  background: rgba(200, 32, 47, 0.25);
-  border-color: var(--color-brand-red);
-  box-shadow: 0 0 12px rgba(200, 32, 47, 0.45);
-}
-
-.hss-port-card-2x2.is-current .hss-step-dot {
-  background: var(--color-brand-gold);
-  box-shadow: 0 0 8px var(--color-brand-gold);
-  transform: scale(1.3);
-}
-
-.hss-port-card-2x2.is-current .hss-step-code {
-  color: var(--color-brand-gold);
 }
 
 .hss-step-dot {
@@ -427,16 +430,58 @@
   flex-shrink: 0;
 }
 
-/* Route Selector Indicator Pills */
+.hss-step-code {
+  font-size: 0.65625rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: var(--font-mono, monospace);
+}
+
+.hss-step-name {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hss-port-card-item.is-past {
+  background: rgba(34, 197, 94, 0.08);
+  border-color: rgba(34, 197, 94, 0.28);
+}
+
+.hss-port-card-item.is-past .hss-step-dot {
+  background: #22c55e;
+  box-shadow: 0 0 6px #22c55e;
+}
+
+.hss-port-card-item.is-current {
+  background: rgba(200, 32, 47, 0.25);
+  border-color: var(--color-brand-red);
+  box-shadow: 0 0 12px rgba(200, 32, 47, 0.45);
+}
+
+.hss-port-card-item.is-current .hss-step-dot {
+  background: var(--color-brand-gold);
+  box-shadow: 0 0 8px var(--color-brand-gold);
+  transform: scale(1.3);
+}
+
+.hss-port-card-item.is-current .hss-step-code {
+  color: var(--color-brand-gold);
+}
+
+.hss-port-card-item.is-current .hss-step-name {
+  color: #ffffff;
+}
+
+/* Corridor Selector Indicator Pills */
 .hss-route-pills {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  height: 16px;
-  min-height: 16px;
-  max-height: 16px;
-  flex-shrink: 0;
-  overflow: hidden;
+  padding-top: 0.1rem;
 }
 
 .hss-pill {
@@ -451,26 +496,33 @@
 }
 
 .hss-pill.is-active {
-  width: 28px;
+  width: 26px;
   background: var(--color-brand-red);
   box-shadow: 0 0 8px rgba(200, 32, 47, 0.6);
 }
 
-/* ─── Mobile Responsiveness ─── */
+.hss-pill.pill-export.is-active {
+  background: #e52434;
+  box-shadow: 0 0 8px rgba(229, 36, 52, 0.7);
+}
+
+.hss-pill.pill-import.is-active {
+  background: #22c55e;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.7);
+}
+
+/* ── Mobile Responsiveness ── */
 @media (max-width: 640px) {
   .hero-network-console {
     max-width: 100%;
+    min-height: auto;
   }
 
-  .hdc-val {
-    font-size: 0.9375rem;
+  .hnc-telemetry-panel {
+    grid-template-columns: 1fr;
   }
 
-  .hdc-val.font-mono-val {
-    font-size: 0.875rem;
-  }
-
-  .hss-step-name {
-    display: none;
+  .hss-port-cards-row {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
