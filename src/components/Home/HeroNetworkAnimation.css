@@ -378,7 +378,78 @@
   box-shadow: 0 0 8px rgba(34, 197, 94, 0.7);
 }
 
-/* ── Mobile Responsiveness ── */
+/* ── Pause / Play Button ── */
+.hnc-pause-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(34, 197, 94, 0.45);
+  background: rgba(34, 197, 94, 0.12);
+  color: #4ade80;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.hnc-pause-btn:hover {
+  background: rgba(34, 197, 94, 0.22);
+  border-color: rgba(34, 197, 94, 0.7);
+}
+
+.hnc-pause-btn.is-paused {
+  border-color: rgba(251, 191, 36, 0.5);
+  background: rgba(251, 191, 36, 0.12);
+  color: #fbbf24;
+}
+
+.hnc-pause-btn.is-paused:hover {
+  background: rgba(251, 191, 36, 0.22);
+}
+
+/* Radar dot — grey when paused */
+.live-radar-dot.is-paused {
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: none;
+  animation: none;
+}
+
+/* Stop the activity pulse icon when paused */
+.pulse-icon.stopped {
+  animation: none;
+  opacity: 0.5;
+}
+
+/* ── Responsive Media Queries ── */
+@media (max-width: 768px) {
+  .hero-network-console {
+    max-width: 100%;
+    min-height: auto;
+  }
+
+  .hnc-top-bar {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 46px;
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .hnc-top-right-group {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .hnc-system-title {
+    font-size: 0.65rem;
+  }
+}
+
 @media (max-width: 640px) {
   .hero-network-console {
     max-width: 100%;
@@ -393,5 +464,18 @@
   .hss-header {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .hnc-visualizer-canvas {
+    height: 130px;
+    min-height: 130px;
+  }
+
+  .ah-region-title {
+    font-size: 0.875rem;
+  }
+
+  .hnc-pause-btn span {
+    display: none;
   }
 }

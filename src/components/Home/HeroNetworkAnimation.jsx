@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Activity, Ship, Plane, Train, ArrowUpRight, ArrowDownLeft, Anchor, Navigation } from 'lucide-react';
+import { Activity, Ship, Plane, Train, ArrowUpRight, ArrowDownLeft, Pause, Play } from 'lucide-react';
 import './HeroNetworkAnimation.css';
 
 // Regional Multimodal Hub Database (Sea Ports, Train Rail Corridors, Flight Air Cargo Hubs)
@@ -192,35 +192,36 @@ export const corridorRoutes = [
 export const HeroNetworkAnimation = () => {
   const [routeIndex, setRouteIndex] = useState(0);
   const [nodeIndex, setNodeIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const currentRoute = corridorRoutes[routeIndex];
   const currentNode = currentRoute.nodes[nodeIndex];
   const activeHubInfo = regionalHubData[currentNode.name] || regionalHubData['Indian Subcontinent'];
   const isExport = currentRoute.tradeType === 'EXPORT';
 
-  // Exact 6 Second interval: cycles through the nodes of active route smoothly
+  // 3.5 s interval: cycles through nodes of active route, respects pause
   useEffect(() => {
+    if (isPaused) return;
     const timer = setInterval(() => {
       setNodeIndex((prevNode) => {
         if (prevNode < corridorRoutes[routeIndex].nodes.length - 1) {
-          return prevNode + 1; // Advance to next node along the active route
+          return prevNode + 1;
         } else {
-          // Reached end of nodes -> cycle to next trade corridor and restart at node 0
           setRouteIndex((prevRoute) => (prevRoute + 1) % corridorRoutes.length);
           return 0;
         }
       });
-    }, 3500); // 6s per node change
+    }, 3500);
 
     return () => clearInterval(timer);
-  }, [routeIndex]);
+  }, [routeIndex, isPaused]);
 
   return (
     <div className="hero-network-console">
       {/* ── Console Header Bar ── */}
       <div className="hnc-top-bar">
         <div className="hnc-title-row">
-          <span className="live-radar-dot"></span>
+          <span className={`live-radar-dot${isPaused ? ' is-paused' : ''}`}></span>
           <span className="hnc-system-title">GACIS MULTIMODAL ROUTE MONITOR</span>
         </div>
         <div className="hnc-top-right-group">
@@ -228,9 +229,20 @@ export const HeroNetworkAnimation = () => {
             {isExport ? <ArrowUpRight size={12} className="tag-arrow" /> : <ArrowDownLeft size={12} className="tag-arrow" />}
             {currentRoute.tradeType}
           </span>
+          {/* Pause / Play toggle */}
+          <button
+            type="button"
+            className={`hnc-pause-btn${isPaused ? ' is-paused' : ''}`}
+            onClick={() => setIsPaused((p) => !p)}
+            aria-label={isPaused ? 'Resume animation' : 'Pause animation'}
+            title={isPaused ? 'Resume' : 'Pause'}
+          >
+            {isPaused ? <Play size={11} /> : <Pause size={11} />}
+            <span>{isPaused ? 'PAUSED' : 'LIVE'}</span>
+          </button>
           <div className="hnc-status-badge">
-            <Activity size={13} className="pulse-icon" />
-            <span>CYCLE: 6.0s</span>
+            <Activity size={13} className={`pulse-icon${isPaused ? ' stopped' : ''}`} />
+            <span>{isPaused ? 'PAUSED' : 'CYCLE: 3.5s'}</span>
           </div>
         </div>
       </div>

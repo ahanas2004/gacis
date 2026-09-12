@@ -201,7 +201,7 @@
 }
 
 /* ─── Responsive Media Queries ─── */
-@media (max-width: 1080px) {
+@media (max-width: 1024px) {
   .hero-editorial {
     min-height: auto;
     padding-block: clamp(3rem, 7vw, 5rem);
