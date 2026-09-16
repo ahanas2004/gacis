@@ -15,7 +15,7 @@ export const ServiceStrip = () => {
           <span className="eyebrow">CORE FREIGHT CAPABILITIES</span>
           <h2>Multimodal Logistics Architecture</h2>
           <p>
-            Engineered linehaul networks connecting deepsea ports, trans-Eurasian railheads, scheduled air cargo gateways, and overland bonded corridors.
+            Engineered linehaulage networks connecting deepsea ports, trans-Eurasian railheads, scheduled air cargo gateways, and overland bonded corridors.
           </p>
         </div>
 
