@@ -130,7 +130,7 @@ export const ArticleDetail = () => {
               <ShieldCheck size={26} className="text-gold flex-shrink-0" />
               <div>
                 <h4>Verified Logistics Field Intelligence</h4>
-                <p>Authored and reviewed by GACIS Senior Supply Chain Engineers following ISO 9001:2015 quality standards and TAPA TSR-1 security protocols.</p>
+                <p>Authored and reviewed by GACIS Senior Supply Chain Engineers following ISO 9001:2015 quality frameworks and TAPA TSR-1 security protocols supported by certified partners.</p>
               </div>
             </div>
 

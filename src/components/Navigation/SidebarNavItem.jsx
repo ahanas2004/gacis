@@ -1,8 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { 
   LayoutDashboard, Layers, Box, Globe2, 
-  Leaf, BookOpen, Building2, PhoneCall, ArrowRight,
-  Radar
+  Leaf, BookOpen, Building2, PhoneCall, Radar
 } from 'lucide-react';
 
 const iconMap = {

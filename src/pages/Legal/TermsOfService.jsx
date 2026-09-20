@@ -1,4 +1,4 @@
-import { FileText, ShieldAlert, Scale, CheckCircle2, Globe2 } from 'lucide-react';
+import { Scale } from 'lucide-react';
 import SEO from '../../components/Common/SEO';
 import PageHeader from '../../components/Common/PageHeader';
 import './Legal.css';
@@ -56,7 +56,7 @@ export const TermsOfService = () => {
             <div className="legal-section">
               <h3>4. Customs Clearance & Regulatory Authority</h3>
               <p>
-                GACIS acts as an authorized customs broker on behalf of the customer. The customer remains solely responsible for all statutory customs duties, taxes, fines, demurrage, and storage charges arising from regulatory audits, misdeclarations, or origin documentation delays.
+                GACIS facilitates customs brokerage services as an authorized customs broker acting on behalf of the customer. The customer remains solely responsible for all statutory customs duties, taxes, fines, demurrage, and storage charges arising from regulatory audits, misdeclarations, or origin documentation delays.
               </p>
             </div>
 

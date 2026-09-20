@@ -76,7 +76,7 @@ export const rareLogisticsArticles = [
     title: 'Sub-Zero Cryo-Logistics: GDP Cold-Chain & Deep Freeze Preservation',
     category: 'BIOPHARMACEUTICAL COLD-CHAIN',
     categoryTag: 'CRYO COLD-CHAIN',
-    rarityScore: '4/5 GDP Certified',
+    rarityScore: '4/5 GDP Compliant',
     publisher: 'Global Cold Chain & Bio-Pharma Logistics',
     publisherTag: 'COLD CHAIN GDP',
     externalUrl: 'https://en.wikipedia.org/wiki/Cold_chain',

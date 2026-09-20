@@ -1,23 +1,26 @@
+import { lazy, Suspense } from 'react';
 import Hero from '../../components/Home/Hero';
 import NewsTickerBar from '../../components/Home/NewsTickerBar';
 import ServiceStrip from '../../components/Home/ServiceStrip';
 import TrustStats from '../../components/Home/TrustStats';
 import Differentiators from '../../components/Home/Differentiators';
 import ProcessSection from '../../components/Home/ProcessSection';
-import RouteSimulator from '../../components/Home/RouteSimulator';
-import IndustrySection from '../../components/Home/IndustrySection';
-import SocialProof from '../../components/Home/SocialProof';
-import Testimonials from '../../components/Home/Testimonials';
-import CompanyCards from '../../components/Home/CompanyCards';
-import CtaBanner from '../../components/Home/CtaBanner';
 import ErrorBoundary from '../../components/Common/ErrorBoundary';
+import LazyOnVisible from '../../components/Common/LazyOnVisible';
 import SEO from '../../components/Common/SEO';
 import './Home.css';
+
+const RouteSimulator = lazy(() => import('../../components/Home/RouteSimulator'));
+const IndustrySection = lazy(() => import('../../components/Home/IndustrySection'));
+const SocialProof = lazy(() => import('../../components/Home/SocialProof'));
+const Testimonials = lazy(() => import('../../components/Home/Testimonials'));
+const CompanyCards = lazy(() => import('../../components/Home/CompanyCards'));
+const CtaBanner = lazy(() => import('../../components/Home/CtaBanner'));
 
 const Home = () => {
   return (
     <div className="home-page">
-      <SEO 
+      <SEO
         title="Global Freight Forwarding & Multimodal Logistics Intelligence"
         description="GACIS powers high-value trade corridors across the Gulf, Central Asia (CIS), South Asia, and Europe with multimodal block trains, sea-air routing, and real-time corridor intelligence."
         canonical="/"
@@ -28,14 +31,22 @@ const Home = () => {
       <TrustStats />
       <Differentiators />
       <ProcessSection />
-      <ErrorBoundary componentName="Route Simulator">
-        <RouteSimulator />
-      </ErrorBoundary>
-      <IndustrySection />
-      <SocialProof />
-      <Testimonials />
-      <CompanyCards />
-      <CtaBanner />
+      <LazyOnVisible minHeight={640}>
+        <ErrorBoundary componentName="Route Simulator">
+          <Suspense fallback={null}>
+            <RouteSimulator />
+          </Suspense>
+        </ErrorBoundary>
+      </LazyOnVisible>
+      <LazyOnVisible minHeight={420}>
+        <Suspense fallback={null}>
+          <IndustrySection />
+          <SocialProof />
+          <Testimonials />
+          <CompanyCards />
+          <CtaBanner />
+        </Suspense>
+      </LazyOnVisible>
     </div>
   );
 };

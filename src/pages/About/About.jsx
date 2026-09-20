@@ -3,7 +3,6 @@ import { Globe, Shield, TrendingUp, Users, Award, Layers } from 'lucide-react';
 import SEO from '../../components/Common/SEO';
 import PageHeader from '../../components/Common/PageHeader';
 import SocialProof from '../../components/Home/SocialProof';
-import FadeImage from '../../components/Common/FadeImage';
 import './About.css';
 
 export const About = () => {
@@ -26,34 +25,33 @@ export const About = () => {
       <section className="section-padding bg-primary">
         <div className="container">
           <div className="about-intro-grid">
-            <div className="about-text">
-              <span className="eyebrow">WHO WE ARE</span>
-              <h2>Built for the World's Most Strategic Trade Routes</h2>
-              <p>
-                GACIS — Gulf and Commonwealth of Independent States — is an enterprise logistics and freight forwarding platform engineered to deliver seamless transportation solutions across air, deepsea, trans-Eurasian rail, and cross-border road networks.
-              </p>
-              <p>
-                We do not simply move freight. We build resilient supply chains through multimodal agility and route optimization. With direct operating desks in Chennai (India), Dubai (UAE), and Central Asia (CIS), GACIS eliminates border friction and delivers transparent tracking and visibility to enterprise procurement teams.
-              </p>
-              <div className="about-actions">
-                <Link to="/quote" className="btn btn-primary">Calculate a Corridor</Link>
-                <Link to="/services" className="btn btn-secondary">Explore Capabilities</Link>
-              </div>
+            <div className="about-text about-text-centered">
+            <span className="eyebrow">WHO WE ARE</span>
+            <h2>Built for the World's Most Strategic Trade Routes</h2>
+            <p>
+              GACIS — Gulf and Commonwealth of Independent States — is an enterprise logistics and freight forwarding platform engineered to deliver seamless transportation solutions across air, deepsea, trans-Eurasian rail, and cross-border road networks.
+            </p>
+            <p>
+              We do not simply move freight. We build resilient supply chains through multimodal agility and route optimization. With direct operating desks in Chennai (India), Dubai (UAE), and Central Asia (CIS), GACIS eliminates border friction and delivers transparent tracking and visibility to enterprise procurement teams.
+            </p>
+            <div className="about-actions">
+              <Link to="/quote" className="btn btn-primary">Calculate a Corridor</Link>
+              <Link to="/services" className="btn btn-secondary">Explore Capabilities</Link>
+            </div>
             </div>
             <div className="about-image-col">
-              <FadeImage 
-                src="/images/diff_network.jpg" 
-                alt="GACIS global logistics center" 
+              <img
+                src="/images/about-gacis-office - Copy.png"
+                alt="GACIS Cargo Services logistics headquarters and fleet"
                 className="about-hero-img"
+                loading="eager"
+                decoding="async"
               />
-              <div className="about-badge">
-                <div className="badge-num tabular-nums">2012</div>
-                <div className="badge-text">Established Heritage</div>
-              </div>
             </div>
           </div>
         </div>
       </section>
+
 
       {/* Pillars */}
       <section className="section-padding bg-secondary">
@@ -68,7 +66,7 @@ export const About = () => {
               { icon: <Shield size={28} />, title: 'Rigorous Compliance', desc: 'Licensed customs brokers ensuring total conformity with GCC Common Customs, TIR Carnet, and Eurasian Customs Union protocols.' },
               { icon: <TrendingUp size={28} />, title: 'Multimodal Optimization', desc: 'Data-driven modal substitution balancing transit velocity against carbon emissions and holding costs.' },
               { icon: <Users size={28} />, title: 'Dedicated Control Towers', desc: 'Enterprise accounts are supported by single-point-of-contact logistics coordinators and 24/7 central desk tracking.' },
-              { icon: <Award size={28} />, title: 'Certified Standards', desc: 'ISO 9001:2015 accredited, GDP pharma certified, and IATA registered cargo operations.' },
+              { icon: <Award size={28} />, title: 'Partner Standards', desc: 'Operations aligned with ISO 9001:2015 quality frameworks, GDP pharma compliance standards, and IATA-registered carrier networks — executed through certified partners.' },
               { icon: <Layers size={28} />, title: 'End-to-End Visibility', desc: 'Live corridor tracking, automated milestone timestamps, and verified Scope 3 carbon reporting.' },
             ].map((item, i) => (
               <div className="about-pillar" key={i}>

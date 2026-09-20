@@ -1,38 +1,77 @@
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Compass, ShieldCheck, Globe2, Activity, ChevronRight } from 'lucide-react';
-import HeroNetworkAnimation from './HeroNetworkAnimation';
+import { ArrowRight, Clock3, Globe2 } from 'lucide-react';
 import './Hero.css';
 
+const HeroNetworkAnimation = lazy(() => import('./HeroNetworkAnimation'));
+
+const timeZones = [
+  { label: 'India', zone: 'Asia/Kolkata' },
+  { label: 'Dubai', zone: 'Asia/Dubai' },
+  { label: 'USA', zone: 'America/New_York' },
+  { label: 'Africa', zone: 'Africa/Johannesburg' },
+  { label: 'Europe', zone: 'Europe/London' },
+];
+
+const formatTime = (zone) => new Intl.DateTimeFormat('en-US', {
+  timeZone: zone,
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: false,
+}).format(new Date());
+
 export const Hero = () => {
-  const scrollToSimulator = (e) => {
-    e.preventDefault();
-    const el = document.getElementById('route-simulator');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
+  const [times, setTimes] = useState({});
+
+  useEffect(() => {
+    const updateTimes = () => {
+      setTimes(Object.fromEntries(
+        timeZones.map(({ label, zone }) => [label, formatTime(zone)]),
+      ));
+    };
+
+    updateTimes();
+    const interval = window.setInterval(updateTimes, 30000);
+    return () => window.clearInterval(interval);
+  }, []);
+
+  const scrollToSimulator = (event) => {
+    event.preventDefault();
+    const element = document.getElementById('route-simulator');
+    if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
     <section className="hero-editorial">
-      {/* Background Image & Tuned Gradient Backdrop */}
       <div className="hero-backdrop-wrapper">
-        <img 
-          src="/images/hero_bg.jpg" 
-          alt="Global Multimodal Logistics Infrastructure" 
+        <img
+          src="/images/hero_bg.png"
+          alt="GACIS Global Freight Corridors"
           className="hero-backdrop-img"
+          width={1920}
+          height={1080}
           fetchPriority="high"
+          decoding="async"
         />
-        <div className="hero-backdrop-overlay"></div>
+        <div className="hero-backdrop-overlay" />
       </div>
 
       <div className="container hero-container">
         <div className="hero-grid">
-          
-          {/* Left Column: Core Positioning & CTAs */}
           <div className="hero-content reveal-left">
-            <div className="hero-eyebrow-row">
+            <div className="hero-brand" aria-label="GACIS Cargo Services">
+              <div className="hero-brand-mark">
+                <img src="/images/logo.png" alt="" className="hero-brand-logo" />
+              </div>
+              <div className="hero-brand-name">
+                <span className="hero-brand-gacis">GACIS</span>
+                <span className="hero-brand-services">Cargo Services</span>
+              </div>
+            </div>
+
+            <div className="hero-route-heading">
               <span className="hero-eyebrow">Strategic Freight Corridors</span>
-              <span className="hero-corridor-tag">Asia ⇄ Africa ⇄ Europe ⇄ North America ⇄ South America</span>
+              <span className="hero-corridor-tag">Asia ↔ Africa ↔ Europe ↔ North America ↔ South America</span>
             </div>
 
             <h1 className="hero-headline">
@@ -55,33 +94,46 @@ export const Hero = () => {
               </Link>
             </div>
 
-            {/* Verified Operational Proof Bar Replaced with Corridors */}
             <div className="hero-corridors-list">
               <div className="corridor-group">
                 <span className="cg-title text-export">Export:</span>
                 <ul className="cg-list">
-                  <li>Indian sub continent - Far East Asia - Mid East Asia</li>
-                  <li>Mid East Asia - East & South Africa - South & North America</li>
-                  <li>Africa - Indian sub continent - Far East Asia</li>
-                  <li>Indian sub continent - South & North America - Europe union</li>
+                  <li>Indian Subcontinent – Far East Asia – Middle East</li>
+                  <li>Middle East – East &amp; South Africa – South &amp; North America</li>
+                  <li>Africa – Indian Subcontinent – Far East Asia</li>
+                  <li>Indian Subcontinent – South &amp; North America – European Union</li>
                 </ul>
               </div>
               <div className="corridor-group">
                 <span className="cg-title text-import">Import:</span>
                 <ul className="cg-list">
-                  <li>South east Asia & Far East asia - Indian sub Continent</li>
-                  <li>Europe union - Indian sub continent - South east Asia & Far East asia</li>
-                  <li>South & North America - Indian sub Continent</li>
+                  <li>Southeast Asia &amp; Far East Asia – Indian Subcontinent</li>
+                  <li>European Union – Indian Subcontinent – Southeast Asia &amp; Far East Asia</li>
+                  <li>South &amp; North America – Indian Subcontinent</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Signature Network Intelligence Console */}
           <div className="hero-visual-column reveal-right delay-200">
-            <HeroNetworkAnimation />
+            <div className="hero-world-time hero-world-time--monitor" aria-label="Current regional times">
+              <div className="hero-time-label">
+                <Clock3 size={13} />
+                <span>Global Operations</span>
+              </div>
+              <div className="hero-time-list">
+                {timeZones.map(({ label }) => (
+                  <div className="hero-time-item" key={label}>
+                    <span className="hero-time-location">{label}</span>
+                    <span className="hero-time-value">{times[label] || '--:--'}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <Suspense fallback={<div className="hero-console-skeleton" aria-hidden="true" />}>
+              <HeroNetworkAnimation />
+            </Suspense>
           </div>
-
         </div>
       </div>
     </section>

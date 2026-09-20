@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { 
-  CheckCircle, ChevronRight, ArrowLeft, Send, ShieldCheck, 
-  Plane, Ship, Truck, Train, Boxes, AlertCircle, FileText, Compass, Sparkles, RefreshCw
+  CheckCircle, ChevronRight, ArrowLeft, Send, Plane, Ship, Truck, Train, Boxes, Compass, Sparkles, RefreshCw
 } from 'lucide-react';
 import useFormSubmit from '../../hooks/useFormSubmit';
 import './QuoteWizard.css';
@@ -46,7 +45,7 @@ export const QuoteWizard = () => {
     formData,
     setFormData,
     updateField,
-    errors,
+    _errors,
     isSubmitting,
     isSuccess,
     submissionReference,

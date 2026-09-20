@@ -20,12 +20,27 @@
   z-index: 1;
 }
 
+.hero-backdrop-wrapper picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .hero-backdrop-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 30%;
   filter: brightness(0.9);
+}
+
+.hero-console-skeleton {
+  width: 100%;
+  max-width: 610px;
+  min-height: 590px;
+  border-radius: var(--radius-card);
+  background: rgba(14, 17, 23, 0.92);
+  border: 1px solid var(--border-dark-strong);
 }
 
 .hero-backdrop-overlay {
@@ -238,4 +253,216 @@
   .hero-corridors-list {
     gap: 1rem;
   }
+}
+
+/* GACIS brand hierarchy and compact live-operations display */
+.hero-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1.6rem;
+}
+
+.hero-brand-mark {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 0 30px rgba(220, 38, 38, 0.12);
+  backdrop-filter: blur(12px);
+}
+
+.hero-brand-logo {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  object-fit: contain;
+}
+
+.hero-brand-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1;
+}
+
+.hero-brand-gacis {
+  color: #fff;
+  font-size: clamp(1.45rem, 2vw, 1.85rem);
+  font-weight: 900;
+  letter-spacing: 0.13em;
+}
+
+.hero-brand-services {
+  margin-top: 0.35rem;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.23em;
+  text-transform: uppercase;
+}
+
+.hero-route-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 1rem;
+}
+
+.hero-route-heading .hero-eyebrow {
+  color: #ff5965;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-shadow: 0 0 12px rgba(255, 77, 90, 0.35);
+  animation: none;
+}
+
+.hero-route-heading .hero-corridor-tag {
+  display: block;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: clamp(0.68rem, 1vw, 0.82rem);
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  line-height: 1.5;
+  text-shadow: none;
+  animation: none;
+}
+
+.hero-world-time {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 1.7rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(10px);
+}
+
+.hero-time-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-right: 0.75rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hero-time-label svg { color: #ff5965; }
+
+.hero-time-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.85rem;
+}
+
+.hero-time-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.hero-time-location {
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.hero-time-value {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 640px) {
+  .hero-brand { margin-bottom: 1.25rem; }
+  .hero-brand-mark { width: 50px; height: 50px; }
+  .hero-brand-gacis { font-size: 1.3rem; }
+  .hero-brand-services { font-size: 0.62rem; letter-spacing: 0.17em; }
+  .hero-route-heading .hero-corridor-tag { letter-spacing: 0.07em; }
+
+  .hero-world-time { width: 100%; padding: 0.65rem; }
+  .hero-time-label {
+    width: 100%;
+    padding: 0 0 0.45rem;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .hero-time-list { width: 100%; justify-content: space-between; gap: 0.5rem; }
+  .hero-time-item { flex-direction: column; align-items: flex-start; gap: 0.1rem; }
+  .hero-time-location { font-size: 0.6rem; }
+  .hero-time-value { font-size: 0.68rem; }
+}
+
+/* Refined final hero hierarchy */
+.hero-brand-name {
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.7rem;
+}
+
+.hero-brand-gacis {
+  font-size: clamp(2rem, 3.1vw, 3.05rem);
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.38);
+}
+
+.hero-brand-services {
+  margin-top: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(0.9rem, 1.35vw, 1.2rem);
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.hero-route-heading .hero-corridor-tag {
+  color: rgba(255, 255, 255, 0.72);
+  text-shadow: 0 0 8px rgba(255, 77, 90, 0.52), 0 0 20px rgba(229, 36, 52, 0.32);
+  animation: corridorTagGlow 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes corridorTagGlow {
+  from {
+    color: rgba(255, 255, 255, 0.72);
+    text-shadow: 0 0 7px rgba(255, 77, 90, 0.38);
+  }
+  to {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 77, 90, 0.75), 0 0 26px rgba(229, 36, 52, 0.48);
+  }
+}
+
+.hero-visual-column {
+  flex-direction: column;
+}
+
+.hero-world-time--monitor {
+  align-self: stretch;
+  width: 100%;
+  max-width: 610px;
+  margin: 0 0 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .hero-brand { gap: 0.65rem; }
+  .hero-brand-name { gap: 0.45rem; }
+  .hero-brand-gacis { font-size: 1.55rem; }
+  .hero-brand-services { font-size: 0.7rem; letter-spacing: 0.08em; }
 }

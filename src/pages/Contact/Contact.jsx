@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, MapPin, Phone, Building2, Send, CheckCircle, Clock, ShieldCheck, Headphones, ExternalLink, Navigation, Globe2 } from 'lucide-react';
+import { Mail, MapPin, Phone, Building2, Send, CheckCircle, Clock, Headphones, ExternalLink, Navigation } from 'lucide-react';
 import { primaryHubs } from '../../data/locations';
 import useFormSubmit from '../../hooks/useFormSubmit';
 import SEO from '../../components/Common/SEO';
@@ -206,13 +206,14 @@ export const Contact = () => {
                       {errors.message && <span className="field-error-msg">{errors.message}</span>}
                     </div>
 
-                    <button 
-                      type="submit" 
-                      className="btn btn-primary btn-large btn-block"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? 'Transmitting Dispatch...' : 'Send Operational Message'} <Send size={15} />
-                    </button>
+<button 
+  type="submit" 
+  className="btn btn-primary btn-large btn-block"
+  disabled={isSubmitting}
+  aria-label={isSubmitting ? 'Transmitting dispatch request' : 'Send operational message'}
+>
+  {isSubmitting ? 'Transmitting Dispatch...' : 'Send Operational Message'} <Send size={15} />
+</button>
                   </form>
                 )}
               </div>

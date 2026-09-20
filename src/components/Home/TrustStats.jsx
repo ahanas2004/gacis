@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Globe2, ShieldCheck, Clock, Award, Building2, CheckCircle2 } from 'lucide-react';
+import { Globe2, Clock, Award, Building2 } from 'lucide-react';
 import './TrustStats.css';
 
 const statsData = [

@@ -31,32 +31,36 @@
 
 .diff-img-wrapper {
   position: relative;
-  height: 220px;
   width: 100%;
+  aspect-ratio: 3 / 2;
+  height: auto;
   overflow: hidden;
+  background: var(--surface-dark);
 }
 
 .diff-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   transition: transform var(--motion-slow) var(--ease-spring);
 }
 
 .diff-card:hover .diff-img {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .diff-img-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(10, 12, 16, 0.75) 100%);
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 65%, rgba(10, 12, 16, 0.65) 100%);
 }
 
 .diff-metric-badge {
   position: absolute;
-  bottom: 1rem;
-  left: 1rem;
+  bottom: 0.75rem;
+  left: 0.75rem;
   background: var(--surface-dark);
   color: #ffffff;
   font-size: 0.75rem;
@@ -64,6 +68,17 @@
   padding: 0.35rem 0.75rem;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border-dark);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 2;
+}
+
+.diff-metric-badge a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.diff-metric-badge a:hover {
+  color: var(--color-brand-gold);
 }
 
 .diff-card-content {
@@ -112,6 +127,7 @@
   }
 
   .diff-img-wrapper {
-    height: 240px;
+    height: auto;
+    aspect-ratio: 3 / 2;
   }
 }

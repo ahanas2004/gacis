@@ -16,7 +16,7 @@ export const Solutions = () => {
 
   const filteredIndustries = activeFilter === 'ALL' 
     ? industries 
-    : industries.filter(ind => ind.connectedServices.some(s => s.mode === activeFilter || activeFilter === ind.id));
+    : industries.filter(ind => ind.connectedServices.some(s => s.mode === activeFilter));
 
   return (
     <div className="solutions-page">
@@ -87,6 +87,18 @@ export const Solutions = () => {
                     </div>
                     <span className="isc-sla-badge" title="Logistics SLA">{ind.logisticsSLA}</span>
                   </div>
+
+                  {ind.image && (
+                    <div className="isc-image-wrap">
+                      <img
+                        src={ind.image}
+                        alt={`${ind.title} logistics operations`}
+                        className="isc-image"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  )}
 
                   <h3 className="isc-title">{ind.title}</h3>
                   <p className="isc-tagline">{ind.tagline}</p>

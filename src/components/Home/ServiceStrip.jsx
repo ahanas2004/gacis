@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Plane, Ship, Truck, Train, ShieldCheck, Boxes, ArrowRight } from 'lucide-react';
-import { services } from '../../data/services';
+import { serviceCatalog as services } from '../../data/serviceCatalog';
+import FadeImage from '../Common/FadeImage';
 import './ServiceStrip.css';
 
 const iconMap = { Plane, Ship, Truck, Train, ShieldCheck, Boxes };
@@ -25,31 +26,39 @@ export const ServiceStrip = () => {
             const Icon = iconMap[svc.icon] || Boxes;
             return (
               <div className={`service-feature-card fade-up delay-${Math.min((idx % 3) * 100 + 100, 300)}`} key={svc.id}>
-                <div className="sfc-top-row">
-                  <div className="sfc-icon-wrapper">
-                    <Icon size={22} />
+                {svc.image && (
+                  <div className="sfc-preview-img-wrapper">
+                    <FadeImage src={svc.image} alt={svc.shortTitle} className="sfc-preview-img" />
+                    <span className="sfc-preview-mode-tag">{svc.mode}</span>
                   </div>
-                  <span className="sfc-mode-tag">{svc.mode}</span>
+                )}
+                <div className="sfc-card-body">
+                  <div className="sfc-top-row">
+                    <div className="sfc-icon-wrapper">
+                      <Icon size={20} />
+                    </div>
+                    <span className="sfc-mode-tag">{svc.mode}</span>
+                  </div>
+
+                  <h3 className="sfc-title">{svc.shortTitle}</h3>
+                  <p className="sfc-tagline">{svc.tagline}</p>
+
+                  <div className="sfc-meta-list">
+                    <div className="sfc-meta-item">
+                      <span className="smi-label">Transit Benchmark:</span>
+                      <span className="smi-val tabular-nums">{svc.leadTime}</span>
+                    </div>
+                    <div className="sfc-meta-item">
+                      <span className="smi-label">Network Reach:</span>
+                      <span className="smi-val">{svc.coverage}</span>
+                    </div>
+                  </div>
+
+                  <Link to={`/services/${svc.id}`} className="sfc-link-action">
+                    <span>Explore Capabilities</span>
+                    <ArrowRight size={15} className="arrow-icon" />
+                  </Link>
                 </div>
-
-                <h3 className="sfc-title">{svc.shortTitle}</h3>
-                <p className="sfc-tagline">{svc.tagline}</p>
-
-                <div className="sfc-meta-list">
-                  <div className="sfc-meta-item">
-                    <span className="smi-label">Transit Benchmark:</span>
-                    <span className="smi-val tabular-nums">{svc.leadTime}</span>
-                  </div>
-                  <div className="sfc-meta-item">
-                    <span className="smi-label">Network Reach:</span>
-                    <span className="smi-val">{svc.coverage}</span>
-                  </div>
-                </div>
-
-                <Link to={`/services/${svc.id}`} className="sfc-link-action">
-                  <span>Explore Capabilities</span>
-                  <ArrowRight size={15} className="arrow-icon" />
-                </Link>
               </div>
             );
           })}

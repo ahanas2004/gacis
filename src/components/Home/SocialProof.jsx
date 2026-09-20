@@ -1,11 +1,12 @@
+import { Link } from 'react-router-dom';
 import { ShieldCheck, Award, CheckCircle2, Lock, Globe2, FileCheck } from 'lucide-react';
 import './SocialProof.css';
 
 const certifications = [
-  { name: 'ISO 9001:2015', label: 'Quality Management Certified', icon: Award },
-  { name: 'GDP Compliant', label: 'Good Distribution Practice Pharma', icon: ShieldCheck },
-  { name: 'IATA Registered', label: 'Air Cargo Agent Network', icon: Globe2 },
-  { name: 'FIATA Member', label: 'International Freight Association', icon: FileCheck }
+  { name: 'ISO 9001:2015', label: 'Partner Quality Network', icon: Award },
+  { name: 'GDP Compliant', label: 'Pharma Cold-Chain Partners', icon: ShieldCheck },
+  { name: 'IATA Network', label: 'Registered Agent Network', icon: Globe2 },
+  { name: 'FIATA Alliance', label: 'Global Freight Network', icon: FileCheck }
 ];
 
 const alliances = [
@@ -30,7 +31,7 @@ export const SocialProof = () => {
           {certifications.map((cert, idx) => {
             const Icon = cert.icon;
             return (
-              <div className={`sp-cert-card fade-up delay-${(idx % 4) * 100 + 100}`} key={cert.name}>
+              <Link to="/about" className={`sp-cert-card fade-up delay-${(idx % 4) * 100 + 100}`} key={cert.name}>
                 <div className="sp-cert-icon">
                   <Icon size={22} />
                 </div>
@@ -38,7 +39,7 @@ export const SocialProof = () => {
                   <span className="sp-cert-name">{cert.name}</span>
                   <span className="sp-cert-label">{cert.label}</span>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

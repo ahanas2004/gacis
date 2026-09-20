@@ -14,6 +14,16 @@
 .text-gold { color: var(--color-brand-gold) !important; }
 .text-primary { color: var(--color-brand-navy) !important; }
 
+/* ─── Centered Heading ─── */
+.centered-heading {
+  text-align: center;
+  margin-inline: auto;
+}
+
+.margin-inline-auto {
+  margin-inline: auto;
+}
+
 /* ─── Header Action Buttons ─── */
 .res-header-actions {
   display: flex;

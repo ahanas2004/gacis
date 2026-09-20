@@ -123,6 +123,26 @@
   border-radius: var(--radius-pill);
 }
 
+.isc-image-wrap {
+  height: clamp(150px, 18vw, 210px);
+  overflow: hidden;
+  margin: 0 0 1.25rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+}
+
+.isc-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--motion-normal) var(--ease-spring);
+}
+
+.industry-solution-card:hover .isc-image {
+  transform: scale(1.04);
+}
+
 .isc-title {
   font-size: 1.35rem;
   font-weight: 800;

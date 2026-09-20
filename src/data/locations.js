@@ -81,7 +81,7 @@ export const primaryHubs = [
         frequency: '3x Weekly Ocean Feeders',
         outboundCargo: 'Automobile CKD Kits, Fabric, Agricultural Produce, Industrial Pumps',
         inboundCargo: 'Palm Oil Derivatives, Rubber Components, Electronic Modules',
-        services: ['Halal Certified Logistics', 'Container Freight Station (CFS)', 'Bonded Warehousing']
+        services: ['Halal-Compliant Logistics', 'Container Freight Station (CFS)', 'Bonded Warehousing']
       },
       {
         destinationId: 'colombo-hub',
@@ -120,7 +120,7 @@ export const primaryHubs = [
         frequency: 'Daily Scheduled Flights · Weekly Ocean',
         outboundCargo: 'Pharma Active Ingredients (API), Machine Tools, Organic Textiles',
         inboundCargo: 'Automotive Engineering, High-Tech Electronics, Precision Diagnostic Equipment',
-        services: ['GDP Certified Cold Chain', 'Airport Ramp Handling', 'EU Customs Clearance']
+        services: ['GDP-Compliant Cold Chain', 'Airport Ramp Handling', 'EU Customs Clearance']
       },
       {
         destinationId: 'london-hub',
@@ -283,7 +283,7 @@ export const primaryHubs = [
         frequency: 'Multiple Daily Widebody Freighters',
         outboundCargo: 'Transshipment Electronics, Oilfield Samples, Bullion, Re-exports',
         inboundCargo: 'German Automotive, Pharma Cold Chain, Heavy Precision Machinery',
-        services: ['Airport Ramp Transfer', 'GDP Certified Pharma Storage', 'AOG Aircraft On Ground']
+        services: ['Airport Ramp Transfer', 'GDP-Compliant Pharma Storage', 'AOG Aircraft On Ground']
       },
       {
         destinationId: 'london-hub',
@@ -472,7 +472,7 @@ export const primaryHubs = [
         frequency: 'Scheduled Air Freighters & Rail Shuttles',
         outboundCargo: 'Rare Earth Elements, Titanium, Base Metals, Industrial Samples',
         inboundCargo: 'Precision Machinery, Medical Tech, Pharma Cold Chain, Automotive',
-        services: ['GDP Certified Pharma Handling', 'Eurasian Block Train', 'Airport Ramp Handling']
+        services: ['GDP-Compliant Pharma Handling', 'Eurasian Block Train', 'Airport Ramp Handling']
       },
       {
         destinationId: 'hamburg-hub',
@@ -602,7 +602,7 @@ export const primaryHubs = [
     geo: { lat: 50.1109, lng: 8.6821 },
     coordinates: { x: 470, y: 125 },
     connectedSeas: ['north-sea', 'mediterranean-sea'],
-    capabilities: ['GDP Certified Pharma Cold-Chain', 'High-Value Microelectronics Security', 'EU Customs Pre-Clearance'],
+    capabilities: ['GDP-Compliant Pharma Cold-Chain', 'High-Value Microelectronics Security', 'EU Customs Pre-Clearance'],
     stats: { weeklyFlights: '28 Scheduled Freighters', oceanTEU: 'Air-Sea Intermodal', warehouseSqFt: '180,000' },
     connectedTradeLanes: [
       {
@@ -642,7 +642,7 @@ export const primaryHubs = [
         frequency: 'Multiple Daily Widebody Freighters',
         outboundCargo: 'German Automotive, Pharma Cold Chain, Heavy Precision Machinery, High-Tech',
         inboundCargo: 'Transshipment Electronics, Oilfield Samples, Bullion, Re-exported Goods',
-        services: ['Airport Ramp Transfer', 'GDP Certified Pharma Staging', 'AOG Priority']
+        services: ['Airport Ramp Transfer', 'GDP-Compliant Pharma Staging', 'AOG Priority']
       },
       {
         destinationId: 'india-hq',
@@ -975,7 +975,7 @@ export const primaryHubs = [
         frequency: 'Daily Scheduled Cross-Border Trucks',
         outboundCargo: 'Halal Food Products, Rubber, Palm Oil Derivatives, Wood Products',
         inboundCargo: 'Transshipment Containers, Microelectronics, Precision Components',
-        services: ['Cross-Border Freezone Clearance', 'Halal Certified Staging', 'Bonded Trucking']
+        services: ['Cross-Border Freezone Clearance', 'Halal-Compliant Staging', 'Bonded Trucking']
       },
       {
         destinationId: 'india-hq',
@@ -1151,7 +1151,7 @@ export const primaryHubs = [
         frequency: 'Weekly Ocean Mainlines',
         outboundCargo: 'Tea, Garments, Coconut Products, Solid Rubber',
         inboundCargo: 'Pharma Cold Chain, Diagnostic Equipment, Machinery',
-        services: ['GDP Certified Cold Chain', 'Ocean Consolidation', 'EU Customs']
+        services: ['GDP-Compliant Cold Chain', 'Ocean Consolidation', 'EU Customs']
       }
     ]
   },
@@ -1654,7 +1654,7 @@ export const primaryHubs = [
         frequency: 'Daily Scheduled Cross-Border Trucks',
         outboundCargo: 'Transshipment Containers, Microelectronics, Precision Components',
         inboundCargo: 'Halal Food Products, Rubber, Palm Oil Derivatives, Wood Products',
-        services: ['Cross-Border Freezone Clearance', 'Halal Certified Staging', 'Bonded Trucking']
+        services: ['Cross-Border Freezone Clearance', 'Halal-Compliant Staging', 'Bonded Trucking']
       },
       {
         destinationId: 'india-hq',

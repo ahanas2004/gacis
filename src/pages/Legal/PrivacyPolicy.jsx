@@ -1,4 +1,4 @@
-import { ShieldCheck, Lock, Eye, FileText, CheckCircle2, Globe2 } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
 import SEO from '../../components/Common/SEO';
 import PageHeader from '../../components/Common/PageHeader';
 import './Legal.css';
@@ -49,7 +49,7 @@ export const PrivacyPolicy = () => {
                 <li>Issuing master and house shipping documentation (Air Waybills, Ocean Bills of Lading, Rail Consignment Notes).</li>
                 <li>Lodging mandatory electronic manifests with port authorities and customs portals (ICEGATE, Mirsal II, Eurasian Customs Union).</li>
                 <li>Transmitting real-time shipment status notifications, milestone timestamps, and verified delivery receipts.</li>
-                <li>Calculating certified Scope 3 carbon emissions data for your annual corporate sustainability reporting.</li>
+                <li>Calculating verified Scope 3 carbon emissions data for your annual corporate sustainability reporting.</li>
               </ul>
             </div>
 
@@ -63,7 +63,7 @@ export const PrivacyPolicy = () => {
             <div className="legal-section">
               <h3>5. International Data Transfers & Security</h3>
               <p>
-                Because our trade lanes span India, the UAE, Central Asia, and Europe, data is securely transferred across international jurisdictions under enterprise-grade encryption (TLS 1.3 in transit and AES-256 at rest), conforming with ISO 27001 data security standards and applicable cross-border data protection regulations.
+                Because our trade lanes span India, the UAE, Central Asia, and Europe, data is securely transferred across international jurisdictions under enterprise-grade encryption (TLS 1.3 in transit and AES-256 at rest), conforming with ISO 27001 data security frameworks and applicable cross-border data protection regulations.
               </p>
             </div>
 

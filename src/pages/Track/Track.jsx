@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { 
-  Search, Package, MapPin, CheckCircle, Clock, 
-  AlertCircle, ArrowRight, ShieldCheck, Plane, Ship, Train, Truck, Info, RefreshCw
+  Search, CheckCircle, Clock, AlertCircle, ArrowRight, ShieldCheck, Info, RefreshCw
 } from 'lucide-react';
 import SEO from '../../components/Common/SEO';
 import PageHeader from '../../components/Common/PageHeader';

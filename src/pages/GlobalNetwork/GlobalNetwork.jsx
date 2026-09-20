@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { 
   MapPin, Mail, Building2, Globe2, ArrowRight, Phone, Check, 
   Activity, Plane, Ship, Train, Truck, ShieldCheck, Compass, Radio,
@@ -6,9 +6,10 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { primaryHubs, maritimeSeaDomains, networkRegions } from '../../data/locations';
-import RealGeographicMap from '../../components/NetworkMap/RealGeographicMap';
 import SEO from '../../components/Common/SEO';
 import './GlobalNetwork.css';
+
+const RealGeographicMap = lazy(() => import('../../components/NetworkMap/RealGeographicMap'));
 
 export const GlobalNetwork = () => {
   const [activeTab, setActiveTab] = useState('all'); // 'all' | 'middle-east' | 'fareast-asia' | 'european-union' | 'africa' | 'central-asia' | 'americas'
@@ -40,7 +41,7 @@ export const GlobalNetwork = () => {
   const activeTradeLanes = activeHub?.connectedTradeLanes || [];
   const filteredTradeLanes = laneModeFilter === 'ALL'
     ? activeTradeLanes
-    : activeTradeLanes.filter(l => l.modes?.includes(laneModeFilter) || l.primaryMode?.toUpperCase().includes(laneModeFilter));
+    : activeTradeLanes.filter(l => (l.modes && l.modes.includes(laneModeFilter)) || (l.primaryMode && l.primaryMode.toUpperCase().includes(laneModeFilter)));
 
   const handleSelectSea = (sea) => {
     setActiveSeaDomain(sea);
@@ -191,15 +192,17 @@ export const GlobalNetwork = () => {
             </div>
 
             {/* Real Geographic Map — Full Landscape */}
-            <RealGeographicMap 
-              activeHub={activeHub} 
-              onSelectHub={handleSelectHub}
-              activeSeaDomain={activeSeaDomain}
-              onSelectSeaDomain={handleSelectSea}
-              viewMode={activeViewMode}
-              selectedLaneFilter={laneModeFilter}
-              hoveredLaneId={hoveredLaneId}
-            />
+            <Suspense fallback={<div className="geo-map-fallback" aria-hidden="true" />}>
+              <RealGeographicMap
+                activeHub={activeHub}
+                onSelectHub={handleSelectHub}
+                activeSeaDomain={activeSeaDomain}
+                onSelectSeaDomain={handleSelectSea}
+                viewMode={activeViewMode}
+                selectedLaneFilter={laneModeFilter}
+                hoveredLaneId={hoveredLaneId}
+              />
+            </Suspense>
 
             {/* Hub / Sea Quick-Select Ribbon — overlaid at bottom of map */}
             <div className="map-selector-ribbon">
@@ -685,7 +688,7 @@ export const GlobalNetwork = () => {
               <span className="eyebrow" style={{ color: 'var(--color-brand-gold)' }}>WORLDWIDE REACH</span>
               <h3 style={{ color: '#ffffff', marginBottom: '0.4rem' }}>Allied Agency Representation in 150+ Countries</h3>
               <p style={{ color: 'rgba(255,255,255,0.75)', margin: 0, maxWidth: '680px' }}>
-                Beyond our direct regional headquarters in Dubai, Riyadh, Shanghai, Tokyo, Klang, Frankfurt, Rotterdam, Djibouti, Mombasa, Almaty, and Houston, GACIS operates vetted carrier alliances and licensed customs brokers across 150+ nations.
+                Beyond our direct regional headquarters in Dubai, Riyadh, Shanghai, Tokyo, Klang, Frankfurt, Rotterdam, Djibouti, Mombasa, Almaty, and Houston, GACIS coordinates vetted carrier alliances and licensed customs brokers across 150+ nations.
               </p>
             </div>
             <Link to="/contact" className="btn btn-primary" style={{ flexShrink: 0 }}>

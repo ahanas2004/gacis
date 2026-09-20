@@ -10,7 +10,7 @@ export const services = [
     leadTime: '1–3 Days',
     coverage: '150+ Direct Gateways',
     co2Profile: 'High Speed / Monitored Carbon Index',
-    image: '/images/air_freight_cargo.jpg',
+    image: '/images/air_freight_cargo.png',
     overview: 'High-velocity air freight architecture engineered for time-critical electronics, automotive AOG spares, pharmaceutical cold chain, and urgent high-value industrial goods across the Gulf, Central Asia, and Europe.',
     
     provenMetrics: [
@@ -59,7 +59,7 @@ export const services = [
       { label: 'Carrier Alliances', value: 'Emirates SkyCargo, Lufthansa Cargo, Qatar Airways, Cathay Cargo' },
       { label: 'Temperature Tolerances', value: 'GDP Compliant (-20°C, +2°C to +8°C, +15°C to +25°C)' },
       { label: 'Max Payload Aircraft', value: 'Up to 120,000 kg (B747-8F / Antonov AN-124)' },
-      { label: 'Compliance Standards', value: 'IATA DGR, CEIV Pharma, AEO Certified, ISO 9001:2015' }
+      { label: 'Compliance Standards', value: 'IATA DGR, CEIV Pharma, AEO & ISO 9001:2015 — via certified partners' }
     ],
 
     features: [
@@ -73,7 +73,7 @@ export const services = [
       { name: 'Priority Express', detail: 'Guaranteed next-flight-out dispatch for critical AOG and medical supplies.' },
       { name: 'Standard Consolidation', detail: 'Scheduled 2x weekly consolidations optimizing cargo load factors and rates.' },
       { name: 'Sea-Air Hybrid', detail: 'Transshipment through Dubai Hub reducing pure air costs by up to 45%.' },
-      { name: 'Dangerous Goods (DGR)', detail: 'IATA-certified handling of Class 1–9 hazmat materials.' }
+      { name: 'Dangerous Goods (DGR)', detail: 'IATA DGR-compliant handling of Class 1–9 hazmat materials.' }
     ],
     corridors: ['Dubai ⇄ Almaty', 'Klang ⇄ London', 'Chennai ⇄ Frankfurt', 'Colombo ⇄ Dubai'],
     workflow: [
@@ -93,7 +93,7 @@ export const services = [
     leadTime: '12–25 Days',
     coverage: '500+ Direct Global Port Pairs',
     co2Profile: 'Optimal Carbon Efficiency per TEU',
-    image: '/images/sea_freight_vessel.jpg',
+    image: '/images/sea_freight_vessel.png',
     overview: 'High-volume containerized ocean transport providing exclusive container use for enterprise manufacturers, automotive suppliers, and industrial distributors with guaranteed vessel space.',
     
     provenMetrics: [
@@ -176,7 +176,7 @@ export const services = [
     leadTime: '14–28 Days',
     coverage: 'Weekly Scheduled Groupage Lines',
     co2Profile: 'Maximized Cubic Utilization Efficiency',
-    image: '/images/diff_compliance.jpg',
+    image: '/images/lcl-consolidation.png',
     overview: 'Economical sea freight solution for smaller cargo volumes (1 to 15 CBM) with consolidated groupage containers, dedicated packing hubs, and zero minimum volume penalties.',
     
     provenMetrics: [
@@ -259,7 +259,7 @@ export const services = [
     leadTime: '2–5 Days First-Mile',
     coverage: 'Industrial Supplier Parks Across Asia & Europe',
     co2Profile: 'Consolidated Route Optimization',
-    image: '/images/diff_network.jpg',
+    image: '/images/industry_automotive.png',
     overview: 'Specialized origin logistics for international buyers purchasing under Incoterms 2020 EXW (Ex Works) or FCA (Free Carrier). GACIS takes custody directly at the seller\'s warehouse.',
     
     provenMetrics: [
@@ -342,8 +342,8 @@ export const services = [
     leadTime: 'Expedited & Monitored',
     coverage: 'Global Cold Chain Gateways',
     co2Profile: 'Energy-Efficient Eco-Reefer Fleets',
-    image: '/images/diff_compliance.jpg',
-    overview: 'Unbroken cold-chain logistics maintaining strict thermal ranges (-25°C to +25°C) with continuous active data logging for pharmaceuticals (GDP certified), fresh food, and fine chemicals.',
+    image: '/images/industry_pharma.png',
+    overview: 'Unbroken cold-chain logistics maintaining strict thermal ranges (-25°C to +25°C) with continuous active data logging for pharmaceuticals (GDP-compliant), fresh food, and fine chemicals.',
     
     provenMetrics: [
       { value: '99.98%', label: 'Thermal Integrity SLA', sub: 'Zero temperature excursion incidents' },
@@ -389,13 +389,13 @@ export const services = [
 
     technicalSpecs: [
       { label: 'Thermal Ranges', value: 'Deep Frozen (-25°C to -18°C), Chilled (+2°C to +8°C), Controlled Ambient (+15°C to +25°C)' },
-      { label: 'Certifications', value: 'EU GDP (Good Distribution Practice), WHO Cold Chain Standard, IATA CEIV' },
+      { label: 'Certifications', value: 'EU GDP, WHO Cold Chain Standard, IATA CEIV — via certified partners' },
       { label: 'Backup Power', value: 'Under-mount / Clip-on Dual Diesel Generator Sets (72-hour autonomous fuel)' },
       { label: 'Data Logging', value: 'NIST-traceable digital dataloggers with PDF graph generation upon delivery' }
     ],
 
     features: [
-      'GDP compliant processes certified for pharmaceutical and biologics transportation',
+      'GDP-compliant processes for pharmaceutical and biologics transportation',
       'Thermal ranges: Deep Frozen (-20°C), Chilled (+2°C to +8°C), Controlled Ambient (+15°C to +25°C)',
       'Real-time temperature, humidity, and door-opening sensor telemetry with alert thresholds',
       'Thermal blanket insulation, dry ice replenishment, and phase change materials (PCM)',
@@ -425,7 +425,7 @@ export const services = [
     leadTime: '7–14 Days Trans-Caspian',
     coverage: 'Kazakhstan, Uzbekistan, Azerbaijan, Georgia & Caucasus',
     co2Profile: 'Intermodal Rail Carbon Reduction (-60%)',
-    image: '/images/diff_transform.jpg',
+    image: '/images/CORRIDOR SPECIALIZATION.png',
     overview: 'Our signature trade corridor. Dedicated multimodal logistics bridging the Gulf, India, and China to Kazakhstan (Almaty/Astana), Uzbekistan (Tashkent), and the Caspian basin via direct railheads and road linehauls.',
     
     provenMetrics: [
@@ -508,7 +508,7 @@ export const services = [
     leadTime: '< 24 Hours Clearance',
     coverage: 'Global Ports & Customs Portals',
     co2Profile: '100% Paperless Digital Manifests',
-    image: '/images/diff_compliance.jpg',
+    image: '/images/diff_compliance.png',
     overview: 'In-house licensed customs brokers delivering tariff classification (HS Code), Free Trade Agreement (FTA) optimization, bonded warehouse operations, and zero-delay regulatory compliance.',
     
     provenMetrics: [
@@ -535,8 +535,8 @@ export const services = [
           detail: 'Documentation is verified, submitted, and duty-prepaid 48 hours prior to vessel berthing or flight touchdown.'
         },
         {
-          title: 'Authorized Economic Operator (AEO) Status',
-          detail: 'AEO tier-3 certification grants GACIS priority green-channel release without physical container inspection delays.'
+          title: 'AEO-Level Customs Priority',
+          detail: 'AEO tier-3 partner status grants priority green-channel release without physical container inspection delays.'
         }
       ]
     },
@@ -555,14 +555,14 @@ export const services = [
 
     technicalSpecs: [
       { label: 'Customs Systems', value: 'Mirsal II (Dubai), ICEGATE (India), ATLAS (Germany), EAEU Customs, Dubai Trade' },
-      { label: 'Accreditations', value: 'AEO Certified (Authorized Economic Operator), Licensed Customs Brokerage' },
+      { label: 'Accreditations', value: 'AEO Status & Licensed Customs Brokerage — via certified partners' },
       { label: 'Duty Schemes', value: 'Inward Processing Relief (IPR), Bonded Warehousing, Duty Drawback, Temporary Admission' },
       { label: 'Trade Agreements', value: 'UAE-India CEPA, GCC Common Tariff, EUR.1, ASEAN-India FTA' }
     ],
 
     features: [
       'Direct integration with Mirsal II (UAE), ICEGATE (India), and international customs platforms',
-      'Authorized Economic Operator (AEO) certified procedural expediting',
+      'Authorized Economic Operator (AEO)-level procedural expediting',
       'Bonded warehouse storage and deferred duty payment execution',
       'Comprehensive tariff advisory and Free Trade Agreement (FTA) origin audits',
       'Post-clearance compliance documentation archiving'
@@ -591,7 +591,7 @@ export const services = [
     leadTime: '2–7 Days',
     coverage: 'Complete GCC & Trans-Caspian',
     co2Profile: 'Euro 6 Compliant Fleet Routing',
-    image: '/images/diff_network.jpg',
+    image: '/images/AUTOMOTIVE.png',
     overview: 'Modern GPS-monitored fleet operations engineered for regional cross-border agility, border crossing pre-clearance, and last-mile industrial delivery across Saudi Arabia, UAE, Oman, and Central Asia.',
     
     provenMetrics: [
@@ -674,7 +674,7 @@ export const services = [
     leadTime: '10–18 Days',
     coverage: 'Trans-Caspian & Eurasian Belt',
     co2Profile: 'Up to 75% Lower CO2 vs Road/Air',
-    image: '/images/diff_transform.jpg',
+    image: '/images/rail-corridors.png',
     overview: 'High-capacity intermodal rail block trains offering the ideal equilibrium between ocean transit times and air freight costs across the historic silk corridors.',
     
     provenMetrics: [
@@ -757,7 +757,7 @@ export const services = [
     leadTime: 'Engineered Schedules',
     coverage: 'Global Remote Locations',
     co2Profile: 'Route-Engineered Efficiency',
-    image: '/images/diff_transform.jpg',
+    image: '/images/industry_hazmat.png',
     overview: 'Specialized heavy-lift division delivering route surveys, marine engineering, hydraulic modular transport, and turnkey movement for energy, mining, and infrastructure projects.',
     
     provenMetrics: [

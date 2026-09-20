@@ -13,6 +13,13 @@ export const navigationGroups = [
         exact: true
       },
       {
+        id: 'global-network',
+        label: 'Global Network',
+        path: '/global-network',
+        icon: 'Globe2',
+        isNetworkAnchor: true
+      },
+      {
         id: 'services',
         label: 'Services',
         path: '/services',
@@ -21,13 +28,13 @@ export const navigationGroups = [
         sublinks: [
           { label: 'Air Freight', path: '/services/air-freight', mode: 'AIR' },
           { label: 'FCL Ocean Freight', path: '/services/fcl-freight', mode: 'SEA' },
-          { label: 'LCL Consolidation', path: '/services/lcl-freight', mode: 'SEA' },
+          { label: 'LCL Consolidation', path: '/services/lcl-consolidation', mode: 'SEA' },
           { label: 'EXW & FCA Shipments', path: '/services/exw-fca-shipments', mode: 'ROAD' },
-          { label: 'Reefer Cold Chain', path: '/services/reefer-cargo', mode: 'COLD' },
+          { label: 'Reefer Cold Chain', path: '/services/reefer-cold-chain', mode: 'COLD' },
           { label: 'CIS Haulage Belt', path: '/services/cis-haulage', mode: 'RAIL' },
           { label: 'Customs Clearance', path: '/services/customs-compliance', mode: 'CUSTOMS' },
           { label: 'Road Transport', path: '/services/road-freight', mode: 'ROAD' },
-          { label: 'Rail Corridors', path: '/services/rail-freight', mode: 'RAIL' },
+          { label: 'Rail Corridors', path: '/services/rail-corridors', mode: 'RAIL' },
           { label: 'Project Logistics', path: '/services/project-logistics', mode: 'PROJECT' }
         ]
       },
@@ -36,13 +43,6 @@ export const navigationGroups = [
         label: 'Solutions',
         path: '/solutions',
         icon: 'Box'
-      },
-      {
-        id: 'global-network',
-        label: 'Global Network',
-        path: '/global-network',
-        icon: 'Globe2',
-        isNetworkAnchor: true
       }
     ]
   },

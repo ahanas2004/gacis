@@ -22,7 +22,7 @@ export const Footer = () => {
             </p>
             <div className="footer-badges">
               <span className="footer-badge"><Globe2 size={13} /> 150+ Direct Gateways</span>
-              <span className="footer-badge"><ShieldCheck size={13} /> ISO 9001:2015</span>
+              <Link to="/about" className="footer-badge"><ShieldCheck size={13} /> Partner-Certified Network</Link>
               <span className="footer-badge"><Leaf size={13} /> Scope 3 Monitored</span>
             </div>
           </div>
@@ -50,9 +50,9 @@ export const Footer = () => {
           <div className="footer-col">
             <h5>Multimodal Services</h5>
             <Link to="/services/air-freight">Air Freight Intelligence</Link>
-            <Link to="/services/ocean-freight">Ocean Freight & Seaways</Link>
+            <Link to="/services/fcl-freight">Ocean Freight & Seaways</Link>
             <Link to="/services/road-freight">Cross-Border Road Transport</Link>
-            <Link to="/services/rail-freight">Intermodal Rail Corridors</Link>
+            <Link to="/services/rail-corridors">Intermodal Rail Corridors</Link>
             <Link to="/services/customs-compliance">Customs & Compliance</Link>
             <Link to="/services/project-logistics">Project Cargo & Heavy Lift</Link>
           </div>

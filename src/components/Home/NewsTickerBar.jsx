@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Play, Pause, Activity, Globe2, ShieldCheck, Leaf } from 'lucide-react';
+import { Play, Pause } from 'lucide-react';
 import './NewsTickerBar.css';
 
 const tickerItems = [
   { label: 'NETWORK DISPATCH', text: 'New weekly block train active on Tashkent ⇄ Baku ⇄ Istanbul Middle Corridor' },
-  { label: 'COLD CHAIN', text: 'GDP re-certification completed across Dubai DWC and Frankfurt pharma gateways' },
+  { label: 'COLD CHAIN', text: 'GDP compliance renewed across Dubai DWC and Frankfurt pharma gateways' },
   { label: 'SEA-AIR ROUTING', text: 'Port Klang ⇄ Dubai ⇄ London multimodal transit averaged 21.4 days in Q3' },
   { label: 'CARBON AUDIT', text: 'Intermodal rail substitution delivered 1,420 metric tons CO₂ avoidance this quarter' },
   { label: 'CAPACITY ALLOCATION', text: 'Contracted space secured for upcoming GCC–Europe Q4 air charter surge' }

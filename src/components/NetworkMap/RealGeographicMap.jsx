@@ -5,8 +5,8 @@ import { Plus, Minus, RotateCcw, Compass, Waves, Building2 } from 'lucide-react'
 import { primaryHubs, maritimeSeaDomains } from '../../data/locations';
 import './RealGeographicMap.css';
 
-// Calculate smooth curved great-circle arc points between two coordinates
-const getCurvedArcPoints = (start, end, numPoints = 40) => {
+// ─── Utility: Calculate smooth curved great-circle arc points ─────────────────────
+function getCurvedArcPoints(start, end, numPoints = 40) {
   const points = [];
   const startLat = start.lat;
   const startLng = start.lng;
@@ -34,7 +34,7 @@ const getCurvedArcPoints = (start, end, numPoints = 40) => {
     points.push([lat, lng]);
   }
   return points;
-};
+}
 
 export const RealGeographicMap = ({ 
   activeHub, 

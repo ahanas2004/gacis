@@ -20,7 +20,7 @@ const CompanyCards = () => {
               </div>
             </div>
             <div className="company-ed-image">
-              <FadeImage src="/images/diff_compliance.jpg" alt="About Us" />
+              <FadeImage src="/images/about-gacis-office.png" alt="About Us" />
             </div>
           </Link>
 
@@ -34,10 +34,9 @@ const CompanyCards = () => {
               </div>
             </div>
             <div className="company-ed-image">
-              <FadeImage src="/images/diff_transform.jpg" alt="Sustainability" />
+              <FadeImage src="/images/sustainability-gacis.png" alt="Sustainability" />
             </div>
           </Link>
-
         </div>
 
       </div>

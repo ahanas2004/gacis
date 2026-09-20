@@ -1,8 +1,10 @@
+import { Suspense } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import BackToTop from '../Common/BackToTop';
 import WhatsAppFloat from '../Common/WhatsAppFloat';
+import RouteFallback from '../Common/RouteFallback';
 import { useGlobalReveal } from '../../hooks/useGlobalReveal';
 import './Layout.css';
 
@@ -20,7 +22,9 @@ const Layout = () => {
         <main id="main-content" className="main-content">
           {/* Keyed on pathname so the fade-in replays on every navigation */}
           <div className="route-fade-wrap" key={pathname}>
-            <Outlet />
+            <Suspense fallback={<RouteFallback />}>
+              <Outlet />
+            </Suspense>
           </div>
         </main>
         <Footer />

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ShieldCheck, Compass, Gauge, Zap, Globe2, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Compass, Globe2 } from 'lucide-react';
 import FadeImage from '../Common/FadeImage';
 import './Differentiators.css';
 
@@ -8,7 +8,7 @@ const differentiatorsData = [
     title: 'Corridor Specialization',
     eyebrow: 'STRATEGIC GEOGRAPHY',
     desc: 'Unmatched operational footprint across the Gulf, Central Asia (CIS), and South Asia trade belt with direct bonded border access.',
-    image: '/images/diff_network.jpg',
+    image: '/images/diff_network.png',
     metric: '150+ Direct Corridors',
     icon: Globe2
   },
@@ -16,7 +16,7 @@ const differentiatorsData = [
     title: 'Multimodal Orchestration',
     eyebrow: 'MODAL AGILITY',
     desc: 'Seamless intermodal transitions between deepsea vessels, block trains, and cross-border road fleets that reduce transit times by up to 50%.',
-    image: '/images/diff_transform.jpg',
+    image: '/images/diff_transform.png',
     metric: '8.4d Dubai–Almaty',
     icon: Compass
   },
@@ -24,8 +24,8 @@ const differentiatorsData = [
     title: 'Regulatory & Trade Compliance',
     eyebrow: 'ZERO-DELAY CLEARANCE',
     desc: 'In-house licensed customs brokers and digital pre-clearance gateways eliminating port dwell times and tariff bottlenecks.',
-    image: '/images/diff_compliance.jpg',
-    metric: 'ISO 9001 & GDP Certified',
+    image: '/images/diff_compliance.png',
+    metric: 'ISO 9001 & GDP Partner Network',
     icon: ShieldCheck
   }
 ];
@@ -57,7 +57,13 @@ export const Differentiators = () => {
                     className="diff-img"
                   />
                   <div className="diff-img-overlay"></div>
-                  <span className="diff-metric-badge">{item.metric}</span>
+                  <span className="diff-metric-badge">
+                    {item.metric.includes('ISO') || item.metric.includes('Certified') ? (
+                      <Link to="/about">{item.metric}</Link>
+                    ) : (
+                      item.metric
+                    )}
+                  </span>
                 </div>
 
                 <div className="diff-card-content">
