@@ -8,6 +8,26 @@
   color: var(--text-primary);
 }
 
+/* ─── Feature Image ─── */
+.sust-feature-section {
+  padding-block: 0;
+  margin-bottom: 2rem;
+}
+
+.sust-feature-image {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius-lg, 14px);
+  margin-block: 1.5rem;
+  transition: transform var(--motion-slow) var(--ease-spring);
+}
+
+.sust-feature-image:hover {
+  transform: scale(1.01);
+}
+
 /* Compact Section Padding */
 .sustainability-page .section-padding {
   padding-top: clamp(2.5rem, 4.5vw, 4rem) !important;

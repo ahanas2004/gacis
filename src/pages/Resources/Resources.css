@@ -224,6 +224,27 @@
   background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
 }
 
+.res-art-image-wrap {
+  width: 100%;
+  height: 160px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 1rem;
+  background: var(--surface-dark);
+}
+
+.res-art-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--motion-slow) var(--ease-spring);
+}
+
+.res-art-card:hover .res-art-image {
+  transform: scale(1.04);
+}
+
 /* ─── Articles Grid & Direct External Link Cards ─── */
 .res-articles-grid {
   display: grid;

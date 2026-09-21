@@ -2,6 +2,20 @@
    CONTACT PAGE STYLING
    ═══════════════════════════════════════════════════════════════ */
 
+.contact-hero-image-section {
+  padding-block: 0;
+  margin-bottom: 2rem;
+}
+
+.contact-hero-image {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius-lg, 14px);
+  margin-block: 1.5rem;
+}
+
 .contact-main-grid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;

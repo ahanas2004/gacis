@@ -202,6 +202,13 @@ export const Sustainability = () => {
         </div>
       </section>
 
+      {/* Feature Image */}
+      <section className="sust-feature-section">
+        <div className="container">
+          <img src="/images/sustainability-gacis.png" alt="GACIS sustainable logistics with renewable energy and lower-carbon freight" className="sust-feature-image" loading="lazy" decoding="async" />
+        </div>
+      </section>
+
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 1: EMISSION SPECTRUM — HOW TRANSPORT MODES COMPARE
           ═══════════════════════════════════════════════════════════════ */}

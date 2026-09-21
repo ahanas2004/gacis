@@ -146,6 +146,12 @@ export const Resources = () => {
                   <span className="rac-pub-chip">{art.publisherTag}</span>
                 </div>
 
+                {art.image && (
+                  <div className="res-art-image-wrap">
+                    <img src={art.image} alt={art.title} className="res-art-image" loading="lazy" decoding="async" />
+                  </div>
+                )}
+
                 <h3 className="rac-title">
                   {art.title} <ExternalLink size={15} className="rac-ext-icon" />
                 </h3>

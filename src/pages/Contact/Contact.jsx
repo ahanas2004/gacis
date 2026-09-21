@@ -84,6 +84,12 @@ export const Contact = () => {
         statusTag="AVERAGE RESPONSE TIME: < 24 HOURS"
       />
 
+      <section className="contact-hero-image-section">
+        <div className="container">
+          <img src="/images/about-gacis-office.png" alt="GACIS Global Logistics Office" className="contact-hero-image" loading="lazy" decoding="async" />
+        </div>
+      </section>
+
       <section className="section-padding bg-secondary">
         <div className="container">
           <div className="contact-main-grid">
