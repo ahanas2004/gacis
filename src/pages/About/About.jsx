@@ -57,7 +57,32 @@ export const About = () => (
     <SEO title="About GACIS — Rooted in Chennai, Connected to the World" description="GACIS began in Chennai, Tamil Nadu, India, and grew with an international logistics vision rooted in reliability, regional understanding, and global logistics connectivity." canonical="/about" />
     <PageHeader eyebrow="CHENNAI TO GLOBAL LOGISTICS" title="From Chennai to the World" description="GACIS began in Chennai, Tamil Nadu, India, and grew with an international logistics vision built on reliability, regional understanding, and global connectivity." statusTag="ROOTED IN INDIA • CONNECTED TO THE WORLD" videoSrc="/images/video/about%20us.mp4" videoPoster="/images/about-gacis-office.webp" />
 
-    <section className="section-padding bg-primary about-story-shell"><div className="container"><div className="about-story-intro"><span className="eyebrow">OUR STORY</span><h2>From local roots to global trade.</h2></div><div className="about-story-grid"><div className="about-story-copy"><p>GACIS began in Chennai, Tamil Nadu, India, and from these roots developed an international logistics vision. The company’s identity is shaped by a strong understanding of regional movement, cargo coordination, and the discipline needed to support dependable trade.</p><p>This foundation remains central to GACIS today. It informs the way the company approaches network thinking, customer responsibility, and the broader journey from origin to destination. Chennai is not just a geographical point — it is the place from which GACIS developed its outlook, capabilities, and commitment to trusted logistics.</p><div className="about-actions"><Link to="/services" className="btn btn-primary">Explore Our Services <ArrowRight size={16} /></Link><Link to="/global-network" className="btn btn-secondary">View Global Network</Link></div></div><div className="about-story-visual"><img src="/images/about-gacis-office.webp" alt="GACIS office and corporate environment" /><div className="about-story-badge"><span className="about-story-badge-label">ROOTED IN</span><strong>CHENNAI</strong></div></div></div></div></section>
+    <section className="section-padding bg-primary about-story-shell">
+      <div className="container">
+        <div className="about-story-intro"><span className="eyebrow">OUR STORY</span><h2>From local roots to global trade.</h2></div>
+        <div className="about-story-grid">
+          <div className="about-story-copy">
+            <p>GACIS began in Chennai, Tamil Nadu, India, and from these roots developed an international logistics vision. The company’s identity is shaped by a strong understanding of regional movement, cargo coordination, and the discipline needed to support dependable trade.</p>
+            <p>This foundation remains central to GACIS today. It informs the way the company approaches network thinking, customer responsibility, and the broader journey from origin to destination. Chennai is not just a geographical point — it is the place from which GACIS developed its outlook, capabilities, and commitment to trusted logistics.</p>
+            <div className="about-actions"><Link to="/services" className="btn btn-primary">Explore Our Services <ArrowRight size={16} /></Link><Link to="/global-network" className="btn btn-secondary">View Global Network</Link></div>
+          </div>
+          <div className="about-story-visual">
+            <video
+              src="/images/video/about%20us.mp4"
+              poster="/images/about-gacis-office.webp"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              aria-label="GACIS logistics operations"
+              style={{ width: '100%', height: '100%', minHeight: '440px', objectFit: 'cover', display: 'block' }}
+            />
+            <div className="about-story-badge"><span className="about-story-badge-label">ROOTED IN</span><strong>CHENNAI</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section className="section-padding bg-secondary about-roots-section"><div className="container"><div className="section-heading"><span className="eyebrow">OUR ROOTS</span><h2>Where GACIS Began</h2><p>Chennai, Tamil Nadu, and India form the foundation from which GACIS began its logistics journey and shaped its identity around movement, connectivity, and responsibility.</p></div><div className="about-roots-journey" aria-label="GACIS origin journey">{rootsJourney.map((step, index) => <div className="about-root-step" key={step.label}><div className="about-root-node" aria-hidden="true"><span>{index + 1}</span></div><div className="about-root-copy"><span className="about-root-label">{step.label}</span><strong>{step.detail}</strong></div></div>)}</div></div></section>
 
