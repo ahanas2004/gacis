@@ -6,7 +6,7 @@ export const serviceCatalog = [
     tagline: 'Time-critical global air charter and scheduled capacity with precision tracking.',
     mode: 'AIR',
     icon: 'Plane',
-    image: '/images/air_freight_cargo.png',
+    image: '/images/air_freight_cargo.webp',
     leadTime: '1–3 Days',
     coverage: '150+ Direct Gateways'
   },
@@ -16,7 +16,7 @@ export const serviceCatalog = [
     tagline: 'Dedicated 20ft, 40ft, and High-Cube container allocations on tier-1 global alliances.',
     mode: 'SEA',
     icon: 'Ship',
-    image: '/images/sea_freight_vessel.png',
+    image: '/images/sea_freight_vessel.webp',
     leadTime: '12–25 Days',
     coverage: '500+ Direct Global Port Pairs'
   },
@@ -26,7 +26,7 @@ export const serviceCatalog = [
     tagline: 'Cost-effective shared container cargo with scheduled weekly departures.',
     mode: 'SEA',
     icon: 'Boxes',
-    image: '/images/lcl-consolidation.png',
+    image: '/images/lcl-consolidation.webp',
     leadTime: '14–28 Days',
     coverage: 'Weekly Scheduled Groupage Lines'
   },
@@ -36,7 +36,7 @@ export const serviceCatalog = [
     tagline: 'End-to-end first-mile supplier pickup, export documentation, and origin port handoff.',
     mode: 'ROAD',
     icon: 'Truck',
-    image: '/images/exw-fca-shipments.png',
+    image: '/images/exw-fca-shipments.webp',
     leadTime: '2–5 Days First-Mile',
     coverage: 'Industrial Supplier Parks Across Asia & Europe'
   },
@@ -46,7 +46,7 @@ export const serviceCatalog = [
     tagline: 'Active GDP-compliant temperature logging for pharmaceuticals, perishables, and chemicals.',
     mode: 'COLD',
     icon: 'ShieldCheck',
-    image: '/images/REEFER COLD-CHAIN LOGISTICS.png',
+    image: '/images/REEFER COLD-CHAIN LOGISTICS.webp',
     leadTime: 'Expedited & Monitored',
     coverage: 'Global Cold Chain Gateways'
   },
@@ -56,7 +56,7 @@ export const serviceCatalog = [
     tagline: 'Specialized block trains, Caspian ferries, and overland fleets across Central Asia.',
     mode: 'RAIL',
     icon: 'Train',
-    image: '/images/CORRIDOR SPECIALIZATION.png',
+    image: '/images/CORRIDOR SPECIALIZATION.webp',
     leadTime: '7–14 Days Trans-Caspian',
     coverage: 'Kazakhstan, Uzbekistan, Azerbaijan, Georgia & Caucasus'
   },
@@ -66,7 +66,7 @@ export const serviceCatalog = [
     tagline: 'Licensed in-house customs brokers ensuring rapid, zero-delay border clearance.',
     mode: 'CUSTOMS',
     icon: 'ShieldCheck',
-    image: '/images/industry_hazmat.png',
+    image: '/images/industry_hazmat.webp',
     leadTime: '< 24 Hours Clearance',
     coverage: 'Global Ports & Customs Portals'
   },
@@ -76,7 +76,7 @@ export const serviceCatalog = [
     tagline: 'High-density FTL & LTL overland fleets spanning the GCC and Central Asian corridors.',
     mode: 'ROAD',
     icon: 'Truck',
-    image: '/images/NTERNATIONAL ROAD TRANSPORT.png',
+    image: '/images/NTERNATIONAL ROAD TRANSPORT.webp',
     leadTime: '2–7 Days',
     coverage: 'Complete GCC & Trans-Caspian'
   },
@@ -86,7 +86,7 @@ export const serviceCatalog = [
     tagline: 'Trans-Eurasian block trains bridging China, Central Asia, the Caspian, and Europe.',
     mode: 'RAIL',
     icon: 'Train',
-    image: '/images/rail-corridors.png',
+    image: '/images/rail-corridors.webp',
     leadTime: '10–18 Days',
     coverage: 'Trans-Caspian & Eurasian Belt'
   },
@@ -96,7 +96,7 @@ export const serviceCatalog = [
     tagline: 'Engineered transport solutions for oversized, industrial, and infrastructure capital assets.',
     mode: 'PROJECT',
     icon: 'Boxes',
-    image: '/images/ROJECT LOGISTICS and HEAVY-LIFT TRANSPORTATION..png',
+    image: '/images/ROJECT LOGISTICS and HEAVY-LIFT TRANSPORTATION..webp',
     leadTime: 'Engineered Schedules',
     coverage: 'Global Remote Locations'
   }

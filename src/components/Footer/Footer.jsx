@@ -13,7 +13,7 @@ export const Footer = () => {
           <div className="footer-brand-col">
             <Link to="/" className="footer-brand-logo" aria-label="GACIS Home">
               <div className="footer-brand-logo-wrap">
-                <img src="/images/logo.png" alt="GACIS Global Logistics" className="footer-logo-img" />
+                <img src="/images/logo.webp" alt="GACIS Global Logistics" className="footer-logo-img" />
                 <span className="footer-brand-name">GACIS</span>
               </div>
             </Link>

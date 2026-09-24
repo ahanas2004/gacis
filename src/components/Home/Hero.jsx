@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Clock3, Globe2 } from 'lucide-react';
+import LazyVideo from '../../components/Common/LazyVideo';
 import './Hero.css';
 
 const HeroNetworkAnimation = lazy(() => import('./HeroNetworkAnimation'));
@@ -46,7 +47,7 @@ export const Hero = ({ videoSrc, videoPoster }) => {
       <div className="hero-backdrop-wrapper">
         {videoSrc ? (
           <>
-            <video
+            <LazyVideo
               src={videoSrc}
               poster={videoPoster}
               className="hero-backdrop-video"
@@ -54,14 +55,13 @@ export const Hero = ({ videoSrc, videoPoster }) => {
               loop
               muted
               playsInline
-              preload="metadata"
             />
             <div className="hero-backdrop-video-overlay" />
           </>
         ) : (
           <>
             <img
-              src="/images/hero_bg.png"
+              src="/images/hero_bg.webp"
               alt="GACIS Global Freight Corridors"
               className="hero-backdrop-img"
               width={1920}
@@ -79,7 +79,7 @@ export const Hero = ({ videoSrc, videoPoster }) => {
           <div className="hero-content reveal-left">
             <div className="hero-brand" aria-label="GACIS Cargo Services">
               <div className="hero-brand-mark">
-                <img src="/images/logo.png" alt="" className="hero-brand-logo" />
+                <img src="/images/logo.webp" alt="" className="hero-brand-logo" />
               </div>
               <div className="hero-brand-name">
                 <span className="hero-brand-gacis">GACIS</span>

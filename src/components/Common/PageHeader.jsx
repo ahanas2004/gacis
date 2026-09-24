@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import LazyVideo from './LazyVideo';
 import './PageHeader.css';
 
 /**
@@ -22,10 +23,10 @@ export const PageHeader = ({
 }) => {
   return (
     <header className={`page-header bg-maroon ${className}`}>
-      {/* Video Background */}
+      {/* Video Background - Lazy Loaded */}
       {videoSrc && (
         <div className="page-header-video-wrapper" aria-hidden="true">
-          <video
+          <LazyVideo
             src={videoSrc}
             poster={videoPoster}
             className="page-header-video"
@@ -33,7 +34,6 @@ export const PageHeader = ({
             loop
             muted
             playsInline
-            preload="metadata"
           />
           <div className="page-header-video-overlay" />
         </div>

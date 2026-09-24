@@ -19,7 +19,7 @@ export const SidebarHeader = ({ isCollapsed, onToggleCollapse, onNavigate }) => 
         <Link to="/" className="sidebar-brand-anchor" onClick={onNavigate} aria-label="GACIS Global Operations Console">
           <div className="sidebar-brand-logo-wrap">
             <img 
-              src="/images/logo.png" 
+              src="/images/logo.webp" 
               alt="GACIS Global Logistics" 
               className="sidebar-brand-logo" 
             />

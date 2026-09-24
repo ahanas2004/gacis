@@ -3,14 +3,14 @@ import FadeImage from '../Common/FadeImage';
 import './IndustrySection.css';
 
 const industries = [
-  { name: 'Automotive', desc: 'Vehicle parts, CKD kits, production line logistics', image: '/images/industry_automotive.png' },
-  { name: 'Pharmaceuticals', desc: 'Cold-chain, controlled atmosphere, GDP compliance', image: '/images/industry_pharma.png' },
-  { name: 'Electronics & Air Cargo', desc: 'High-value, ESD-safe, expedited air solutions', image: '/images/HIGH-SECURITY ELECTRONICS & AIR CARGO LOGISTICS..png' },
-  { name: 'Oil & Energy', desc: 'Heavy equipment, drilling components, project cargo', image: '/images/industry_energy.png' },
-  { name: 'Maritime & Retail', desc: 'High-volume, seasonal, omnichannel distribution', image: '/images/MARITIME & RETAIL DISTRIBUTION..png' },
-  { name: 'Manufacturing', desc: 'Raw materials, machinery, and component sourcing', image: '/images/industry_manufacturing.png' },
-  { name: 'Hazmat & Chemicals', desc: 'Dangerous goods handling, compliance, dedicated tankers', image: '/images/industry_hazmat.png' },
-  { name: 'Corridor Infrastructure', desc: 'Strategic freight routes, site delivery, intermodal hubs', image: '/images/CORRIDOR SPECIALIZATION.png' },
+  { name: 'Automotive', desc: 'Vehicle parts, CKD kits, production line logistics', image: '/images/industry_automotive.webp' },
+  { name: 'Pharmaceuticals', desc: 'Cold-chain, controlled atmosphere, GDP compliance', image: '/images/industry_pharma.webp' },
+  { name: 'Electronics & Air Cargo', desc: 'High-value, ESD-safe, expedited air solutions', image: '/images/HIGH-SECURITY ELECTRONICS & AIR CARGO LOGISTICS..webp' },
+  { name: 'Oil & Energy', desc: 'Heavy equipment, drilling components, project cargo', image: '/images/industry_energy.webp' },
+  { name: 'Maritime & Retail', desc: 'High-volume, seasonal, omnichannel distribution', image: '/images/MARITIME & RETAIL DISTRIBUTION..webp' },
+  { name: 'Manufacturing', desc: 'Raw materials, machinery, and component sourcing', image: '/images/industry_manufacturing.webp' },
+  { name: 'Hazmat & Chemicals', desc: 'Dangerous goods handling, compliance, dedicated tankers', image: '/images/industry_hazmat.webp' },
+  { name: 'Corridor Infrastructure', desc: 'Strategic freight routes, site delivery, intermodal hubs', image: '/images/CORRIDOR SPECIALIZATION.webp' },
 ];
 
 

@@ -1,25 +1,39 @@
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import { 
   MapPin, Mail, Building2, Globe2, ArrowRight, Phone, Check, 
   Activity, Plane, Ship, Train, Truck, ShieldCheck, Compass, Radio,
   Layers, ChevronRight, Boxes, Waves, Anchor, Navigation, Zap, Search
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { primaryHubs, maritimeSeaDomains, networkRegions } from '../../data/locations';
 import SEO from '../../components/Common/SEO';
+import LazyVideo from '../../components/Common/LazyVideo';
+import { loadLocations } from '../../data/lazyData';
 import './GlobalNetwork.css';
 
 const RealGeographicMap = lazy(() => import('../../components/NetworkMap/RealGeographicMap'));
 
 export const GlobalNetwork = () => {
-  const [activeTab, setActiveTab] = useState('all'); // 'all' | 'middle-east' | 'fareast-asia' | 'european-union' | 'africa' | 'central-asia' | 'americas'
-  const [activeViewMode, setActiveViewMode] = useState('hubs'); // 'hubs' | 'seas'
-  const [activeHub, setActiveHub] = useState(primaryHubs[0]);
-  const [activeSeaDomain, setActiveSeaDomain] = useState(maritimeSeaDomains[0]);
-  const [laneModeFilter, setLaneModeFilter] = useState('ALL'); // 'ALL' | 'AIR' | 'SEA' | 'RAIL' | 'ROAD'
-  const [hubDossierTab, setHubDossierTab] = useState('corridors'); // 'corridors' | 'operations' | 'contact'
+  const [activeTab, setActiveTab] = useState('all');
+  const [activeViewMode, setActiveViewMode] = useState('hubs');
+  const [activeHub, setActiveHub] = useState(null);
+  const [activeSeaDomain, setActiveSeaDomain] = useState(null);
+  const [laneModeFilter, setLaneModeFilter] = useState('ALL');
+  const [hubDossierTab, setHubDossierTab] = useState('corridors');
   const [hoveredLaneId, setHoveredLaneId] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [networkData, setNetworkData] = useState({ primaryHubs: [], maritimeSeaDomains: [], networkRegions: [] });
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    loadLocations().then(({ primaryHubs, maritimeSeaDomains, networkRegions }) => {
+      setNetworkData({ primaryHubs, maritimeSeaDomains, networkRegions });
+      setActiveHub(primaryHubs[0]);
+      setActiveSeaDomain(maritimeSeaDomains[0]);
+      setIsLoading(false);
+    });
+  }, []);
+
+  const { primaryHubs, maritimeSeaDomains, networkRegions } = networkData;
 
   // Filtered Hubs & Seas based on region tab and search query
   const filteredHubs = primaryHubs.filter(h => {
@@ -62,6 +76,17 @@ export const GlobalNetwork = () => {
     }
   };
 
+  if (isLoading) {
+    return (
+      <div className="global-network-page">
+        <div className="network-loading" role="status" aria-label="Loading network data">
+          <div className="loading-spinner" />
+          <p>Loading Global Network...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="global-network-page">
       <SEO 
@@ -72,16 +97,15 @@ export const GlobalNetwork = () => {
 
       {/* ─── 01. COMMAND CENTER HERO HEADER ─── */}
       <section className="network-hero-command">
-        {/* Video Background */}
+        {/* Video Background - Lazy Loaded */}
         <div className="network-hero-video-wrapper" aria-hidden="true">
-          <video
+          <LazyVideo
             src="/images/video/VEO_%E2%80%94_SECOND_CINEMATIC_SMAR.mp4"
             className="network-hero-video"
             autoPlay
             loop
             muted
             playsInline
-            preload="metadata"
           />
           <div className="network-hero-video-overlay" />
         </div>

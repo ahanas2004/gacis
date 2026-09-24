@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import L from 'leaflet';
+import { Map as LeafletMap, tileLayer, marker as createMarker, icon, divIcon, polyline, LatLngBounds, map as createMap } from 'leaflet/dist/leaflet-src.esm.js';
 import 'leaflet/dist/leaflet.css';
 import { Plus, Minus, RotateCcw, Compass, Waves, Building2 } from 'lucide-react';
 import { primaryHubs, maritimeSeaDomains } from '../../data/locations';
@@ -54,6 +54,7 @@ export const RealGeographicMap = ({
   // Initialize Map
   useEffect(() => {
     if (!mapContainerRef.current) return;
+    if (mapInstanceRef.current) return; // Prevent double initialization in React strict mode
 
     // Cartographic frame spanning Americas, Europe, Middle East, India, Asia
     const initialBounds = [
@@ -61,7 +62,7 @@ export const RealGeographicMap = ({
       [62.0, 150.0]    // NE: North Sea / Japan / Far East
     ];
 
-    const map = L.map(mapContainerRef.current, {
+    const mapInstance = createMap(mapContainerRef.current, {
       center: [26.0, 50.0],
       zoom: window.innerWidth < 768 ? 2.2 : 3.0,
       minZoom: 1.8,
@@ -72,22 +73,22 @@ export const RealGeographicMap = ({
       worldCopyJump: true
     });
 
-    mapInstanceRef.current = map;
+    mapInstanceRef.current = mapInstance;
 
     // High-Resolution Tactical Dark Tiles (Esri World Dark Gray Base)
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
       maxZoom: 16,
       attribution: 'Esri, DeLorme, NAVTEQ'
-    }).addTo(map);
+    }).addTo(mapInstance);
 
     // Reference labels layer
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
+    tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
       maxZoom: 16,
       attribution: ''
-    }).addTo(map);
+    }).addTo(mapInstance);
 
     // Initial frame
-    map.fitBounds(initialBounds, {
+    mapInstance.fitBounds(initialBounds, {
       padding: window.innerWidth < 768 ? [15, 15] : [30, 30],
       maxZoom: 3.5
     });
@@ -97,7 +98,7 @@ export const RealGeographicMap = ({
       const isDubai = hub.id === 'uae-desk';
       const isSelected = activeHub?.id === hub.id;
       
-      const customIcon = L.divIcon({
+      const customIcon = divIcon({
         className: 'gacis-map-pin-container',
         html: `
           <div class="clean-hub-pin ${isDubai ? 'is-dubai-hq' : ''} ${isSelected ? 'is-origin-pin' : ''}">
@@ -113,23 +114,23 @@ export const RealGeographicMap = ({
         iconAnchor: [10, 10]
       });
 
-      const marker = L.marker([hub.geo.lat, hub.geo.lng], { 
+      const hubMarker = createMarker([hub.geo.lat, hub.geo.lng], { 
         icon: customIcon,
         zIndexOffset: isDubai ? 800 : 500
-      }).addTo(map);
+      }).addTo(mapInstance);
 
-      marker.on('click', () => {
+      hubMarker.on('click', () => {
         onSelectHub && onSelectHub(hub);
       });
 
-      hubMarkersRef.current[hub.id] = marker;
+      hubMarkersRef.current[hub.id] = hubMarker;
     });
 
     // 2. Initialize Sea Domain Beacons
     maritimeSeaDomains.forEach((sea) => {
       const isSelected = activeSeaDomain?.id === sea.id;
 
-      const seaIcon = L.divIcon({
+      const seaIcon = divIcon({
         className: 'gacis-map-pin-container gacis-sea-pin-container',
         html: `
           <div class="clean-sea-beacon ${isSelected ? 'is-active-sea' : ''}">
@@ -144,10 +145,10 @@ export const RealGeographicMap = ({
         iconAnchor: [10, 10]
       });
 
-      const seaMarker = L.marker([sea.geo.lat, sea.geo.lng], { 
+      const seaMarker = createMarker([sea.geo.lat, sea.geo.lng], { 
         icon: seaIcon,
         zIndexOffset: 350
-      }).addTo(map);
+      }).addTo(mapInstance);
 
       seaMarker.on('click', () => {
         onSelectSeaDomain && onSelectSeaDomain(sea);
@@ -156,10 +157,12 @@ export const RealGeographicMap = ({
       seaMarkersRef.current[sea.id] = seaMarker;
     });
 
-    // Cleanup on unmount
+    // Cleanup function
     return () => {
-      map.remove();
-      mapInstanceRef.current = null;
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+      }
     };
   }, []);
 
@@ -196,7 +199,7 @@ export const RealGeographicMap = ({
         const flowColor = isAir ? '#e0f2fe' : isRail ? '#fef08a' : '#ffd700';
 
         // Base sleek glow line
-        const glowLine = L.polyline(arcPoints, {
+        const glowLine = polyline(arcPoints, {
           color: laneColor,
           weight: isHovered ? 4.5 : 2.5,
           opacity: isHovered ? 0.95 : 0.65,
@@ -205,7 +208,7 @@ export const RealGeographicMap = ({
         }).addTo(map);
 
         // Subtle moving dash flow
-        const flowLine = L.polyline(arcPoints, {
+        const flowLine = polyline(arcPoints, {
           color: flowColor,
           weight: isHovered ? 2.5 : 1.5,
           opacity: isHovered ? 1.0 : 0.8,
@@ -253,7 +256,7 @@ export const RealGeographicMap = ({
       const isDestination = connectedDestIds.has(hub.id);
       const isVisibleInMode = viewMode === 'hubs';
 
-      const updatedIcon = L.divIcon({
+      const updatedIcon = divIcon({
         className: `gacis-map-pin-container ${!isVisibleInMode ? 'pin-mode-dimmed' : ''}`,
         html: `
           <div class="clean-hub-pin ${isDubai ? 'is-dubai-hq' : ''} ${isOrigin ? 'is-origin-pin' : ''} ${isDestination ? 'is-destination-pin' : ''}">
@@ -282,7 +285,7 @@ export const RealGeographicMap = ({
       const isSeaActive = activeSeaDomain?.id === sea.id;
       const isVisibleInMode = viewMode === 'seas';
 
-      const updatedSeaIcon = L.divIcon({
+      const updatedSeaIcon = divIcon({
         className: `gacis-map-pin-container gacis-sea-pin-container ${!isVisibleInMode ? 'pin-mode-hidden' : ''}`,
         html: `
           <div class="clean-sea-beacon ${isSeaActive ? 'is-active-sea' : ''}">

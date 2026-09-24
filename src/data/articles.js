@@ -16,7 +16,7 @@ export const rareLogisticsArticles = [
       { label: 'Corridor Capacity', val: '3x Expansion by 2030' },
       { label: 'Border Clearance SLA', val: '< 45 Mins' }
     ],
-    image: '/images/CORRIDOR SPECIALIZATION.png'
+    image: '/images/CORRIDOR SPECIALIZATION.webp'
   },
   {
     id: 'heavy-spmt-monolith',
@@ -35,7 +35,7 @@ export const rareLogisticsArticles = [
       { label: 'Axle Precision', val: '0mm Tilt Variance' },
       { label: 'Logistics Class', val: 'OOG Project Cargo' }
     ],
-    image: '/images/EXTREME ENVIRONMENT PROJECT LOGISTICS..png'
+    image: '/images/EXTREME ENVIRONMENT PROJECT LOGISTICS..webp'
   },
   {
     id: 'polar-northern-sea-route',
@@ -54,7 +54,7 @@ export const rareLogisticsArticles = [
       { label: 'Transit Reduction', val: '18 Days vs 34 Days' },
       { label: 'Ice Capability', val: '3m Arctic Sea Ice' }
     ],
-    image: '/images/sea_freight_vessel.png'
+    image: '/images/sea_freight_vessel.webp'
   },
   {
     id: 'instc-caspian-corridor',
@@ -73,7 +73,7 @@ export const rareLogisticsArticles = [
       { label: 'Transit SLA', val: '20 Days vs 40 Days' },
       { label: 'Freight Savings', val: '-30% Freight Cost' }
     ],
-    image: '/images/rail-corridors.png'
+    image: '/images/rail-corridors.webp'
   },
   {
     id: 'cryo-pharma-cold-chain',
@@ -92,7 +92,7 @@ export const rareLogisticsArticles = [
       { label: 'Cold-Chain Integrity', val: '100% Audit-Ready' },
       { label: 'Telemetry Monitoring', val: 'Active IoT Telematics' }
     ],
-    image: '/images/industry_pharma.png'
+    image: '/images/industry_pharma.webp'
   },
   {
     id: 'multi-gauge-rail-btk',
@@ -111,7 +111,7 @@ export const rareLogisticsArticles = [
       { label: 'Transit Speed', val: '15-17 Days Silk Road' },
       { label: 'Annual Throughput', val: '5M+ Metric Tons' }
     ],
-    image: '/images/rail-corridors.png'
+    image: '/images/rail-corridors.webp'
   },
   {
     id: 'cargo-security-ctpat-tapa',
@@ -130,7 +130,7 @@ export const rareLogisticsArticles = [
       { label: 'Telemetry SLA', val: 'Real-Time Geo-Fencing' },
       { label: 'Cargo Loss Rate', val: '0.00% Breach SLA' }
     ],
-    image: '/images/HAZARDOUS MATERIALS AND CHEMICAL CARGO HANDLING.png'
+    image: '/images/HAZARDOUS MATERIALS AND CHEMICAL CARGO HANDLING.webp'
   }
 ];
 

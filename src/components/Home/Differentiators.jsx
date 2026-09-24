@@ -8,7 +8,7 @@ const differentiatorsData = [
     title: 'Corridor Specialization',
     eyebrow: 'STRATEGIC GEOGRAPHY',
     desc: 'Unmatched operational footprint across the Gulf, Central Asia (CIS), and South Asia trade belt with direct bonded border access.',
-    image: '/images/diff_network.png',
+    image: '/images/diff_network.webp',
     metric: '150+ Direct Corridors',
     icon: Globe2
   },
@@ -16,7 +16,7 @@ const differentiatorsData = [
     title: 'Multimodal Orchestration',
     eyebrow: 'MODAL AGILITY',
     desc: 'Seamless intermodal transitions between deepsea vessels, block trains, and cross-border road fleets that reduce transit times by up to 50%.',
-    image: '/images/diff_transform.png',
+    image: '/images/diff_transform.webp',
     metric: '8.4d Dubai–Almaty',
     icon: Compass
   },
@@ -24,7 +24,7 @@ const differentiatorsData = [
     title: 'Regulatory & Trade Compliance',
     eyebrow: 'ZERO-DELAY CLEARANCE',
     desc: 'In-house licensed customs brokers and digital pre-clearance gateways eliminating port dwell times and tariff bottlenecks.',
-    image: '/images/diff_compliance.png',
+    image: '/images/diff_compliance.webp',
     metric: 'ISO 9001 & GDP Partner Network',
     icon: ShieldCheck
   }
