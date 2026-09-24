@@ -42,12 +42,15 @@ export const About = () => {
             </div>
             </div>
             <div className="about-image-col">
-              <img
-                src="/images/about-gacis-office.webp"
-                alt="GACIS Corporate Office"
+              <video
+                src="/images/about%20us%20animation.mp4"
                 className="about-hero-img"
-                loading="lazy"
-                decoding="async"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                poster="/images/about-gacis-office.webp"
               />
             </div>
           </div>
