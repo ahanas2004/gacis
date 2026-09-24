@@ -21,7 +21,7 @@ export const serviceCatalog = [
     coverage: '500+ Direct Global Port Pairs'
   },
   {
-    id: 'lcl-freight',
+    id: 'lcl-consolidation',
     shortTitle: 'LCL Consolidation',
     tagline: 'Cost-effective shared container cargo with scheduled weekly departures.',
     mode: 'SEA',
@@ -46,7 +46,7 @@ export const serviceCatalog = [
     tagline: 'Active GDP-compliant temperature logging for pharmaceuticals, perishables, and chemicals.',
     mode: 'COLD',
     icon: 'ShieldCheck',
-    image: '/images/industry_pharma.png',
+    image: '/images/REEFER COLD-CHAIN LOGISTICS.png',
     leadTime: 'Expedited & Monitored',
     coverage: 'Global Cold Chain Gateways'
   },
@@ -76,7 +76,7 @@ export const serviceCatalog = [
     tagline: 'High-density FTL & LTL overland fleets spanning the GCC and Central Asian corridors.',
     mode: 'ROAD',
     icon: 'Truck',
-    image: '/images/industry_automotive.png',
+    image: '/images/NTERNATIONAL ROAD TRANSPORT.png',
     leadTime: '2–7 Days',
     coverage: 'Complete GCC & Trans-Caspian'
   },
@@ -96,7 +96,7 @@ export const serviceCatalog = [
     tagline: 'Engineered transport solutions for oversized, industrial, and infrastructure capital assets.',
     mode: 'PROJECT',
     icon: 'Boxes',
-    image: '/images/industry_energy.png',
+    image: '/images/ROJECT LOGISTICS and HEAVY-LIFT TRANSPORTATION..png',
     leadTime: 'Engineered Schedules',
     coverage: 'Global Remote Locations'
   }

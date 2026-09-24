@@ -89,6 +89,7 @@
 html {
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 body {
@@ -99,6 +100,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  min-width: 320px;
 }
 
 /* ─── Accessibility: Skip to Content ─── */
@@ -484,5 +486,69 @@ textarea {
 
   .grid-2, .grid-3, .grid-4 {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Viewport Height Fix for Mobile ─── */
+@supports (height: 100dvh) {
+  .layout-root,
+  .main-viewport {
+    min-height: 100dvh;
+  }
+}
+
+/* ─── Safe Area Support ─── */
+@supports (padding: max(0px)) {
+  .mobile-command-header {
+    padding-left: max(1.25rem, env(safe-area-inset-left));
+    padding-right: max(1.25rem, env(safe-area-inset-right));
+  }
+
+  .whatsapp-float-root {
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+  }
+}
+
+/* ─── Very Small Screen Protection ─── */
+@media (max-width: 359px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* ─── Touch Device Optimizations ─── */
+@media (pointer: coarse) {
+  .sidebar-nav-link {
+    min-height: 44px;
+  }
+
+  .sidebar-sublink-item {
+    min-height: 40px;
+  }
+
+  .sfb-btn {
+    min-height: 44px;
+  }
+
+  .tfc-dot {
+    min-width: 14px;
+    min-height: 14px;
+  }
+}
+
+/* ─── Landscape Mobile Adjustments ─── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-editorial {
+    min-height: auto;
+    padding-block: 2rem;
+  }
+
+  .hero-headline {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+  }
+
+  .hero-visual-column {
+    display: none;
   }
 }

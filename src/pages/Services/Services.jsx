@@ -22,6 +22,7 @@ export const Services = () => {
         title="10 Core Multimodal Services"
         description="Proven linehaul architecture with real-time operational KPIs, direct carrier allocations, and unbroken compliance bridging the Gulf, Central Asia, South Asia, and Europe."
         statusTag="10 FREIGHT CAPABILITIES ACTIVE"
+        videoSrc="/images/video/flight.mp4"
       />
 
       <section className="section-padding bg-primary">

@@ -20,6 +20,7 @@ export const Quote = () => {
         title="Request a Corridor Quote"
         description="Provide your origin, destination, cargo specifications, and timeline requirements. Our central pricing desk will calculate an optimized route schedule within 24 hours."
         statusTag="MULTIMODAL ROUTE ESTIMATION"
+        videoSrc="/images/video/gacis%20video%2020sec.mp4"
       />
       
       <section className="section-padding bg-secondary">

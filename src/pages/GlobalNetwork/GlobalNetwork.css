@@ -18,6 +18,40 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+/* Video Background */
+.network-hero-video-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.network-hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.network-hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(8, 6, 6, 0.85) 0%,
+    rgba(46, 6, 10, 0.75) 35%,
+    rgba(8, 10, 15, 0.85) 85%,
+    rgba(5, 6, 8, 0.9) 100%
+  );
+  z-index: 1;
+}
+
+/* Ensure content stays above video */
+.network-hero-command .container {
+  position: relative;
+  z-index: 10;
+}
+
 .network-hero-command::after {
   content: '';
   position: absolute;
@@ -1851,5 +1885,936 @@
 
   .desk-service-hours {
     grid-template-columns: 1fr;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   GACIS 10X VISUAL ENHANCEMENT LAYER
+   Premium command-center polish — preserves existing structure/function.
+   Append-only overrides: no component markup or class names required.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --gacis-red: #c8202f;
+  --gacis-red-deep: #8f101d;
+  --gacis-red-soft: rgba(200, 32, 47, 0.12);
+  --gacis-blue: #38bdf8;
+  --gacis-cyan: #67e8f9;
+  --gacis-gold: #ffd76a;
+  --gacis-ink: #080b10;
+  --gacis-panel: rgba(255, 255, 255, 0.82);
+  --gacis-line: rgba(15, 23, 42, 0.09);
+  --gacis-shadow: 0 22px 55px rgba(15, 23, 42, 0.09);
+  --gacis-shadow-hover: 0 28px 70px rgba(15, 23, 42, 0.14);
+}
+
+/* ─── Global rendering polish ─── */
+.network-hero-command,
+.map-landscape-console,
+.gateway-dossier-card,
+.hub-dossier-landscape,
+.sea-dossier-landscape,
+.sea-domain-card,
+.gateway-station-card,
+.lane-card-h,
+.gtls-lane-card {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.network-hero-command {
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(56, 189, 248, 0.20), transparent 30%),
+    radial-gradient(circle at 8% 88%, rgba(200, 32, 47, 0.24), transparent 34%),
+    radial-gradient(circle at 52% 38%, rgba(255, 215, 106, 0.07), transparent 34%),
+    linear-gradient(135deg, #160307 0%, #2a070b 34%, #0a0d13 72%, #05070a 100%);
+}
+
+.network-hero-command::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 30% 35%, rgba(56,189,248,.10), transparent 18%),
+    radial-gradient(circle at 72% 70%, rgba(200,32,47,.12), transparent 22%);
+  filter: blur(20px);
+  animation: gacisAmbientDrift 14s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.network-hero-command::after {
+  opacity: .55;
+  mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.7) 70%, transparent 100%);
+}
+
+@keyframes gacisAmbientDrift {
+  from { transform: translate3d(-1%, -1%, 0) scale(1); }
+  to { transform: translate3d(1.5%, 1%, 0) scale(1.04); }
+}
+
+/* ─── Hero typography ─── */
+.nhc-title {
+  font-size: clamp(2.35rem, 5vw, 4.25rem);
+  line-height: .98;
+  letter-spacing: -0.055em;
+  max-width: 980px;
+  text-wrap: balance;
+}
+
+.nhc-title::selection,
+.nhc-desc::selection {
+  background: rgba(200, 32, 47, .35);
+  color: #fff;
+}
+
+.nhc-desc {
+  max-width: 760px;
+  color: rgba(255,255,255,.76);
+  font-size: clamp(1rem, 1.35vw, 1.16rem);
+  line-height: 1.72;
+  text-wrap: pretty;
+}
+
+.nhc-pulse-badge,
+.nhc-telemetry-tag {
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.nhc-pulse-badge:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 215, 106, .65);
+  box-shadow: 0 10px 28px rgba(255, 215, 106, .14);
+}
+
+.nhc-telemetry-tag:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56, 189, 248, .62);
+  box-shadow: 0 10px 28px rgba(56, 189, 248, .13);
+}
+
+/* ─── KPI telemetry: executive dashboard feel ─── */
+.network-telemetry-bar {
+  position: relative;
+  width: min(100%, 1080px);
+  background:
+    linear-gradient(135deg, rgba(16, 20, 28, .94), rgba(7, 10, 15, .82));
+  backdrop-filter: blur(22px) saturate(135%);
+  -webkit-backdrop-filter: blur(22px) saturate(135%);
+  border-color: rgba(255,255,255,.14);
+  box-shadow:
+    0 28px 70px rgba(0,0,0,.48),
+    inset 0 1px 0 rgba(255,255,255,.12),
+    0 0 0 1px rgba(56,189,248,.025);
+}
+
+.network-telemetry-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.045), transparent);
+  transform: translateX(-100%);
+  animation: gacisTelemetrySweep 7s ease-in-out infinite;
+}
+
+@keyframes gacisTelemetrySweep {
+  0%, 35% { transform: translateX(-100%); }
+  65%, 100% { transform: translateX(100%); }
+}
+
+.ntb-stat {
+  position: relative;
+  min-height: 54px;
+  justify-content: center;
+}
+
+.ntb-val {
+  font-size: clamp(1.7rem, 2.5vw, 2.25rem);
+}
+
+.ntb-stat:hover .ntb-val {
+  transform: translateY(-1px);
+}
+
+.ntb-label {
+  color: rgba(255,255,255,.56);
+}
+
+/* ─── Filter toolbar ─── */
+.network-filter-toolbar {
+  position: relative;
+  padding: .4rem 0;
+}
+
+.view-mode-switch-group,
+.cfd-btn {
+  transition:
+    transform .22s cubic-bezier(.2,.8,.2,1),
+    box-shadow .22s ease,
+    border-color .22s ease,
+    background .22s ease;
+}
+
+.view-mode-switch-group {
+  padding: .28rem;
+  box-shadow:
+    0 8px 25px rgba(15,23,42,.06),
+    inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+.vms-btn {
+  min-height: 40px;
+}
+
+.vms-btn:hover {
+  transform: translateY(-1px);
+}
+
+.vms-btn.is-active {
+  background: linear-gradient(135deg, #d52a3b 0%, #9e1321 100%);
+  box-shadow:
+    0 7px 18px rgba(200,32,47,.28),
+    inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+.cfd-btn {
+  min-height: 36px;
+}
+
+.cfd-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 18px rgba(15,23,42,.08);
+}
+
+.cfd-btn.is-active {
+  background: linear-gradient(135deg, #11151d, #080a0f);
+  box-shadow:
+    0 8px 18px rgba(11,14,20,.18),
+    inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+/* ─── Map console: premium glass frame ─── */
+.map-landscape-console {
+  border-radius: 20px;
+  border-color: rgba(255,255,255,.14);
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.28),
+    0 4px 20px rgba(0,0,0,.12),
+    inset 0 1px 0 rgba(255,255,255,.11);
+}
+
+.mlc-topbar {
+  min-height: 62px;
+  background: linear-gradient(180deg, rgba(12,15,22,.98), rgba(7,9,14,.96));
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.mlc-title {
+  letter-spacing: -.025em;
+}
+
+.map-selector-ribbon {
+  background: linear-gradient(180deg, rgba(9,12,18,.98), rgba(5,7,11,.98));
+}
+
+.msr-search-wrap,
+.ssw-search-wrap {
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.msr-search-wrap:focus-within,
+.ssw-search-wrap:focus-within {
+  border-color: rgba(56,189,248,.55);
+  box-shadow: 0 0 0 3px rgba(56,189,248,.10);
+  background: rgba(255,255,255,.10);
+}
+
+.msr-chip,
+.hss-btn {
+  will-change: transform;
+}
+
+.msr-chip:hover,
+.hss-btn:hover {
+  box-shadow: 0 7px 18px rgba(0,0,0,.18);
+}
+
+.msr-chip.hub-chip.is-selected,
+.hss-btn.is-selected {
+  background:
+    linear-gradient(135deg, rgba(200,32,47,.42), rgba(120,10,25,.28));
+  box-shadow:
+    0 8px 22px rgba(200,32,47,.20),
+    inset 0 1px 0 rgba(255,255,255,.10);
+}
+
+.msr-chip.sea-chip.is-selected,
+.hss-btn.sea-btn.is-selected {
+  background:
+    linear-gradient(135deg, rgba(14,116,144,.42), rgba(2,84,112,.25));
+  box-shadow:
+    0 8px 22px rgba(56,189,248,.16),
+    inset 0 1px 0 rgba(255,255,255,.10);
+}
+
+/* ─── Dossier surfaces ─── */
+.hub-dossier-landscape,
+.sea-dossier-landscape,
+.gateway-dossier-card,
+.sea-domain-card,
+.gateway-station-card {
+  position: relative;
+  box-shadow: var(--gacis-shadow);
+  transition:
+    transform .3s cubic-bezier(.2,.8,.2,1),
+    box-shadow .3s ease,
+    border-color .3s ease;
+}
+
+.hub-dossier-landscape::before,
+.sea-dossier-landscape::before,
+.gateway-dossier-card::before,
+.sea-domain-card::before,
+.gateway-station-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,.72), transparent 35%);
+  opacity: .65;
+}
+
+.gateway-dossier-card:hover,
+.sea-domain-card:hover,
+.gateway-station-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--gacis-shadow-hover);
+}
+
+/* ─── Hub identity ─── */
+.hdl-identity-row,
+.sdl-header {
+  position: relative;
+  overflow: hidden;
+}
+
+.hdl-identity-row::after,
+.sdl-header::after {
+  content: "";
+  position: absolute;
+  right: -100px;
+  top: -120px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,32,47,.10), transparent 68%);
+  pointer-events: none;
+}
+
+.hdl-title-col h2,
+.sdl-title-col h2,
+.gdc-header h2,
+.sdc-title {
+  letter-spacing: -.025em;
+}
+
+.hdl-kpi-item,
+.gti-val {
+  transition: transform .2s ease;
+}
+
+.hdl-kpi-item:hover .gti-val,
+.hdl-kpi-item:hover {
+  transform: translateY(-1px);
+}
+
+/* ─── Tabs ─── */
+.dossier-nav-tabs {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.dossier-nav-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.dnt-btn {
+  position: relative;
+  min-height: 40px;
+}
+
+.dnt-btn::after {
+  content: "";
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-brand-red);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .22s ease;
+}
+
+.dnt-btn:hover::after {
+  transform: scaleX(.55);
+}
+
+.dnt-btn.is-active::after {
+  transform: scaleX(1);
+}
+
+/* ─── Telemetry cards ─── */
+.gdc-tele-item {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease;
+}
+
+.gdc-tele-item::after {
+  content: "";
+  position: absolute;
+  inset: auto -30% -70% 35%;
+  height: 120px;
+  background: radial-gradient(circle, rgba(200,32,47,.09), transparent 70%);
+  pointer-events: none;
+}
+
+.gdc-tele-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(200,32,47,.22);
+  box-shadow: 0 9px 24px rgba(15,23,42,.07);
+}
+
+.gti-val {
+  letter-spacing: -.025em;
+}
+
+/* ─── Address / capability blocks ─── */
+.gdc-address-box,
+.gdc-capabilities-box,
+.desk-service-hours,
+.sea-cargo-profile-box {
+  transition: border-color .22s ease, box-shadow .22s ease, transform .22s ease;
+}
+
+.gdc-address-box:hover,
+.gdc-capabilities-box:hover,
+.sea-cargo-profile-box:hover {
+  border-color: rgba(200,32,47,.18);
+  box-shadow: 0 10px 26px rgba(15,23,42,.05);
+}
+
+.gab-row a {
+  text-underline-offset: 3px;
+  transition: color .2s ease;
+}
+
+.gab-row a:hover {
+  color: var(--gacis-red-deep);
+}
+
+/* ─── Lane cards ─── */
+.lanes-horizontal-scroll {
+  scroll-snap-type: x proximity;
+  overscroll-behavior-x: contain;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 2%,
+    #000 98%,
+    transparent
+  );
+}
+
+.lane-card-h {
+  scroll-snap-align: start;
+  position: relative;
+  transition:
+    transform .28s cubic-bezier(.2,.8,.2,1),
+    border-color .28s ease,
+    box-shadow .28s ease,
+    background .28s ease;
+}
+
+.lane-card-h::before,
+.gtls-lane-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,.58), transparent 32%);
+  opacity: .55;
+}
+
+.lane-card-h:hover,
+.lane-card-h.is-card-hovered {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 36px rgba(200,32,47,.11);
+}
+
+.lch-cargo,
+.glc-cargo-columns {
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.lane-card-h:hover .lch-cargo,
+.gtls-lane-card:hover .glc-cargo-columns {
+  border-color: rgba(200,32,47,.15);
+  box-shadow: 0 5px 16px rgba(15,23,42,.04);
+}
+
+/* ─── Trade corridor list ─── */
+.gtls-lanes-scroll-container {
+  scrollbar-gutter: stable;
+  overscroll-behavior: contain;
+}
+
+.gtls-filter-btn {
+  min-height: 34px;
+}
+
+.gtls-filter-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(15,23,42,.06);
+}
+
+.gtls-lane-card {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform .25s cubic-bezier(.2,.8,.2,1),
+    border-color .25s ease,
+    box-shadow .25s ease;
+}
+
+.gtls-lane-card:hover,
+.gtls-lane-card.is-card-hovered {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(15,23,42,.09);
+}
+
+/* ─── Sea domain cards ─── */
+.sea-domain-card {
+  overflow: hidden;
+}
+
+.sea-domain-card::after {
+  content: "";
+  position: absolute;
+  right: -55px;
+  bottom: -65px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56,189,248,.12), transparent 68%);
+  pointer-events: none;
+}
+
+.sea-domain-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(56,189,248,.55);
+  box-shadow: 0 22px 48px rgba(56,189,248,.13);
+}
+
+.sea-domain-card.is-active-sea-card {
+  box-shadow:
+    0 18px 42px rgba(2,132,199,.15),
+    inset 0 1px 0 rgba(255,255,255,.75);
+}
+
+.sdc-icon-badge {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.sea-domain-card:hover .sdc-icon-badge {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 18px rgba(56,189,248,.18);
+}
+
+/* ─── Gateway station cards ─── */
+.gateway-station-card {
+  overflow: hidden;
+}
+
+.gateway-station-card:hover {
+  border-color: rgba(200,32,47,.28);
+}
+
+.gateway-station-card .gdc-flag-wrap {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.gateway-station-card:hover .gdc-flag-wrap {
+  transform: scale(1.045);
+  box-shadow: 0 8px 22px rgba(200,32,47,.10);
+}
+
+/* ─── Focus accessibility ─── */
+.vms-btn:focus-visible,
+.cfd-btn:focus-visible,
+.msr-chip:focus-visible,
+.hss-btn:focus-visible,
+.dnt-btn:focus-visible,
+.gtls-filter-btn:focus-visible,
+.gdc-cta:focus-visible,
+.gdc-action-buttons a:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(56,189,248,.55);
+  outline-offset: 3px;
+}
+
+/* ─── Touch / reduced motion ─── */
+@media (hover: none) {
+  .gateway-dossier-card:hover,
+  .sea-domain-card:hover,
+  .gateway-station-card:hover,
+  .lane-card-h:hover,
+  .gtls-lane-card:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}
+
+/* ─── 1200px ─── */
+@media (max-width: 1200px) {
+  .network-telemetry-bar {
+    max-width: 100%;
+  }
+
+  .sea-domains-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gateway-cards-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ─── 1024px ─── */
+@media (max-width: 1024px) {
+  .network-hero-command {
+    padding-top: 4.5rem;
+    padding-bottom: 3.75rem;
+  }
+
+  .nhc-title {
+    max-width: 850px;
+  }
+
+  .network-telemetry-bar {
+    padding: 1rem 1.25rem;
+  }
+
+  .ntb-stat {
+    min-width: 120px;
+  }
+
+  .sea-domains-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .gateway-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sdl-body {
+    gap: 1rem;
+  }
+}
+
+/* ─── 768px ─── */
+@media (max-width: 768px) {
+  .network-hero-command {
+    padding-top: 3.5rem;
+    padding-bottom: 2.75rem;
+  }
+
+  .nhc-badge-row {
+    gap: .55rem;
+    margin-bottom: 1rem;
+  }
+
+  .nhc-pulse-badge,
+  .nhc-telemetry-tag {
+    font-size: .66rem;
+    padding: .38rem .72rem;
+  }
+
+  .nhc-title {
+    font-size: clamp(2.1rem, 9vw, 3rem);
+    line-height: 1.02;
+  }
+
+  .nhc-desc {
+    font-size: .94rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .network-telemetry-bar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .85rem;
+    padding: 1rem;
+  }
+
+  .ntb-stat {
+    min-width: 0;
+    padding: .35rem .45rem;
+  }
+
+  .ntb-divider {
+    display: none;
+  }
+
+  .ntb-val {
+    font-size: 1.55rem;
+  }
+
+  .ntb-label {
+    font-size: .62rem;
+  }
+
+  .network-filter-toolbar {
+    align-items: stretch;
+    gap: .85rem;
+  }
+
+  .view-mode-switch-group {
+    width: 100%;
+  }
+
+  .vms-btn {
+    flex: 1;
+    justify-content: center;
+    padding-inline: .75rem;
+  }
+
+  .corridor-filter-deck {
+    align-items: flex-start;
+  }
+
+  .cfd-buttons {
+    width: 100%;
+  }
+
+  .cfd-btn {
+    min-height: 34px;
+  }
+
+  .mlc-topbar,
+  .map-selector-ribbon {
+    padding-inline: .85rem;
+  }
+
+  .mlc-topbar-right {
+    width: 100%;
+  }
+
+  .msr-search-wrap {
+    width: 100%;
+  }
+
+  .msr-search-input {
+    width: 100%;
+  }
+
+  .map-selector-ribbon {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .msr-chips-track {
+    width: 100%;
+  }
+
+  .hdl-identity-row {
+    padding: 1rem;
+  }
+
+  .hdl-kpi-col,
+  .hdl-cta-col {
+    width: 100%;
+  }
+
+  .hdl-kpi-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .6rem;
+  }
+
+  .hdl-cta-col {
+    flex-direction: row;
+  }
+
+  .hdl-cta-col > * {
+    flex: 1;
+  }
+
+  .hub-dossier-landscape .dossier-nav-tabs {
+    padding-inline: .65rem;
+  }
+
+  .hub-dossier-landscape .dnt-btn {
+    padding-inline: .7rem;
+  }
+
+  .hub-dossier-landscape .dossier-tab-content {
+    padding: 1rem;
+  }
+
+  .ops-landscape-grid,
+  .contact-landscape-grid,
+  .sdl-body {
+    grid-template-columns: 1fr;
+  }
+
+  .sea-domains-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gateway-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gateway-dossier-card {
+    padding: 1.15rem;
+  }
+
+  .gdc-telemetry-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gcb-list {
+    grid-template-columns: 1fr;
+  }
+
+  .dossier-nav-tabs {
+    overflow-x: auto;
+  }
+
+  .dnt-btn {
+    flex: 0 0 auto;
+    min-width: 105px;
+  }
+
+  .lane-card-h {
+    flex-basis: min(82vw, 310px);
+  }
+
+  .lanes-horizontal-scroll {
+    margin-inline: -.25rem;
+    padding-inline: .25rem;
+    mask-image: none;
+  }
+}
+
+/* ─── 480px ─── */
+@media (max-width: 480px) {
+  .network-hero-command {
+    padding-top: 3rem;
+    padding-bottom: 2.25rem;
+  }
+
+  .nhc-title {
+    font-size: 2rem;
+    letter-spacing: -.045em;
+  }
+
+  .nhc-desc {
+    font-size: .9rem;
+  }
+
+  .network-telemetry-bar {
+    grid-template-columns: 1fr 1fr;
+    border-radius: 14px;
+  }
+
+  .ntb-val {
+    font-size: 1.4rem;
+  }
+
+  .ntb-label {
+    font-size: .58rem;
+    letter-spacing: .055em;
+  }
+
+  .hdl-kpi-row {
+    grid-template-columns: 1fr;
+  }
+
+  .hdl-cta-col {
+    flex-direction: column;
+  }
+
+  .gdc-header {
+    gap: .75rem;
+  }
+
+  .gdc-flag-wrap {
+    width: 48px;
+    height: 48px;
+  }
+
+  .gdc-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .gdc-telemetry-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .desk-service-hours {
+    grid-template-columns: 1fr;
+  }
+
+  .gcb-list {
+    gap: .7rem;
+  }
+
+  .lch-cargo,
+  .glc-cargo-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .glc-top-row {
+    align-items: flex-start;
+  }
+
+  .glc-transit-tag {
+    align-items: flex-start;
+  }
+
+  .gateway-dossier-card,
+  .sea-domain-card,
+  .gateway-station-card {
+    border-radius: 14px;
   }
 }

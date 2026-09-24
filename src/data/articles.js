@@ -35,7 +35,7 @@ export const rareLogisticsArticles = [
       { label: 'Axle Precision', val: '0mm Tilt Variance' },
       { label: 'Logistics Class', val: 'OOG Project Cargo' }
     ],
-    image: '/images/HERO.png'
+    image: '/images/EXTREME ENVIRONMENT PROJECT LOGISTICS..png'
   },
   {
     id: 'polar-northern-sea-route',
@@ -130,7 +130,7 @@ export const rareLogisticsArticles = [
       { label: 'Telemetry SLA', val: 'Real-Time Geo-Fencing' },
       { label: 'Cargo Loss Rate', val: '0.00% Breach SLA' }
     ],
-    image: '/images/HAZMAT.png'
+    image: '/images/HAZARDOUS MATERIALS AND CHEMICAL CARGO HANDLING.png'
   }
 ];
 

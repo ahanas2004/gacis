@@ -22,7 +22,7 @@ export const Solutions = () => {
     <div className="solutions-page">
       <SEO 
         title="Industry Freight & Supply Chain Solutions — GACIS Intelligence"
-        description="Engineered shipping and logistics solutions for Automotive, Pharmaceuticals, Energy, High-Tech Electronics, Retail, Industrial Manufacturing, and Hazmat/Chemicals."
+        description="Engineered shipping and logistics solutions for Automotive, Pharmaceuticals, Electronics & Air Cargo, Oil & Energy, Maritime & Retail, Manufacturing, and Hazmat & Chemicals."
         canonical="/solutions"
       />
 
@@ -32,6 +32,7 @@ export const Solutions = () => {
         title="Industry Shipping & Supply Chain Solutions"
         description="Customized multimodal shipping architecture engineered to overcome sector-specific compliance, temperature, security, and velocity constraints for global enterprises."
         statusTag="7 DEDICATED SECTOR DESKS ACTIVE"
+        videoSrc="/images/video/solution%20page%20video.mp4"
       />
 
       {/* Main Section */}

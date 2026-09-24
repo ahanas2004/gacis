@@ -17,9 +17,28 @@ export const PageHeader = ({
   statusTag,
   children,
   className = '',
+  videoSrc,
+  videoPoster,
 }) => {
   return (
     <header className={`page-header bg-maroon ${className}`}>
+      {/* Video Background */}
+      {videoSrc && (
+        <div className="page-header-video-wrapper" aria-hidden="true">
+          <video
+            src={videoSrc}
+            poster={videoPoster}
+            className="page-header-video"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+          />
+          <div className="page-header-video-overlay" />
+        </div>
+      )}
+
       {/* Ambient background decoration */}
       <div className="page-header-ambient-glow" aria-hidden="true" />
       <div className="page-header-grid-overlay" aria-hidden="true" />

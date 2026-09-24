@@ -2,22 +2,22 @@
   margin-top: -60px;
   position: relative;
   z-index: 10;
-  padding-bottom: var(--spacing-4xl);
+  padding-bottom: 6rem;
 }
 
 .quick-track-card {
   background: var(--bg-primary);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  padding: var(--spacing-2xl);
+  box-shadow: var(--shadow-card);
+  padding: 4rem;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xl);
+  gap: 4rem;
 }
 
 .quick-track-header h3 {
   font-size: 1.75rem;
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: 0.5rem;
   color: var(--text-primary);
 }
 
@@ -28,7 +28,7 @@
 
 .quick-track-form {
   display: flex;
-  gap: var(--spacing-md);
+  gap: 1.5rem;
   align-items: center;
 }
 
@@ -42,19 +42,19 @@
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--text-light);
+  color: var(--text-muted);
 }
 
 .input-group input {
   padding-left: 3rem;
   height: 56px;
   font-size: 1.125rem;
-  border-color: #E5E7EB;
+  border-color: var(--border-medium);
 }
 
 .input-group input:focus {
-  border-color: var(--gacis-orange);
-  box-shadow: 0 0 0 3px rgba(245, 124, 0, 0.1);
+  border-color: var(--color-brand-red);
+  box-shadow: 0 0 0 3px rgba(200, 32, 47, 0.12);
 }
 
 .track-btn {
@@ -67,14 +67,14 @@
 .quick-links {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: 1rem;
   font-size: 0.875rem;
-  border-top: 1px solid var(--bg-tertiary);
-  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-light);
+  padding-top: 2.5rem;
 }
 
 .quick-links-label {
-  color: var(--text-light);
+  color: var(--text-muted);
   font-weight: 500;
 }
 
@@ -88,7 +88,7 @@
 }
 
 .dot {
-  color: var(--text-light);
+  color: var(--text-muted);
 }
 
 @media (max-width: 768px) {

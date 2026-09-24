@@ -20,7 +20,7 @@ const formatTime = (zone) => new Intl.DateTimeFormat('en-US', {
   hour12: false,
 }).format(new Date());
 
-export const Hero = () => {
+export const Hero = ({ videoSrc, videoPoster }) => {
   const [times, setTimes] = useState({});
 
   useEffect(() => {
@@ -44,16 +44,34 @@ export const Hero = () => {
   return (
     <section className="hero-editorial">
       <div className="hero-backdrop-wrapper">
-        <img
-          src="/images/hero_bg.png"
-          alt="GACIS Global Freight Corridors"
-          className="hero-backdrop-img"
-          width={1920}
-          height={1080}
-          fetchPriority="high"
-          decoding="async"
-        />
-        <div className="hero-backdrop-overlay" />
+        {videoSrc ? (
+          <>
+            <video
+              src={videoSrc}
+              poster={videoPoster}
+              className="hero-backdrop-video"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+            />
+            <div className="hero-backdrop-video-overlay" />
+          </>
+        ) : (
+          <>
+            <img
+              src="/images/hero_bg.png"
+              alt="GACIS Global Freight Corridors"
+              className="hero-backdrop-img"
+              width={1920}
+              height={1080}
+              fetchPriority="high"
+              decoding="async"
+            />
+            <div className="hero-backdrop-overlay" />
+          </>
+        )}
       </div>
 
       <div className="container hero-container">

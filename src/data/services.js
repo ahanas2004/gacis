@@ -11,6 +11,7 @@ export const services = [
     coverage: '150+ Direct Gateways',
     co2Profile: 'High Speed / Monitored Carbon Index',
     image: '/images/air_freight_cargo.png',
+    videoSrc: '/images/video/flight.mp4',
     overview: 'High-velocity air freight architecture engineered for time-critical electronics, automotive AOG spares, pharmaceutical cold chain, and urgent high-value industrial goods across the Gulf, Central Asia, and Europe.',
     
     provenMetrics: [
@@ -94,6 +95,7 @@ export const services = [
     coverage: '500+ Direct Global Port Pairs',
     co2Profile: 'Optimal Carbon Efficiency per TEU',
     image: '/images/sea_freight_vessel.png',
+    videoSrc: '/images/video/VEO_%E2%80%94_SECOND_CINEMATIC_SMAR.mp4',
     overview: 'High-volume containerized ocean transport providing exclusive container use for enterprise manufacturers, automotive suppliers, and industrial distributors with guaranteed vessel space.',
     
     provenMetrics: [
@@ -177,6 +179,7 @@ export const services = [
     coverage: 'Weekly Scheduled Groupage Lines',
     co2Profile: 'Maximized Cubic Utilization Efficiency',
     image: '/images/lcl-consolidation.png',
+    videoSrc: '/images/video/VEO_%E2%80%94_SECOND_CINEMATIC_SMAR.mp4',
     overview: 'Economical sea freight solution for smaller cargo volumes (1 to 15 CBM) with consolidated groupage containers, dedicated packing hubs, and zero minimum volume penalties.',
     
     provenMetrics: [
@@ -260,6 +263,7 @@ export const services = [
     coverage: 'Industrial Supplier Parks Across Asia & Europe',
     co2Profile: 'Consolidated Route Optimization',
     image: '/images/industry_automotive.png',
+    videoSrc: '/images/video/about%20us.mp4',
     overview: 'Specialized origin logistics for international buyers purchasing under Incoterms 2020 EXW (Ex Works) or FCA (Free Carrier). GACIS takes custody directly at the seller\'s warehouse.',
     
     provenMetrics: [
@@ -342,7 +346,8 @@ export const services = [
     leadTime: 'Expedited & Monitored',
     coverage: 'Global Cold Chain Gateways',
     co2Profile: 'Energy-Efficient Eco-Reefer Fleets',
-    image: '/images/industry_pharma.png',
+    image: '/images/REEFER COLD-CHAIN LOGISTICS.png',
+    videoSrc: '/images/video/solution%20page%20video.mp4',
     overview: 'Unbroken cold-chain logistics maintaining strict thermal ranges (-25°C to +25°C) with continuous active data logging for pharmaceuticals (GDP-compliant), fresh food, and fine chemicals.',
     
     provenMetrics: [
@@ -426,6 +431,7 @@ export const services = [
     coverage: 'Kazakhstan, Uzbekistan, Azerbaijan, Georgia & Caucasus',
     co2Profile: 'Intermodal Rail Carbon Reduction (-60%)',
     image: '/images/CORRIDOR SPECIALIZATION.png',
+    videoSrc: '/images/video/VEO_%E2%80%94_SECOND_CINEMATIC_SMAR.mp4',
     overview: 'Our signature trade corridor. Dedicated multimodal logistics bridging the Gulf, India, and China to Kazakhstan (Almaty/Astana), Uzbekistan (Tashkent), and the Caspian basin via direct railheads and road linehauls.',
     
     provenMetrics: [
@@ -509,6 +515,7 @@ export const services = [
     coverage: 'Global Ports & Customs Portals',
     co2Profile: '100% Paperless Digital Manifests',
     image: '/images/diff_compliance.png',
+    videoSrc: '/images/video/about%20us.mp4',
     overview: 'In-house licensed customs brokers delivering tariff classification (HS Code), Free Trade Agreement (FTA) optimization, bonded warehouse operations, and zero-delay regulatory compliance.',
     
     provenMetrics: [
@@ -591,7 +598,8 @@ export const services = [
     leadTime: '2–7 Days',
     coverage: 'Complete GCC & Trans-Caspian',
     co2Profile: 'Euro 6 Compliant Fleet Routing',
-    image: '/images/AUTOMOTIVE.png',
+    image: '/images/NTERNATIONAL ROAD TRANSPORT.png',
+    videoSrc: '/images/video/gacis%20video%2020sec.mp4',
     overview: 'Modern GPS-monitored fleet operations engineered for regional cross-border agility, border crossing pre-clearance, and last-mile industrial delivery across Saudi Arabia, UAE, Oman, and Central Asia.',
     
     provenMetrics: [
@@ -675,6 +683,7 @@ export const services = [
     coverage: 'Trans-Caspian & Eurasian Belt',
     co2Profile: 'Up to 75% Lower CO2 vs Road/Air',
     image: '/images/rail-corridors.png',
+    videoSrc: '/images/video/VEO_%E2%80%94_SECOND_CINEMATIC_SMAR.mp4',
     overview: 'High-capacity intermodal rail block trains offering the ideal equilibrium between ocean transit times and air freight costs across the historic silk corridors.',
     
     provenMetrics: [
@@ -757,7 +766,8 @@ export const services = [
     leadTime: 'Engineered Schedules',
     coverage: 'Global Remote Locations',
     co2Profile: 'Route-Engineered Efficiency',
-    image: '/images/industry_hazmat.png',
+    image: '/images/ROJECT LOGISTICS and HEAVY-LIFT TRANSPORTATION..png',
+    videoSrc: '/images/video/solution%20page%20video.mp4',
     overview: 'Specialized heavy-lift division delivering route surveys, marine engineering, hydraulic modular transport, and turnkey movement for energy, mining, and infrastructure projects.',
     
     provenMetrics: [

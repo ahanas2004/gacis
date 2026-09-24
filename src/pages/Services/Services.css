@@ -735,25 +735,27 @@
 }
 
 .sfc-top-metric-chip {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  flex-shrink: 0;
-}
-
-.stmc-val {
-  font-size: 1.1rem;
-  font-weight: 900;
-  color: var(--color-brand-red);
-  line-height: 1.1;
-}
-
-.stmc-lbl {
-  font-size: 0.6rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  
+  .stmc-val {
+    font-size: clamp(0.875rem, 1.2vw, 1.1rem);
+    font-weight: 900;
+    color: var(--color-brand-red);
+    line-height: 1.1;
+  }
+  
+  .stmc-lbl {
+    font-size: clamp(0.55rem, 0.7vw, 0.65rem);
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
   text-align: right;
 }
 

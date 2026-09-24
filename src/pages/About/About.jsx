@@ -19,6 +19,8 @@ export const About = () => {
         title="About GACIS"
         description="Connecting global commerce through multimodal engineering, deep regional trade lane mastery, and operational precision."
         statusTag="ESTABLISHED CORRIDOR OPERATOR"
+        videoSrc="/images/video/about%20us.mp4"
+        videoPoster="/images/about-gacis-office.png"
       />
 
       {/* Mission & Vision */}
@@ -40,12 +42,15 @@ export const About = () => {
             </div>
             </div>
             <div className="about-image-col">
-              <img
-                src="/images/about-gacis-office - Copy.png"
-                alt="GACIS Cargo Services logistics headquarters and fleet"
+              <video
+                src="/images/about%20us%20animation.mp4"
                 className="about-hero-img"
-                loading="eager"
-                decoding="async"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                poster="/images/about-gacis-office.png"
               />
             </div>
           </div>

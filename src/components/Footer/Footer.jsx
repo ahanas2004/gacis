@@ -59,12 +59,13 @@ export const Footer = () => {
 
           <div className="footer-col">
             <h5>Industry Solutions</h5>
-            <Link to="/solutions">Automotive & Mobility</Link>
-            <Link to="/solutions">Pharmaceuticals & GDP Cold-Chain</Link>
-            <Link to="/solutions">Energy & Infrastructure Projects</Link>
-            <Link to="/solutions">Technology & High-Value Cargo</Link>
-            <Link to="/solutions">Retail & FMCG Omnichannel</Link>
-            <Link to="/solutions">Industrial Manufacturing</Link>
+            <Link to="/solutions">Automotive</Link>
+            <Link to="/solutions">Pharmaceuticals</Link>
+            <Link to="/solutions">Oil & Energy</Link>
+            <Link to="/solutions">Electronics & Air Cargo</Link>
+            <Link to="/solutions">Maritime & Retail</Link>
+            <Link to="/solutions">Manufacturing</Link>
+            <Link to="/solutions">Hazmat & Chemicals</Link>
           </div>
 
           <div className="footer-col">

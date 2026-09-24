@@ -1798,3 +1798,33 @@
     flex-direction: column;
   }
 }
+
+/* Very small screens */
+@media (max-width: 400px) {
+  .sust-telemetry-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .stb-stat {
+    min-width: 100px;
+  }
+
+  .shc-title {
+    font-size: 1.5rem;
+  }
+
+  .sust-hero-command .container {
+    padding-inline: 1rem;
+  }
+
+  .snc-mode-tabs {
+    gap: 0.3rem;
+  }
+
+  .snc-mode-tab {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}

@@ -82,13 +82,8 @@ export const Contact = () => {
         title="Connect with Our Trade Lane Specialists"
         description="Have a complex corridor requirement, time-critical air charter, or bulk container movement? Our central pricing and trade desks respond with verified rate schedules within 24 hours."
         statusTag="AVERAGE RESPONSE TIME: < 24 HOURS"
+        videoSrc="/images/video/gacis%20video%2020sec.mp4"
       />
-
-      <section className="contact-hero-image-section">
-        <div className="container">
-          <img src="/images/about-gacis-office.png" alt="GACIS Global Logistics Office" className="contact-hero-image" loading="lazy" decoding="async" />
-        </div>
-      </section>
 
       <section className="section-padding bg-secondary">
         <div className="container">
@@ -234,7 +229,7 @@ export const Contact = () => {
               </div>
 
               <div className="hubs-scroll-list">
-                {primaryHubs.map((hub) => (
+                {primaryHubs.filter(hub => !['cis-almaty', 'tashkent-hub', 'frankfurt-hub', 'london-hub', 'hamburg-hub', 'klang-hub', 'riyadh-hub', 'istanbul-hub', 'baku-hub', 'singapore-hub'].includes(hub.id)).map((hub) => (
                   <div className="hub-contact-card" key={hub.id}>
                     <div className="hcc-top">
                       <span className="hcc-flag">{hub.flag}</span>

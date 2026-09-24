@@ -50,6 +50,7 @@ export const Resources = () => {
         title="Rare Logistics Corridors & Secret Trade Intelligence"
         description="Exclusive field reports, classified route breakdowns, extreme environment protocols, and high-security freight intelligence sourced from leading industry journals and GACIS supply chain engineers."
         statusTag="VERIFIED FREIGHT INTELLIGENCE & RESEARCH"
+        videoSrc="/images/video/VEO_%E2%80%94_SECOND_CINEMATIC_SMAR.mp4"
       >
         <div className="res-header-actions">
           <Link to="/quote" className="btn btn-primary">

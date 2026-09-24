@@ -68,7 +68,7 @@ export const RealGeographicMap = ({
       maxZoom: 9,
       zoomControl: false,
       attributionControl: false,
-      scrollWheelZoom: true,
+      scrollWheelZoom: window.innerWidth >= 768,
       worldCopyJump: true
     });
 

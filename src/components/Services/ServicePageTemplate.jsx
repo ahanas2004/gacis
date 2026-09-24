@@ -42,6 +42,7 @@ const ServicePageTemplate = ({ serviceData }) => {
         title={data.title}
         description={data.tagline}
         statusTag={`${modeStyle.label}: ${data.leadTime}`}
+        videoSrc={data.videoSrc}
       />
 
       <section className="section-padding bg-primary">

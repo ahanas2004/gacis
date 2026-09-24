@@ -2,7 +2,7 @@
 export const industries = [
   {
     id: 'automotive',
-    title: 'Automotive & Mobility Supply Chains',
+    title: 'Automotive',
     tagline: 'Just-in-Time (JIT) parts delivery, AOG emergency freight, and tier-1 assembly line supply chains.',
     icon: 'Car',
     image: '/images/industry_automotive.png',
@@ -24,7 +24,7 @@ export const industries = [
   },
   {
     id: 'pharma',
-    title: 'Pharmaceuticals, Biologics & Cold Chain',
+    title: 'Pharmaceuticals',
     tagline: 'GDP-compliant temperature-controlled air, deepsea, and intermodal cold chain.',
     icon: 'HeartPulse',
     image: '/images/industry_pharma.png',
@@ -46,7 +46,7 @@ export const industries = [
   },
   {
     id: 'energy',
-    title: 'Energy, Oil & Gas, Mining & Infrastructure',
+    title: 'Oil & Energy',
     tagline: 'Out-of-gauge heavy lift, SPMT hydraulic transport, and critical rig replenishment.',
     icon: 'Zap',
     image: '/images/industry_energy.png',
@@ -68,10 +68,10 @@ export const industries = [
   },
   {
     id: 'technology',
-    title: 'High-Tech Electronics & Semiconductors',
+    title: 'Electronics & Air Cargo',
     tagline: 'High-security transport with shock, tilt, and humidity telemetry monitoring.',
     icon: 'Cpu',
-    image: '/images/air_freight_cargo.png',
+    image: '/images/HIGH-SECURITY ELECTRONICS & AIR CARGO LOGISTICS..png',
     challenge: 'High commercial value cargo vulnerable to theft, moisture, shock damage, and seasonal capacity shortages.',
     solution: 'TAPA TSR-1 certified armed escorts, tamper-evident seals, real-time shock sensor logging, and guaranteed carrier BSA.',
     metrics: { securityRating: '99.99%', claimRatio: '0.0012%', peakCapacity: '2.5x Standard' },
@@ -90,10 +90,10 @@ export const industries = [
   },
   {
     id: 'retail',
-    title: 'Retail, FMCG & E-Commerce Supply Chains',
+    title: 'Maritime & Retail',
     tagline: 'Omnichannel inventory distribution across Gulf and Asian consumer hubs.',
     icon: 'ShoppingBag',
-    image: '/images/sea_freight_vessel.png',
+    image: '/images/MARITIME & RETAIL DISTRIBUTION..png',
     challenge: 'Seasonal volume surges, compressed store delivery windows, and high port storage charges.',
     solution: 'Buyer consolidation in free zones (JAFZA / Port Klang), automated CFS de-consolidation, and cross-dock dispatch.',
     metrics: { dwellTimeReduction: '-42%', costEfficiency: '-28%', inventoryAccuracy: '99.9%' },
@@ -112,7 +112,7 @@ export const industries = [
   },
   {
     id: 'industrial',
-    title: 'Industrial Manufacturing, Chemicals & Metals',
+    title: 'Manufacturing',
     tagline: 'Bulk commodity linehaul, raw material staging, and scheduled block train distribution.',
     icon: 'Factory',
     image: '/images/industry_manufacturing.png',
@@ -134,7 +134,7 @@ export const industries = [
   },
   {
     id: 'hazmat-chemical',
-    title: 'Dangerous Goods & Battery Supply Chains',
+    title: 'Hazmat & Chemicals',
     tagline: 'Class 1–9 hazmat, battery energy storage (ESS), and industrial chemical supply chains.',
     icon: 'ShieldCheck',
     image: '/images/industry_hazmat.png',

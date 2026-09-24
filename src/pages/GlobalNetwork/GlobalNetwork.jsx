@@ -72,6 +72,20 @@ export const GlobalNetwork = () => {
 
       {/* ─── 01. COMMAND CENTER HERO HEADER ─── */}
       <section className="network-hero-command">
+        {/* Video Background */}
+        <div className="network-hero-video-wrapper" aria-hidden="true">
+          <video
+            src="/images/video/VEO_%E2%80%94_SECOND_CINEMATIC_SMAR.mp4"
+            className="network-hero-video"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+          />
+          <div className="network-hero-video-overlay" />
+        </div>
+
         <div className="container">
           <div className="nhc-badge-row">
             <span className="nhc-pulse-badge">
