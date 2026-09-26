@@ -8,6 +8,8 @@ const HeroNetworkAnimation = lazy(() => import('./HeroNetworkAnimation'));
 
 const timeZones = [
   { label: 'India', zone: 'Asia/Kolkata' },
+  { label: 'Colombo', zone: 'Asia/Colombo' },
+  { label: 'Malaysia', zone: 'Asia/Kuala_Lumpur' },
   { label: 'Dubai', zone: 'Asia/Dubai' },
   { label: 'USA', zone: 'America/New_York' },
   { label: 'Africa', zone: 'Africa/Johannesburg' },
