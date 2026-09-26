@@ -137,16 +137,16 @@ export const Hero = ({ videoSrc, videoPoster }) => {
           </div>
 
           <div className="hero-visual-column reveal-right delay-200">
-            <div className="hero-world-time hero-world-time--monitor" aria-label="Current regional times">
-              <div className="hero-time-label">
-                <Clock3 size={13} />
-                <span>Global 24×7 Operations</span>
+            <div className="hero-world-time" aria-label="Current regional times">
+              <div className="hero-time-title">
+                <Clock3 size={16} />
+                <strong>GLOBAL 24×7 OPERATIONS</strong>
               </div>
-              <div className="hero-time-list">
+              <div className="hero-time-zones">
                 {timeZones.map(({ label }) => (
-                  <div className="hero-time-item" key={label}>
-                    <span className="hero-time-location">{label}</span>
-                    <span className="hero-time-value">{times[label] || '--:--'}</span>
+                  <div className="hero-time-zone" key={label}>
+                    <span>{label}</span>
+                    <strong>{times[label] || '--:--'}</strong>
                   </div>
                 ))}
               </div>
