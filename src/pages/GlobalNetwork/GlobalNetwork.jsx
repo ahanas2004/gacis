@@ -717,8 +717,71 @@ export const GlobalNetwork = () => {
         </div>
       </section>
 
-      {/* ─── 05. GLOBAL AGENCY ALLIANCE BANNER ─── */}
-      <section className="section-padding-sm bg-dark">
+      {/* ─── 05. IMPORT & EXPORT SERVICE COVERAGE ─── */}
+      <section className="section-padding bg-primary" data-reveal>
+        <div className="container">
+          <div className="section-heading section-heading-center">
+            <span className="eyebrow">SERVICE COVERAGE</span>
+            <h2>Import & Export Service Network</h2>
+            <p>
+              Comprehensive multimodal logistics solutions connecting India with global markets through strategic partnerships and dedicated corridors.
+            </p>
+          </div>
+
+          <div className="service-coverage-grid">
+            {/* Import Service Card */}
+            <div className="service-coverage-card import-card">
+              <div className="scc-header">
+                <span className="scc-icon">
+                  <Navigation size={20} />
+                </span>
+                <div className="scc-title-row">
+                  <span className="scc-eyebrow">IMPORT SERVICE</span>
+                  <h3>From Global Origins to India</h3>
+                </div>
+              </div>
+              <div className="scc-content">
+                <p className="scc-description">
+                  From all destinations around the world — Especially <strong>China (ALL PORTS)</strong>, Hong Kong, Taiwan, Singapore, Malaysia, Indonesia, South Korea, Thailand, Vietnam, Cambodia, Myanmar, Japan, U.K., Italy, Germany, France, Belgium, Bulgaria, Netherlands, Switzerland, Spain, Austria & other international ports to India.
+                </p>
+                <div className="scc-highlights">
+                  <span className="scc-tag">Direct & Transshipment</span>
+                  <span className="scc-tag">All Major Chinese Ports</span>
+                  <span className="scc-tag">Far East & SE Asia</span>
+                  <span className="scc-tag">Europe & Mediterranean</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Export Service Card */}
+            <div className="service-coverage-card export-card">
+              <div className="scc-header">
+                <span className="scc-icon">
+                  <Navigation size={20} />
+                </span>
+                <div className="scc-title-row">
+                  <span className="scc-eyebrow">EXPORT SERVICE</span>
+                  <h3>From India to Global Destinations</h3>
+                </div>
+              </div>
+              <div className="scc-content">
+                <p className="scc-description">
+                  Direct / Transshipment service from Indian ports to <strong>Far East / South East Asia</strong>, Middle East countries, Indian sub-continent, CIS, Red Sea, African, European countries, Canada, USEC & USWC.
+                </p>
+                <div className="scc-highlights">
+                  <span className="scc-tag">Direct & Transshipment</span>
+                  <span className="scc-tag">Far East & SE Asia</span>
+                  <span className="scc-tag">Middle East & CIS</span>
+                  <span className="scc-tag">Africa, Europe, Americas</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 06. GLOBAL AGENCY ALLIANCE BANNER ─── */}
+      <section className="section-padding-sm bg-dark" data-reveal>
         <div className="container">
           <div className="global-alliance-inner">
             <Globe2 size={48} className="gai-globe-icon" />
