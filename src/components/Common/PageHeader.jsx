@@ -34,6 +34,7 @@ export const PageHeader = ({
             loop
             muted
             playsInline
+            immediate
           />
           <div className="page-header-video-overlay" />
         </div>

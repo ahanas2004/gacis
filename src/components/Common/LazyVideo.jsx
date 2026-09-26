@@ -9,14 +9,20 @@ export const LazyVideo = ({
   muted = true,
   playsInline = true,
   onLoad,
+  immediate = false,
   ...rest
 }) => {
   const videoRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [shouldLoad, setShouldLoad] = useState(false);
+  const [shouldLoad, setShouldLoad] = useState(immediate);
   const [hasLoaded, setHasLoaded] = useState(false);
 
   useEffect(() => {
+    if (immediate) {
+      setIsVisible(true);
+      setShouldLoad(true);
+      return;
+    }
     if (typeof IntersectionObserver === 'undefined') {
       setIsVisible(true);
       setShouldLoad(true);
@@ -38,7 +44,7 @@ export const LazyVideo = ({
       observer.observe(videoRef.current);
     }
     return () => observer.disconnect();
-  }, []);
+  }, [immediate]);
 
   useEffect(() => {
     if (shouldLoad && !hasLoaded) {
