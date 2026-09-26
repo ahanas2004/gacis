@@ -140,8 +140,7 @@ export const Hero = ({ videoSrc, videoPoster }) => {
             <div className="hero-world-time hero-world-time--monitor" aria-label="Current regional times">
               <div className="hero-time-label">
                 <Clock3 size={13} />
-                <span>Global Operations</span>
-                <span className="hero-ops-badge">24×7 Operations</span>
+                <span>Global 24×7 Operations</span>
               </div>
               <div className="hero-time-list">
                 {timeZones.map(({ label }) => (
