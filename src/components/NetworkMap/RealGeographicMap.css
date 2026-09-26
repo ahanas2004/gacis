@@ -828,3 +828,212 @@
     border-width: 2px;
   }
 }
+
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   GACIS GLOBAL SERVICE PORT LAYER
+   Clickable country/port coverage markers + active port connectivity routes
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+.gacis-service-port-container.is-service-hidden {
+  display: none !important;
+}
+
+.gacis-service-port-container {
+  background: transparent !important;
+  border: 0 !important;
+  overflow: visible !important;
+}
+
+.service-port-pin {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: visible;
+  font: inherit;
+}
+
+.service-port-core {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #38bdf8;
+  border: 1.5px solid rgba(255,255,255,0.95);
+  box-shadow: 0 0 8px rgba(56,189,248,0.85);
+  z-index: 3;
+  transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.service-port-pulse {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid rgba(56,189,248,0.35);
+  background: rgba(56,189,248,0.08);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.service-port-label {
+  position: absolute;
+  left: 50%;
+  bottom: 13px;
+  transform: translateX(-50%) translateY(3px);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-width: max-content;
+  max-width: 220px;
+  padding: 4px 7px;
+  border: 1px solid rgba(56,189,248,0.35);
+  border-radius: 6px;
+  background: rgba(6, 13, 22, 0.94);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.5);
+  color: #e0f2fe;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.15;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 180ms ease, transform 180ms ease;
+  z-index: 20;
+}
+
+.service-port-label small {
+  color: #94a3b8;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.service-port-pin:hover .service-port-label,
+.service-port-pin:focus-visible .service-port-label,
+.gacis-service-port-container.is-service-origin .service-port-label,
+.gacis-service-port-container.is-service-destination .service-port-label,
+.gacis-service-port-container.connection-only .service-port-label {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.service-port-pin:hover .service-port-core,
+.service-port-pin:focus-visible .service-port-core {
+  transform: scale(1.45);
+  background: #ffd700;
+  border-color: #ffffff;
+  box-shadow: 0 0 13px rgba(255,215,0,0.95);
+}
+
+.gacis-service-port-container.is-service-origin .service-port-core {
+  width: 11px;
+  height: 11px;
+  background: #c8202f;
+  border: 2px solid #ffd700;
+  box-shadow: 0 0 15px rgba(200,32,47,0.95), 0 0 7px rgba(255,215,0,0.85);
+}
+
+.gacis-service-port-container.is-service-origin .service-port-pulse {
+  width: 27px;
+  height: 27px;
+  border-color: rgba(255,215,0,0.8);
+  background: rgba(200,32,47,0.16);
+  animation: servicePortRadar 1.8s infinite ease-out;
+}
+
+.gacis-service-port-container.is-service-destination .service-port-core {
+  background: #0284c7;
+  border-color: #7dd3fc;
+  box-shadow: 0 0 12px rgba(56,189,248,1);
+}
+
+.gacis-service-port-container.is-service-destination .service-port-pulse {
+  width: 21px;
+  height: 21px;
+  border-color: rgba(56,189,248,0.6);
+}
+
+.service-port-pin.is-external-destination .service-port-core {
+  background: #f59e0b;
+  border-color: #fef3c7;
+  box-shadow: 0 0 10px rgba(245,158,11,0.85);
+}
+
+.service-port-pin.is-external-destination .service-port-pulse {
+  border-color: rgba(245,158,11,0.45);
+  background: rgba(245,158,11,0.08);
+}
+
+.service-port-pin:focus-visible {
+  outline: 2px solid #ffd700;
+  outline-offset: 4px;
+  border-radius: 50%;
+}
+
+.service-port-connection-line {
+  filter: drop-shadow(0 0 3px rgba(56,189,248,0.35));
+  animation: servicePortRouteFlow 9s linear infinite;
+  pointer-events: auto;
+}
+
+.service-port-connection-line:hover {
+  stroke-width: 3.5px;
+  stroke-opacity: 0.95;
+  filter: drop-shadow(0 0 6px rgba(56,189,248,0.75));
+}
+
+@keyframes servicePortRadar {
+  0% {
+    transform: scale(0.55);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+
+@keyframes servicePortRouteFlow {
+  to {
+    stroke-dashoffset: -280;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-port-label {
+    font-size: 9px;
+    max-width: 180px;
+    padding: 3px 6px;
+  }
+
+  .service-port-label small {
+    display: none;
+  }
+
+  .service-port-core {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-port-connection-line,
+  .gacis-service-port-container.is-service-origin .service-port-pulse {
+    animation: none;
+  }
+
+  .service-port-label,
+  .service-port-core {
+    transition: none;
+  }
+}
