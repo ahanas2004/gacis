@@ -8,9 +8,9 @@ const HeroNetworkAnimation = lazy(() => import('./HeroNetworkAnimation'));
 
 const timeZones = [
   { label: 'India', zone: 'Asia/Kolkata' },
-  { label: 'Colombo', zone: 'Asia/Colombo' },
+  { label: 'Sri Lanka', zone: 'Asia/Colombo' },
   { label: 'Malaysia', zone: 'Asia/Kuala_Lumpur' },
-  { label: 'Dubai', zone: 'Asia/Dubai' },
+  { label: 'UAE', zone: 'Asia/Dubai' },
   { label: 'USA', zone: 'America/New_York' },
   { label: 'Brazil', zone: 'America/Sao_Paulo' },
   { label: 'Africa', zone: 'Africa/Johannesburg' },
@@ -141,6 +141,7 @@ export const Hero = ({ videoSrc, videoPoster }) => {
               <div className="hero-time-label">
                 <Clock3 size={13} />
                 <span>Global Operations</span>
+                <span className="hero-ops-badge">24×7 Operations</span>
               </div>
               <div className="hero-time-list">
                 {timeZones.map(({ label }) => (
