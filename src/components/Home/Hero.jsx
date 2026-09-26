@@ -12,6 +12,7 @@ const timeZones = [
   { label: 'Malaysia', zone: 'Asia/Kuala_Lumpur' },
   { label: 'Dubai', zone: 'Asia/Dubai' },
   { label: 'USA', zone: 'America/New_York' },
+  { label: 'Brazil', zone: 'America/Sao_Paulo' },
   { label: 'Africa', zone: 'Africa/Johannesburg' },
   { label: 'Europe', zone: 'Europe/London' },
 ];
